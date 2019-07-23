@@ -3,3 +3,6 @@
 
 ### js基础
 - [闭包的理解](https://github.com/xblcity/blog/issues/1)
+
+### typescript
+- [Typescript类型]()
