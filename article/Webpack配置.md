@@ -1,7 +1,16 @@
 # webpack配置
 
 ## webpack配置项
+
 webpack配置选项一般包括下面几个选项
+- entry
+- output
+- mode
+- dev-tools
+- devServer
+- plugins
+- loaders
+
 ```js
 module.exports = {
   entry: {} | '', // 入口文件目录配置
@@ -9,8 +18,8 @@ module.exports = {
   mode: '', // 环境配置，生产环境or开发环境
   plugins: [], // 插件配置，如html-webpack-plugin
   loaders: {} // loader配置
-  dev-tools: '',
-  devServer: {}
+  dev-tools: '', // map 文件时用到
+  devServer: {} // 使用webpack-dev-server用到此选项
 }
 ```
 
@@ -19,9 +28,10 @@ module.exports = {
 module.exports = {
   // 单个入口文件，可以如下配置
   entry: './src/index.js'
-  // entry 配置为一个对象,以下是多页面应用配置选项，即有多个入口,优点：易于扩展  
+  // entry 配置为一个对象,优点：易于扩展  
   // 单个项格式为 [entryChunkName: string]: string|Array<string>
   // 即 属性表达式： 文件名
+  // 当有多个值，即多页面应用配置选项，有多个入口, 如下
   entry: {
     home: './src/index.js',  
     about: './src/about.js'
@@ -42,7 +52,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].[hash:8].js',
     publicPath: '/' // 打包至指定公共目录，如线上目录等？ 如 'https://cdn.example.com/assets/[hash]/'
-    // 当结合express和webpack-dev-middleware 使用时会用到？
+    // 用到webpack-dev-server 配置此项
   }
 }
 ```
@@ -92,9 +102,9 @@ loaders用于处理各种格式的文件
 ```js
 ```
 
-## 其他
-### 能根据文件变化实时进行更新的选项
-有下面三个选项
+## 拓展
+### webpack-dev-server以及hot module replacement
+有下面三个选项，任选其一即可
 1. webpack's watch mode
 只需要在package.json添加一个配置选项
 ```json
