@@ -69,7 +69,7 @@ module.exports = {
 development模式可以配置此项，尽管打包的文件发生错误，仍可以定位未打包的原始文件
 ```js
 module.exports = {
-  devtool: 'inline-source-map' // 
+  devtool: 'inline-source-map' // source map
 }
 ```
 
@@ -100,12 +100,53 @@ module.exports = {
 loaders用于处理各种格式的文件
 常见的loader有babel-loader, css-loader, file-loader 等等
 ```js
+module.exports = {
+  module: {
+    rules: [
+      // 单个loader配置项
+      {
+        test: /\.js$/, // 配置file的类型
+        exclude: /node_modules/, // 排除的文件夹，也可以用 include
+        loader: 'babel-loader' // 使用的loader
+      }
+      // 配置复杂的loader, use为Array类型易于拓展
+      {
+        test: /.\tsx$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true
+            }
+          },
+          {
+            ...
+          }
+        ]
+      }
+      // 配置复杂loader
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-object-rest-spread']
+          }
+        }
+      }
+    ]
+  }
+}
 ```
 
-## 拓展
-### webpack-dev-server以及hot module replacement
+## 其他配置
+### webpack-dev-server&HMR
 有下面三个选项，任选其一即可
-1. webpack's watch mode
+**1. webpack's watch mode**
+
 只需要在package.json添加一个配置选项
 ```json
 {
@@ -116,7 +157,8 @@ loaders用于处理各种格式的文件
 ```
 随后使用`npm run watch`即可启动项目
 
-2. webpack-dev-server(最常用)
+**2. webpack-dev-server(最常用)** 
+
 webpack.config.js配置
 ```js
 devServer: {
@@ -133,7 +175,8 @@ package.json
 ```
 使用`npm run start`或者`npm start`即可启动项目
 
-使用热更新，即hot module replacement, 可以使文件更新变化的部分而不是整个更新
+***使用热更新***
+*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*
 webpack.config.js配置, devServer添加一项
 ```js
 devServer: {
@@ -143,7 +186,8 @@ devServer: {
 ```
 当然，也可以直接使用webpack 的 cli命令，即在package.json修改start命令：`webpack-dev-server --open --hotOnly`
 
-3. webpack-dev-middleware
+**3. webpack-dev-middleware**
+
 webpack.config.js配置
 ```js
 module.exports = {
@@ -183,7 +227,8 @@ package.json
 }
 ```
 `npm run server`即可启动项目
-使用热更新，server.js，以下没有使用express以及webpack-dev-middleware
+***使用热更新***
+server.js，以下没有使用express以及webpack-dev-middleware
 ```js
 const webpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');

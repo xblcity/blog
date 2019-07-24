@@ -1,8 +1,12 @@
 # blog
 读书笔记&amp;总结
 
-### js基础
+### javascipt
 - [闭包的理解](https://github.com/xblcity/blog/issues/1)
+- [this](https://github.com/xblcity/blog/blob/master/article/this.md)
 
 ### typescript
-- [Typescript类型](https://github.com/xblcity/blog/blob/master/article/Typescript%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.md)
+- [Typescript Basic Concepts](https://github.com/xblcity/blog/blob/master/article/typescript-basic-concepts.md)
+
+### webpack
+- [webpack config](https://github.com/xblcity/blog/blob/master/article/webpack-config.md)
