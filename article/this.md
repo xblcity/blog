@@ -1,4 +1,4 @@
-#this
+# this
 
 - this不指向函数本身也不指向函数的词法作用域
 - this时在函数被调用时发生的绑定，它指向谁完全取决于函数在哪里被调用
@@ -137,6 +137,7 @@ const bar = foo.call(obj1) // foo的this是obj1
 bar.call(obj2) // bar的this是obj2
 ```
 
+定时器
 ```js
 function foo() {
   const self = this
@@ -149,6 +150,7 @@ const obj = {a:1}
 foo.call(obj)
 ```
 
+对象中属性值为箭头函数
 ```js
 var a = 'hello'
 const obj = {
