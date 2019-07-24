@@ -28,7 +28,7 @@ const myobj = {
 // 数组，需要指定数组元素的类型
 let arr: number[] = [4, 5, 6] // 数组
 arr = [7, 7, 7]
-let arr1: string[]
+let arr1: Array<string> // 也可以这样声明
 arr1 = ['1', '2']
 // object，可用于函数参数类型限制
 let obj: object = { name: 'age' } // 对象
