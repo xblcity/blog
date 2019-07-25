@@ -185,3 +185,7 @@ const bar = obj.foo() // 执行foo函数，并返回func函数，this是window
 bar() // 执行bar函数，但是指向的堆与func函数一样, 60
 new bar() // 60
 ```
+
+
+- 参考 [你不知道的javascript上第二部分this和对象原型](https://github.com/yygmind/Reading-Notes/blob/master/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A%E5%8D%B7.md)
+- [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
