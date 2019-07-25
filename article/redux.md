@@ -49,7 +49,7 @@ const actions = [
 actions.reduce(reducer, 0) // 输出3
 ```
 
-### action以及store.dispatch()方法
+### action && store.dispatch()
 reducer里面定义了初始state和改变state的接口，我们只需要传入对应的action即可,如上面reducer所示
 用户在view层如何把action传给reducer,就要用到store提供的dispatch方法了
 ```js
@@ -106,12 +106,12 @@ store.dispatch(increment({
 ```
 action creator和action都可以通过`store.dispatch()`直接调用，只不过action creatot封装了一个可以返回action的函数
 
-### store.getState()方法
+### store.getState()
 在view也就是用户页面如何获取store里面的state，需要用到上面store提供的getState方法
 ```js
 import {store} from './redux.js' // 这里为了方便，默认redux.js有暴露出的store对象
-console.log(store.getState()) // 这里打印了 0 也就是state，接上面的例子
 // getState方法不需要传参数
+console.log(store.getState()) // 这里打印了 0 也就是state，接上面的例子
 ```
 
 ### 纯函数reducer
@@ -120,7 +120,7 @@ reducer函数的一个重要特征是，它是一个纯函数，也就是说，�
 如果我们定义的state是一个对象，那么我们不能直接改变这个对象
 ```js
 function reducer(state, action) {
-  return {...state, ...newState} // newState如果包含state里面的值，会覆盖，否则，会新建
+  return {...state, ...newState} // newState如果包含state里面的一部分值，会覆盖，否则，会新建
   // 或者
   return Object.assign({}, state, {...newState})
 }
@@ -130,7 +130,7 @@ function reducer(state, action) {
 }
 ```
 
-### store.subscribe()方法
+### store.subscribe()
 `store.subscribe()`方法
 当redux的state改变时，会自动触发`store.subscribe()`方法
 我们可以在subscribe方法处理我们的需求
@@ -142,6 +142,26 @@ let listenSubscribe = store.subscribe(() => {
 ```
 
 ### createStore的简单实现
+```js
+const createStore = (reducer) => {
+  // 对reducer进行判断处理等等。。
+  // 假设已经 处理好了 state
+  let state
+  let listeners = []
+
+  const getState = () => state
+
+  const dispatch = (action) => {
+    state = reducer(state, action)
+    listeners.forEach()
+  }
+
+  const subscribe = (listener) => {
+
+  }
+}
+```
+
 ### reducer的拆分
 
 ## react例子
