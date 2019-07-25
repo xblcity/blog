@@ -3,7 +3,7 @@
 ## 概念和组成
 - redux包含 store, state, reducer, action, action creator这些概念
 
-#### 初始化store
+### 初始化store
 redux初始化, 即创建store, 调用createStore方法创建一个store
 ```js
 import {createStore} from 'redux'
@@ -16,7 +16,7 @@ store.dispatch()
 store.subscribe()
 ```
 
-#### 创建reducer
+### 创建reducer
 reducer是个函数,接收两个参数，一个是初始state,一个是action
 reducer函数return出一个新的state，覆盖之前的state
 ```js
@@ -49,7 +49,7 @@ const actions = [
 actions.reduce(reducer, 0) // 输出3
 ```
 
-#### action
+### action以及store.dispatch()方法
 reducer里面定义了初始state和改变state的接口，我们只需要传入对应的action即可,如上面reducer所示
 用户在view层如何把action传给reducer,就要用到store提供的dispatch方法了
 ```js
@@ -86,7 +86,7 @@ store.dispatch({
 ```
 这样state可以依据action的payload参数，进行相应变化
 
-#### action creator
+### action creator
 如果每次用户都在view层写这些`store.dispatch({})`,一方面，我们不知道用户到底dispatch哪些action,另一方面，action写起来比较繁琐
 所以我们可以定义action creator,即一个个函数，这些函数会返回action
 ```js
@@ -106,7 +106,7 @@ store.dispatch(increment({
 ```
 action creator和action都可以通过`store.dispatch()`直接调用，只不过action creatot封装了一个可以返回action的函数
 
-#### getState
+### store.getState()方法
 在view也就是用户页面如何获取store里面的state，需要用到上面store提供的getState方法
 ```js
 import {store} from './redux.js' // 这里为了方便，默认redux.js有暴露出的store对象
@@ -114,7 +114,7 @@ console.log(store.getState()) // 这里打印了 0 也就是state，接上面的
 // getState方法不需要传参数
 ```
 
-#### 纯函数reducer
+### 纯函数reducer
 reducer函数的一个重要特征是，它是一个纯函数，也就是说，相同的输入，会得到相同的输出
 和中学学的函数，如`y=2x`很相似，相同输入必有一样输出
 如果我们定义的state是一个对象，那么我们不能直接改变这个对象
@@ -130,7 +130,7 @@ function reducer(state, action) {
 }
 ```
 
-#### store.subscribe()方法
+### store.subscribe()方法
 `store.subscribe()`方法
 当redux的state改变时，会自动触发`store.subscribe()`方法
 我们可以在subscribe方法处理我们的需求
@@ -141,7 +141,7 @@ let listenSubscribe = store.subscribe(() => {
 })
 ```
 
-#### createStore的简单实现
-#### reducer的拆分
+### createStore的简单实现
+### reducer的拆分
 
 ## react例子
