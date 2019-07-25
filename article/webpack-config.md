@@ -249,4 +249,7 @@ server.listen(5000, 'localhost', () => {
 });
 ```
 
+- 参考 [webpack中文文档](https://www.webpackjs.com/guides/)
+- [webpack英文文档](https://webpack.js.org/guides/)
+
 

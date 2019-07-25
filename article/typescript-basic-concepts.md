@@ -329,3 +329,5 @@ class A { } // A.prototype.name = 'li'
 const a1 = new A();
 // console.log(a1.name); // error 类型“A”上不存在属性“name”
 ```
+
+- 参考 [typescript3.1中文文档](https://www.tslang.cn/docs/home.html)
