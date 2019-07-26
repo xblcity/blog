@@ -8,7 +8,7 @@
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/article/promise.md)
 
 ### typescript
-- [Typescript Basic Concepts](https://github.com/xblcity/blog/blob/master/article/typescript-basic-concepts.md)
+- [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/article/typescript-basic-concepts.md)
 
 ### react
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/article/redux.md)

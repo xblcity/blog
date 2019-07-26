@@ -194,6 +194,126 @@ myFetch()
 ```
 可以证实，同步的代码错误是会被捕获到的
 
+## XMLHttpRequest对象/函数
+### XMLHttpRequest实例对象包含以下方法
+
+#### open()
+```js
+// 初始化请求
+XMLHttpRequest.open(method, url, async, user, password)
+```
+- method可以是 "GET", "POST", "PUT", "DELETE", etc
+- url是一个string字符串，发送请求去向的链接
+- async可选参数，默认是true
+- 后面两个是authentication权限认证时使用到，暂时没用过 
+
+#### setRequestHeader()
+设置请求头
+`XMLHttpRequest.setRequestHeader(header, value)`  
+header表示键名，value是设置的值
+
+#### send()
+发送请求
+`XMLHttpRequest.send(body)`  
+body是可选参数，可以是Bolb?等？ 一般不传
+
+### XMLHttpRequest实例对象包含以下属性
+```js
+// 状态，0表示未发送unsend, 1表示opened已发送，2表示请求头已被接收， 3表示loading加载，4表示请求完成
+XMLHttpRequest.readyState
+// 请求的状态 200表示请求返回成功
+XMLHttpRequest.status
+// 返回完整的请求状态，如“200 OK”
+XMLHttpRequest.statusText
+// 返回js对象或者DOM字符串
+XMLHttpRequest.response 
+// 返回DOM字符串
+XMLHttpRequest.responseText 
+```
+
+### XMLHttpRequest实例对象发送请求后的回调函数
+```js
+let xhr = new XMLHttpRequest();
+// 请求成功回调函数
+// e是request事件...暂时不了解
+xhr.onload = e => {
+  console.log('request success');
+};
+// 请求结束
+xhr.onloadend = e => {
+  console.log('request loadend');
+};
+// 请求出错
+xhr.onerror = e => {
+  console.log('request error');
+};
+// 请求超时
+xhr.ontimeout = e => {
+  console.log('request timeout');
+};
+// 监听变化，异步请求才可以使用
+xhr.onreadystatechange = callback
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(xhr.responseText);
+  } else {
+    console.error('请求出错！')
+  }
+}
+```
+
+### 一次简单的XMLHtppRequest请求
+```js
+const xhr = new XMLHttpRequest()
+// 初始化请求
+xhr.open('GET', 'https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest')
+
+// 用回调函数监听变化并做相应处理
+xhr.onreadystatechange = function() {
+  // 请求完成
+  if (xhr.readyState === 4) {
+    // 请求状态时200的情况
+    if (xhr.status === 200) {
+      // 打印返回的数据
+      console.log(xhr.response);
+    } else {
+      // 404,401等错误的处理
+      // 需要与后端字段配合
+      console.error(xhr.response.errorMessage)
+      console.error(xhr.statusText)
+    }
+  }
+}
+xhr.onerror = function() {
+  new Error('network error')
+}
+
+// 发送请求
+xhr.send()
+```
+
+## 使用Promise发送ajax请求
+```js
+function ajaxFetch(url) {
+  return new Promise(function(resolve, reject) {
+    const request = new XMLHttpRequest()
+    request.open('GET', url)
+    request.onload = function() {
+      if(request.status === 200) {
+        resolve(request.response)
+      } else {
+        reject(Error('error:', request.statusText))
+      }
+    }
+    request.onerror = function() {
+      reject(Error('network error'))
+    }
+    // 发送请求
+    request.send()
+  })
+}
+```
 
 
 - 参考 [MDN Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [MDN XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
