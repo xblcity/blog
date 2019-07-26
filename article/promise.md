@@ -5,7 +5,8 @@ Promise是一个构造函数
 语法：new Promise( function(resolve, reject) {...} /* executor */  );
 - executor(执行者)是一个带有resolve和reject两个参数的函数
 - Promise构造函数执行时立即调用executor，当resolve函数执行时，promise的状态变为fulfilled(完成)，当reject函数执行时,promise状态变为rejected(失败)、
-- exector函数的返回值会被忽略，exector返回的是Promise对象  
+- exector函数的返回值会被忽略，exector返回的是Promise对象 
+
 基本用法
 ```js
 const myPromise = new Promise(function(resolve, reject) {
@@ -71,8 +72,8 @@ myAsyncFunction('a.example.com').then(response => {
 ```
 
 ## 处理Promise的错误
-获取数据的操作是会有副作用的，所以我们需要处理数据请求的报错
-axios是基于XMLHttpRequest与Promise的封装  
+获取数据的操作是会有副作用(effect)的，所以我们需要处理数据请求的报错  
+常用的数据请求库axios就是基于XMLHttpRequest与Promise的封装  
 这里，我们用定时器模拟数据请求  
 现在，我们有两个请求数据的函数，如下  
 ```js
@@ -94,7 +95,7 @@ function fetchAnotherData() {
 ```
 
 接下来，我们用几种方法来模拟数据请求出错的情况  
-以下函数都是基于上面两个函数已经声明的情况
+以下函数都是基于上面两个函数已经声明的情况  
 1.普通执行
 ```js
 function myFetch() {
@@ -157,7 +158,7 @@ function myFetch() {
   }
 }
 myFetch()
-// 111 执行完毕 22：获取数据错误
+// 111 执行完毕 22：获取数据错误1
 ```
 
 ```js
@@ -175,8 +176,7 @@ myFetch()
 // '错误信息 获取数据错误1' 执行完毕
 // 错误信息被捕获到了
 ```
-await做了什么操作呢 await fetchData() 相当于在后面加了一个catch()处理方法  
-方法返回了出错信息
+~~await做了什么操作呢 await fetchData() 相当于在后面加了一个catch()处理方法，方法返回了出错信息~~ 待考证  
 
 下面这个例子，我们先不要声明fetchData函数
 ```js
@@ -192,6 +192,7 @@ async function myFetch() {
 myFetch()
 // '错误信息 ReferenceError: fetchData is not defined' 执行完毕
 ```
+可以证实，同步的代码错误是会被捕获到的
 
 
 
