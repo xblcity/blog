@@ -27,7 +27,7 @@ console.log(returnedTarget);
 ```
 source对象会覆盖target上面的同名的属性值，没有则直接添加  
 
-对于null, undefined, symbol,  ~~function类型的属性值~~，不会拷贝
+另一个例子
 ```js
 const target = {}
 const source = { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233} // null不可以用键值省略的写法，会报syntaxError
@@ -114,7 +114,7 @@ console.log(object1.property1); // expected output: 42
 console.dir(object1) // {property1: 42, __proto__: Object}
 ``` 
 
-使用get和set方法
+使用get和set方法，存取器属性描述独有
 ```js
 var o = {}; 
 
@@ -277,6 +277,8 @@ console.log(object2.prototype.isPrototypeOf(object3)); // expected output: true
 ```
 
 ### Object.prototype.propertyIsEnumerable()
-属性是否可枚举
+属性是否可枚举  
+
+
 
 - 参考 [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
