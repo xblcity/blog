@@ -267,6 +267,8 @@ xhr.onreadystatechange = function() {
 const xhr = new XMLHttpRequest()
 // 初始化请求
 xhr.open('GET', 'https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest')
+// 设置请求头
+xhr.setRequestHeader(..., ...)
 
 // 用回调函数监听变化并做相应处理
 xhr.onreadystatechange = function() {
@@ -315,5 +317,5 @@ function ajaxFetch(url) {
 ```
 
 
-- 参考 [MDN Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- 参考 [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [MDN XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)

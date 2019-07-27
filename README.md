@@ -4,7 +4,9 @@
 ### javascipt
 - [闭包的理解](https://github.com/xblcity/blog/issues/1)
 - [this](https://github.com/xblcity/blog/blob/master/article/this.md)
-- [Object prototype 上的方法](https://github.com/xblcity/blog/blob/master/article/object-prototype-property.md)
+- [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
+- [继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
+- [Object构造器上的方法](https://github.com/xblcity/blog/blob/master/article/object-method-property.md)
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/article/promise.md)
 
 ### typescript
