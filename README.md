@@ -17,3 +17,7 @@
 
 ### webpack
 - [webpack config](https://github.com/xblcity/blog/blob/master/article/webpack-config.md)
+
+### others
+- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/article/words.md)
+- [面试题总结](https://github.com/xblcity/blog/blob/master/article/job-interview.md)
