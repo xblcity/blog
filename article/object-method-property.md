@@ -195,6 +195,16 @@ Object.defineProperties(object1, {
 console.log(object1.property1); // expected output: 42
 ```
 
+## Object.getOwnPropertyDescriptor() 与 Object.getOwnPropertyDescriptors()
+获取单个或者多个属性的描述
+```js
+const obj = {
+  a: 1
+}
+console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+// 输出： {configurable: true, enumerable: true, value: 1, writable: true}
+```
+
 ## Object.getOwnPropertyNames()
 遍历对象自身属性
 ```js

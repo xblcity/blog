@@ -8,6 +8,8 @@
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/article/object-method-property.md)
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/article/promise.md)
+- [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/article/eventloop.md)
+- [细碎知识点](https://github.com/xblcity/blog/blob/master/article/little-points.md)
 
 ### typescript
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/article/typescript-basic-concepts.md)
