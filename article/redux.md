@@ -104,7 +104,7 @@ store.dispatch(increment({
   number: 3
 }))
 ```
-action creator和action都可以通过`store.dispatch()`直接调用，只不过action creatot封装了一个可以返回action的函数
+action creator和action都可以通过`store.dispatch()`直接调用，只不过action creator封装了一个可以返回action的函数
 
 ### store.getState()
 在view也就是用户页面如何获取store里面的state，需要用到上面store提供的getState方法

@@ -144,7 +144,9 @@ module.exports = {
 
 ## 其他配置
 ### webpack-dev-server&HMR
-有下面三个选项，任选其一即可
+webpack-dev-server作用在于每次更改不用手动执行webpack命令  
+HMR*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*
+有下面三个选项，任选其一即可  
 **1. webpack's watch mode**
 
 只需要在package.json添加一个配置选项
@@ -176,7 +178,6 @@ package.json
 使用`npm run start`或者`npm start`即可启动项目
 
 ***使用热更新***
-*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*
 webpack.config.js配置, devServer添加一项
 ```js
 devServer: {
