@@ -163,5 +163,31 @@ const createStore = (reducer) => {
 ```
 
 ### reducer的拆分
+reducer函数负责生成state,由于整个应用只有一个 state对象，包含所有数据，对于大型应用来说，这个state会很庞大，导致reducer函数也很庞大  
+这时候我们需要将reducer拆分成多个，对于不同页面或者不同功能，我们把它拆分成独立的部分  \
+通过redux提供的combineReducers方法
+```js
+import {createStore, combineReducers} from 'redux'
+import {aReducer} from './aReducer.js'
+import {bReducer} from './bReducer.js'
+
+const totalReudcer = combineReducers({
+  aReducer,
+  bReducer
+})
+
+const store = createStore(totalReducer)
+export default store
+```
 
 ## react例子
+react不能直接使用redux,要结合一个第三方库react-redux,该库提供了Provider和connect  
+Provider是一个普通的组件，可以作为顶层app状态的分发点,它只需要store属性就可以了，它会将state分发给所有被`connect`的组件  
+connect是一个柯里化函数，先接收两个函数参数，mapStateToProps和mapDispatchToProps,再接收一个参数(将要绑定的组件本身)  
+mapStateToProps  
+mapDispatchToProps参数是一个回调函数，参数是dispatch,
+
+
+### 参考
+- [理解 React，但不理解 Redux，该如何通俗易懂的理解 Redux？](https://www.zhihu.com/question/41312576?sort=created)
+- [Redux 入门教程（一）：基本用法](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)

@@ -1,5 +1,5 @@
 # blog
-读书笔记&&总结(13)
+读书笔记&&总结(14)
 
 ### javascipt
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/article/scope-closures.md)
@@ -16,6 +16,7 @@
 
 ### react
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/article/redux.md)
+- [redux中间件](https://github.com/xblcity/blog/blob/master/article/redux-middleware.md)
 
 ### webpack
 - [webpack config](https://github.com/xblcity/blog/blob/master/article/webpack-config.md)
