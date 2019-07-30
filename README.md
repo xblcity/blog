@@ -1,8 +1,8 @@
 # blog
-读书笔记&&总结(7)
+读书笔记&&总结(13)
 
 ### javascipt
-- [闭包的理解](https://github.com/xblcity/blog/issues/1)
+- [闭包与作用域](https://github.com/xblcity/blog/blob/master/article/scope-closures.md)
 - [this](https://github.com/xblcity/blog/blob/master/article/this.md)
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
