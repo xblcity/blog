@@ -1,7 +1,7 @@
 # this
 
 - this不指向函数本身也不指向函数的词法作用域
-- this时在函数被调用时发生的绑定，它指向谁完全取决于函数在哪里被调用
+- this是在函数被调用时发生的绑定，它指向谁完全取决于函数在哪里被调用
 - this具有语法作用域的特征
 - 在函数被调用时，会创建一个活动记录(执行上下文)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到
 
@@ -53,6 +53,10 @@ function foo(arg1, arg2, arg3) { // arg1,arg2,arg3对应的分别是**参数数�
   console.log(arg2) // 2
   console.log(arg3) // {name: 'xbl'}
 }
+// 使用ES6拓展运算符展开参数更方便
+function foo(...args) {
+  console.log(...args)
+}
 const obj = {}
 foo.apply(obj, [1,2,{name: 'xbl'}])
 // foo.apply(obj, 1) 传递非数组会报错
@@ -75,7 +79,8 @@ foo.call(obj, 1, 2, {name: 'xbl'})
 function foo(a,b) {
   console.log('a:', a, 'b:', b) // a: 2 b: 3
 }
-// 使用bind进行柯里化 
+// 使用bind进行柯里化？？
+// 函数柯里化是指 函数对传入的参数做处理，每处理一个参数，返回一个函数，是函数式编程的重要组成部分
 const bar = foo.bind({}, 2,3)
 bar()
 ```
@@ -121,10 +126,9 @@ foo.apply(empty, [2,3])  // a:2 b:3
 - 箭头函数没有构造函数constructor,不可以使用new 调用
 ```js
 function foo() {
-  // 返回一个箭头函数
+  // 返回一个匿名箭头函数，该函数this取决于foo的this，foo的this仍然遵照语法作用域
   return a => {
-    // this继承自foo()
-    console.log(this.a) // 输出2
+    console.log(this.a)
   }
 }
 const obj1 = {
@@ -134,7 +138,11 @@ const obj2 = {
   a: 3
 }
 const bar = foo.call(obj1) // foo的this是obj1
-bar.call(obj2) // bar的this是obj2
+bar() // 2
+bar.call(obj2) 
+// 输出2， bar的this是obj2，看似箭头函数的this已经指向了obj2,其实不是的，箭头函数的this无法被语法作用域改变，只会为词法作用域的上一层函数改变
+const baz = foo.call(obj2)
+baz() // 输出3
 ```
 
 定时器
@@ -145,9 +153,12 @@ function foo() {
     console.log(self) // obj
     console.log(this) // window 因为setTimeout不是箭头函数，并且是由window调用的
   }, 1000)
+  setTimeout(() => {
+    console.log(this) // obj ?? 
+  }, 2000)
 }
 const obj = {a:1}
-foo.call(obj)
+foo.call(obj) // foo this 是 obj
 ```
 
 对象中属性值为箭头函数
@@ -155,11 +166,13 @@ foo.call(obj)
 var a = 'hello'
 const obj = {
   a: 'world',
+  b: this, // window
   foo: () => {
     console.log(this.a)
   }
 }
-obj.foo() // 输出'hello'
+console.log(obj.b)
+obj.foo() // 隐式绑定, foo this 是obj, obj的this是window, 
 ```
 
 this的一个例子
@@ -168,6 +181,7 @@ var a = 20
 // 用const a = 20 无法得到想要的输出,因为此时a没有被绑定到window对象上
 const obj = {
   a: 40,
+  // 应用默认绑定，this是window
   foo: () => {
     console.log(this.a) // 词法作用域，this是window对象，输出20
 
@@ -176,16 +190,17 @@ const obj = {
       console.log(this.a) // this不确定，但是this.a确定，是60
     }
 
-    func.prototype.a = 50  // func的prototype的a值是50，除非func本身没有a属性
+    func.prototype.a = 50  // func的prototype的a值是50
     return func
   }
 }
-const bar = obj.foo() // 执行foo函数，并返回func函数，this是window
-// 如果foo不是箭头函数，输出的是40
-bar() // 执行bar函数，但是指向的堆与func函数一样, 60
+const bar = obj.foo() // 执行foo函数，并返回func函数
+bar() // 执行bar函数 
 new bar() // 60
 ```
 
 
-- 参考 [你不知道的javascript上第二部分this和对象原型](https://github.com/yygmind/Reading-Notes/blob/master/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A%E5%8D%B7.md)
+### 参考
+- [你不知道的javascript上第二部分this和对象原型](https://github.com/yygmind/Reading-Notes/blob/master/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A%E5%8D%B7.md)
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
+- [慕课网JavaScript 设计模式](https://www.imooc.com/read/38)

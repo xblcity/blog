@@ -1,4 +1,4 @@
-# Promise与处理错误
+# Promise与副作用处理以及XHR
 
 ## Promise概念
 Promise是一个构造函数
@@ -158,7 +158,7 @@ function myFetch() {
   }
 }
 myFetch()
-// 111 执行完毕 22：获取数据错误1
+// 111 执行完毕 22：获取数据错误1(这个是在promise中出现的错误)
 ```
 
 ```js
@@ -262,7 +262,7 @@ xhr.onreadystatechange = function() {
 }
 ```
 
-### 一次简单的XMLHtppRequest请求
+### 一次简单的XMLHttpRequest请求
 ```js
 const xhr = new XMLHttpRequest()
 // 初始化请求
@@ -316,6 +316,6 @@ function ajaxFetch(url) {
 }
 ```
 
-
-- 参考 [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+#### 参考
+- [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [MDN XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)

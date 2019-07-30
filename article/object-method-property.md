@@ -62,7 +62,7 @@ console.log(source) // {a:11, b: {bb:33}}
 更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
 
 ## Object.create()
-参数：Object.create(proto, [propertiesObject]) 第二个参数可选
+参数：Object.create(proto, [propertiesObject]) 第二个参数可选， 是一个属性描述
 ```js
 const person = {
   isHuman: false,
@@ -70,23 +70,51 @@ const person = {
     console.log(`my name is ${this.name}, am i human ${this.isHuman}`)
   }
 }
-const me = Object.create(person)
+const me = Object.create(person, {
+  age: { 
+    value: 17,
+    writeable: true
+  }
+})
 me.name = 'jack'
 me.isHuman = true
 me.printIntroduction() // my name is jack, am i human true
-console.dir(me) // {isHuman: true, name:jack, __proto__: {isHuman: false, printIntroduction: f, __proto__: Object}}
+console.dir(me)
+// 打印出一个对象 
+{
+  isHuman: true, 
+  name:jack, 
+  age: 17,
+  __proto__: {
+    isHuman: false, 
+    printIntroduction: f, 
+    __proto__: f Object()
+  }
+}
 // 可以看出me的原型是person,person的原型是Object
 ```
 
 Object.create与直接字面量声明一个对象有什么区别呢
 ```js
 const methodCreateObj = Object.create({})
+const methodCreateNull = Object.create(null) // 创建了一个非常干净的Object对象，没有原型proto，非常纯净
 const literalCreateObj = {}
-console.dir(methodCreateObj) // {__proto__: __proto__: constructor: Object()}
-console.dir(literalCreateObj) // {__proto__: constructor: Object()}
+console.dir(methodCreateObj) 
+{  // methodCreateObj 的原型是一个空对象，空对象的原型是Object
+  __proto__: {
+    __proto__: constructor: Object()
+  }
+}
+console.dir(methodCreateNull) 
+{
+  // No properties
+}
+console.dir(literalCreateObj) 
+{
+  __proto__: constructor: Object()
+}
 // 可以看出Object.create({})创建的对象多了一层__proto__
-```
-
+``` 
 所以我们可以使用Object.create()方法指定自己的原型prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
 
 ## Object.defineProperty()
@@ -97,7 +125,7 @@ descriptor可以定义以下几种属性
 - enumerable 是否可枚举，默认false
 - value 值
 - writable 是否可写，默认false  
-一个访问描述符还包括下面两个重要方法
+一个存取器属性描述符还包括下面两个重要方法，但不包含value属性
 - get 如果没有getter，默认是undefined
 - set 如果没有setter，默认是undefined
 
@@ -106,12 +134,18 @@ const object1 = {};
 // 下面这个操作：向object1对象添加'property1'属性，值为42，并且不可写
 Object.defineProperty(object1, 'property1', {
   value: 42,
-  writable: false
+  writable: false // 不可写，即不可重新赋值
 });
 object1.property1 = 77; // throws an error in strict mode
 
 console.log(object1.property1); // expected output: 42
-console.dir(object1) // {property1: 42, __proto__: Object}
+console.dir(object1) 
+{
+  property1: 42, 
+  __proto__: {
+    constructor: f Object()
+  }
+}
 ``` 
 
 使用get和set方法，存取器属性描述独有
@@ -150,7 +184,7 @@ Object.defineProperty(o, 'conflict', {
 // 类型错误：非法属性描述，不能同时指定存取器或者value
 ```
 
-存取器属性的一个例子
+存取器属性描述的一个例子
 ```js
 function Archiver() {
   var temperature = null;
@@ -214,13 +248,35 @@ const object1 = {
   c: 3
 }
 console.log(Object.getOwnPropertyNames(object1));  // 输出数组Array: ["a", "b", "c"]
+const object2 = Object.create(object1, {
+  d: {
+    value: 16,
+    writeable: true
+  }
+})
+console.dir(object2)
+{
+  d: 16,
+  __proto__: {
+    a: 1,
+    b: 2,
+    c: 3,
+    __proto__: {
+      constructor: f Object()
+    }
+  }
+}
+console.log(Object.getOwnPropertyNames(object2)) // ["d"]
 ```
 
-类的例子
+类的例子(即构造函数类)
 ```js
 class object1 {
   constructor() {
-    this.a = 1
+    this.a = 1 // 定义在实例上面，即通过new object1()可以得到
+  }
+  sayHello() {
+    console.log('hello, my friend')
   }
 }
 class object2 extends object1 {
@@ -231,6 +287,54 @@ class object2 extends object1 {
 }
 console.log(Object.getOwnPropertyNames(object1));  // 输出 ["length", "prototype", "name"]
 console.log(Object.getOwnPropertyNames(object2));  // 输出 ["length", "prototype", "name"]
+const objectInstance = new object2()
+console.dir(object1)
+{
+  arguments: {TypeError...},
+  caller: {TypeError...}
+  length: 0,
+  name: 'object1',
+  prototype: {
+    constructor: class object1,
+    sayHello: f sayHello()
+    __proto__: {
+      constructor: f Object()
+    }
+  }
+}
+console.dir(object2)
+{
+  arguments: {TypeError...},
+  caller: {TypeError...}
+  length: 0,
+  name: 'object1',
+  prototype: { // object1
+    constructor: class object2,
+    __proto__: {
+      constructor: class object1,
+      __proto__: {
+        constructor: f Object()
+      }
+    }
+  }
+}
+console.dir(objectInstance)
+object2:
+{ 
+  a:1，
+  d:4,
+  __proto__: { object1
+    constructor: class object2
+    __proto__: {
+      constructor: class object1
+      sayHello: f sayHello(),
+      __proto__: {
+        constructor: f Object()
+      }
+    }
+  }
+}
+console.log(Object.getOwnPropertyNames(objectInstance));  // ["a", "d"]
 ``` 
 
 ## Object.keys()
@@ -280,7 +384,7 @@ function object1() {}
 function object2() {}
 object1.prototype = Object.create(object2.prototype); // 赋值表达式右边返回的对象(假设为x)的prototype是object2的prototype
 
-const object3 = new object1(); // object3与object1相等。。原型都是
+const object3 = new object1(); // object3是object1的实例，他们两个是相等的
 
 console.log(object1.prototype.isPrototypeOf(object3)); // expected output: true
 console.log(object2.prototype.isPrototypeOf(object3)); // expected output: true
