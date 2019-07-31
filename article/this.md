@@ -1,9 +1,9 @@
 # this
 
 - this不指向函数本身也不指向函数的词法作用域
-- this是在函数被调用时发生的绑定，它指向谁完全取决于函数在哪里被调用
+- this是在函数被调用时发生的绑定，也就是说，函数未调用之前是没有this的，它指向谁完全取决于函数在哪里被调用
 - this具有语法作用域的特征
-- 在函数被调用时，会创建一个活动记录(执行上下文)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到
+- 在函数被调用时，会创建一个活动记录(执行上下文)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到，上下文不存在，this也就不存在了
 
 ### this的绑定规则
 **1.默认绑定**
@@ -97,7 +97,7 @@ Function.prototype.bind = function(...rest1) {
 
 把 `null` 或者 `undefined` 作为this绑定的对象传入 `call,apply,bind`, 这些值 在调用时会被忽略，实际应用的仍然是**默认规则**
 使用null可能会产生副作用，可以传空对象{}
-js中创建空对象最简单的方法时 Object.create(null), 这个和{}很像，但是不会创建Object.prototype这个委托，比{}更空
+js中创建空对象最简单的方法时 Object.create(null), 这个和{}很像，但是不会创建Object.prototype这个委托，比{}更空，即没有原型链
 ```js
 function foo(a,b) {
   console.log('a:', a, 'b:', b)
@@ -138,22 +138,51 @@ const obj2 = {
   a: 3
 }
 const bar = foo.call(obj1) // foo的this是obj1
-bar() // 2
-bar.call(obj2) 
-// 输出2， bar的this是obj2，看似箭头函数的this已经指向了obj2,其实不是的，箭头函数的this无法被语法作用域改变，只会为词法作用域的上一层函数改变
+bar() // 输出2，由于是箭头函数，所以在window下面执行箭头函数，但实际还是要看bar的父函数foo的this指向
+bar.call(obj2)  // 输出2， bar的this是obj2，看似箭头函数的this已经指向了obj2,其实不是的，箭头函数的this无法被语法作用域改变，只会为词法作用域的上一层函数改变
 const baz = foo.call(obj2)
 baz() // 输出3
 ```
+
+回调函数里面的this
+```js
+function foo(callback) {
+  return callback()
+}
+```
+
+多个嵌套函数  
+```js
+function foo() {
+  console.log(`foo内部`,this) // {outObj: 1}
+  function bar() {
+    console.log(`bar内部`,this) // {innerObj: 2, bar: f}
+    function baz() {
+      console.log(`baz1`, this) // window
+      function baz1() {
+        console.log(`baz2`, this) // window
+      }
+      baz1()
+    }
+    baz()
+  }
+  const innerObj = {inner: 2, bar}
+  return innerObj.bar() // 执行bar函数，return可以不用加
+}
+const outObj = {outObj: 1}
+foo.call(outObj)
+```
+可以看出，每个函数的this都是独立的，无法继承自父函数，默认规则绑定的是window
 
 定时器
 ```js
 function foo() {
   const self = this
-  setTimeout(function() {
+  window.setTimeout(function() { // 此函数是在setTimeout函数内部执行的,setTimieout执行的时候，应用了隐式绑定，
     console.log(self) // obj
-    console.log(this) // window 因为setTimeout不是箭头函数，并且是由window调用的
+    console.log(this) // window 隐式绑定
   }, 1000)
-  setTimeout(() => {
+  window.setTimeout(() => { // window调用了setTimeout函数，所以setTimeout优先命中的是隐式绑定，this是window
     console.log(this) // obj ?? 
   }, 2000)
 }
@@ -161,18 +190,38 @@ const obj = {a:1}
 foo.call(obj) // foo this 是 obj
 ```
 
+这里再看另外一个回调函数的例子  
+```js
+function foo() {
+  console.log(`foo this是`, this) // {a:1}
+  const innerObj = {b: 2, bar}
+  function bar(callback) { // 定义一个高阶函数，接收一个回调函数
+    console.log(`bar的this是`, this) // 两个都是{bar: 2, bar}
+    callback()
+  }
+  innerObj.bar(function() { // 执行bar函数，bar隐式绑定this, bar函数内部有个函数打印this
+    console.log(`bar 内部 非箭头函数`, this) // window?? 所以callback是应用了默认绑定？？
+  }) 
+  innerObj.bar(() => { // 执行bar函数，bar隐式绑定this, bar函数内部有个箭头函数内部打印this
+    console.log(`bar 内部 箭头函数`, this) // {a:1} ?? callback在bar内部，bar外部的this是foo内部的this，即{a:1}
+  })
+}
+const outObj = {a:1}
+foo.call(outObj)
+```
+
 对象中属性值为箭头函数
 ```js
 var a = 'hello'
 const obj = {
   a: 'world',
-  b: this, // window
+  b: this,
   foo: () => {
     console.log(this.a)
   }
 }
-console.log(obj.b)
-obj.foo() // 隐式绑定, foo this 是obj, obj的this是window, 
+console.log(obj.b)  // window，，对象是没有上下文环境也就是this的，，只能继承
+obj.foo() // hello, 隐式绑定, foo this是obj外面的this，即window
 ```
 
 this的一个例子
@@ -183,7 +232,7 @@ const obj = {
   a: 40,
   // 应用默认绑定，this是window
   foo: () => {
-    console.log(this.a) // 词法作用域，this是window对象，输出20
+    console.log(this.a) // 词法作用域，obj外面的this, this是window对象，输出20
 
     function func() {
       this.a = 60  // 语法作用域，this现在不确定
@@ -193,9 +242,9 @@ const obj = {
     func.prototype.a = 50  // func的prototype的a值是50
     return func
   }
-}
-const bar = obj.foo() // 执行foo函数，并返回func函数
-bar() // 执行bar函数 
+} 
+const bar = obj.foo() // 执行foo函数，并返回func函数  20
+bar() // 执行bar函数  60
 new bar() // 60
 ```
 
