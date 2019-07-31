@@ -17,7 +17,7 @@ store.subscribe()
 ```
 
 ### 创建reducer
-reducer是个函数,接收两个参数，一个是初始state,一个是action
+reducer是个函数,接收两个参数，一个是初始state,一个是action  
 reducer函数return出一个新的state，覆盖之前的state
 ```js
 function reducer(state=0, action) {

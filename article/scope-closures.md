@@ -99,6 +99,75 @@ foo();
 ```
 我们来分析一下：foo函数执行，内部执行bar函数，bar函数内部执行baz函数，baz函数要打印a,自身没有，向上寻找，找到了，打印2，这里我们看到，bar函数是在foo外部执行的，但是却访问到了foo内部的变量，这个引用就叫闭包
 
+#### 闭包实现缓存
+```js
+function memorize(fn) {
+  let cache = {}
+  return function() {
+    const args = Array.prototype.slice.call(arguments) // argumnets是伪数组，经过slice处理之后，成为了真数组
+    let key = JSON.stringify(args)
+    console.log(`cache`, cache[key])
+    return cache[key] || (cache[key] = fn.apply(fn, args)) // 如果与之前计算的参数相同，则不执行回调函数
+    // apply的第二个参数是个数组
+  }
+}
+
+// 计算的回调函数
+function add(a) {
+  console.log(`add参数a`, a)
+  return a + 1
+}
+
+const adder = memorize(add)
+
+adder(1) // 打印 cache: undefined, 输出 2, 当前 cache: {'[1]'}
+adder(1) // 打印 cache: 2  输出: 2  当前: cache: { '[1]': 2 }
+adder(2) // 打印 cache: undefined      输出: 3  当前: cache: { '[1]': 2, '[2]': 3 }
+```
+
+ES6的写法
+```js
+function memorize(fn) {
+  const cache = {}
+  return function(...args) {
+    const key = JSON.stringify(args)
+    return cache[key] || (cache[key] = fn.apply(fn,args))
+  }
+}
+
+function add(a) {
+  console.log(`add参数a`, a)
+  return a + 1
+}
+const adder = memorize(add)
+
+adder(1)
+adder(1)
+adder(2)
+```
+
+不使用apply,使用解构和拓展运算符
+```js
+function memorize(fn) {
+  const cache = {}
+  return function(...args) {
+    const key = JSON.stringify(args)
+    return cache[key] || (cache[key] = fn(args))
+  }
+}
+
+function add(a) {
+  console.log(`add参数a`, a) // a是个数组，需要转换成数字
+  a = Number(a.join()) // 或 parseInt(a.join())
+  return a + 1
+}
+const adder = memorize(add)
+
+adder(1)
+adder(1)
+adder(2)
+```
+
 ### 闭包在模块中的应
 说了这么多闭包的例子，有哪些我们平常可以用到的闭包呢，这里，我们说一下模块化的应用。
 > 待更。。
