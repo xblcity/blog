@@ -7,3 +7,4 @@
 - module 模块
 - migrate 迁移
 - conf config 缩写
+- Abstract Syntax Tree, AST 抽象语法树
