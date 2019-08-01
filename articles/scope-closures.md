@@ -252,15 +252,17 @@ const MyModules = (function Manager() {
 ```
 调用
 ```js
+// 定义modules对象键名是“bar”, 返回值是"bar"对应的值
 MyModules.define( "bar", [], function() {
   function hello(who) {
     return "Let me introduct: " + who;
   }
   return {
-    hello
+    hello 
   }
 })
 
+// 定义modules对象键名是“foo”， 返回值是“foo”对应的值
 MyModules.define( "foo", ["bar"], function(bar) {
   var hungry = "hippo";
   function awesome() {
@@ -271,8 +273,8 @@ MyModules.define( "foo", ["bar"], function(bar) {
   }
 })
 
-var bar = MyModules.get( "bar" );
-var foo = MyModules.get( "foo" );
+const bar = MyModules.get( "bar" );
+const foo = MyModules.get( "foo" );
 
 console.log(bar.hello( "hippo" )) // Let me introduct: hippo
 
