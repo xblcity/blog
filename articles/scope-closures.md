@@ -139,7 +139,7 @@ function foo() {
   }
   return bar
 }
-const bar = foo()
+const baz = foo()
 baz() // 2
 ```
 当函数可以记住并访问所在的词法作用域，即使函数名是在当前词法作用域之外执行，这就产生了闭包。  
@@ -234,12 +234,16 @@ adder(2)
 ```js
 const MyModules = (function Manager() {
   let modules = {}
+  // 定义值
   function define(name, deps, impl) {
     for (let i = 0; i < deps.length; i ++) {
-      deps[i] = modules[deps[i]]
+      deps[i] = modules[deps[i]] 
+      // modules 是空，deps[i] 全是undefined
+      // modlues 不空，modules = {'bar': 23 }, deps[0] = modules[deps[0]]/modules['bar']
     }
     modules[name] = impl.apply(impl, deps)
   }
+  // 取值
   function get(name) {
     return modules[name]
   }
@@ -252,7 +256,7 @@ const MyModules = (function Manager() {
 ```
 调用
 ```js
-// 定义modules对象键名是“bar”, 返回值是"bar"对应的值
+// 定义modules对象键名是“bar”, 值是hello函数
 MyModules.define( "bar", [], function() {
   function hello(who) {
     return "Let me introduct: " + who;
