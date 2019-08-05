@@ -1,6 +1,6 @@
 # 继承与原型链
 
-## 1
+## 继承的几种方式
 
 ### 构造函数实现类
 ```js
@@ -13,24 +13,31 @@ Animal.prototype.say = function() {
 const anAnimal = new Animal('animal gaga')
 // new操作符：创建一个新对象obj{}, obj的prototype指向Animal, obj赋给this，执行构造函数，返回新对象obj
 console.log(anAnimal) 
-// Animal: 
-// {
-//   name: animal gaga, 
-//   __proto__: { // Animal的原型
-//     say: function() {}, 
-//     constructor: function Animal(name){}, 
-//     __proto__: { // Animal原型的原型，指向了引用类型Object
-//       constructor: Object, ... 
-//     }
-//   }
-// }
+Animal:  // anAnimal构造器(constructor)是Animal
+{
+  name: 'animal gaga', 
+  __proto__: { // Animal的prototype
+    say: function() {}, 
+    constructor: function Animal(name){}, // Animal的原型的构造器是Animal
+    __proto__: { // Animal原型的原型，指向了引用类型Object
+      constructor: Object, ... 
+    }
+  }
+}
+
 console.log(anAnimal.prototype) // undefined
 console.log(anAnimal.__proto__) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
 console.log(Animal.prototype) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
 // 因为Animal显式定义了prototype。对于没有显式定义prototype的用chrome浏览器封装的__proto__可以访问
 ```
 可以看出，anAnimal/Animal的原型指向一个对象，而这个对象具有的constructor又指向了Animal  
-new操作符对构造出的实例对象进行了 prototype 绑定
+new操作符对构造出的实例对象进行了 prototype 绑定  
+**使用new调用函数时，会自动执行以下操作** 
+- 创建一个新对象
+- 新对象的原型(__proto__)指向构造函数的prototype
+- 新对象赋给当前this
+- 执行构造函数
+- 如果函数没有返回其他对象，new表达式中的函数会自动返回这个新对象
 
 ### 1.原型链继承
 ```js

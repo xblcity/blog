@@ -133,7 +133,7 @@ foo.apply(empty, [2,3])
 
 *使用new调用函数时，会自动执行以下操作* 
 - 创建一个新对象
-- 新对象的prototype指向构造函数??还是 指向构造函数的prototype??
+- 新对象的原型(__proto__/prototype)指向构造函数的prototype
 - 新对象赋给当前this
 - 执行构造函数
 - 如果函数没有返回其他对象，new表达式中的函数会自动返回这个新对象
@@ -162,19 +162,20 @@ console.dir(descendant)
 - ES6新增一种特殊函数类型：箭头函数，箭头函数无法使用上述四条规则，而是根据外层(函数或者全局)作用域(词法作用域)来决定this
 - 箭头函数的this无法被直接修改，但是可以通过改变外层函数的this指向来间接改变箭头函数里的this  
 - 箭头函数没有构造函数constructor,不可以使用new 调用
-- **箭头函数内部的this是箭头函数父函数外面的this** ？？？ **箭头函数内部的this是箭头函数父函数内部的this**
+- 定义箭头函数this即外部环境的this, 即`function foo(){ const a = () => {console.log(this)}}`箭头函数this与foo上下文环境的this一致
+- 回调函数箭头函数内部的this是箭头函数父函数的父函数的this，与普通箭头函数this表现不一致
 ```js
 function foo() {
   function bar() {
     console.log(`bar函数this`, this) // window
-    const b = () => {
-      console.log(`箭头函数this`,this) // window而不是obj1
+    const b = () => { 
+      console.log(`箭头函数this`,this) // window，即与父函数this一致
     }
     b()
   }
   bar()
   return () => {
-    console.log(`return函数this`,this) 
+    console.log(`return箭头函数this`,this) 
   }
 }
 const obj1 = {
@@ -184,29 +185,22 @@ const obj2 = {
   a: 3
 }
 const bar = foo.call(obj1)
-bar() // 箭头函数打印obj1
-bar.call(obj2) // 箭头函数无法使用显示绑定
+bar() // 箭头函数打印obj1，因为父函数foo的this是obj1
+bar.call(obj2) // 箭头函数无法使用显示绑定，this还是obj1
 const baz = foo.call(obj2)
 baz() // 箭头函数打印obj2
-```
-
-回调函数里面的this
-```js
-function foo(callback) {
-  return callback()
-}
 ```
 
 多个嵌套函数  
 ```js
 function foo() {
-  console.log(`foo内部`,this) // {outObj: 1}
+  console.log(`foo内部`,this) // outObj，显式绑定
   function bar() {
-    console.log(`bar内部`,this) // {innerObj: 2, bar: f}
+    console.log(`bar内部`,this) // innerObj，隐式绑定
     function baz() {
-      console.log(`baz1`, this) // window
+      console.log(`baz1`, this) // window，默认绑定
       function baz1() {
-        console.log(`baz2`, this) // window
+        console.log(`baz2`, this) // window，默认绑定
       }
       baz1()
     }
@@ -217,53 +211,9 @@ function foo() {
 }
 const outObj = {outObj: 1}
 foo.call(outObj)
-// 分析
-// foo 上下文 this是 outObj，
-// bar 上下文 this隐式绑定 innerObj
-// baz/baz1 上下文 没有指定this 
 ```
 可以看出，每个函数的this都是独立的，无法继承自父函数，默认规则绑定的是window  
 获取父函数的this，可以使用`that = this`
-
-定时器
-```js
-function foo() {
-  const self = this
-  window.setTimeout(function() { // 此函数是在setTimeout函数内部执行的,setTimeout执行的时候，应用了隐式绑定，
-    console.log(self) // obj
-    console.log(this) // window 隐式绑定
-  }, 1000)
-  window.setTimeout(() => { // window调用了setTimeout函数，所以setTimeout优先命中的是隐式绑定，this是window
-    console.log(this) // obj ?? 
-  }, 2000)
-}
-const obj = {a:1}
-foo.call(obj) // foo this 是 obj
-```
-
-这里再看另外一个回调函数的例子  
-```js
-function foo() {
-  console.log(`foo this是`, this) // outObj
-  const innerObj = {b: 2, bar}
-  function bar(callback) { 
-    console.log(`bar的this是`, this) // innerObj
-    callback()
-  }
-  innerObj.bar(function() { 
-    console.log(`bar 内部 非箭头函数`, this) // window
-  }) 
-  innerObj.bar(() => { 
-    console.log(`bar 内部 箭头函数`, this) // outObj
-}
-const outObj = {a:1}
-foo.call(outObj)
-// foo内部函数bar定义一个高阶函数，接收一个回调函数
-// 第一次执行bar函数，隐式绑定this, innerObj
-// bar内部执行匿名回调函数，this没有应用隐式绑定，显示绑定，new绑定，所以应用的是默认绑定，即window
-// 第二次执行bar函数，隐式绑定this, innerObj
-// bar内部执行匿名回调箭头函数，this遵照词法，箭头函数父函数bar，bar外面的this是outObj
-```
 
 对象中属性值为箭头函数
 ```js
@@ -304,7 +254,89 @@ new bar() // 60
 ```
 
 
+回调箭头函数里面的this，与父函数的父函数this一致
+```js
+function bar() {
+  function foo(callback) {
+    callback()
+  }
+  const innerObj = {foo}
+  innerObj.foo(() => {console.log(`箭头函数`,this)}) // outObj，与bar上下文this一致
+  innerObj.foo(function() {console.log(`普通函数`,this)}) // window
+}
+const outObj = {a:1}
+bar.call(outObj)
+```
+
+定时器
+```js
+function foo() {
+  const self = this
+  window.setTimeout(function() { 
+    console.log(self) // obj
+    console.log(this) // window 隐式绑定/默认绑定
+  }, 1000)
+  window.setTimeout(() => { 
+    console.log(this) // obj，回调函数的this
+  }, 2000)
+}
+const obj = {a:1}
+foo.call(obj) // foo this 是 obj
+```
+
+普通箭头函数
+```js
+function foo() {
+  function bar() {
+    const a = () => {
+      console.log(`箭头函数`, this) // innerObj, 即bar的上下文环境
+    }
+    a()
+  }
+  const innerObj = {b: 2, bar}
+  innerObj.bar()
+}
+const outObj = {a: 1}
+foo.call(outObj)
+```
+
+这里再看另外一个回调函数的例子  
+```js
+function foo() {
+  console.log(`foo this是`, this) // outObj，显式绑定
+  const innerObj = {b: 2, bar}
+  function bar(callback) { 
+    console.log(`bar的this是`, this) // 两个都是innerObj，隐式绑定
+    callback()
+  }
+  innerObj.bar(function() { 
+    console.log(`bar 内部 非箭头函数`, this) // window，默认绑定
+  }) 
+  innerObj.bar(() => { 
+    console.log(`bar 内部 箭头函数`, this) // outObj，箭头回调函数this与父函数(bar)的父函数(foo)一致
+  })
+}
+const outObj = {a:1}
+foo.call(outObj)
+```
+
+箭头函数没有构造器constructor，不能用于构造函数，如
+```js
+const Message = (text) => {
+  this.text = text
+}
+const myMessage = new Message('hello')
+// Uncaught TypeError: Message is not a constructor
+const myMessageInfo = Message('hi')
+console.log(myMessageInfo) // undefined
+```
+
+因为this的问题，箭头函数要慎用
+
+
+
 ### 参考
 - [你不知道的javascript上第二部分this和对象原型](https://github.com/yygmind/Reading-Notes/blob/master/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%E4%B8%8A%E5%8D%B7.md)
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
-- [慕课网JavaScript 设计模式](https://www.imooc.com/read/38)
+- [JavaScript 设计模式](https://www.imooc.com/read/38)
+- [什么时候不使用箭头函数](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
