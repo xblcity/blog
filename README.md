@@ -26,3 +26,6 @@
 ### others
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
 - [面试题总结](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+
+### 推荐工具
+- git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
