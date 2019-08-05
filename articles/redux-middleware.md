@@ -11,6 +11,7 @@ dispatch action 之后， 过一段事件才执行reducer计算出state, 这是�
 引入redux插件后，我们可以在actionCreator内部编写异步逻辑、
 redux作用即是将action从一个对象变成一个函数
 ```js
+actionCreator.js
 // 未引入之前
 export const increment = (data) => {
   return {
@@ -29,7 +30,19 @@ export const increment = (data) => {
   }
 }
 ```
+引入之前，actionCreator return 一个需要dispatch的对象
+引入之后，actionCreator return 一个函数，这个函数里面包含异步请求，函数的最后dispatch一个对象
+
 在view层，我们只需要dispatch increment这个 creator，并传入参数就可以了
+
+```js
+import {increment} from './actionCreator'
+class ... {
+  componentDidMount() {
+    increment()
+  }
+}
+```
 
 thunk中间件在store.js的引入
 ```js
