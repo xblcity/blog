@@ -3,7 +3,9 @@
 dispatch action 之后， reducer立即计算出state, 这是同步更新state。  
 dispatch action 之后， 过一段事件才执行reducer计算出state, 这是异步更新state。  
 所以如何让reducer过一会才执行呢，就要用到redux的中间件  
-其中比较出名的中间件是redux-thunk和redux-saga，也是是 redux 应用中最常用的两种异步流处理方式。
+其中比较出名的中间件是redux-thunk和redux-saga，也是是 redux 应用中最常用的两种异步流处理方式。 
+
+如果在组件内部进行异步请求的处理，处理完成之后再`dispatch`对应action，这样违背了redux是数据源的理念，并且数据请求分散在各个组件内部，不易维护
 
 ## redux-thunk
 引入redux插件后，我们可以在actionCreator内部编写异步逻辑、
