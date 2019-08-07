@@ -145,8 +145,8 @@ module.exports = {
 ## 其他配置
 ### webpack-dev-server&HMR
 webpack-dev-server作用在于每次更改不用手动执行webpack命令  
-HMR*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*
-有下面三个选项，任选其一即可  
+HMR*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*  
+webpack-dev-server有三种配置方式，如下  
 **1. webpack's watch mode**
 
 只需要在package.json添加一个配置选项
@@ -227,8 +227,8 @@ package.json
   },
 }
 ```
-`npm run server`即可启动项目
-***使用热更新***
+`npm run server`即可启动项目  
+***使用热更新***  
 server.js，以下没有使用express以及webpack-dev-middleware
 ```js
 const webpackDevServer = require('webpack-dev-server');
