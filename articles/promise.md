@@ -33,7 +33,7 @@ myPromise.then(value => {
   console.error(err) // 'error'
 })
 
-// 或者使用下面这个方法，推荐，可以对出现的错误进行统一处理
+// 或者使用下面这个方法，推荐，可以对多个Promise出现的错误进行统一处理
 myPromise.then(value => {
   console.log(value) 
 }).catch(err => {

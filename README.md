@@ -19,6 +19,7 @@
 - [从零构建react应用](https://github.com/xblcity/blog/blob/master/articles/inital-react.md)
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/articles/redux.md)
 - [redux中间件](https://github.com/xblcity/blog/blob/master/articles/redux-middleware.md)
+- [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/articles/redux-redux.md)
 
 ### webpack
 - [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack-config.md)
