@@ -24,6 +24,9 @@
 ### webpack
 - [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack-config.md)
 
+### http/网络
+- [网络](https://github.com/xblcity/blog/blob/master/articles/network.md)
+
 ### others
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
 - [面试题总结](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
