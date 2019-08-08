@@ -77,7 +77,8 @@ function foo(arg1, arg2, arg3) {
 }
 // 也可以使用ES6展开运算符
 function foo(...args) {
-  console.log(...args) 
+  console.log(...args)  // 1, 2, {name: 'xbl'}
+  console.log(args) // 数组：[1, 2, {name: 'xbl'}]
 }
 const obj = {}
 foo.call(obj, 1, 2, {name: 'xbl'})
@@ -95,7 +96,7 @@ bar()
 ```
 ES6实现bind方法
 ```js
-Function.prototype.bind1 = function(...rest1) { // rest1是可迭代对象，即数组
+Function.prototype.bind1 = function(...rest1) { // rest1变成可迭代对象，即数组
   const self = this
   const context = rest1.shift() // context是函数的第一个参数,即this对象，shift()会直接改变原对象
   return function(...rest2) {  
@@ -107,11 +108,10 @@ function foo(a,b,c) {
 }
 const bar = foo.bind1({}, 2, 3)
 bar(4)
-// 分析如下
 // 执行：foo.bind1({}, 2, 3), 
-// 返回 function(...rest2) { return foo.apply({}, [2, 3, ...rest2])}
+// 返回 function(...rest2) { return foo.apply({}, [2, 3, ...rest2])} 这个函数
 // 执行：bar(4)
-// 返回 foo.apply({}, [2,3,4])
+// 返回 foo.apply({}, [2,3,4]) 函数的执行结果
 ```
 
 把 `null` 或者 `undefined` 作为this绑定的对象传入 `call,apply,bind`, 这些值 在调用时会被忽略，实际应用的仍然是**默认规则**
@@ -148,9 +148,13 @@ console.dir(descendant)
 {
   name: 'jack',
   __proto__: { 
-    constructor: f Ancestor(name),
+    constructor: f Ancestor(name) {
+      arguments: null,
+      length: 1,
+      name: 'Ancestor', ...
+    },
     __proto__: {
-      constructor: f Object()
+      constructor: f Object(), ...
     }
   }
 }
@@ -248,7 +252,7 @@ const obj = {
     return func
   }
 } 
-const bar = obj.foo() // 执行foo函数，并返回func函数  20
+const bar = obj.foo() // 执行foo函数，并返回func函数
 bar() // 执行bar函数  60
 new bar() // 60
 ```
@@ -331,7 +335,7 @@ const myMessageInfo = Message('hi')
 console.log(myMessageInfo) // undefined
 ```
 
-因为this的问题，箭头函数要慎用
+因为this的问题，箭头函数要慎用，参考[什么时候不使用javascript](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
 
 
 
