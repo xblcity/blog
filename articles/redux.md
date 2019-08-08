@@ -79,15 +79,15 @@ const store = createStore(reducer)
 // 传入的action
 store.dispatch({
   type: 'INCREMENT',
-  payload: {  // 这里不一定是payload，只要和reducer约定好即可
+  payload: {  // 这里不一定是payload，只要和reducer约定好即可,payload也不一定要是对象
     number: 3
   }
 })
 ```
-这样state可以依据action的payload参数，进行相应变化
+这样state可以依据action的type以及payload参数，进行相应变化
 
 ### action creator
-如果每次用户都在view层写这些`store.dispatch({})`,一方面，我们不知道用户到底dispatch哪些action,另一方面，action写起来比较繁琐
+如果每次用户都在view层写这些`store.dispatch({})`,一方面，我们不知道用户到底dispatch哪些action,另一方面，action写起来比较繁琐，并且还有可能在多处调用相同的dispatch行为
 所以我们可以定义action creator,即一个个函数，这些函数会返回action
 ```js
 // 可以直接在reducer所在的文件进行定义
