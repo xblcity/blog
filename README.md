@@ -9,7 +9,6 @@
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/equalwith-copy.md)
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/promise.md)
 - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/eventloop.md)
-- [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
 - 偏函数与柯里化
 
 ### typescript
@@ -30,6 +29,11 @@
 ### others
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
 - [面试题总结](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+
+### js细碎知识点
+[细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
+- 对象的普通属性和可计算属性
+- 多个箭头函数在一行
 
 ### 推荐工具
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
