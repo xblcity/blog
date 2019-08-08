@@ -36,3 +36,23 @@ Object.defineProperty(obj, 'activity', {
   configurable: true
 })
 ```
+
+## 多个箭头函数在一行
+```js
+const fooFunc = (firstNum) => (secondNum) => (thirdNum) => {
+  console.log(firstNum, secondNum, thirdNum)
+}
+const fooFunc1 = fooFunc(1)
+console.log(fooFunc1)
+  // (secondNum) => (thirdNum) => {
+  //   console.log(firstNum, secondNum, thirdNum)
+  // }
+const fooFunc2 = fooFunc1(2)
+console.log(fooFunc2)
+  // (thirdNum) => {
+  //   console.log(firstNum, secondNum, thirdNum)
+  // }
+fooFunc2(3)
+```
+变量firstNum, secondNum为什么会缓存呢？？  
+fooFunc是函数柯里化的应用？
