@@ -117,7 +117,7 @@ console.log(store.getState()) // 这里打印了 0 也就是state，接上面的
 ### 纯函数reducer
 reducer函数的一个重要特征是，它是一个纯函数，也就是说，相同的输入，会得到相同的输出
 和中学学的函数，如`y=2x`很相似，相同输入必有一样输出
-如果我们定义的state是一个对象，那么我们不能直接改变这个对象
+在reducer里面不能直接重新给state赋值，而是返回一个新的state，由store自己对state进行改变
 ```js
 function reducer(state, action) {
   return {...state, ...newState} // newState如果包含state里面的一部分值，会覆盖，否则，会新建
@@ -131,7 +131,7 @@ function reducer(state, action) {
 ```
 
 ### store.subscribe()
-`store.subscribe()`方法
+`store.subscribe()`方法, 接收一个回调函数，在回调函数里我们做相应的处理
 当redux的state改变时，会自动触发`store.subscribe()`方法
 我们可以在subscribe方法处理我们的需求
 ```js
