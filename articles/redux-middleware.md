@@ -59,21 +59,12 @@ class ... {
 }
 ```
 
-```js
-import {increment} from './actionCreator'
-class ... {
-  componentDidMount() {
-    increment()
-  }
-}
-```
-
 thunk中间件在store.js的引入
 ```js
-import {applyMiddle, createStore} from 'redux'
+import {applyMiddle, createStore, compose} from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducer.js'
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 ```
 
 redux-thunk缺点
@@ -100,9 +91,9 @@ sagaMiddleware.run()
 ```
 
 ### redux-saga api
-#### takeEvery
 #### put
 put 用于函数参数是一个对象，发送给reducer处理的action
+
 #### call
 call 是发送异步请求时使用的api，第一个参数时fetchApi，第2-n个参数是传递给fetchApi的参数
 
@@ -111,7 +102,8 @@ call 是发送异步请求时使用的api，第一个参数时fetchApi，第2-n�
 ```js
 function *watchData() {
   const state = yield select()
-  // 或者传递参数
+  // 或者传递参数，获取部分state?
+  const {info} = yield select()
 }
 ```
 
@@ -123,9 +115,11 @@ fork与call类似，但是是非阻塞函数，执行完`yield fork(fn, args)`,�
 take函数可以监听未来的action，创建一个命令对象，告诉middleware等待一个特定的action，generator会暂停，等待一个与pattern匹配的action被发起，才会继续执行下面的语句  
 通常写法如下
 ```js
+// 当`FETCH_REQUEST`这个type的action触发时，会执行doSomething这个操作
 function *watchFetchData() {
   while(true) {
     yield take('FETCH_REQUEST')
+    // doSomething
   }
 }
 ```
@@ -140,7 +134,19 @@ function *watchFetchUser() {
   yield takeEvery('USER_REQUEST', fetchUser)
 }
 ```
-以上代码：每次dispatch `USER_REQUEST`这个action时，都会自动执行fetchUser这个generator函数
+以上代码：每次dispatch `USER_REQUEST`这个action时，都会自动执行fetchUser这个generator函数  
+takeEvery基于take和fork实现
+```js
+const takeEvery = (patternOrChannel, saga, ...args) => fork(function*() {
+  while (true) {
+    const action = yield take(patternOrChannel)
+    yield fork(saga, ...args.concat(action))
+  }
+})
+```
+
+#### all
+并行执行effect
 
 ## 不使用中间件也可以处理异步请求
 在view层的某个函数内部(如在组件刚挂载时)处理异步请求，处理完异步请求并获取到结果之后再dispatch一个action  

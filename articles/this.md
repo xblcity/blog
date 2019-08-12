@@ -55,7 +55,7 @@ function foo(arg1, arg2, arg3) { // arg1,arg2,arg3对应的分别是**参数数�
   console.log(arg2) // 2
   console.log(arg3) // {name: 'xbl'}
 }
-// 使用ES6展开运算符展开参数更方便
+// 使用ES6展开运算符展开参数更方便，展开运算符结合函数参数使用
 function foo(...args) {
   console.log(...args)  // 1 , 2, name: 'xbl'
   console.log(...arguments)  // 1 , 2, name: 'xbl'
@@ -335,7 +335,10 @@ const myMessageInfo = Message('hi')
 console.log(myMessageInfo) // undefined
 ```
 
-因为this的问题，箭头函数要慎用，参考[什么时候不使用javascript](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
+因为this的问题，箭头函数要慎用，  
+构造函数不能使用箭头函数，因为prototype无法指定
+
+参考[什么时候不使用javascript](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
 
 
 

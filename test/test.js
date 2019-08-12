@@ -185,44 +185,16 @@ var o = { a: 3, foo: foo };
 var p = { a: 4 };
 console.log((p.foo = o.foo))
 
-function foo() { // 函数foo的this是window
-  let a = 1
-  const fooChild = (a) => { // 函数fooChild是第一个出现的箭头函数，this继承自父级
-    let b = 2
-    console.log(this)  // window
-    const fooChildSon = (a) => {
-      console.log(this)  // window
-    }
-    fooChildSon()
+
+
+function a(num) {
+  if (num === 1) {
+    return 1
   }
-  fooChild(a)
-}
-foo()
-
-function foo() {
-  // 返回一个箭头函数
-  return (a) => {
-    // this继承自foo()
-    console.log(this.a);
-  };
+  return a(num - 1) + num
 }
 
-var obj1 = {
-  a: 2
-};
-
-var obj2 = {
-  a: 3
-}
-
-var bar = foo.call(obj1);
-bar.call(obj2); // 2，不是3！
-
-// 经典继承，属性声明在实例上，方法声明在prototype原型上
-// 用call的方式继承父类的实例属性，方法定义在自己的prototype原型上
-
-// 组合继承
-// 把自身的prototype指向父类，这样的好处是，可以使用父类的方法，缺点是父类构造函数执行了两次
+a(10)
 
 
 

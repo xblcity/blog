@@ -32,6 +32,7 @@ source对象会覆盖target上面的同名的属性值，没有则直接添加
 const target = {}
 const source = { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233} // null不可以用键值省略的写法，会报syntaxError
 const returnedTarget = Object.assign(target, source)
+// const returnedTarget = Object.assign(target, {...source})
 console.log(target)  // { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233}
 console.log(returnedTarget) // 同上
 const target = {}
@@ -40,7 +41,7 @@ const v2 = null;
 const v3 = undefined;
 const v4 = Symbol('foo');
 const v5 = function() {}
-const returnedTargetDiff = Object.assign(target, v1, v2, v3, v4, v5) // 参数为单个值的情况，会忽略null,undefined,symbol,function
+const returnedTargetDiff = Object.assign(target, v1, v2, v3, v4, v5) // 参数为单个对象的情况，会忽略null,undefined,symbol,function
 console.log(target, returnedTargetDiff) // {0: 'a'}  输出键为下标序号
 ```
 
@@ -62,7 +63,8 @@ console.log(source) // {a:11, b: {bb:33}}
 更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
 
 ## Object.create()
-参数：Object.create(proto, [propertiesObject]) 第二个参数可选， 是一个属性描述
+参数：Object.create(proto, [propertiesObject]) 第二个参数可选， 是一个属性描述  
+`Object.create()`可以实现继承(因为可以显式指定原型)
 ```js
 const person = {
   isHuman: false,
@@ -94,7 +96,7 @@ console.dir(me)
 // 可以看出me的原型是person,person的原型是Object
 ```
 
-Object.create与直接字面量声明一个对象有什么区别呢
+Object.create声明无原型的空对象
 ```js
 const methodCreateObj = Object.create({})
 const methodCreateNull = Object.create(null) // 创建了一个非常干净的Object对象，没有原型proto，非常纯净
@@ -118,7 +120,7 @@ console.dir(literalCreateObj)
 所以我们可以使用Object.create()方法指定自己的原型prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
 
 ## Object.defineProperty()
-`Object.defineProperty(obj, prop, descriptor)`
+`Object.defineProperty(obj, prop, descriptor)`  
 该方法可以直接向object对象上定义属性，并且对属性进行一些选项设置
 descriptor可以定义以下几种属性
 - configurable 是否可删除？，默认false
@@ -148,7 +150,7 @@ console.dir(object1)
 }
 ``` 
 
-使用get和set方法，存取器属性描述独有
+使用get和set方法，存取器属性描述独有，下为数据属性描述与存取器描述示例
 ```js
 var o = {}; 
 
