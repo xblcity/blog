@@ -332,3 +332,7 @@ const a1 = new A();
 
 ### 参考 
 - [typescript3.1中文文档](https://www.tslang.cn/docs/home.html)
+
+### 推荐关于TS的文章
+- [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/),比较完整的介绍，是typescript-book中文翻译版
+- [一篇朴实的文章带你30分钟捋完TypeScript,方法是正反对比](https://juejin.im/post/5d53a8895188257fad671cbc)

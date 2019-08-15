@@ -1,46 +1,5 @@
 # 继承与原型链
 
-## 实现类
-### 工厂模式
-### 构造函数
-```js
-function Animal(name) {
-  this.name = name
-}
-Animal.prototype.say = function() {
-  console.log(`my name is ${this.name}`)
-}
-const anAnimal = new Animal('animal gaga')
-// new操作符：创建一个新对象obj{}, obj的prototype指向Animal, obj赋给this，执行构造函数，返回新对象obj
-```
-```js
-console.log(anAnimal) 
-Animal:  // anAnimal构造器(constructor)是Animal
-{
-  name: 'animal gaga', 
-  __proto__: { // Animal的prototype
-    say: function() {}, 
-    constructor: function Animal(name){}, // Animal的原型的构造器是Animal
-    __proto__: { // Animal原型的原型，指向了引用类型Object
-      constructor: Object, ... 
-    }
-  }
-}
-
-console.log(anAnimal.prototype) // undefined
-console.log(anAnimal.__proto__) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
-console.log(Animal.prototype) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
-// 因为Animal显式定义了prototype。对于没有显式定义prototype的用chrome浏览器封装的__proto__可以访问
-```
-可以看出，anAnimal/Animal的原型指向一个对象，而这个对象具有的constructor又指向了Animal  
-new操作符对构造出的实例对象进行了 prototype 绑定  
-**使用new调用函数时，会自动执行以下操作** 
-- 创建一个新对象
-- 新对象的原型(__proto__)指向构造函数的prototype
-- 新对象赋给当前this
-- 执行构造函数
-- 如果函数没有返回其他对象，new表达式中的函数会自动返回这个新对象
-
 ## 继承的几种方式
 ### 1.原型链继承(原型链直接指向父类构造函数)
 ```js
@@ -238,6 +197,6 @@ child instanceof Parent // true
 class 实现继承的核心在于使用 extends 表明继承自哪个父类，并且在子类构造函数中必须调用 super，因为这段代码可以看成 Parent.call(this, value)。
 
 ### 参考
-- [javascript高级程序设计]()
+- [javascript高级程序设计6.3继承]()
 - [javascript设计模式精讲](https://www.imooc.com/read/38/article/480)
 - [前端面试之道](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdd0d83f265da615f76ba57)

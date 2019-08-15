@@ -2,36 +2,10 @@
  * 练习测试用
  */
 
-const countDown = (time = 60, cb = f => f) => {
-  const timer = setInterval(function () {
-    time--
-    if (time < 1) {
-      clearInterval(timer)
-      cb(true, time)
-      return
-    }
-    cb(false, time)
-  }, 1000)
-  return timer
-}
+// 定时器
 
-const timer = countDown(60, (isEnd, time) => {
-  if (isEnd === false) {
-    this.setState({
-      sendStatus: false,
-      time: 60
-    })
-    return
-  }
-  this.setState({
-    time
-  })
-})
-this.setState({
-  timer
-})
 
-// ES5类
+// ES5实现由属性和方法的对象
 function Point(x, y) {
   this.name = x
   this.age = y
@@ -43,6 +17,7 @@ const p = new Point('pp', 17)
 p.sayName()
 // ES6
 class Point6 {
+  job = 'ddd'
   constructor(name, age) {
     this.name = name
     this.age = age
@@ -57,14 +32,9 @@ class Point6 {
 const p6 = new Point6('p6', 88)
 p6.sayAge()
 // ES6 将实例属性定义在类的最顶端，与construtor(){ this.xx = yy}效果相同
-class Point7 {
-  name = 'fangfang'
-  sayAge(props) {
-    console.log(props)
-    console.log(this.name)
-  }
-  sayName() {
-    this.sayAge()
+class Point7 extends Point6 {
+  constructor(props) {
+    super(props)
   }
 }
 const p7 = new Point7('p6', 88)
@@ -187,14 +157,8 @@ console.log((p.foo = o.foo))
 
 
 
-function a(num) {
-  if (num === 1) {
-    return 1
-  }
-  return a(num - 1) + num
-}
 
-a(10)
+
 
 
 

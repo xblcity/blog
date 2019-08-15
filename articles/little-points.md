@@ -56,3 +56,6 @@ fooFunc2(3)
 ```
 变量firstNum, secondNum为什么会缓存呢？？  
 fooFunc是函数柯里化的应用？
+
+## JS里面属性名加双方括号[[]]是什么意思
+在控制台打印某一构造函数，经常会出现加双方括号的属性，双方括号代表这是JavaScript引擎内部使用的属性/方法，可以帮助debug（点一下[[FunctionLocation]]就能跳到定义，点一下[[Scopes]]就能查看闭包），但是正常JavaScript代码是取不到这些属性的。[es6中对象属性双方括号是什么意思](https://segmentfault.com/q/1010000015611521/)
