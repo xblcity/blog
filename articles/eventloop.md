@@ -32,3 +32,6 @@ console.log('script同步队列执行完毕')
 
 // 分别输出：async2 执行完毕， Promise开始执行，script同步队列执行完毕，Promise.then执行，aynsc1执行完毕，定时器执行完毕
 ```
+
+## 推荐 
+[Event Loop详解](https://github.com/xiaomuzhu/front-end-interview/blob/master/docs/guide/eventLoop.md)
