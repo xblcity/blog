@@ -3,6 +3,17 @@
 ## 合并仓库
 - [git之两个仓库的合并操作](https://www.jianshu.com/p/42a10bbfbf97)
 
+## 常见命令
+- git status
+- git add
+- git commit -m
+- git push
+- git checkout 分支
+- git branch -a 查看所有分支
+- git remote
+
+## 回退版本，放弃修改
+
 ## 报错信息
 #### git push fatal: No configured push destination.
 git本地仓库没有远程分支连接  

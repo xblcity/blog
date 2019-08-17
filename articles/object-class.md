@@ -80,3 +80,4 @@ const p8 = new Point8()
 
 ### 参考
 - [javascript高级程序设计6.2创建对象]()
+- [W3C ECMAScript 定义类或对象](https://www.w3school.com.cn/js/pro_js_object_defining.asp)
