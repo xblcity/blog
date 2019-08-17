@@ -36,7 +36,11 @@
 
 ### others
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
-- [面试题总结](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+- [面试题总结html&css篇]()
+- [面试题总结js篇](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+- [面试题总结ES6+篇]()
+- [面试总结框架及工具篇]()
+- [面试题总结网络篇]()
 
 ### js细碎知识点
 [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
