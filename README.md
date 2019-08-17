@@ -45,4 +45,5 @@
 - 双方括号`[[]]`
 
 ### 推荐工具
+- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
