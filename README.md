@@ -21,6 +21,7 @@
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/articles/redux.md)
 - [redux中间件](https://github.com/xblcity/blog/blob/master/articles/redux-middleware.md)
 - [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/articles/redux-redux.md)
+- [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/articles/jest.md)
 
 ### react-native
 #### 参考
@@ -35,8 +36,13 @@
 - [网络](https://github.com/xblcity/blog/blob/master/articles/network.md)
 
 ### others
+- [我的疑问](https://github.com/xblcity/blog/blob/master/articles/qa.md)
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
-- [面试题总结](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+- [面试题总结html&css篇]()
+- [面试题总结js篇](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+- [面试题总结ES6+篇]()
+- [面试总结框架及工具篇]()
+- [面试题总结网络篇]()
 
 ### js细碎知识点
 [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
@@ -45,4 +51,5 @@
 - 双方括号`[[]]`
 
 ### 推荐工具
+- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
