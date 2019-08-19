@@ -75,7 +75,7 @@ redux-thunk缺点
 在redux-saga中，UI组件不会主动去触发任务，它们会dispatch一个action来通知需要做何种变化，即dispatch一个对象  
 saga包括三个部分
 - worker saga 做所有的工作，如调用 API，进行异步请求，并且获得返回结果，如`call put`这些api
-- watcher saga 监听被dispatch的actions，当接收到action或者知道它被触发时，调用worker saga 执行任务，主要是由`take tekeEvery`来监听  
+- watcher saga 监听被dispatch的actions，当接收到action或者知道它被触发时，调用worker saga 执行任务，主要是由`take takeEvery`来监听  
 - root saga 立即启动sagas的唯一入口
 
 saga中间件在store.js的引入
@@ -90,7 +90,74 @@ const store = createStore(reudcer, applyMiddle(sagaMiddleware))
 sagaMiddleware.run()
 ```
 
-### redux-saga api
+### redux-saga处理提交action
+```js
+// 获取数据的generator
+function* fetchProducts(dispatch) {
+  const products = yield call(Api.fetch, '/products')
+  dispatch({ type: 'PRODUCTS_RECEIVED', products })
+}
+// 缺点，在generator直接调用了fetch，不容易测试
+// 改造，使用put api
+import { call, put } from 'redux-saga/effects'
+
+function* fetchProducts() {
+  const products = yield call(Api.fetch, '/products')
+  // create and yield a dispatch Effect
+  yield put({ type: 'PRODUCTS_RECEIVED', products })
+}
+```
+使用：在componentDidMount的时候,dispatch一个actions,begin_fetch_data,  
+redux监听到这个begin_fetch_data执行了，然后执行fetchData的generator操作，fetchData的最后dispatch一个get_data的action,并传递参数data  
+最后dispatch一个action,fetch_end，通知reducer数据获取完毕
+
+#### 下面是一个例子
+reducer.js
+```js
+const initState = {
+  isFetching: false
+  list: null
+}
+// constant
+const FETCH_START = 'fetchStart'
+const FETCH_END = 'fetchEnd'
+const FETCH_LIST = 'fetchList'
+// reducer
+const reducer = (state = initState, actions) => {
+  switch(actions.type) {
+    case FETCH_START:
+    case FETCH_END:
+      return {...state, actions.state}
+    case FETCH_LIST:
+      return {...state, actions.list}
+    default：
+      return state
+  }
+}
+// actionCreators
+export const getListStart = (state) => {
+  return {
+    type: FETCH_START,
+    data: state
+  }
+}
+
+export const getListEnd = (state) => {
+  return {
+    type: FETCH_END,
+    data: state
+  }
+}
+
+export const getList = (data) => {
+  return {
+    type: GET_LIST,
+    data
+  }
+}
+```
+
+### redux-saga api 处理副作用
 #### put
 put 用于函数参数是一个对象，发送给reducer处理的action
 

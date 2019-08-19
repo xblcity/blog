@@ -155,6 +155,16 @@ var o = { a: 3, foo: foo };
 var p = { a: 4 };
 console.log((p.foo = o.foo))
 
+let emptyArray = new Array(5)
+let randomNum = Math.ceil(Math.random() * 31 + 1)
+function insertNum(someArray) {
+  if (someArray.length > 1) {
+    return insertNum()
+  } else {
+
+  }
+}
+
 
 
 
