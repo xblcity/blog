@@ -10,8 +10,8 @@ dispatch action 之后， 过一段事件才执行reducer计算出state, 这是�
 异步请求开始的时候，dispatch一个action通知reducer异步请求已发出，异步请求结束的时候，再dispatch一个action通知reducer异步请求结束，传回数据，改变state，更新view视图
 
 ## redux-thunk
-引入redux插件后，我们可以在actionCreator内部编写异步逻辑、
-redux作用即是将action从一个对象变成一个函数  
+引入redux插件后，我们可以在actionCreator内部编写异步逻辑  
+redux-thunk作用即是将action从一个对象变成一个函数  
 
 ```js
 actionCreator.js
@@ -28,7 +28,7 @@ export const increment = (data) => {
     const response = await ajax(url, data)
     dispatch({
       type: 'increment',
-      payload: response
+      payload: response.data
     })
   }
 }
@@ -48,8 +48,8 @@ export const increment = (data) => {
 
 在view层，我们只需要dispatch increment这个 creator，并传入参数就可以了
 ```js
-import store from './store/index.js'
-import {increment} from './store/actionCreatores'
+import store from './store/index'
+import {increment} from './store/actionCreator'
 
 class ... {
   componentDidMount() {
@@ -72,10 +72,10 @@ redux-thunk缺点
 - 协调并发任务困难?
 
 ## redux-saga
-在redux-saga中，UI组件不会主动去触发任务，它们会dispatch一个action来通知需要做何种变化，即dispatch一个对象  
+在redux-saga中，UI组件不会主动去触发任务，它们会dispatch一个action来通知需要做何种变化，即dispatch一个对象???  
 saga包括三个部分
 - worker saga 做所有的工作，如调用 API，进行异步请求，并且获得返回结果，如`call put`这些api
-- watcher saga 监听被dispatch的actions，当接收到action或者知道它被触发时，调用worker saga 执行任务，主要是由`take takeEvery`来监听  
+- watcher saga 监听被dispatch的action，当接收到action或者知道它被触发时，调用worker saga 执行任务，主要是由`take takeEvery`来监听  
 - root saga 立即启动sagas的唯一入口
 
 saga中间件在store.js的引入
@@ -83,11 +83,12 @@ saga中间件在store.js的引入
 import {createStore, applyMiddleware} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import reducer from './reducer.js'
+import saga from './saga'
 
 const sagaMiddleware = createSagaMiddle()
 
-const store = createStore(reudcer, applyMiddle(sagaMiddleware))
-sagaMiddleware.run()
+const store = createStore(reudcer, applyMiddle(sagaMiddleware), )
+sagaMiddleware.run(saga)
 ```
 
 ### redux-saga处理提交action
@@ -141,18 +142,76 @@ export const getListStart = (state) => {
     data: state
   }
 }
-
 export const getListEnd = (state) => {
   return {
     type: FETCH_END,
     data: state
   }
 }
-
 export const getList = (data) => {
   return {
     type: GET_LIST,
     data
+  }
+}
+```
+
+store.js  
+立即启动saga的入口，rootSaga
+```js
+import {createStore, applyMiddle, compose} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import reducers from './reducer'
+import sagas from './saga'
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(reducer, compose(applyMiddleware(sagaMiddleware)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+sagaMiddleware.run(sagas)
+export default store
+```
+
+saga.js
+处理effect的workerSaga，监听action变化的watchSaga
+```js
+import {takeEvery, put, call} from 'redux-saga/effects'
+import { GET_LIST, GET_LIST_START} from './reducer' // constance 常量
+import { getList, getListEnd } from './reducer' // actionCreators
+import axios from 'axios'
+
+function *sagas() {
+  // 如果GET_LIST_START action触发，则执行getListSaga这个generator
+  yield takeEvery(GET_LIST_START, getListSaga)
+}
+
+function *getListSaga() {
+  // call用于发送ajax请求
+  const res = yield call(axios.get, 'http://yapi.demo.qunar.com/mock/80729/api/redux/todolist')
+  // put用于提交action至reducer
+  yield put(getList(res.data.data.list))
+  // 发送一个数据获取完成的action
+  yield put(getListEnd(false))
+}
+
+export default saga
+```
+
+List.js
+```js
+import store from './store'
+import React from 'react'
+import {getListStart} from './reducer'
+
+class List extends React.Component {
+  state = {
+    list: store.getState().list
+  }
+  componentDidMount() {
+    store.dispatch(getListStart(true))
+  }
+  render() {
+    return(
+      <div>{this.state.list}</div>
+    )
   }
 }
 ```
@@ -162,14 +221,16 @@ export const getList = (data) => {
 put 用于函数参数是一个对象，发送给reducer处理的action
 
 #### call
-call 是发送异步请求时使用的api，第一个参数时fetchApi，第2-n个参数是传递给fetchApi的参数
+call 是发送异步请求时使用的api，第一个参数时fetchApi（函数，且不带参数），第2-n个参数是传递给fetchApi的参数
 
 #### select
-指示`middleware`调用选择器获取store上的state数据，与reudx中`store.getState()`作用一致
+指示`middleware`调用选择器获取store上的state数据，与redux中`store.getState()`作用一致
 ```js
 function *watchData() {
   const state = yield select()
   // 或者传递参数，获取部分state?
+  const state = yield select().userInfo
+  // 或者解构
   const {info} = yield select()
 }
 ```
@@ -214,14 +275,6 @@ const takeEvery = (patternOrChannel, saga, ...args) => fork(function*() {
 
 #### all
 并行执行effect
-
-## 不使用中间件也可以处理异步请求
-在view层的某个函数内部(如在组件刚挂载时)处理异步请求，处理完异步请求并获取到结果之后再dispatch一个action  
-缺点是，
-- 请求分散在很多view组件中，维护起来很麻烦 
-- 如果有多个组件调用了这个请求，每个组件的mapDispatchToProps都需要写(如果使用了react-redux的话)，
-- 小型项目可以像这样使用
-
 
 
 ### 参考

@@ -7,10 +7,10 @@
 redux初始化, 即创建store, 调用createStore方法创建一个store
 ```js
 import {createStore} from 'redux'
-// createStore方法，接收一个函数参数
-// 传入参数函数一般是是我们所说的reducer
+// createStore方法，接收的第一个参数是一个函数
+// 传入参数函数是reducer
 const store = createStore(reducer)
-// store对象提供了三个方法,后面再细说
+// store对象提供了三个方法
 store.getState()
 store.dispatch()
 store.subscribe()
@@ -18,7 +18,7 @@ store.subscribe()
 
 ### 创建reducer
 reducer是个函数,接收两个参数，一个是初始state,一个是action  
-reducer函数return出一个新的state，覆盖之前的state
+reducer函数return出一个新的state，传递给store用于改变state
 ```js
 function reducer(state=0, action) {
   switch (action.type) {
@@ -31,12 +31,14 @@ function reducer(state=0, action) {
   }
 }
 ```
-为什么叫reducer，可能因为reducer可以作为 数组的 reduce()方法 的第一个参数
+为什么叫reducer，因为reducer可以作为 数组的 reduce()方法 的第一个参数  
+reduce接收两个参数，第一个是个回调函数，第二个是初始值  
+回调函数接收四个参数，accumulator(上次计算出的值/累加值), currentValue(当前传递的值/item),index(下标，可选)，array(原数组，可选)
 ```js
 function reducer(state=0, action) {
   switch (action.type) {
     case 'ADD':
-      return state + action.payload
+      return state + action.payload // 执行一次，并返回accumulator
     default:
       return state
   }
@@ -61,7 +63,18 @@ const action = {
 store.dispatch(action)
 ```
 
-现在我们要想reducer根据我们传递的action参数里面的值进行相应改变，如下
+现在我们要想reducer根据我们传递的action参数里面的值进行相应改变，如下  
+组件
+```js
+// 传入的action
+store.dispatch({
+  type: 'INCREMENT',
+  payload: {  // 这里不一定是payload，只要和reducer约定好即可,payload也不一定要是对象
+    number: 3
+  }
+})
+```
+store.js
 ```js
 import {createStore} from 'redux'
 
@@ -75,14 +88,6 @@ function reducer(state = 0, action) {
 }
 
 const store = createStore(reducer)
-
-// 传入的action
-store.dispatch({
-  type: 'INCREMENT',
-  payload: {  // 这里不一定是payload，只要和reducer约定好即可,payload也不一定要是对象
-    number: 3
-  }
-})
 ```
 这样state可以依据action的type以及payload参数，进行相应变化
 
@@ -91,27 +96,26 @@ store.dispatch({
 所以我们可以定义action creator,即一个个函数，这些函数会返回action
 ```js
 // 可以直接在reducer所在的文件进行定义
-function increment(data) {
+function increment(number) {
   return {
     type: 'INCREMENT',
-    payload: data
+    payload: {number}
   }
 }
 // 以下是在view调用
-import {store, increment} from 'redux'
-// increment函数方法传入一个对象
-store.dispatch(increment({
-  number: 3
-}))
+import store from './store'
+import {increment} from './actionCreator'
+// increment函数方法传入一个number参数
+store.dispatch(increment(3))
 ```
 action creator和action都可以通过`store.dispatch()`直接调用，只不过action creator封装了一个可以返回action的函数
 
 ### store.getState()
 在view也就是用户页面如何获取store里面的state，需要用到上面store提供的getState方法
 ```js
-import {store} from './redux.js' // 这里为了方便，默认redux.js有暴露出的store对象
+import store from './store.js' // 这里为了方便，默认redux.js有暴露出的store对象
 // getState方法不需要传参数
-console.log(store.getState()) // 这里打印了 0 也就是state，接上面的例子
+console.log(store.getState()) // 这里打印了 redux 的 state值
 ```
 
 ### 纯函数reducer
@@ -123,8 +127,9 @@ function reducer(state, action) {
   return {...state, ...newState} // newState如果包含state里面的一部分值，会覆盖，否则，会新建
   // 或者
   return Object.assign({}, state, {...newState})
+  // 也可以使用 JSON.parse(JSON.string(xxx)) 进行简单的深拷贝
 }
-// state是一个数组
+// 如果state是一个数组
 function reducer(state, action) {
   return [...state, newItem]
 }
@@ -171,7 +176,7 @@ import {createStore, combineReducers} from 'redux'
 import {aReducer} from './aReducer.js'
 import {bReducer} from './bReducer.js'
 
-const totalReudcer = combineReducers({
+const totalReducer = combineReducers({
   aReducer,
   bReducer
 })
@@ -180,8 +185,21 @@ const store = createStore(totalReducer)
 export default store
 ```
 
-## react例子
-react不能直接使用redux,要结合一个第三方库react-redux,该库提供了Provider和connect  
+## 不使用react-redux缺点
+- 对于有状态的组件，分发state需要使用store.getState api
+- 当需要更新redux的状态时，需要使用store.subscribe监听
+- 页面需要同步更新时，redux里面的数据需要获取到并保存到组件自身state里面
+- 使用redux数据的组件必须要改成由状态组件
+
+## 不使用中间件处理异步请求, 如redux-thunk或redux-saga
+在view层的某个函数内部(如在组件刚挂载时)处理异步请求，处理完异步请求并获取到结果之后再dispatch一个action  
+缺点是，
+- 请求分散在很多view组件中，维护起来很麻烦 
+- 如果有多个组件调用了这个请求，每个组件的mapDispatchToProps都需要写(如果使用了react-redux的话)，
+- 小型项目可以像这样使用
+
+## 使用react-redux
+第三方库react-redux,该库提供了Provider和connect  
 Provider是一个普通的组件，可以作为顶层app状态的分发点,它只需要store属性就可以了，它会将state分发给所有被`connect`的组件  
 connect是一个柯里化函数，先接收两个函数参数，mapStateToProps和mapDispatchToProps,再接收一个参数(将要绑定的组件本身)  
 mapStateToProps  
