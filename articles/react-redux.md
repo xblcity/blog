@@ -6,11 +6,11 @@
 - 使用redux的组件必须要成为有状态组件，而使用了react-redux则可以成为无状态组件，state通过connect进行分发，组件更容易复用
 - react-redux内部进行了优化，可以避免不必要的re-render
 
-核心部分
+### 核心部分
 - Provider: 从外部封装了整个应用，并向connect模块传递store
 - connect: 1.包装原组件，将state和action通过props的方式传到原组件内部 2.监听store tree的变化，使其包装的原组件可以响应state变化
 
-不使用/使用react-redux分发state与提交action的方式区别
+### 不使用/使用react-redux分发state与提交action的方式区别
 - 状态分发：前者使用 store.getState(), 后者通过connect传递的第一个回调函数拿到
 - action提交：前者通过 store.dispatch(action), 后者通过connect传递的第二个回调里面写dispatch(action)  
 
