@@ -15,8 +15,10 @@
 - action提交：前者通过 store.dispatch(action), 后者通过connect传递的第二个回调里面写dispatch(action)  
 
 ## 例子
-TodoList.js
+TodoList.js ===== connect部分
 ```js
+import {connect} from 'react-redux'
+ 
 const TodoList = (props) => (
   <div>
     <div>
@@ -59,4 +61,24 @@ const dispatchToProps = (dispatch) => {
 }
 
 export default connect(stateToProps, dispatchToProps)(TodoList)
+```
+
+App.js ==== Provide部分
+```js
+import React, { Component } from 'react'
+import {Provider} from 'react-redux'
+import TodoList from './TodoList'
+import store from '../Store'
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <TodoList />
+      </Provider>
+    )
+  }
+}
+
+export default App
 ```
