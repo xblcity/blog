@@ -183,3 +183,4 @@ ES6模块是动态引用，如果使用`import`从一个模块加载变量(即`i
 #### 参考
 - [阮一峰ES6入门 Module 的语法](http://es6.ruanyifeng.com/#docs/module)
 - [阮一峰ES6入门 Module 的加载实现](http://es6.ruanyifeng.com/#docs/module-loader)
+- [js模块化7日谈](http://huangxuan.me/js-module-7day/#/)
