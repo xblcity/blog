@@ -2,14 +2,25 @@
 读书笔记&&总结
 
 ## javascript / 9
-- [this](https://github.com/xblcity/blog/blob/master/articles/this.md)
-- [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/scope-closures.md)
-- [定于对象/类](https://github.com/xblcity/blog/blob/master/articles/object-class.md)
-- [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/inherit-prototype.md)
-- [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/object-method-property.md)
-- [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/equalwith-copy.md)
-- [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/promise.md)
-- [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/eventloop.md)
+
+### 关于JS
+#### 面向对象与继承与原型链，闭包与作用域，this
+- [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
+- [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
+- [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
+- [定于对象/类](https://github.com/xblcity/blog/blob/master/articles/js/class.md)
+
+#### JS方法与原理性 
+- [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
+- [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)
+
+#### JS执行时
+- [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/js/eventloop.md)
+
+### ES6
+- [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/es6/promise.md)
+
+### 编程思想
 - 偏函数与柯里化
 
 ## typescript / 2
@@ -33,13 +44,13 @@
 - [给所有开发者的React Native详细入门指南（第一阶段）](https://juejin.im/post/5898388b128fe1006cb943e3)
 
 ## webpack / 1
-- [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack-config.md)
+- [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
 
 ## http/网络 / 1
-- [网络](https://github.com/xblcity/blog/blob/master/articles/network.md)
+- [网络](https://github.com/xblcity/blog/blob/master/articles/http/network.md)
 
 ## git / 2
-- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/git.md)
+- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/git/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
 ## 面试 / 5
@@ -51,7 +62,7 @@
 
 ## others / 2
 #### 我的疑问
-- [我的疑问](https://github.com/xblcity/blog/blob/master/articles/qa.md)
+- [我的疑问](https://github.com/xblcity/blog/blob/master/articles/questions.md)
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
 
 ## QA / 1
