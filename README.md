@@ -19,6 +19,7 @@
 
 ### ES6
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/es6/promise.md)
+- [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
 ### 编程思想
 - 偏函数与柯里化
