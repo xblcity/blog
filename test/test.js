@@ -165,6 +165,21 @@ function insertNum(someArray) {
   }
 }
 
+function getQueryString() {
+  var qs = location.search ? location.search.substring(1) : {}
+  var items = qs.split('&')
+  var args = {}
+
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i]
+    var currentObj = item.split('=')
+    var name = decodeURIComponent(currentObj[0])
+    var value = decodeURIComponent(currentObj[1])
+    args[name] = value
+  }
+
+  return args
+}
 
 
 
