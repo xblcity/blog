@@ -47,6 +47,7 @@
 
 ## webpack / 1
 - [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
+- [webpack-react](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-react.md)
 
 ## http/网络 / 1
 - [网络](https://github.com/xblcity/blog/blob/master/articles/http/network.md)
