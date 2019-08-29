@@ -144,7 +144,7 @@ module.exports = {
 
 ## 其他配置
 ### webpack-dev-server&HMR
-webpack-dev-server作用在于每次更改不用手动执行webpack命令  
+webpack-dev-server作用在于每次更改不用手动执行webpack命令,要安装`webpack-dev-server`这个包  
 HMR*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*  
 webpack-dev-server有三种配置方式，如下  
 **1. webpack's watch mode**
