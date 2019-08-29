@@ -1,47 +1,5 @@
-# 实现有属性/方法的对象(类)
-## 工厂模式
-## 构造函数模式
-- new操作符  
-## 原型模式
-## 组合使用构造函数模式和原型模式
-```js
-function Animal(name) {
-  this.name = name
-}
-Animal.prototype.say = function() {
-  console.log(`my name is ${this.name}`)
-}
-const anAnimal = new Animal('animal gaga')
-```
-```js
-console.log(anAnimal) 
-Animal:  // anAnimal构造器(constructor)是Animal
-{
-  name: 'animal gaga', 
-  __proto__: { // Animal的prototype
-    say: function() {}, 
-    constructor: function Animal(name){}, // Animal的原型的构造器是Animal
-    __proto__: { // Animal原型的原型，指向了引用类型Object
-      constructor: Object, ... 
-    }
-  }
-}
+# ES6实现类
 
-console.log(anAnimal.prototype) // undefined
-console.log(anAnimal.__proto__) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
-console.log(Animal.prototype) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
-// 因为Animal显式定义了prototype。对于没有显式定义prototype的用chrome浏览器封装的__proto__可以访问
-```
-可以看出，anAnimal/Animal的原型指向一个对象，而这个对象具有的constructor又指向了Animal  
-new操作符对构造出的实例对象进行了 prototype 绑定  
-**使用new调用函数时，会自动执行以下操作** 
-- 创建一个新对象
-- 新对象的原型(__proto__)指向构造函数的prototype
-- 新对象赋给当前this
-- 执行构造函数
-- 如果函数没有返回其他对象，new表达式中的函数会自动返回这个新对象
-
-## ES6实现
 ```js
 class Point6 {
   job = 'ddd'
@@ -60,7 +18,80 @@ class Point6 {
 }
 // 上述Point6由属性，构造函数，方法这三部分组成
 const p6 = new Point6('p6', 88, 'Japan')
+```
+Point6就相当于es5的构造函数，js内部将class做了处理
 
+在`class Ponit6{}`内部声明的方法，都会被添加到Point6的prototype对象的属性上   
+在`class Point6{}`内部声明的属性，都会作为Point6的实例属性  
+constructor方法的作用:    
+- 如果没有显式定义，一个空的constructor会被默认添加
+- constructor默认返回实例对象，即this  
+
+#### class取值函数(getter)与存值函数(setter)
+在类的内部使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为  
+```js
+class MyClass {
+  get prop() {
+    return 'getter'
+  }
+  set prop(value) {
+    console.log('setter:' + value)
+  }
+}
+let init = new MyClass()
+init.prop = 123  // setter: 123
+init.prop // getter
+```
+
+#### this的指向
+```js
+class Logger {
+  printName(name = 'there') {
+    this.print(`Hello ${name}`)
+  }
+  print(text) {
+    console.log(text)
+  }
+}
+const logger = new Logger()
+const {printName} = logger
+logger.printName() // Hello there
+printName() // TypeError: Cannot read property 'print' of undefined
+```
+单独使用`printName`，this会指向该方法运行时的环境(由于class内部时严格模式，所以this指向undefined)，导致找不到`print`报错  
+一个解决方法是，在构造方法中绑定this 
+```js
+class Logger {
+  constructor() {
+    this.printName = this.printName.bind(this)
+  }
+  // ...
+}
+```
+另一个方法是使用箭头函数,this总指向在被定义时的外层函数对象
+```js
+class Obj {
+  constructor() {
+    this.getThis = () => this
+  }
+  // 或者
+  getThis = () => {
+
+  }
+}
+```
+还有一种方法时Proxy...???
+
+#### 静态方法
+静态方法不会被实例继承，使用static关键字
+#### 实例属性的新写法
+定义在类的最顶层
+#### 静态属性
+在提案中...
+#### 私有方法和私有属性
+暂时没有，但是有提案
+
+```js
 class Point7 extends Point6 {
   sayMyself() {
     console.log(this)
@@ -77,7 +108,3 @@ class Point8 extends Point6 {
 const p8 = new Point8()
 ```
 在ts中是属性与方法由private与public之分
-
-### 参考
-- [javascript高级程序设计6.2创建对象]()
-- [W3C ECMAScript 定义类或对象](https://www.w3school.com.cn/js/pro_js_object_defining.asp)

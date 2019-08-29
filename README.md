@@ -8,7 +8,7 @@
 - [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
-- [定于对象/类](https://github.com/xblcity/blog/blob/master/articles/js/class.md)
+- [定义函数对象](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 
 #### JS方法与原理性 
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
@@ -18,6 +18,7 @@
 - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/js/eventloop.md)
 
 ### ES6
+- [类](https://github.com/xblcity/blog/blob/master/articles/js/class.md)
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/es6/promise.md)
 - [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
