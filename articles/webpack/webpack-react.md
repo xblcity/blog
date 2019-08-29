@@ -1,8 +1,10 @@
 # 使用react从零配置react-ts SPA开发环境
 
-## 新建文件夹，并在文件夹内使用`npm init -y`初始化package.json文件
+## 最基础的构建
 
-## 安装依赖项
+### 新建文件夹，并在文件夹内使用`npm init -y`初始化package.json文件
+
+### 安装依赖项
 ```js
 // react
 npm i -S react react-dom
@@ -18,7 +20,7 @@ npm install -D babel-loader @babel/core @babel/preset-env
 npm install -D ts-loader
 ```
 
-## 项目目录结构(部分需新建)
+### 项目目录结构(部分需新建)
 ```js
 -- dist
 -- src 
@@ -28,7 +30,7 @@ npm install -D ts-loader
 -- package.json
 ```
 
-## 配置webpack.config.js
+### 配置webpack.config.js
 用的是common.js的语法
 ```js
 const path = require('path')
@@ -58,7 +60,7 @@ module.exports = {
 }
 ```
 
-## 配置package.json
+### 配置package.json
 在`script`属性添加一个键值对
 ```js
 "scripts": {
@@ -66,7 +68,7 @@ module.exports = {
 }
 ```
 
-## 修改src下ts文件
+### 修改src下ts文件
 ```ts
 // index.tsx
 import React from 'react'
@@ -91,5 +93,5 @@ const App = () => {
 export default App
 ```
 
-## 运行
+### 运行
 终端输入`npm run dev`命令启动项目
