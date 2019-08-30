@@ -1,32 +1,38 @@
 # 使用react从零配置react-ts SPA开发环境
+对webpack配置不太了解的同学可以先移步中文官方文档[指南](https://www.webpackjs.com/guides/)或英文文档[Guides](https://webpack.js.org/guides/)，文档挺好的，不过中文文档不是最新版，有些坑。
 
-## 最基础的构建
+## 1.先从最基础的构建开始
+小目标，将一个react-ts SPA首页打包，并可以在浏览器中访问
 
 ### 新建文件夹，并在文件夹内使用`npm init -y`初始化package.json文件
 
 ### 安装依赖项
 ```js
-// react
+// react@16.9.0
 npm i -S react react-dom
-// typescript
+// typescript@3.6.2
 npm i -D typescript
-// webpack
+// webpack@4.39.3，webpack-cli@3.3.7，webpack-cli是webpack的命令行工具
 npm i -D webpack webpack-cli 
-// 安装热更新模块
-npm i -D webpack-dev-server
-// babel，将es6转换为es5
+// babel，将es6转换为es5，@babel/core是babel-core的第七版，@babel/preset-env是babel-preset-env升级版，不需要安装babel-preset-stage-0
 npm install -D babel-loader @babel/core @babel/preset-env
+// @babel/preset-reacts是babel-preset-react升级版, 用于将jsx转换成js
+npm install -D @babel/preset-react
 // 安装ts-loader
 npm install -D ts-loader
 ```
 
-### 项目目录结构(部分需新建)
+### 项目目录结构(没有则新建)
 ```js
--- dist
--- src 
+-- dist // 用于存放打包后的文件
+-- node_modules // 依赖包，自动生成
+-- src // 开发时的source
+  -- index.html
   -- index.tsx
   -- App.tsx
--- webpack.config.js
+-- webpack.config.js // webpack配置
+-- .babelrc // babel配置
+-- tsconfig.json // ts配置，不可缺少，否则报错
 -- package.json
 ```
 
@@ -36,24 +42,28 @@ npm install -D ts-loader
 const path = require('path')
 
 module.exports = {
+  // 入口
   entry: {
     App: './src/index.tsx'
   },
+  // 打包后的文件目录
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].chunk.[hash:8].js'
   },
+  // 开发模式
   mode: 'development',
+  // 配置基础的loader
   module: {
     rules: [
       {
         test: /\.tsx/,
-        // exclude: nodule_modules,
+        exclude: /(nodule_modules)/,
         loader: 'ts-loader'
       },
       {
         test: /\.tsx/,
-        loader: 'babel-loader'
+        loader: 'babel-loader' // 由于已经在.babelrc配置了options,所以这里就不用写options了
       }
     ]
   }
@@ -64,7 +74,18 @@ module.exports = {
 在`script`属性添加一个键值对
 ```js
 "scripts": {
-  "dev": "webpack-dev-server --open"
+  "build": "webpack"
+}
+```
+
+### 配置.babelrc(rc可以解为resource缩写)
+```js
+{
+  presets:[
+      '@babel/preset-env',
+      '@babel/preset-react'
+  ],
+  plugins:[]
 }
 ```
 
@@ -73,7 +94,7 @@ module.exports = {
 // index.tsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import App from './App.jsx'
 
 ReactDOM.render(
   <APP/>,
@@ -94,4 +115,11 @@ export default App
 ```
 
 ### 运行
-终端输入`npm run dev`命令启动项目
+终端输入`npm run build`打包
+
+## 2.使用dev-server
+
+## 3.使用loader以及plugins
+
+## 4.优化
+### 对后缀名做处理
