@@ -46,6 +46,7 @@
 - [给所有开发者的React Native详细入门指南（第一阶段）](https://juejin.im/post/5898388b128fe1006cb943e3)
 
 ## webpack / 1
+- [webpack的理解](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack.md)
 - [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
 - [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-react.md)
 - [babel](https://github.com/xblcity/blog/blob/master/articles/webpack/babel.md)

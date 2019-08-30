@@ -1,12 +1,14 @@
 # webpack配置
+本篇仅仅是对官网Guide的总结，用于查阅
 
 ## webpack配置项
+均参照webpack官网配置，比较基础  
 
 webpack配置选项一般包括下面几个选项
 - entry
 - output
 - mode
-- dev-tools
+- devtool
 - devServer
 - plugins
 - loaders
@@ -15,10 +17,10 @@ webpack配置选项一般包括下面几个选项
 module.exports = {
   entry: {} | '', // 入口文件目录配置
   output: {}, // 打包出的文件目录配置
-  mode: '', // 环境配置，生产环境or开发环境
+  mode: '', // 环境配置，生产环境or开发环境，webpack进行对应优化
+  devtool: '', // 开发环境定位错误
   plugins: [], // 插件配置，如html-webpack-plugin
   loaders: {} // loader配置
-  dev-tools: '', // map 文件时用到
   devServer: {} // 使用webpack-dev-server用到此选项
 }
 ```
@@ -50,15 +52,16 @@ module.exports = {
   // output选项使用[name] [hash] [hash: number]
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].[hash:8].js',
+    filename: '[name].[hash].[hash:8].js', // 注意，带有[hash]不确定名字需要搭配HtmlWebpackPlugin插件使用，每次都生成新的html
     publicPath: '/' // 打包至指定公共目录，如线上目录等？ 如 'https://cdn.example.com/assets/[hash]/'
-    // 用到webpack-dev-server 配置此项
+    // 用到webpack-dev-server 配置此项？
   }
 }
 ```
 
 ### mode
-配置mode的目的在于webpack会根据模式不同进行对应的优化
+配置mode的目的在于webpack会根据模式不同进行对应的优化，  
+比如说`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错
 ```js
 module.exports = {
   mode: 'development' | 'production' | none
@@ -66,7 +69,7 @@ module.exports = {
 ```
 
 ### dev-tools
-development模式可以配置此项，尽管打包的文件发生错误，仍可以定位未打包的原始文件
+development模式可以配置此项，可以更准确的定位错误，不加影响也不大，development环境本身也可以定位错误，只用于开发环境  
 ```js
 module.exports = {
   devtool: 'inline-source-map' // source map
@@ -74,7 +77,7 @@ module.exports = {
 ```
 
 ### devServer
-此选项需要配合 webpack-dev-server使用，需要在package.json配置一下
+此选项需要安装 webpack-dev-server后使用，告诉devServer在哪里查找文件，不过webpack默认更新的就是dist的index文件，可以不配置
 ```js
 module.exports = {
   contentBase: './dist'
@@ -85,13 +88,23 @@ module.exports = {
 插件需要先引入，然后调用插件的构造函数，插件的配置项是个数组  
 插件可以是第三方插件，或者是webpack的内置插件
 ```js
-const HtmlWebpackPlugin = require('html-webpack-plugin') // 每一次打包都会生成新的html
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每一次打包都会清除之前的html文件
+const HtmlWebpackPlugin = require('html-webpack-plugin') // 每一次打包都会生成新的js文件与html文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每一次打包都会清除之前生成的dist文件夹
 module.exports = {
   plugins: [
-    new HtmlWebpackPlugin() // 或者
+    new HtmlWebpackPlugin() 
+    // 或者
     new HtmlWebpackPlugin({title: 'Output Management'}) // 参数可以不传或者传一个对象,指定doc文档title是Output Management
     new CleanWebpackPlugin()
+  ]
+}
+```
+生成打包文件关系图的plugin，打包完毕的时候自动再浏览器8888端口生成
+```js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
   ]
 }
 ```
@@ -109,6 +122,20 @@ module.exports = {
         exclude: /node_modules/, // 排除的文件夹，也可以用 include
         loader: 'babel-loader' // 使用的loader
       }
+      
+      // 配置复杂loader，options是一些自定义选项
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-object-rest-spread']
+          }
+        }
+      }
+
       // 配置复杂的loader, use为Array类型易于拓展
       {
         test: /.\tsx$/,
@@ -125,29 +152,16 @@ module.exports = {
           }
         ]
       }
-      // 配置复杂loader
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread']
-          }
-        }
-      }
     ]
   }
 }
 ```
 
-## 其他配置
-### webpack-dev-server&HMR
-webpack-dev-server作用在于每次更改不用手动执行webpack命令,要安装`webpack-dev-server`这个包  
-HMR*即hot module replacement, 可以使文件更新变化的部分而不是整个更新*  
-webpack-dev-server有三种配置方式，如下  
-**1. webpack's watch mode**
+## 开发环境的其他配置
+
+### 自动编译代码
+
+#### 1. webpack watch mode
 
 只需要在package.json添加一个配置选项
 ```json
@@ -157,11 +171,16 @@ webpack-dev-server有三种配置方式，如下
   },
 }
 ```
-随后使用`npm run watch`即可启动项目
+随后使用`npm run watch`即可启动项目，监听修改，并自动进行重新打包  
 
-**2. webpack-dev-server(最常用)** 
+缺点：需要手动刷新浏览器，才能看到重新打包后的效果
 
-webpack.config.js配置
+#### 2. webpack-dev-server(最常用)
+
+需要先安装依赖包 `npm i -D webpack-dev-server`  
+webpack-dev-server 提供了一个简单的web服务器，并且能够实时重新加载(live reloading)  
+
+webpack.config.js配置，告诉devServer在哪里查找文件，不过webpack默认更新的就是dist的index文件，可以不配置
 ```js
 devServer: {
   contentBase: './dist'
@@ -177,7 +196,8 @@ package.json
 ```
 使用`npm run start`或者`npm start`即可启动项目
 
-***使用热更新***
+##### 使用热更新
+热更新，HMR，即hot module replacement, 可以使文件更新变化的部分而不是整个更新  
 webpack.config.js配置, devServer添加一项
 ```js
 devServer: {
@@ -187,18 +207,10 @@ devServer: {
 ```
 当然，也可以直接使用webpack 的 cli命令，即在package.json修改start命令：`webpack-dev-server --open --hotOnly`
 
-**3. webpack-dev-middleware**
+#### 3. webpack-dev-middleware
+webpack-dev-middleware 是一个容器(wrapper)，它可以把 webpack 处理后的文件传递给一个服务器(server)。 webpack-dev-server 在内部使用了它，同时，它也可以作为一个单独的包来使用，以便进行更多自定义设置来实现更多的需求。  
 
-webpack.config.js配置
-```js
-module.exports = {
-  output: {
-    ...,
-    publicPath: '/'  // node配置项需要
-  }
-}
-```
-项目根目录新建server.js
+webpack-dev-middleware 配合 express server 的示例。 server.js
 ```js
 const express = require('express');
 const webpack = require('webpack');
@@ -219,6 +231,17 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!\n');
 });
 ```
+
+webpack.config.js配置
+```js
+module.exports = {
+  output: {
+    ...,
+    publicPath: '/'  // node配置项需要
+  }
+}
+```
+
 package.json
 ```json
 {
