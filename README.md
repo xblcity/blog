@@ -3,18 +3,15 @@
 
 ## 1.Javascript
 
-### 关于JS
-#### 面向对象与继承与原型链，闭包与作用域，this
+### JS原生
 - [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
 - [定义函数对象](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 
-#### JS方法与原理性 
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)
 
-#### JS执行时
 - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/js/eventloop.md)
 
 ### ES6
@@ -54,8 +51,9 @@
 ## 5.Http/网络
 - [网络](https://github.com/xblcity/blog/blob/master/articles/http/network.md)
 
-## git
-- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/git/git.md)
+## 6.工具
+### git
+- git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/tools/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
 ## 面试
@@ -75,5 +73,3 @@
 - 对象的普通属性和可计算属性
 - 多个箭头函数在一行
 - 双方括号`[[]]`
-
-## 推荐工具

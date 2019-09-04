@@ -397,4 +397,5 @@ console.log(object2.prototype.isPrototypeOf(object3)); // expected output: true
 
 
 
-- 参考 [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+#### 参考 
+- [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)

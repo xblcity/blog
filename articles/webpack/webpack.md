@@ -1,2 +1,9 @@
 # webpack
-webpack从这个名字就可以看出，是用于web打包的
+webpack，即web的pack，网页应用的打包
+
+## webpack出现的背景
+
+## 其他打包工具对比
+
+## webpack解决的问题
+
