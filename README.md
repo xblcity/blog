@@ -4,10 +4,11 @@
 ## 1.Javascript
 
 ### JS原生
-- [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
+
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
+- [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
-- [定义函数对象](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
+- [构造函数](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)
@@ -44,7 +45,7 @@
 
 ## 4.Webpack
 - [webpack的理解](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack.md)
-- [webpack config](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
+- [webpack 配置](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
 - [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-react.md)
 - [babel](https://github.com/xblcity/blog/blob/master/articles/webpack/babel.md)
 
