@@ -7,3 +7,7 @@ webpack，即web的pack，网页应用的打包
 
 ## webpack解决的问题
 
+
+### 参考
+- [survivejs-webpack](https://survivejs.com/webpack)
+

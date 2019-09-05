@@ -18,7 +18,9 @@ module.exports = {
   mode: '', // 环境配置，生产环境or开发环境，webpack进行对应优化
 
   devtool: '', // 定位错误
-}
+
+  resolve: {}  // 解析模块可选项
+} 
 ```
 
 ### entry
