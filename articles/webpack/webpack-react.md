@@ -128,8 +128,10 @@ export default App
 
 ## 4.优化
 ### 对后缀名做处理
+### 对CSS样式兼容posttcss
 
 ### 参考
 - [中文指南](https://www.webpackjs.com/guides/)
 - [English Guides](https://webpack.js.org/guides/)
 - [使用webpack搭建自己的react开发环境](https://github.com/tobeapro/react-webpack-conf)
+- [四大维度解锁Webpack3.0前端工程化](https://coding.imooc.com/learn/list/171.html)
