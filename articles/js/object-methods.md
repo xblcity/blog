@@ -150,7 +150,8 @@ console.dir(object1)
 }
 ``` 
 
-使用get和set方法，存取器属性描述独有，下为数据属性描述与存取器描述示例
+使用get和set方法，存取器属性描述独有，存取器的好处是可以对传进来的值做一定处理  
+下为数据属性描述与存取器描述示例
 ```js
 var o = {}; 
 
@@ -397,4 +398,5 @@ console.log(object2.prototype.isPrototypeOf(object3)); // expected output: true
 
 
 
-- 参考 [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+#### 参考 
+- [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
