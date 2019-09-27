@@ -11,7 +11,7 @@
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
 
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
-- [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)
+- ~~[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)~~
 
 - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/js/eventloop.md)
 
