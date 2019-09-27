@@ -21,21 +21,20 @@
 - [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
 ### 编程思想
-- 偏函数与柯里化
+- ~~偏函数与柯里化~~
+- ~~设计模式~~
 
 ## 2.Typescript
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-concepts.md)
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-axios.md)
 
 ## 3.React
-- [从零构建react应用](https://github.com/xblcity/blog/blob/master/articles/react/react-structure.md)
+- [react hooks理解](https://github.com/xblcity/blog/blob/master/articles/react/react-hooks.md)
 
-#### redux
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/articles/react/redux.md)
 - [redux中间件](https://github.com/xblcity/blog/blob/master/articles/react/redux-middleware.md)
 - [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/articles/react/redux-redux.md)
 
-#### 测试
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/articles/react/react-test.md)
 
 #### react-native参考(mark，暂时没看)
