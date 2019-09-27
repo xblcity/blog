@@ -7,8 +7,8 @@
 
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
 - [this](https://github.com/xblcity/blog/blob/master/articles/js/this.md)
+- [构造函数实现类](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
-- [构造函数](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)
@@ -58,18 +58,14 @@
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
 ## 面试
-- [面试题总结html&css篇]()
 - [面试题总结js篇](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
-- [面试题总结ES6+篇]()
-- [面试总结框架及工具篇]()
-- [面试题总结网络篇]()
 
 ## others
 #### 我的疑问
 - [我的疑问](https://github.com/xblcity/blog/blob/master/articles/questions.md)
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
 
-## QA
+## FAQ
 #### [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
 - 对象的普通属性和可计算属性
 - 多个箭头函数在一行
