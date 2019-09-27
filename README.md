@@ -56,9 +56,6 @@
 - git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/tools/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
-## 面试
-- [面试题总结js篇](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
-
 ## others
 #### 我的疑问
 - [我的疑问](https://github.com/xblcity/blog/blob/master/articles/questions.md)
