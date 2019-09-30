@@ -52,9 +52,10 @@
 - [网络](https://github.com/xblcity/blog/blob/master/articles/http/network.md)
 
 ## 6.工具
-### git
+
 - git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/tools/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
+- [ubuntu图形界面的连接](https://github.com/xblcity/blog/blob/master/articles/tools/ubuntu.md)
 
 ## others
 #### 我的疑问
