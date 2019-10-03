@@ -59,15 +59,15 @@
 - [linux发行版介绍](https://github.com/xblcity/blog/blob/master/articles/tools/linux.md)
 
 ## others
-- [面试题](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
-- [带答案面试题]()
+- [面试题](https://github.com/xblcity/blog/blob/master/articles/others/job-interview.md)
+- [带答案面试题](https://github.com/xblcity/blog/blob/master/articles/others/job-answers.md)
 
 #### 我的疑问
-- [我的疑问](https://github.com/xblcity/blog/blob/master/articles/questions.md)
-- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
+- [我的疑问](https://github.com/xblcity/blog/blob/master/articles/others/questions.md)
+- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/others/words.md)
 
 ## FAQ
-#### [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/little-points.md)
+#### [细碎知识点](https://github.com/xblcity/blog/blob/master/articles/others/little-points.md)
 - 对象的普通属性和可计算属性
 - 多个箭头函数在一行
 - 双方括号`[[]]`
