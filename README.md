@@ -59,6 +59,9 @@
 - [linux发行版介绍](https://github.com/xblcity/blog/blob/master/articles/tools/linux.md)
 
 ## others
+- [面试题](https://github.com/xblcity/blog/blob/master/articles/job-interview.md)
+- [带答案面试题]()
+
 #### 我的疑问
 - [我的疑问](https://github.com/xblcity/blog/blob/master/articles/questions.md)
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/articles/words.md)
