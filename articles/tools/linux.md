@@ -2,7 +2,7 @@
 linux发行版有很多，这里主要介绍以debian的代表ubuntu以及centos代表的red hat一族。
 
 ## ubuntu18安装软件  
-debian系安装的软件包一般以.deb结尾，red hat一族，软件包是以.rpm结尾(red hat package manger)
+debian系安装的软件包一般以.deb结尾，red-hat一族，软件包是以.rpm结尾(red hat package manger)，如果是使用yum安装的rpm包，是不用加后缀名的
 
 debian安装软件的操作  
 `apt-get`以前用这个比较多，现在一般用`apt`
@@ -34,7 +34,7 @@ rpm -q example
 ```
 rpm缺点：由于Linux中的程序大多是小程序。程序与程序之间存在非常复杂的依赖关系。RPM无法解决软件包的依赖关系。
 
-yum也是centos安装包管理的命令之一，Yum是RedHat以及CentOS中的软件包管理器。能够通过互联网下载 .rpm 包并且安装，并可以自动处理依赖性关系，无须繁琐地一次次下载、安装。(PS: YUM是生产最佳实践)
+yum也是centos安装包管理的命令之一，Yum是RedHat以及CentOS中的软件包管理器。能够通过互联网下载 .rpm 包并且安装，并可以自动处理依赖性关系，无须繁琐地一次次下载、安装。(PS: YUM是生产最佳实践)，现在一般用yum
 ```js
 // yum安装软件
 yum install example // 不需要包后缀名
