@@ -110,6 +110,8 @@ systemctl enable vncserver-virtuald.service
 
 ![vnc配置](../images/tx4.jpg)
 
+最后打开window系统的vnc软件进行连接就可以啦~
+
 
 ## 参考
 - [Ubuntu 18.04服务器安装gnome图形化桌面并vnc远程登陆--vultr](https://www.bilibili.com/video/av62259882?from=search&seid=7530009430470344997)
