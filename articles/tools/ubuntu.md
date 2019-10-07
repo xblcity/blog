@@ -6,13 +6,11 @@ ubuntu服务器版本: 18.04.01 LTS 64位
 ## 1.命令行连接
 如果只是用linux终端命令行，使用PuTTY以SSH协议连接即可，简单易操作
 
-安装PuTTY(笔者使用的是0.70版本)，打开后只需要填写ip地址，点击open即可
+安装PuTTY(我使用的是0.70版本)，打开后只需要填写ip地址，点击open即可
 
 ![打开PuTTY并连接远程服务器](../images/putty1.jpg)
 
 打开命令行界面后，输入用户名，密码(密码先复制好并在光标处右击即可)，连接成功
-
-![输入用户名与密码](../images/putty2.jpg)
 
 然后就可以愉快的使用命令行了
 
@@ -20,9 +18,7 @@ ubuntu服务器版本: 18.04.01 LTS 64位
  ubuntu图形界面(Graphical User Interface, 简称GUI)连接
 
 ### 2.1 vultr ubuntu安装图形界面
-![vultr网页控制台](../images/vultr_login.jpg)
-
-vultr首次控制台连接，密码好像没办法直接粘贴。。所以我用了putty连接命令行
+putty连接命令行
 
 在ubuntu服务器上安装桌面系统(GUI)
 ```js
@@ -73,6 +69,7 @@ sudo systemctl start vncserver-x11-serviced && systemctl enable vncserver-x11-se
 ```
 ### 2.2 腾讯云服务器安装可视化界面
 
+执行下面一系列命令(我也不懂||)，总之是为了能够使用腾讯云控制台的图形界面
 ```js
 sudo apt-get install xinit
 sudo apt-get install gdm  ( 登陆窗口，用于管理账户登陆的，还可以用来切换别的桌面环境。 )
