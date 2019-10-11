@@ -338,7 +338,9 @@ console.log(myMessageInfo) // undefined
 因为this的问题，箭头函数要慎用，  
 构造函数不能使用箭头函数，因为prototype无法指定
 
-参考[什么时候不使用javascript](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
+使用箭头函数要注意的地方，可以参考：
+
+[什么时候不使用箭头函数](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
 
 
 
