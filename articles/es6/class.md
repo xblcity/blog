@@ -108,3 +108,6 @@ class Point8 extends Point6 {
 const p8 = new Point8()
 ```
 在ts中是属性与方法由private与public之分
+
+### 参考
+- [阮一峰ES6 class](http://es6.ruanyifeng.com/#docs/class)
