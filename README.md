@@ -10,6 +10,8 @@
 - [构造函数实现类](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
 
+- [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/articles/js/call.md)
+
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
 - ~~[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)~~
 
