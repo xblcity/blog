@@ -1,8 +1,6 @@
 # blog
 读书笔记&&总结
 
-## 1.Javascript
-
 ### JS原生
 
 - [闭包与作用域](https://github.com/xblcity/blog/blob/master/articles/js/closures-scope.md)
@@ -21,14 +19,14 @@
 - [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
 ### 编程思想
-- ~~偏函数与柯里化~~
+- 偏函数与柯里化
 - ~~设计模式~~
 
-## 2.Typescript
+### Typescript
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-concepts.md)
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-axios.md)
 
-## 3.React
+### React
 - [react hooks理解](https://github.com/xblcity/blog/blob/master/articles/react/react-hooks.md)
 
 - [redux概念与理解](https://github.com/xblcity/blog/blob/master/articles/react/redux.md)
@@ -42,23 +40,23 @@
 - [分享 50 个完整的 React Native 项目](https://juejin.im/post/58f37cb361ff4b0058f9824a)
 - [给所有开发者的React Native详细入门指南（第一阶段）](https://juejin.im/post/5898388b128fe1006cb943e3)
 
-## 4.Webpack
+### Webpack
 - [webpack的理解](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack.md)
 - [webpack 配置](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-config.md)
 - [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/articles/webpack/webpack-react.md)
 - [babel](https://github.com/xblcity/blog/blob/master/articles/webpack/babel.md)
 
-## 5.Http/网络
-- [网络](https://github.com/xblcity/blog/blob/master/articles/http/network.md)
+### 网络/HTTP
+- [网络]
 
-## 6.工具
+### 工具
 
 - git的使用 [use git](https://github.com/xblcity/blog/blob/master/articles/tools/git.md)
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/articles/tools/ubuntu.md)
 - [linux发行版介绍](https://github.com/xblcity/blog/blob/master/articles/tools/linux.md)
 
-## others
+### others
 - [面试题](https://github.com/xblcity/blog/blob/master/articles/others/job-interview.md)
 - [带答案面试题](https://github.com/xblcity/blog/blob/master/articles/others/job-answers.md)
 
