@@ -8,21 +8,22 @@
 - [构造函数实现类](https://github.com/xblcity/blog/blob/master/articles/js/constructor.md)
 - [继承与原型链](https://github.com/xblcity/blog/blob/master/articles/js/inherit.md)
 
+- [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/articles/js/call.md)
+
 - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/articles/js/object-methods.md)
 - ~~[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/articles/js/equalwith-copy.md)~~
 
 - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/articles/js/eventloop.md)
 
+- [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/articles/js/func-program.md)
+- ~~设计模式~~
+
 ### ES6
-- [类](https://github.com/xblcity/blog/blob/master/articles/js/class.md)
+- [类](https://github.com/xblcity/blog/blob/master/articles/es6/class.md)
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/es6/promise.md)
 - [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
-### 编程思想
-- 偏函数与柯里化
-- ~~设计模式~~
-
-### Typescript
+## 2.Typescript
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-concepts.md)
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-axios.md)
 
@@ -69,3 +70,4 @@
 - 对象的普通属性和可计算属性
 - 多个箭头函数在一行
 - 双方括号`[[]]`
+- js布尔值强制转换, 只有null, undefined, '', 0 强制转换为布尔值时false，其余都为true
