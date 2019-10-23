@@ -23,7 +23,7 @@
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/articles/es6/promise.md)
 - [模块化应用](https://github.com/xblcity/blog/blob/master/articles/es6/module.md)
 
-## 2.Typescript
+## Typescript
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-concepts.md)
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/articles/typescript/ts-axios.md)
 
