@@ -7,7 +7,8 @@ Request URL:
 Request Method:  
 User-Agent: 
 Content-Type: 要发送的数据类型，服务端会根据不同类型做不同处理，常见类型有...
-Accept: *
+Accept: /  // 客户端能接收的资源类型
+Host:   // 连接的目标主机和端口号
 
 If-Modified-Since:    // 对应Last-Modified: 
 If-None-Match:  //  对应Etag
@@ -15,7 +16,7 @@ Accept-Encoding: gzip  // 告诉服务端可以接受的数据格式
 Accept-Language: zh-CN,zh; q=0.9  // 告诉服务端客户端接受的语言
 
 Origin:  //
-Referer:   // referer表示请求文件的网址，请求时会携带。为了防止自己网站的文件被外网直接引用，可以通过比较referer，即请求的地址，与本地地址比较，设置防盗链。
+Referer:   // 告诉服务器我来自哪里，referer表示请求文件的网址，请求时会携带。为了防止自己网站的文件被外网直接引用，可以通过比较referer，即请求的地址，与本地地址比较，设置防盗链。
 
 ## 服务端发送的http响应头
 在linux命令行输入`curl -v www.baidu.com`，可以看到response headers，每个网站响应头可能有小的差异
@@ -36,5 +37,6 @@ Access-Control-Max-Age: 86400  // 每隔多久发送一次预检请求(OPTIONS)
 
 ## 参考
 - [http请求头与响应头的应用](https://juejin.im/post/5b854ddef265da43635d9302)
+- [http请求常见的请求头和相应头](https://www.jianshu.com/p/908e51e9ccd2)
 
 
