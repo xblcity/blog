@@ -48,7 +48,7 @@
 - [babel](https://github.com/xblcity/blog/blob/master/webpack/babel.md)
 
 ### 网络/HTTP
-- [http客户端与服务端的请求头与请求体](https://github.com/xblcity/blog/blob/master/network/http-message.md)
+- [http客户端与服务端的请求/响应头与请求/响应体](https://github.com/xblcity/blog/blob/master/network/http-message.md)
 
 ### 工具
 
