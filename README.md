@@ -49,12 +49,6 @@
 
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
-##### react-native参考(mark，暂时没看)
-
-- [React-Native学习指南](https://github.com/reactnativecn/react-native-guide)
-- [分享 50 个完整的 React Native 项目](https://juejin.im/post/58f37cb361ff4b0058f9824a)
-- [给所有开发者的React Native详细入门指南（第一阶段）](https://juejin.im/post/5898388b128fe1006cb943e3)
-
 ### Webpack
 
 - [webpack的理解](https://github.com/xblcity/blog/blob/master/webpack/webpack.md)
@@ -84,9 +78,10 @@
 
 - [带答案面试题](https://github.com/xblcity/blog/blob/master/others/job-answers.md)
 
-##### 我的疑问
-- [我的疑问](https://github.com/xblcity/blog/blob/master/others/questions.md)
+- 我的疑问
 
-- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
+  - [我的疑问](https://github.com/xblcity/blog/blob/master/others/questions.md)
 
-- [细碎知识点](https://github.com/xblcity/blog/blob/master/others/little-points.md)
+  - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
+
+  - [细碎知识点](https://github.com/xblcity/blog/blob/master/others/little-points.md)
