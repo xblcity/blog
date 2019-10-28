@@ -7,6 +7,14 @@ Request URL:
 Request Method:  
 User-Agent: 
 Content-Type: 要发送的数据类型，服务端会根据不同类型做不同处理，常见类型有...
+```js
+// Content-Type参数一般media-type、charset、boundary三种。boundary指明请求体中每部分的分隔符
+Content-Type: text/html; charset=utf-8
+Content-Type: multipart/form-data; boundary=something  // 文件的提交，前端要new FormData()生成实例，并append文件name以及值
+Content-Type: application/json
+Content-Type: application/javascript
+Content-Type: application/x-www-form-urlencoded;charset=utf-8 // 这个是form表单自带的Content-Type
+```
 Accept: /  // 客户端能接收的资源类型
 Host:   // 连接的目标主机和端口号
 
