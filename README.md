@@ -67,6 +67,8 @@
 
 - [Node知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
 
+- [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
+
 ### 工具
 
 - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
