@@ -47,6 +47,8 @@
 
 - [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/react/redux-redux.md)
 
+- [React生命周期](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
 ### Webpack
