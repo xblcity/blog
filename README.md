@@ -51,6 +51,8 @@
 
 - [umi 动态路由获取数据方案](https://github.com/xblcity/blog/blob/master/react/dynamic-data.md)
 
+- [react展示组件的一些理解](https://github.com/xblcity/blog/blob/master/react/c-interface.md)
+
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
 ### Webpack
