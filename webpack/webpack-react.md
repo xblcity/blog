@@ -146,6 +146,8 @@ loader用于帮我们处理不同类型的文件，plugins用于在打包过程�
 ### 对后缀名做处理
 ### 对CSS样式兼容posttcss
 
+### 更多部分见 [使用webpack定制开发环境](https://github.com/xblcity/web-learning/tree/master/webpack-learn)
+
 ### 参考
 - [中文文档](https://www.webpackjs.com)
 - [English Doc](https://webpack.js.org)
