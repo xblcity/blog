@@ -1,10 +1,34 @@
 # webpack配置
+
 本篇仅仅是对官网配置的总结，用于查阅，webpack版本@4.39.3(第四版最后一版)
 
+- [1.mode](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#1.mode)
+
+- [2.dev-tools](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#2.dev-tools)
+
+- [3.entry](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#3.entry)
+
+- [4.output](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#4.output)
+
+- [5.resolve](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#5.resolve)
+
+- [6.optimization](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#6.optimization)
+
+- [7.devServer](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7.devServer)
+
+- [8.plugins](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7.plugins)
+
+- [9.loaders](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#8.loaders)
+
 ## webpack核心配置项
+
 核心配置包括以下几个选项
+
 ```js
 module.exports = {
+
+  mode: '', // 环境配置，生产环境or开发环境，webpack进行对应优化
+
   entry: {} | '', // 入口文件目录配置
 
   output: {}, // 打包出的文件目录配置
@@ -13,17 +37,36 @@ module.exports = {
 
   loaders: {}, // loader配置
 
+  resolve: {}  // 解析模块可选项
+
   optimization: {} // webpack打包的相关优化
 
-  mode: '', // 环境配置，生产环境or开发环境，webpack进行对应优化
-
   devtool: '', // 定位错误
-
-  resolve: {}  // 解析模块可选项
+  
 } 
 ```
 
-### entry
+> 因为loader与plugin的内容比较多，所以放在了最后面的位置
+
+## 1.mode
+配置mode的目的在于webpack会根据模式不同进行对应的优化，没有此项，webpack打包会报警告，默认是`production`  
+
+优化：如`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错，并且在`production`模式下会默认开启uglifyPlugin
+```js
+module.exports = {
+  mode: 'development' | 'production' | none
+}
+```
+
+## 2.dev-tools
+配置此项，可以更准确的定位错误，在development不加影响也不大，development环境本身也可以定位错误，在production模式可以使用这项来调试错误
+```js
+module.exports = {
+  devtool: 'inline-source-map' // source map
+}
+```
+
+## 3.entry
 ```js
 module.exports = {
   // 单个入口，但是入口没有名字
@@ -37,7 +80,7 @@ module.exports = {
 }
 ```
 
-### output
+## 4.output
 ```js
 const path = require('path') // 对文件目录的解析需要用到node内置模块‘path’
 module.exports = {
@@ -50,25 +93,41 @@ module.exports = {
 }
 ```
 
-### mode
-配置mode的目的在于webpack会根据模式不同进行对应的优化，没有此项，webpack打包会报警告，默认是`production`  
+## 5.resolve
 
-优化：如`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错，并且在`production`模式下会默认开启uglifyPlugin
 ```js
 module.exports = {
-  mode: 'development' | 'production' | none
+  resolve: {
+    extensions: ['.js', 'jsx']  // 省略文件类型，webpack自动查找，在node中，省略文件类型只会自动查找js与json
+  }
 }
 ```
 
-### dev-tools
-配置此项，可以更准确的定位错误，在development不加影响也不大，development环境本身也可以定位错误，在production模式可以使用这项来调试错误
+## 6.optimization
+
+### 代码分割(code splitting)
+
+代码分割，可以简单的理解为将app打包为多个文件，可以方便管理，异步加载也得益于此，代码分割由三种方式  
+
+1. 配置多个entry  
+2. 使用SplitChunkPlugin(旧版本@3用的是CommonChunkPlugin),常用~  
 ```js
 module.exports = {
-  devtool: 'inline-source-map' // source map
+  optimization: {
+    splitChunks: 'all'
+  }
 }
 ```
+3. 动态引入，使用es6 Promise语法或者使用webpack提供的require.ensure()，个人觉得使用起来比较麻烦~
 
-### plugins
+### tree-shaking
+把不用的代码剔除，在项目中使用es6模块语法动态引入的部分会被打包，而未被引入的部分会被剔除
+```js
+```
+
+## 7.devServer
+
+## 8.plugins
 插件需要先引入，然后调用插件的构造函数 
 插件可以是第三方插件，或者是webpack的内置插件,插件会参与webpack打包的整个过程    
 常用的两个插件如`html-webpack-plugin``clean-webpack-plugin`,前者用于每次打包都会生成新的html文件，后者每次打包都会先清理dist文件夹
@@ -83,7 +142,7 @@ module.exports = {
   ]
 }
 ```
-### loaders
+## 9.loaders
 loaders用于处理各种格式的文件
 常见的loader有babel-loader, css-loader, style-loader, file-loader 等等
 ```js
@@ -132,28 +191,6 @@ module.exports = {
     ]
   }
 }
-```
-
-## 打包的优化
-
-### 代码分割(code splitting)
-
-代码分割，可以简单的理解为将app打包为多个文件，可以方便管理，异步加载也得益于此，代码分割由三种方式  
-
-1. 配置多个entry  
-2. 使用SplitChunkPlugin(旧版本@3用的是CommonChunkPlugin),常用~  
-```js
-module.exports = {
-  optimization: {
-    splitChunks: 'all'
-  }
-}
-```
-3. 动态引入，使用es6 Promise语法或者使用webpack提供的require.ensure()，个人觉得使用起来比较麻烦~
-
-### tree-shaking
-把不用的代码剔除，在项目中使用es6模块语法动态引入的部分会被打包，而未被引入的部分会被剔除
-```js
 ```
 
 ### 开启缓存
