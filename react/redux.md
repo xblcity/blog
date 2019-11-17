@@ -3,6 +3,10 @@
 ## 概念和组成
 - redux包含 `store, state, reducer, action, action creator`这些概念
 
+其中store可以理解为redux整体部分，下面包含了reducer, state, action这几部分，action creator是用来创建action的
+
+![redux流程](./images/redux.jpg)
+
 ### 初始化store
 redux初始化, 即创建store, 调用createStore方法创建一个store
 ```js
