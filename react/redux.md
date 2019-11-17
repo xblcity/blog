@@ -1,7 +1,7 @@
 # redux
 
 ## 概念和组成
-- redux包含 store, state, reducer, action, action creator这些概念
+- redux包含 `store, state, reducer, action, action creator`这些概念
 
 ### 初始化store
 redux初始化, 即创建store, 调用createStore方法创建一个store
@@ -31,9 +31,13 @@ function reducer(state=0, action) {
   }
 }
 ```
-为什么叫reducer，因为reducer可以作为 数组的 reduce()方法 的第一个参数  
+为什么叫reducer，因为reducer可以作为 数组的 reduce()方法 的第一个参数 
+
 reduce接收两个参数，第一个是个回调函数，第二个是初始值  
-回调函数接收四个参数，accumulator(上次计算出的值/累加值), currentValue(当前传递的值/item),index(下标，可选)，array(原数组，可选)
+
+其中回调函数接收四个参数，accumulator(上次计算出的值/累加值), currentValue(当前传递的值/item),index(下标，可选)，array(原数组，可选)
+
+在下面这个例子中，accumulator是state，currentValue是action
 ```js
 function reducer(state=0, action) {
   switch (action.type) {
@@ -52,7 +56,11 @@ actions.reduce(reducer, 0) // 输出3
 ```
 
 ### action && store.dispatch()
+
 reducer里面定义了初始state和改变state的接口，我们只需要传入对应的action即可,如上面reducer所示
+
+一个reducer需要传递state以及action，把这两个部分分解开来
+
 用户在view层如何把action传给reducer,就要用到store提供的dispatch方法了
 ```js
 // dispatch接收一个对象参数，也就是action，action必须要有type属性
@@ -168,8 +176,9 @@ const createStore = (reducer) => {
 ```
 
 ### reducer的拆分
+
 reducer函数负责生成state,由于整个应用只有一个 state对象，包含所有数据，对于大型应用来说，这个state会很庞大，导致reducer函数也很庞大  
-这时候我们需要将reducer拆分成多个，对于不同页面或者不同功能，我们把它拆分成独立的部分  \
+这时候我们需要将reducer拆分成多个，对于不同页面或者不同功能，我们把它拆分成独立的部分
 通过redux提供的combineReducers方法
 ```js
 import {createStore, combineReducers} from 'redux'
