@@ -2,23 +2,23 @@
 
 本篇仅仅是对官网配置的总结，用于查阅，webpack版本@4.39.3(第四版最后一版)
 
-- [1.mode](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#1.mode)
+- [1.mode](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#1mode)
 
-- [2.dev-tools](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#2.dev-tools)
+- [2.dev-tools](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#2dev-tools)
 
-- [3.entry](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#3.entry)
+- [3.entry](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#3entry)
 
-- [4.output](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#4.output)
+- [4.output](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#4output)
 
-- [5.resolve](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#5.resolve)
+- [5.resolve](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#5resolve)
 
-- [6.optimization](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#6.optimization)
+- [6.optimization](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#6optimization)
 
-- [7.devServer](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7.devServer)
+- [7.devServer](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7devServer)
 
-- [8.plugins](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7.plugins)
+- [8.plugins](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7plugins)
 
-- [9.loaders](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#8.loaders)
+- [9.loaders](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#8loaders)
 
 ## webpack核心配置项
 
