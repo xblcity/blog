@@ -75,15 +75,19 @@
 
 - [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
 
+### 服务器
+
+- [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/server/ubuntu.md)
+
+- [linux发行版介绍](https://github.com/xblcity/blog/blob/master/server/linux.md)
+
+- [nginx linux安装与使用](https://github.com/xblcity/blog/blob/master/server/nginx.md)
+
 ### 工具
 
 - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
 - [git的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
-
-- [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/tools/ubuntu.md)
-
-- [linux发行版介绍](https://github.com/xblcity/blog/blob/master/tools/linux.md)
 
 ### others
 - [面试题](https://github.com/xblcity/blog/blob/master/others/job-interview.md)
