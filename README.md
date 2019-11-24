@@ -1,6 +1,6 @@
 # blog
 
-记录前端学习的笔记，本人接触code的时间不长，可能内容比较基础。 观看线上版本 -> [blog.xblcity.com](blog.xblcity.com)
+记录前端学习的笔记，总结记录成长的过程。本人接触code的时间不长，文章质量可能会有差异。 观看线上版本 -> [点击查看](https://blog.xblcity.com)
 
 ### JS原生
 
