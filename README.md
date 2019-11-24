@@ -1,6 +1,6 @@
 # blog
 
-记录前端学习的笔记，本人接触code的时间不长，可能内容比较基础。
+记录前端学习的笔记，本人接触code的时间不长，可能内容比较基础。 观看线上版本 -> [blog.xblcity.com](blog.xblcity.com)
 
 ### JS原生
 
@@ -16,15 +16,17 @@
 
   - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js/object-methods.md)
 
-- [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
+- JS进阶
 
-- [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/equalwith-copy.md)
+  - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
 
-- [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/js/eventloop.md)
+  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/equalwith-copy.md)
 
-- [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/js/func-program.md)
+  - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/js/eventloop.md)
 
-- [JS设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
+  - [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/js/func-program.md)
+
+  - [JS设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
 
 ### ES6
 
