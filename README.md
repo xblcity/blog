@@ -1,19 +1,22 @@
 # blog
-日常总结
+
+记录前端学习的笔记，本人接触code的时间不长，可能内容比较基础。
 
 ### JS原生
 
-- [闭包与作用域](https://github.com/xblcity/blog/blob/master/js/closures-scope.md)
+- JS基础
 
-- [this](https://github.com/xblcity/blog/blob/master/js/this.md)
+  - [闭包与作用域](https://github.com/xblcity/blog/blob/master/js/closures-scope.md)
 
-- [构造函数实现类](https://github.com/xblcity/blog/blob/master/js/constructor.md)
+  - [this](https://github.com/xblcity/blog/blob/master/js/this.md)
 
-- [继承与原型链](https://github.com/xblcity/blog/blob/master/js/inherit.md)
+  - [构造函数实现类](https://github.com/xblcity/blog/blob/master/js/constructor.md)
+
+  - [继承与原型链](https://github.com/xblcity/blog/blob/master/js/inherit.md)
+
+  - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js/object-methods.md)
 
 - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
-
-- [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js/object-methods.md)
 
 - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/equalwith-copy.md)
 
@@ -26,6 +29,8 @@
 ### ES6
 
 - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
+
+- [super关键字](https://github.com/xblcity/blog/blob/master/es6/super.md)
 
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/es6/promise.md)
 
@@ -55,25 +60,34 @@
 
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
-### Webpack
+### 工具
 
-- [webpack的理解](https://github.com/xblcity/blog/blob/master/webpack/webpack.md)
+- Webpack
 
-- [webpack 配置](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md)
+  - [webpack的理解](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack.md)
 
-- [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/webpack/webpack-react.md)
+  - [webpack 配置](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack-config.md)
 
-- [babel](https://github.com/xblcity/blog/blob/master/webpack/babel.md)
+  - [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack-react.md)
 
-### 网络/HTTP
+  - [babel](https://github.com/xblcity/blog/blob/master/tools/webpack/babel.md)
 
-- [http请求头与响应头](https://github.com/xblcity/blog/blob/master/network/http-message.md)
+- 工具
+
+  - [git的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
+
+  - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
 ### Node
 
 - [Node知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
 
 - [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
+
+### 网络
+
+- [http请求头与响应头](https://github.com/xblcity/blog/blob/master/network/http-message.md)
+
 
 ### 服务器
 
@@ -83,21 +97,14 @@
 
 - [nginx linux安装与使用](https://github.com/xblcity/blog/blob/master/server/nginx.md)
 
-### 工具
+### 其他
 
-- [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
-
-- [git的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
-
-### others
-- [面试题](https://github.com/xblcity/blog/blob/master/others/job-interview.md)
+- [记录面试题](https://github.com/xblcity/blog/blob/master/others/job-interview.md)
 
 - [带答案面试题](https://github.com/xblcity/blog/blob/master/others/job-answers.md)
 
-- 我的疑问
+- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
 
-  - [我的疑问](https://github.com/xblcity/blog/blob/master/others/questions.md)
+- [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
 
-  - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
-
-  - [细碎知识点](https://github.com/xblcity/blog/blob/master/others/little-points.md)
+- [细碎知识点](https://github.com/xblcity/blog/blob/master/others/little-points.md)
