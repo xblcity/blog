@@ -1,0 +1,26 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "xbl-blog",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xblcity/blog.git"
+  },
+  "keywords": [
+    "xblcity"
+  ],
+  "author": "xblcity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xblcity/blog/issues"
+  },
+  "homepage": "https://github.com/xblcity/blog#readme"
+}
