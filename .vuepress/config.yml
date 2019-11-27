@@ -13,7 +13,7 @@ themeConfig :
       link: https://github.com/xblcity
   sidebar: 
     - title: 介绍
-      path: /blog
+      path: /home
     - title: js基础
       collapsable: false
       children:
