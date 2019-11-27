@@ -5,9 +5,9 @@ head:
     - link
     -
       rel: icon
-      href: /egg.png
+      href: /mine.png
 themeConfig :
-  logo: /egg.png
+  logo: /mine.png
   nav:
     - text: Github
       link: https://github.com/xblcity
