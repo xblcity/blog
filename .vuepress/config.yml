@@ -1,0 +1,36 @@
+title: 小白龙的博客
+description: 小白龙的前端记录
+head: 
+  -
+    - link
+    -
+      rel: icon
+      href: /egg.png
+themeConfig :
+  logo: /egg.png
+  nav:
+    - text: Github
+      link: https://github.com/xblcity
+  sidebar: 
+    - title: 介绍
+      path: /blog
+    - title: js基础
+      collapsable: false
+      children:
+        - /js/closures-scope
+        - /js/this
+        - /js/constructor
+        - /js/inherit
+        - /js/object-methods 
+    - title: js进阶 
+      collapsable: false
+      children:
+        - /js/call
+        - /js/equalwith-copy
+    - title: es6
+      collapsable: false
+      children:
+        - /es6/class
+        - /es6/super
+
+    
