@@ -127,3 +127,20 @@ server {
 很重要的一部是要给子域名配置解析，腾讯云子域名解析，[链接](https://cloud.tencent.com/document/product/302/7800),找到协作子域名添加解析并设置
 
 这时打开`reading.xblcity.com`就可以看到我们想要的网页效果啦~
+
+## 其他注意事项
+
+静态资源会有缓存，建议把文件夹直接删除，更新整个文件夹
+
+将首页文件配置为home.html的时候，指向的一直是index.html，因为用了vuepress的缘故，只能进行重定向了--
+
+nginx 开启 gzip 并配置 [链接](https://cloud.tencent.com/document/product/214/5404)
+
+```js
+gzip on;
+gzip_min_length 1k; # 设置允许压缩的页面最小字节数
+gzip_buffers 4 16k; # 设置系统获取几个单位的缓存用于存储 gzip 的压缩结果数据流。
+gzip_http_version 1.1; # 可以使用 gzip 功能的 HTTP 最低版本
+gzip_comp_level 2; # 压缩比，范围为1 - 9。
+gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript image/jpeg image/jpg image/gif image/png; # MIME 类型进行压缩
+```
