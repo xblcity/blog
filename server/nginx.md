@@ -117,3 +117,13 @@ server {
 命令行输入`nginx -t`检查无误后，输入`nginx -s reload`重启，然后在外网访问`https://xblcity.com`，应该就没问题了。如果提示是安全证书存在问题？检查证书文件是否与域名对应，如果不对应，修改为正确的证书之后可能不会立即生效。nginx出了问题，看是不是启动了多个nginx，杀掉nginx多个进程重新启动一个即可。
 
 如何让http的链接自动跳https呢，需要在80端口的server增加一个选项`rewrite ^(.*)$ https://$host$1 permanent;`进行页面重定向就好啦~
+
+## 配置子域名
+
+现在要配置一个子域名 `reading.xblcity.com`
+
+按照之前的配置，只改变了server_name以及证书位置
+
+很重要的一部是要给子域名配置解析，腾讯云子域名解析，[链接](https://cloud.tencent.com/document/product/302/7800),找到协作子域名添加解析并设置
+
+这时打开`reading.xblcity.com`就可以看到我们想要的网页效果啦~
