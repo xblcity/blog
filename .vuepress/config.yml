@@ -60,7 +60,7 @@ themeConfig :
         - /react/ui-component
         - /react/react-test
     - title: 工具
-      collapsable: true
+      collapsable: false
       children:
         - /tools/webpack/webpack
         - /tools/webpack/webpack-config
@@ -69,7 +69,7 @@ themeConfig :
         - /tools/git
         - /tools/tool
     - title: Node
-      collapsable: true
+      collapsable: false
       children:
         - /node/little-points
         - /node/blog       
