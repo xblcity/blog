@@ -1,6 +1,6 @@
-# 实现有属性/方法的函数对象
+# 实现有属性及方法的函数对象
 
-## 工厂模式
+## 1. 工厂模式
 
 ```js
 function createAnimal(name, age) {
@@ -17,7 +17,7 @@ var aDog = createAnimal('dog', 6)
 ```
 解决了创建相似对象的问题，但没有解决对象识别的问题(即怎样知道一个对象的类型,可使用instanceof判断的类型)
 
-## 构造函数模式
+## 2. 构造函数模式
 
 - new操作符  
 ```js
@@ -43,7 +43,7 @@ var aDog = new Animal('dog', 6)
 但是仍然存在其他问题，就是每次构造`Animal`实例，生成不同值的属性是合理的，但是每次都生成一模一样的方法，造成内存浪费是不合理的
 
 
-## 原型模式
+## 3. 原型模式
 
 我们创建的**每个函数**都会自动获得prototype(原型)属性，这个属性是一个指针，指向一个对象，**而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法**，使用原型的好处是可以让所有对象实例共享它所包含的属性和方法。
 ```js
@@ -68,7 +68,7 @@ console.log(aDog.sayName === bDog.sayName) // true
 
 原型模式存在的问题：实例无法拥有自己特定的属性，如果更改了原型上的属性，会导致其他实例的属性也会跟着改变
 
-## 组合使用构造函数模式和原型模式
+## 4. 组合使用构造函数模式和原型模式
 ```js
 function Animal(name) {
   this.name = name
@@ -97,12 +97,14 @@ console.log(anAnimal.__proto__) // {say: function() {}, constructor: function An
 console.log(Animal.prototype) // {say: function() {}, constructor: function Animal(name){}, __proto__: {constructor: Object, ...} }
 ```
 
-## 要注意的问题
+## 5. 要注意的问题
+
 构造函数的方法的调用，以Date这个构造函数为例  
 Date构造函数，属性为方法的有`now, parse`等，即`Date.now = function(){}`  
 Date构造函数，prototype上面的方法有`getDate(), getFullYear()`等，构造函数想要调用这些方法，必须使用`Date.prototype.getDate()`, 如果直接使用`Date.getDate()`，由于Date构造函数并没有`getDate`这个属性，所以向__proto__上面查找，未找到，报错TypeError   
 但是对于构造函数的实例来说，由于`new`操作运算符的的作用，实例的`__proto__`已经指向了Date构造函数的`prototype`，所以调用`实例.getDate()`，实例无getDate属性，向__proto__上查找，找到了，执行
 
-### 参考
+## 参考
+
 - [javascript高级程序设计6.2创建对象]()
 - [W3C ECMAScript 定义类或对象](https://www.w3school.com.cn/js/pro_js_object_defining.asp)

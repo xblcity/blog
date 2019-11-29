@@ -6,11 +6,11 @@
 
 - JS基础
 
-  - [闭包与作用域](/js/closures-scope.md)
+  - [闭包与作用域](/js/scope-closures.md)
 
   - [this](/js/this.md)
 
-  - [构造函数实现类](/js/constructor.md)
+  - [构造函数实现类](/js/object.md)
 
   - [继承与原型链](/js/inherit.md)
 

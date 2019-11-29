@@ -21,10 +21,11 @@ themeConfig :
       path: /
     - title: JS基础
       collapsable: false
+      sidebarDepth: 2
       children:
-        - /js/closures-scope
+        - /js/scope-closures
         - /js/this
-        - /js/constructor
+        - /js/object
         - /js/inherit
         - /js/object-methods 
     - title: JS进阶 

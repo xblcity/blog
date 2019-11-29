@@ -1,7 +1,8 @@
 # 继承与原型链
 
-## 继承的几种方式
-### 1.原型链继承(原型链直接指向父类构造函数)
+## 1. ES5继承的几种方式
+
+### 1.1 原型链继承(原型链直接指向父类构造函数)
 ```js
 // 父类
 function Animal(name) {
@@ -50,7 +51,8 @@ Dog:
 // 为什么不用 Dog.prototype = Animal.prototype呢？ 如果用了，那么两者共享一个prototype,改变Dog的prototype也会改变Animal的prototype  
 
 
-### 2.构造函数窃取(内部执行构造函数，只继承实例属性，但无原型链继承)
+### 1.2 构造函数窃取(内部执行构造函数，只继承实例属性，但无原型链继承)
+
 构造函数窃取，又称构造函数借用，经典继承，在子类型的构造函数内部调用父类的构造函数
 ```js
 function Animal(cateName) {
@@ -89,7 +91,7 @@ console.log(aDog)
 完善了没有继承父类实例的缺陷，   
 缺点：没有继承Animal原型上面的方法，并且每次创建Dog的实例，都会执行Animal构造函数(后面的继承方式都存在这个问题)
 
-### 3.组合继承(构造函数与原型链组合)
+### 1.3 组合继承(构造函数与原型链组合)
 组合继承又称伪经典继承，指的是将原型链和借用构造函数的技术组合发挥二者之长的一种继承模式。思路是：使用原型链实现对**原型属性和方法**的继承，而通过借用构造函数来实现对**实例属性**的继承
 ```js
 function Animal(cateName) {
@@ -148,7 +150,7 @@ Animal: {
 ```
 组合继承是javascript中最常用的继承模式，但是父类构造函数执行了两次，
 
-### 4.寄生组合继承
+### 1.4 寄生组合继承
 ```js
 function Parent(value) {
   this.val = value
@@ -175,7 +177,8 @@ child.getValue() // 1
 child instanceof Parent // true
 ```
 
-### 5.ES6的extends方式实现继承
+## 2.ES6的extends方式实现继承
+
 ```js
 class Parent {
   constructor(value) {
@@ -197,6 +200,7 @@ child instanceof Parent // true
 class 实现继承的核心在于使用 extends 表明继承自哪个父类，并且在子类构造函数中必须调用 super，因为这段代码可以看成 Parent.call(this, value)。
 
 ### 参考
+
 - [javascript高级程序设计6.3继承]()
 - [javascript设计模式精讲](https://www.imooc.com/read/38/article/480)
 - [前端面试之道](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdd0d83f265da615f76ba57)

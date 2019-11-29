@@ -1,6 +1,7 @@
 # Object构造器及原型上的方法
 
-## Object构造器上的方法(Methods of the Object constructor)
+## 1. Object构造器上的方法(Methods of the Object constructor)
+
 形如这样的格式
 ```js
 class Object {
@@ -9,10 +10,14 @@ class Object {
 ```
 本文只是介绍简单的使用
 
-## Object.assign()
+### 1.1 Object.assign()
+
+Object.assign(target, ...sources) 
+
 复制一个对象的可迭代属性到目标对象上，参数为多个对象  
-Object.assign(target, ...sources)  
-可用于浅拷贝
+
+可用于浅拷贝，拓展运算符 `...` 也可以实现浅拷贝
+
 ```js
 const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
@@ -62,7 +67,8 @@ console.log(source) // {a:11, b: {bb:33}}
 使用JSON.parse(JSON.stringify({...}))可以实现不完整的深拷贝  
 更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
 
-## Object.create()
+### 1.2 Object.create()
+
 参数：Object.create(proto, [propertiesObject]) 第二个参数可选， 是一个属性描述  
 `Object.create()`可以实现继承(因为可以显式指定原型)
 ```js
@@ -96,7 +102,8 @@ console.dir(me)
 // 可以看出me的原型是person,person的原型是Object
 ```
 
-Object.create声明无原型的空对象
+#### Object.create声明无原型的空对象
+
 ```js
 const methodCreateObj = Object.create({})
 const methodCreateNull = Object.create(null) // 创建了一个非常干净的Object对象，没有原型proto，非常纯净
@@ -119,10 +126,14 @@ console.dir(literalCreateObj)
 ``` 
 所以我们可以使用Object.create()方法指定自己的原型prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
 
-## Object.defineProperty()
+### 1.3 Object.defineProperty()
+
 `Object.defineProperty(obj, prop, descriptor)`  
+
 该方法可以直接向object对象上定义属性，并且对属性进行一些选项设置
+
 descriptor可以定义以下几种属性
+
 - configurable 是否可删除？，默认false
 - enumerable 是否可枚举，默认false
 - value 值
@@ -216,7 +227,7 @@ arc.getArchive(); // [{ val: 11 }, { val: 13 }]
 
 ```
 
-## Object.defineProperties()
+### 1.4 Object.defineProperties()
 与`Object.defineProperty()`类似，但是可以定义多个属性，可以定义属性描述或者存取器描述
 ```js
 const object1 = {};
@@ -233,7 +244,9 @@ console.log(object1.property1); // expected output: 42
 ```
 
 ## Object.getOwnPropertyDescriptor() 与 Object.getOwnPropertyDescriptors()
-获取单个或者多个属性的描述
+
+#### 获取单个或者多个属性的描述
+
 ```js
 const obj = {
   a: 1
@@ -242,7 +255,8 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
 // 输出： {configurable: true, enumerable: true, value: 1, writable: true}
 ```
 
-## Object.getOwnPropertyNames()
+### 1.5 Object.getOwnPropertyNames()
+
 遍历对象自身属性
 ```js
 const object1 = {
@@ -340,7 +354,7 @@ object2:
 console.log(Object.getOwnPropertyNames(objectInstance));  // ["a", "d"]
 ``` 
 
-## Object.keys()
+### 1.7 Object.keys()
 判断是否是对象自身属性
 ```js
 const object1 = {
@@ -352,25 +366,29 @@ const object1 = {
 console.log(Object.keys(object1)); // 输出: Array ["a", "b", "c"]
 ```
 
-## Object原型上上的方法(Methods of the Object prototype)
-### Object.prototype.toString()
+## 2. Object原型上上的方法(Methods of the Object prototype)
+
+### 2.1 Object.prototype.toString()
 ```js
 const obj = {name: 'jack'}
 console.log(obj.toString()) // [object Object]
 console.dir(obj.toString()) // [object Object]
+const a = '1'
+console.log(Object.prototype.toString.call(a)) // [object String]
 console.dir(JSON.parse(obj.toString())) // SyntaxError: Unexpected token o in JSON at position 1
 console.log(JSON.parse(JSON.stringify(obj))) // {name: "jack"}
 ```
-### Object.prototype.toLocaleString()
+### 2.2 Object.prototype.toLocaleString()
 转换时间格式用
 ```js
 console.log(new Date().toLocaleString()) // Sat Jul 27 2019 16:30:55 GMT+0800 (中国标准时间) 转换成 2019/7/27 下午4:30:55
 ```
 
-### Object.prototype.valueOf()
+### 2.3 Object.prototype.valueOf()
+
 用于把对象转换成原始值，如string...待补充
 
-### Object.prototype.hasOwnProperty()
+### 2.4 Object.prototype.hasOwnProperty()
 判断是否是一个对象的自身属性，而不是原型prototype上面的属性
 ```js
 const object1 = new Object();
@@ -381,7 +399,7 @@ console.log(object1.hasOwnProperty('toString')); // object1 prototype的属性 �
 console.log(object1.hasOwnProperty('hasOwnProperty')); // object1 prototype的属性 输出: false
 ```
 
-### Object.prototype.isPrototypeOf()
+### 2.5 Object.prototype.isPrototypeOf()
 ```js
 function object1() {}
 function object2() {}
@@ -393,10 +411,10 @@ console.log(object1.prototype.isPrototypeOf(object3)); // expected output: true
 console.log(object2.prototype.isPrototypeOf(object3)); // expected output: true
 ```
 
-### Object.prototype.propertyIsEnumerable()
+### 2.6 Object.prototype.propertyIsEnumerable()
+
 属性是否可枚举  
 
+## 参考 
 
-
-#### 参考 
 - [MDN Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)

@@ -6,11 +6,11 @@
 
 - JS基础
 
-  - [闭包与作用域](https://github.com/xblcity/blog/blob/master/js/closures-scope.md)
+  - [闭包与作用域](https://github.com/xblcity/blog/blob/master/js/scope-closures.md)
 
   - [this](https://github.com/xblcity/blog/blob/master/js/this.md)
 
-  - [构造函数实现类](https://github.com/xblcity/blog/blob/master/js/constructor.md)
+  - [构造函数实现类](https://github.com/xblcity/blog/blob/master/js/object.md)
 
   - [继承与原型链](https://github.com/xblcity/blog/blob/master/js/inherit.md)
 
