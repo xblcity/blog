@@ -74,17 +74,17 @@ themeConfig :
         - /node/little-points
         - /node/blog       
     - title: 网络
-      collapsable: true
+      collapsable: false
       children:
         - /network/http-message
     - title: 服务器
-      collapsable: true
+      collapsable: false
       children:
         - /server/ubuntu
         - /server/linux 
         - /server/nginx 
     - title: 其他
-      collapsable: true
+      collapsable: false
       children:
         - /others/job-interview
         - /others/job-answers  
