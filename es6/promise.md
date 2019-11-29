@@ -1,13 +1,16 @@
 # Promise与副作用处理以及XHR
 
-## Promise概念
+## 1. Promise概念
+
 Promise是一个构造函数
+
 语法：new Promise( function(resolve, reject) {...} /* executor */  );
 - executor(执行者)是一个带有resolve和reject两个参数的函数
 - Promise构造函数执行时立即调用executor，当resolve函数执行时，promise的状态变为fulfilled(完成)，当reject函数执行时,promise状态变为rejected(失败)、
 - exector函数的返回值会被忽略，exector返回的是Promise对象 
 
-基本用法
+## 2. 基本用法
+
 ```js
 const myPromise = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -18,7 +21,9 @@ myPromise.then(value => {
   console.log(value) // 'foo'
 })
 ```
+
 Promise原型对象上有then和catch两个方法，它们都返回Promise对象，并且可以被链式调用  
+
 其中then方法可以传入两个参数，第二个参数用于处理错误
 ```js
 const myPromise = new Promise(function(resolve, reject) {
@@ -40,20 +45,20 @@ myPromise.then(value => {
   console.error(err) // 'error'
 })
 ```
-### Promise提供的方法
+### 2.1 Promise提供的方法
 ```js
 Promise.resolve(reason) // 返回一个状态为fulfilled的Promise对象
 Promise.reject(value) // 返回一个状态为rejected的Promise对象
 Promise.all(itrable) // 传入一个可迭代对象，如数组
 ```
 
-### Promise原型上的方法
+### 2.2 Promise原型上的方法
 ```js
 Promise.prototype.then(onFulfilled, onRejected)
 Promise.prototype.catch(onRejected)
 Promise.prototype.finally(onFinally)
 ```
-### Promise实现ajax get请求
+### 2.3 Promise实现ajax get请求
 ```js
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -71,7 +76,8 @@ myAsyncFunction('a.example.com').then(response => {
 })
 ```
 
-## 处理Promise的错误
+## 2.4 处理Promise的错误
+
 获取数据的操作是会有副作用(effect)的，所以我们需要处理数据请求的报错  
 常用的数据请求库axios就是基于XMLHttpRequest与Promise的封装  
 这里，我们用定时器模拟数据请求  
@@ -96,7 +102,9 @@ function fetchAnotherData() {
 
 接下来，我们用几种方法来模拟数据请求出错的情况  
 以下函数都是基于上面两个函数已经声明的情况  
-1.普通执行
+
+### 2.4.1普通执行
+
 ```js
 function myFetch() {
   fetchData()
@@ -107,7 +115,7 @@ myFetch()
 // 由于`fetchData`和`fetchAnotherData`是一起发出的请求，所以会依次报两个Promise的错误
 ```
 
-2.使用Promise.all方法
+### 2.4.2 使用Promise.all方法
 ```js
 function myFetch() {
   Promise.all([fetchAnotherData(), fetchData()]) // Promise.all()数组参数是执行函数，即加括号（）
@@ -116,7 +124,7 @@ myFetch()
 // 输出：'获取数据错误1'，可以证实两个请求函数是一起发出的，其中有一个reject则不继续执行了，Promise.all([]) 如果迭代的第一项就报错，就会停止迭代
 ```
 
-3.使用async await
+### 2.4.3 使用async await
 ```js
 async function myFetch() {
   await fetchAnotherData()
@@ -125,7 +133,7 @@ async function myFetch() {
 myFetch() // '获取其他数据错误2' 说明await Promise对象是按照顺序执行的
 ```
 
-4.使用try catch
+### 2.4.4 使用try catch
 普通执行
 ```js
 function myFetch() {
@@ -194,10 +202,10 @@ myFetch()
 ```
 可以证实，同步的代码错误是会被捕获到的
 
-## XMLHttpRequest对象/函数
-### XMLHttpRequest实例对象包含以下方法
+## 3. XMLHttpRequest对象/函数
+### 3.1 XMLHttpRequest实例对象包含以下方法
 
-#### open()
+#### 3.1.1 open()
 ```js
 // 初始化请求
 XMLHttpRequest.open(method, url, async, user, password)
@@ -207,17 +215,17 @@ XMLHttpRequest.open(method, url, async, user, password)
 - async可选参数，默认是true
 - 后面两个是authentication权限认证时使用到，暂时没用过 
 
-#### setRequestHeader()
+#### 3.1.2 setRequestHeader()
 设置请求头
 `XMLHttpRequest.setRequestHeader(header, value)`  
 header表示键名，value是设置的值
 
-#### send()
+#### 3.1.3 send()
 发送请求
 `XMLHttpRequest.send(body)`  
 body是可选参数，可以是Bolb?等？ 一般不传
 
-### XMLHttpRequest实例对象包含以下属性
+### 3.2 XMLHttpRequest实例对象包含以下属性
 ```js
 // 状态，0表示未发送unsend, 1表示opened已发送，2表示请求头已被接收， 3表示loading加载，4表示请求完成
 XMLHttpRequest.readyState
@@ -231,7 +239,7 @@ XMLHttpRequest.response
 XMLHttpRequest.responseText 
 ```
 
-### XMLHttpRequest实例对象发送请求后的回调函数
+### 3.3 XMLHttpRequest实例对象发送请求后的回调函数
 ```js
 let xhr = new XMLHttpRequest();
 // 请求成功回调函数
@@ -262,7 +270,7 @@ xhr.onreadystatechange = function() {
 }
 ```
 
-### 一次简单的XMLHttpRequest请求
+### 3.4 一次简单的XMLHttpRequest请求
 ```js
 const xhr = new XMLHttpRequest()
 // 初始化请求
@@ -294,7 +302,7 @@ xhr.onerror = function() {
 xhr.send()
 ```
 
-## 使用Promise发送ajax请求
+## 4. 使用Promise发送ajax请求
 ```js
 function ajaxFetch(url) {
   return new Promise(function(resolve, reject) {
@@ -316,6 +324,7 @@ function ajaxFetch(url) {
 }
 ```
 
-#### 参考
+## 参考
+
 - [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [MDN XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)

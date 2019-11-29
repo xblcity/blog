@@ -1,6 +1,6 @@
 # call,apply,bind实现
 
-call的实现需要运用隐式绑定this的原理，即`obj.bar()`
+## 1. call的实现需要运用隐式绑定this的原理，即`obj.bar()`
 
 实现传入上下文环境
 ```js
@@ -42,7 +42,7 @@ function bar(a, b) {
 bar._call(foo, 2, 3)
 ```
 
-实现apply
+## 2. 实现apply
 ```js
 Function.prototype._apply = function(context = window) {
   context._fn = this
@@ -62,7 +62,7 @@ function bar(a,b,c) {
 bar._apply(foo, [1,2,3])
 ```
 
-实现bind  
+## 3. 实现bind  
 bind用于创建一个新的函数，参数和call传参方式相同  
 bind可以理解为函数式编程的一个例子，bind属于高阶函数(因为返回了一个函数)，也属于偏函数(不同的参数值，可以返回不同的函数)
 
@@ -92,7 +92,8 @@ var result3 = leadingAdd(3,10) // 1+3=4，第二个参数会被忽略，因为ad
 
 bind可以配合setTimeout的第一个参数使用，实现自定义this的绑定
 
-实现bind
+### 实现bind另一种方式
+
 ```js
 // bind函数需要返回一个新的函数，用于自行调用
 Function.prototype._call = function(context) {

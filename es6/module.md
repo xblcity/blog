@@ -1,6 +1,7 @@
 # 模块的应用
 
-## CommonJS
+## 1. CommonJS
+
 CommonJs模块就是对象，输入时必须查找对象属性
 ```js
 const {start, exists, readFile} = require('fs')
@@ -10,16 +11,22 @@ let start = _fs.start
 let exists = _fs.exists
 let readFile = _fs.readFile
 ```
-上面的代码实质是整体加载fs模块，即加载fs的所有方法，生成一个对象，然后再从这个对象上读取这几个方法，这种加载称为运行时加载，因为只有运行时才能得到这个对象，导致完全没办法在编译时做静态优化 
-## ES6模块 
+上面的代码实质是整体加载fs模块，即加载fs的所有方法，生成一个对象，然后再从这个对象上读取这几个方法，这种加载称为运行时加载，因为只有运行时才能得到这个对象，导致完全没办法在编译时做静态优化
+
+## 2. ES6模块 
+
 ES6模块不是对象，而是通过export命令显示指定输出的代码，再通过import命令输入
+
 ```js
 import {start, exists, readFile} from 'fs'
 ```
+
 上面的代码实质是从fs模块加载3个方法，其他方法不加载，这种方法称为“编译时加载”或者静态加载  
 
 ES6模块自动采用了严格模式
-#### export 命令
+
+### 2.1 export 命令
+
 ```js
 export var firstName = 'json'
 export var lastName = 'nico'
@@ -62,7 +69,7 @@ export {m}
 var n = 1
 export {n as m}
 ```
-#### import 命令
+### 2.2 import 命令
 ```js
 import {firstName, lastName} from './foo'
 // 或者
@@ -76,7 +83,7 @@ import由变量提升的功能
 import * as module from './module'
 console.log(module.name)
 ```
-#### export default
+### 2.3 export default
 export default命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此export default命令只能使用一次。
 ```js
 export default function() {

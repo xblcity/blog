@@ -20,7 +20,7 @@
 
   - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
 
-  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/equalwith-copy.md)
+  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/copy.md)
 
   - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/js/eventloop.md)
 
@@ -32,15 +32,15 @@
 
 - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
 
+- [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
+
 - [super关键字](https://github.com/xblcity/blog/blob/master/es6/super.md)
 
 - [Promise与处理错误](https://github.com/xblcity/blog/blob/master/es6/promise.md)
 
-- [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
-
 ### Typescript
 
-- [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-concepts.md)
+- [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-basic.md)
 
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/typescript/ts-axios.md)
 

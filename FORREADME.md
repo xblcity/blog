@@ -20,7 +20,7 @@
 
   - [call,apply,bind实现](/js/call.md)
 
-  - [赋值与深浅拷贝](/js/equalwith-copy.md)
+  - [赋值与深浅拷贝](/js/copy.md)
 
   - [js任务队列与执行机制](/js/eventloop.md)
 
@@ -40,7 +40,7 @@
 
 ### Typescript
 
-- [Typescript基础类型与概念](/typescript/ts-concepts.md)
+- [Typescript基础类型与概念](/typescript/ts-basic.md)
 
 - [用TS配置axios拦截器](/typescript/ts-axios.md)
 

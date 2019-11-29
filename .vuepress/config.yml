@@ -32,7 +32,7 @@ themeConfig :
       collapsable: false
       children:
         - /js/call
-        - /js/equalwith-copy
+        - /js/copy
         - /js/eventloop
         - /js/func-program
         - /js/design-mode
@@ -46,7 +46,7 @@ themeConfig :
     - title: Typescript
       collapsable: false
       children:
-        - /typescript/ts-concepts
+        - /typescript/ts-basic
         - /typescript/ts-axios
     - title: React
       collapsable: false

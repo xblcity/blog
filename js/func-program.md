@@ -2,8 +2,11 @@
 
 高阶函数：把函数作为参数，或是将函数作为返回值的函数，如`forEach, map, reduce, reduceRight, filter, every, some`
 
+## 1. 偏函数与柯里化函数
+
 偏函数：根据不同的参数可以产生不同的返回函数  
 柯里化函数：处理一个参数，返回一个函数，再处理一个参数，再返回一个函数
+
 ```js
 // 柯里化
 function add(x) {
@@ -45,4 +48,5 @@ AddBySeven(5)(10)
 
 
 ## 参考
+
 - [偏函数与柯里化函数的区别](https://segmentfault.com/q/1010000008626058)
