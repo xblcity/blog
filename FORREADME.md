@@ -52,7 +52,7 @@
 
 - [redux中间件](/react/redux-middleware.md)
 
-- [使用react-redux分发状态](/react/redux-redux.md)
+- [使用react-redux分发状态](/react/react-redux.md)
 
 - [React生命周期](/react/lifecycle.md)
 

@@ -52,7 +52,7 @@
 
 - [redux中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 
-- [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/react/redux-redux.md)
+- [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/react/react-redux.md)
 
 - [React生命周期](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 
