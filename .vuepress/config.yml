@@ -59,6 +59,10 @@ themeConfig :
         - /react/dynamic-data
         - /react/ui-component
         - /react/react-test
+    - title: Vue
+      collapsable: false
+      children:
+        - /vue/vuepress
     - title: 工具
       collapsable: false
       children:

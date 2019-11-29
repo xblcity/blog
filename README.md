@@ -62,6 +62,10 @@
 
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
+### Vue
+
+- [Vuepress使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
+
 ### 工具
 
 - Webpack
