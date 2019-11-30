@@ -34,6 +34,7 @@ themeConfig :
       collapsable: false
       sidebarDepth: 2
       children:
+        - /js/array
         - /js/call
         - /js/copy
         - /js/eventloop
