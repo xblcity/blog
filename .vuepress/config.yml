@@ -58,11 +58,11 @@ themeConfig :
       collapsable: false
       sidebarDepth: 2
       children:
+        - /react/lifecycle
         - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
         - /react/react-redux
-        - /react/lifecycle
         - /react/dynamic-data
         - /react/ui-component
         - /react/react-test
