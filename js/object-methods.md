@@ -12,9 +12,9 @@ class Object {
 
 ### 1.1 Object.assign()
 
-Object.assign(target, ...sources) 
+Object.assign(target, ...sources)  || (目标对象，源对象...)
 
-复制一个对象的可迭代属性到目标对象上，参数为多个对象  
+复制一个对象的可迭代属性到目标对象上，参数为多个对象，ES6新增 
 
 可用于浅拷贝，拓展运算符 `...` 也可以实现浅拷贝
 
@@ -243,7 +243,7 @@ Object.defineProperties(object1, {
 console.log(object1.property1); // expected output: 42
 ```
 
-## Object.getOwnPropertyDescriptor() 与 Object.getOwnPropertyDescriptors()
+### 1.5 Object.getOwnPropertyDescriptor()&Object.getOwnPropertyDescriptors()
 
 #### 获取单个或者多个属性的描述
 
@@ -255,7 +255,7 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
 // 输出： {configurable: true, enumerable: true, value: 1, writable: true}
 ```
 
-### 1.5 Object.getOwnPropertyNames()
+### 1.6 Object.getOwnPropertyNames()
 
 遍历对象自身属性
 ```js
