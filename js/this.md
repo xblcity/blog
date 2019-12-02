@@ -2,10 +2,9 @@
 
 在掌握this之前，我们需要知道下面这些点
 
-- this不指向函数本身也不指向函数的词法作用域(动态作用域)
+- this不指向函数本身
 - this是在函数被调用时发生的绑定，也就是说，函数未调用之前是没有this的，它指向谁完全取决于函数在哪里被调用
-- this具有语法作用域(静态作用域)的特征
-- 在函数被调用时，会创建一个活动记录(执行环境)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到，执行环境不存在，this也就不存在了
+- 每一个函数被调用时，都会创建一个活动记录(执行环境)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到，执行环境不存在，this也就不存在了
 
 ## 1. this的绑定规则
 
@@ -13,7 +12,7 @@
 
 在全局作用域调用函数，函数的this是window(在严格模式为undefined)  
 
-没有在全局作用于下调用函数，应用的是默认绑定，即window
+在局部作用域直接调用函数，应用的也是默认绑定，即window，当前函数只查找到了this即window自己
 ```js
 function foo() {
   console.log(this) // window
@@ -102,9 +101,11 @@ function foo(a,b) {
 const bar = foo.bind({}, 2,3)
 bar()
 ```
+
 ES6实现bind方法
+
 ```js
-Function.prototype.bind1 = function(...rest1) { // rest1变成可迭代对象，即数组
+Function.prototype.bind1 = function(...rest1) { // 使用剩余运算符...rest1变成可迭代对象，即数组
   const self = this
   const context = rest1.shift() // context是函数的第一个参数,即this对象，shift()会直接改变原对象
   return function(...rest2) {  
@@ -173,24 +174,24 @@ console.dir(descendant)
 
 ## 2.ES6箭头函数中this的词法特征
 
-- ES6新增一种特殊函数类型：箭头函数，箭头函数无法使用上述四条规则，而是根据外层(函数或者全局)作用域(词法作用域)来决定this
+- ES6新增一种特殊函数类型：箭头函数，箭头函数无法使用上述四条this绑定的规则
+- 箭头函数内部不存在this，但是通过作用域链，可以查找到this变量，如果外层作用域(函数)中有this，则箭头函数this与外层作用域this一致，否则会向上查找，直到全局作用域
 - 箭头函数的this无法被直接修改，但是可以通过改变外层函数的this指向来间接改变箭头函数里的this  
-- 箭头函数没有构造函数constructor,不可以使用new 调用
-- 定义箭头函数this即外部环境的this, 即`function foo(){ const a = () => {console.log(this)}}`箭头函数this与foo上下文环境的this一致
-- 回调函数箭头函数内部的this是箭头函数父函数的父函数的this，与普通箭头函数this表现不一致
+- 箭头函数没有构造函数constructor, 不可以使用 new 调用
+- ~~回调函数箭头函数内部的this是箭头函数父函数的父函数的this，与普通箭头函数this表现不一致~~
 
 ### 2.1 箭头函数实例
 
 ```js
 function foo() {
   function bar() {
-    console.log(`bar函数this`, this) // window
+    console.log(`bar函数this`, this) 
     const b = () => { 
-      console.log(`箭头函数this`,this) // window，即与父函数this一致
+      console.log(`箭头函数this`,this) 
     }
-    b()
+    b() // window，即与父函数this一致
   }
-  bar()
+  bar() // window
   return () => {
     console.log(`return箭头函数this`,this) 
   }
@@ -208,32 +209,34 @@ const baz = foo.call(obj2)
 baz() // 箭头函数打印obj2
 ```
 
-### 2.2 多个嵌套函数  
+### 2.2 多个嵌套非箭头函数 
 
 ```js
 function foo() {
   console.log(`foo内部`,this) // outObj，显式绑定
   function bar() {
-    console.log(`bar内部`,this) // innerObj，隐式绑定
+    console.log(`bar内部`,this) 
     function baz() {
-      console.log(`baz1`, this) // window，默认绑定
+      console.log(`baz1`, this) 
       function baz1() {
-        console.log(`baz2`, this) // window，默认绑定
+        console.log(`baz2`, this) 
       }
-      baz1()
+      baz1() // window，默认绑定
     }
-    baz()
+    baz() // window，默认绑定
   }
   const innerObj = {inner: 2, bar}
-  return innerObj.bar() // 执行bar函数，return可以不用加
+  return innerObj.bar() // innerObj，隐式绑定 执行bar函数，return可以不用加
 }
 const outObj = {outObj: 1}
 foo.call(outObj)
 ```
 可以看出，每个函数的this都是独立的，无法继承自父函数，默认规则绑定的是window  
-获取父函数的this，可以使用`that = this`
+
+保存父函数的this，可以使用`that = this`，用that来持续引用父函数的this，父函数执行过后执行环境不会立即销毁，这里借用了闭包的原理。
 
 ### 2.3 对象中属性值为箭头函数
+
 ```js
 var a = 'hello'
 const obj = {
@@ -243,7 +246,7 @@ const obj = {
     console.log(this.a)
   }
 }
-console.log(obj.b)  // window，，对象是没有上下文环境也就是this的，，只能继承
+console.log(obj.b)  // window，对象是没有上下文环境，因此也就没有this这个属性，之所以可以获取到this是因为全局作用域存在this变量
 obj.foo() // hello, 隐式绑定, foo this是obj外面的this，即window
 ```
 
