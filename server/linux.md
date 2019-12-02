@@ -1,7 +1,9 @@
 # linux发行版介绍
+
 linux发行版有很多，这里主要介绍以debian的代表ubuntu以及centos代表的red hat一族。
 
 ## ubuntu18安装软件  
+
 debian系安装的软件包一般以.deb结尾，red-hat一族，软件包是以.rpm结尾(red hat package manger)，如果是使用yum安装的rpm包，是不用加后缀名的
 
 debian安装软件的操作  
