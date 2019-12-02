@@ -45,7 +45,7 @@ function foo(a) {
 
 全局作用域只有一个变量：foo
 
-foo函数作用域内部：变量b,bar,a
+foo函数作用域内部：变量b,bar,a,c
 
 #### 1.2.2 块作用域
 
@@ -149,7 +149,7 @@ for (var i = 1; i <= 5; i++) {
 // 输出5次6
 ```
 
-我们的本意值设置一个定时器，每次循环打印当前的i，但是我们发现打印了5个6，为什么呢，又要涉及到js的执行机制了，由于js是单线程引擎，所以js会首先执行同步队列里的代码，然后才会执行异步任务(涉及了js宏任务与微任务)上述例子中，js会首先执行for循环，执行完毕后，i已经变成了6，这时候在执行定时器，定时器现在内部寻找i变量，找不到，再向父作用域里寻找i变量(即全局作用域),哦，找到了i,值为6，`console.log`打印一下  
+我们的本意值设置一个定时器，每次循环打印当前的i，但是我们发现打印了5个6，为什么呢，又要涉及到js的执行机制了，由于js是单线程引擎，所以js会首先执行同步队列里的代码，然后才会执行异步任务(这里setTimeout是js宏任务)上述例子中，js会首先执行for循环，执行完毕后，i已经变成了6，这时候在执行定时器，定时器现在内部寻找i变量，找不到，再向父作用域里寻找i变量(即全局作用域),哦，找到了i,值为6，`console.log`打印一下  
 
 如何打印出1~6呢，这里我们会想到给`setTimeout`内部储存一个i变量，每次执行`setTimeout`都访问自己独一无二的变量。再ES6之前，我们这样做：  
 使用IIFE(Immediately Invoked Function Expression),即立即调用函数表达式  
@@ -220,9 +220,10 @@ function memorize(fn) {
   let cache = {}
   return function() {
     const args = Array.prototype.slice.call(arguments) // argumnets是伪数组，经过slice处理之后，成为了真数组
-    let key = JSON.stringify(args)
+    let key = JSON.stringify(args)  // 把参数作为cache对象的键，首先将其转换成字符串
     console.log(`cache`, cache[key])
-    return cache[key] || (cache[key] = fn.apply(fn, args)) // 如果与之前计算的参数相同，则不执行回调函数, apply的第二个参数是个数组
+    return cache[key] || (cache[key] = fn.apply(fn, args)) 
+    // 如果与之前计算的参数相同，则返回值。否则将计算结果赋值给cache对象的一个键，apply的第二个参数是个数组
   }
 }
 
@@ -234,9 +235,9 @@ function add(a) {
 
 const adder = memorize(add)
 
-adder(1) // 打印 cache: undefined, 输出 2, 当前 cache: {'[1]'}
-adder(1) // 打印 cache: 2  输出: 2  当前: cache: { '[1]': 2 }
-adder(2) // 打印 cache: undefined      输出: 3  当前: cache: { '[1]': 2, '[2]': 3 }
+adder(1) // 打印 cache: undefined, console.log: 2, 当前 cache: {'[1]'}
+adder(1) // 打印 cache: 2  console.log: 2  当前: cache: { '[1]': 2 }
+adder(2) // 打印 cache: undefined      console.log: 3  当前: cache: { '[1]': 2, '[2]': 3 }
 ```
 
 ES6的写法
@@ -283,6 +284,7 @@ adder(2)
 ```
 
 ### 2.3 闭包在模块中的应用
+
 闭包在模块化的应用。  
 以下是一个IIFE模块
 ```js
