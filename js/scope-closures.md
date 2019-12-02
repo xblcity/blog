@@ -345,12 +345,17 @@ adder(2)
 ```js
 const MyModules = (function Manager() {
   let modules = {}
-  // 定义值
+  /**
+   * 定义模块中的变量
+   * @param {String} name 键名
+   * @param {Array} deps 参数数组 
+   * @param {Function} impl this指向
+   */
   function define(name, deps, impl) {
     for (let i = 0; i < deps.length; i ++) {
       deps[i] = modules[deps[i]] 
       // modules 是空，deps[i] 全是undefined
-      // modlues 不空，modules = {'bar': 23 }, deps[0] = modules[deps[0]]/modules['bar']
+      // modules 不空，modules = {'bar': 23 }, deps[0] = modules[deps[0]]/modules['bar']
     }
     modules[name] = impl.apply(impl, deps)
   }
@@ -363,14 +368,13 @@ const MyModules = (function Manager() {
     get
   }
 })()
-// define: name作为modules属性名，deps作为一个数组，impl是callback
 ```
 调用
 ```js
 // 定义modules对象键名是“bar”, 值是hello函数
 MyModules.define( "bar", [], function() {
   function hello(who) {
-    return "Let me introduct: " + who;
+    return "Let me introduce: " + who;
   }
   return {
     hello 
@@ -381,7 +385,7 @@ MyModules.define( "bar", [], function() {
 MyModules.define( "foo", ["bar"], function(bar) {
   var hungry = "hippo";
   function awesome() {
-    console.log( bar.hello( hungry ).toUpperCase() );
+    console.log(bar.hello(hungry).toUpperCase());
   }
   return {
     awesome
@@ -391,9 +395,9 @@ MyModules.define( "foo", ["bar"], function(bar) {
 const bar = MyModules.get( "bar" );
 const foo = MyModules.get( "foo" );
 
-console.log(bar.hello( "hippo" )) // Let me introduct: hippo
+console.log(bar.hello( "hippo" )) // Let me introduce: hippo
 
-foo.awesome(); // LET ME INTRODUCT: HIPPO
+foo.awesome(); // LET ME INTRODUCE: HIPPO
 ```
 
 闭包可以用来保存变量，缓存变量，但是过多的闭包会使得内存无法及时得到释放
