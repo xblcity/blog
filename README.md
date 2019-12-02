@@ -18,6 +18,8 @@
 
 - JS进阶
 
+  - [关于数组的各种操作](https://github.com/xblcity/blog/blob/master/js/array.md)
+
   - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
 
   - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/copy.md)

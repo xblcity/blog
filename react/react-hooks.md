@@ -1,10 +1,18 @@
 # react hooks理解
 
-- React.memo()
+## 简单介绍
 
-- useMemo()，缓存值，当值不变时，该函数不会重新执行
+- React.memo()，与React.PureComponent()功能一样，减少组件不必要渲染的次数
 
-- useCallback()，缓存函数，可以用作onCLick等事件回调函数，也可以结合useEffect()使用
+- useState()，该函数接收一个值，返回一个数组，第一个是变量标识符，第二个是改变值的方法
+
+- useEffect()，该函数接收两个参数，第一个是回调函数，第二个是依赖项，可以实现class组件的componentDidMount, componentWillUpdate, componentWillUnmount三个生命周期
+
+- useMemo()，该函数接收两个参数，第一个是回调函数，第二个是依赖项，该函数返回一个值，该函数常用于缓存值。依赖项不变的话，该函数就不会执行，可以有效减少由于组件渲染带来的多次无意义组件内部函数的执行。
+
+- useCallback()，该函数接收两个参数，第一个是回调函数，第二个是依赖项，该函数返回一个函数，常用于缓存函数，比如元素onCLick等事件回调函数，也可以结合useEffect()使用。
+
+- useReducer()
 
 
 ## 参考

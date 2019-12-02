@@ -14,6 +14,8 @@ head:
 themeConfig :
   logo: /avatar.png
   nav:
+    - text: 读书笔记
+      link: https://blog.xblcity.com
     - text: Github
       link: https://github.com/xblcity
   sidebar: 
@@ -30,7 +32,9 @@ themeConfig :
         - /js/object-methods 
     - title: JS进阶 
       collapsable: false
+      sidebarDepth: 2
       children:
+        - /js/array
         - /js/call
         - /js/copy
         - /js/eventloop
@@ -38,6 +42,7 @@ themeConfig :
         - /js/design-mode
     - title: ES6
       collapsable: false
+      sidebarDepth: 2
       children:
         - /es6/class
         - /es6/super
@@ -45,26 +50,30 @@ themeConfig :
         - /es6/module
     - title: Typescript
       collapsable: false
+      sidebarDepth: 2
       children:
         - /typescript/ts-basic
         - /typescript/ts-axios
     - title: React
       collapsable: false
+      sidebarDepth: 2
       children:
+        - /react/lifecycle
         - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
         - /react/react-redux
-        - /react/lifecycle
         - /react/dynamic-data
         - /react/ui-component
         - /react/react-test
     - title: Vue
       collapsable: false
+      sidebarDepth: 2
       children:
         - /vue/vuepress
     - title: 工具
       collapsable: false
+      sidebarDepth: 2
       children:
         - /tools/webpack/webpack
         - /tools/webpack/webpack-config
@@ -74,21 +83,25 @@ themeConfig :
         - /tools/tool
     - title: Node
       collapsable: false
+      sidebarDepth: 2
       children:
         - /node/little-points
         - /node/blog       
     - title: 网络
       collapsable: false
+      sidebarDepth: 2
       children:
         - /network/http-message
     - title: 服务器
       collapsable: false
+      sidebarDepth: 2
       children:
         - /server/ubuntu
         - /server/linux 
         - /server/nginx 
     - title: 其他
       collapsable: false
+      sidebarDepth: 2
       children:
         - /others/job-interview
         - /others/job-answers  

@@ -1,6 +1,6 @@
-# blog
+# 小白龙的博客
 
-记录前端学习的笔记，总结记录成长的过程。本人接触code的时间不长，文章质量可能会有差异。 观看线上版本 -> [点击查看](https://blog.xblcity.com)
+记录前端学习的笔记，总结记录成长的过程。本人接触code的时间不长，文章质量可能会有差异。
 
 ### JS原生
 
@@ -17,6 +17,8 @@
   - [Object构造器及原型上的方法](/js/object-methods.md)
 
 - JS进阶
+
+  - [关于数组的各种操作](/js/array.md)
 
   - [call,apply,bind实现](/js/call.md)
 

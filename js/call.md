@@ -1,4 +1,4 @@
-# call,apply,bind实现
+# call,apply,bind手动实现
 
 ## 1. call的实现需要运用隐式绑定this的原理，即`obj.bar()`
 

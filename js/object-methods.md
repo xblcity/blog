@@ -2,75 +2,34 @@
 
 ## 1. Object构造器上的方法(Methods of the Object constructor)
 
-形如这样的格式
+### 1.1 Object.keys()
+
+用于遍历对象，该方法会返回一个数组，该数组输出的属性顺序与for-in输出顺序一致
+
 ```js
-class Object {
-  
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+Object.keys(object1).forEach(item => {
+  console.log(object1[item])
+}); 
+// 输出: "somestring", 42, false
+
+for (key in object1) {
+  console.log(object1[key])
 }
+// 输出: "somestring", 42, false
 ```
-本文只是介绍简单的使用
-
-### 1.1 Object.assign()
-
-Object.assign(target, ...sources) 
-
-复制一个对象的可迭代属性到目标对象上，参数为多个对象  
-
-可用于浅拷贝，拓展运算符 `...` 也可以实现浅拷贝
-
-```js
-const target = { a: 1, b: 2 };
-const source = { b: 4, c: 5 };
-
-const returnedTarget = Object.assign(target, source);
-
-console.log(target);
-// expected output: Object { a: 1, b: 4, c: 5 }
-
-console.log(returnedTarget);
-// expected output: Object { a: 1, b: 4, c: 5 } 
-```
-source对象会覆盖target上面的同名的属性值，没有则直接添加  
-
-另一个例子
-```js
-const target = {}
-const source = { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233} // null不可以用键值省略的写法，会报syntaxError
-const returnedTarget = Object.assign(target, source)
-// const returnedTarget = Object.assign(target, {...source})
-console.log(target)  // { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233}
-console.log(returnedTarget) // 同上
-const target = {}
-const v1 = 'a'
-const v2 = null;
-const v3 = undefined;
-const v4 = Symbol('foo');
-const v5 = function() {}
-const returnedTargetDiff = Object.assign(target, v1, v2, v3, v4, v5) // 参数为单个对象的情况，会忽略null,undefined,symbol,function
-console.log(target, returnedTargetDiff) // {0: 'a'}  输出键为下标序号
-```
-
-对于属性值是对象的情况，拷贝的是对象的值(指针)，即无法实现深拷贝
-```js
-const source = {
-  a: 11,
-  b: {
-    bb: 22
-  }
-}
-const returnedTarget = Object.assign({}, source)
-returnedTarget.b.bb = 33
-console.log(source) // {a:11, b: {bb:33}}
-// 直接改变了原对象的值
-```
-
-使用JSON.parse(JSON.stringify({...}))可以实现不完整的深拷贝  
-更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
 
 ### 1.2 Object.create()
 
 参数：Object.create(proto, [propertiesObject]) 第二个参数可选， 是一个属性描述  
+
 `Object.create()`可以实现继承(因为可以显式指定原型)
+
 ```js
 const person = {
   isHuman: false,
@@ -124,7 +83,7 @@ console.dir(literalCreateObj)
 }
 // 可以看出Object.create({})创建的对象多了一层__proto__
 ``` 
-所以我们可以使用Object.create()方法指定自己的原型prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/article/inherit-prototype.md)
+所以我们可以使用Object.create()方法指定自己的原型prototype，可以用于构造函数继承，更多请看[继承与原型链](/js/inherit.md)
 
 ### 1.3 Object.defineProperty()
 
@@ -243,9 +202,67 @@ Object.defineProperties(object1, {
 console.log(object1.property1); // expected output: 42
 ```
 
-## Object.getOwnPropertyDescriptor() 与 Object.getOwnPropertyDescriptors()
+### 1.5 Object.assign()
 
-#### 获取单个或者多个属性的描述
+Object.assign(target, ...sources)  || (目标对象，源对象...)
+
+复制一个对象的可迭代属性到目标对象上，参数为多个对象，ES6新增 
+
+可用于浅拷贝，拓展运算符 `...` 也可以实现浅拷贝
+
+```js
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 } 
+```
+source对象会覆盖target上面的同名的属性值，没有则直接添加  
+
+另一个例子
+```js
+const target = {}
+const source = { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233} // null不可以用键值省略的写法，会报syntaxError
+const returnedTarget = Object.assign(target, source)
+// const returnedTarget = Object.assign(target, {...source})
+console.log(target)  // { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233}
+console.log(returnedTarget) // 同上
+const target = {}
+const v1 = 'a'
+const v2 = null;
+const v3 = undefined;
+const v4 = Symbol('foo');
+const v5 = function() {}
+const returnedTargetDiff = Object.assign(target, v1, v2, v3, v4, v5) // 参数为单个对象的情况，会忽略null,undefined,symbol,function
+console.log(target, returnedTargetDiff) // {0: 'a'}  输出键为下标序号
+```
+
+对于属性值是对象的情况，拷贝的是对象的值(指针)，即无法实现深拷贝
+```js
+const source = {
+  a: 11,
+  b: {
+    bb: 22
+  }
+}
+const returnedTarget = Object.assign({}, source)
+returnedTarget.b.bb = 33
+console.log(source) // {a:11, b: {bb:33}}
+// 直接改变了原对象的值
+```
+
+使用JSON.parse(JSON.stringify({...}))可以实现不完整的深拷贝  
+更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
+
+
+### 1.6 Object.getOwnPropertyDescriptor()
+
+获取单个属性的描述，是否可修改，可枚举等等
 
 ```js
 const obj = {
@@ -255,9 +272,14 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
 // 输出： {configurable: true, enumerable: true, value: 1, writable: true}
 ```
 
-### 1.5 Object.getOwnPropertyNames()
+### 1.6 Object.getOwnPropertyDescriptors()
 
-遍历对象自身属性
+获取多个属性的描述
+
+### 1.7 Object.getOwnPropertyNames()
+
+遍历对象自身属性，与Object.keys()类似
+
 ```js
 const object1 = {
   a: 1,
@@ -354,21 +376,12 @@ object2:
 console.log(Object.getOwnPropertyNames(objectInstance));  // ["a", "d"]
 ``` 
 
-### 1.7 Object.keys()
-判断是否是对象自身属性
-```js
-const object1 = {
-  a: 'somestring',
-  b: 42,
-  c: false
-};
-
-console.log(Object.keys(object1)); // 输出: Array ["a", "b", "c"]
-```
-
 ## 2. Object原型上上的方法(Methods of the Object prototype)
 
 ### 2.1 Object.prototype.toString()
+
+这个方法也可以判断js的数据类型，比如`Object.prototype.toString.call(a)`
+
 ```js
 const obj = {name: 'jack'}
 console.log(obj.toString()) // [object Object]
@@ -379,7 +392,9 @@ console.dir(JSON.parse(obj.toString())) // SyntaxError: Unexpected token o in JS
 console.log(JSON.parse(JSON.stringify(obj))) // {name: "jack"}
 ```
 ### 2.2 Object.prototype.toLocaleString()
+
 转换时间格式用
+
 ```js
 console.log(new Date().toLocaleString()) // Sat Jul 27 2019 16:30:55 GMT+0800 (中国标准时间) 转换成 2019/7/27 下午4:30:55
 ```
@@ -389,6 +404,7 @@ console.log(new Date().toLocaleString()) // Sat Jul 27 2019 16:30:55 GMT+0800 (�
 用于把对象转换成原始值，如string...待补充
 
 ### 2.4 Object.prototype.hasOwnProperty()
+
 判断是否是一个对象的自身属性，而不是原型prototype上面的属性
 ```js
 const object1 = new Object();
@@ -400,6 +416,7 @@ console.log(object1.hasOwnProperty('hasOwnProperty')); // object1 prototype的�
 ```
 
 ### 2.5 Object.prototype.isPrototypeOf()
+
 ```js
 function object1() {}
 function object2() {}
