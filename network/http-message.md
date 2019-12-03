@@ -3,10 +3,14 @@
 ## 通用--
 
 ## 客户端发送的http请求头
+
+```js
 Request URL:  
 Request Method:  
 User-Agent: 
 Content-Type: 要发送的数据类型，服务端会根据不同类型做不同处理，常见类型有...
+```
+
 ```js
 // Content-Type参数一般media-type、charset、boundary三种。boundary指明请求体中每部分的分隔符
 Content-Type: text/html; charset=utf-8
@@ -29,18 +33,23 @@ Referer:   // 告诉服务器我来自哪里，referer表示请求文件的网�
 ## 服务端发送的http响应头
 在linux命令行输入`curl -v www.baidu.com`，可以看到response headers，每个网站响应头可能有小的差异
 
+```js
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8  // 响应文件的类型
 Last-Modified: Tue, 16 Feb 2016 07:44:59 GMT // 资源上次更改的时间
 Etag: "Fr6FTw9wdkmOgi9FyBjKPDIY4zd8.gz" //  http的Entity Tag，标识文件资源的版本号
 Server: Microsoft-IIS/8.0 // 用的何种服务器
+```
 
 对于使用了CORS的服务器端，还会有下面几个响应头字段： 
+
+```js
 Access-Control-Allow-Headers: Authorization,content-type,token,grant_type
 Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE, PATCH
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Credentials: true  // 是否允许设置cookie
 Access-Control-Max-Age: 86400  // 每隔多久发送一次预检请求(OPTIONS)
+```
 
 
 ## 参考
