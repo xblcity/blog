@@ -30,6 +30,7 @@ themeConfig :
         - /js/object
         - /js/inherit
         - /js/object-methods 
+        - /js/knowledge-points
     - title: JS进阶 
       collapsable: false
       sidebarDepth: 2
@@ -107,6 +108,5 @@ themeConfig :
         - /others/job-answers  
         - /others/words  
         - /others/questions
-        - /others/little-points
 
     
