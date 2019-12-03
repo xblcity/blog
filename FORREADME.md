@@ -16,6 +16,8 @@
 
   - [Object构造器及原型上的方法](/js/object-methods.md)
 
+  - [JS细碎知识点](/js/knowledge-points.md)
+
 - JS进阶
 
   - [关于数组的各种操作](/js/array.md)
@@ -114,5 +116,3 @@
 - [一些名词对应的英文](/others/words.md)
 
 - [我的疑问/待做](/others/questions.md)
-
-- [细碎知识点](/others/little-points.md)

@@ -16,6 +16,8 @@
 
   - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js/object-methods.md)
 
+  - [JS细碎知识点](https://github.com/xblcity/blog/blob/master/js/knowledge-points.md)
+
 - JS进阶
 
   - [关于数组的各种操作](https://github.com/xblcity/blog/blob/master/js/array.md)
@@ -115,4 +117,3 @@
 
 - [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
 
-- [细碎知识点](https://github.com/xblcity/blog/blob/master/others/little-points.md)
