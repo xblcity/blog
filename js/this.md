@@ -4,7 +4,7 @@
 
 - this不指向函数本身
 - this是在函数被调用时发生的绑定，也就是说，函数未调用之前是没有this的，它指向谁完全取决于函数在哪里被调用
-- 每一个函数被调用时，都会创建一个活动记录(执行环境)，这个记录会包含函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个记录的一个属性，会在函数的执行过程中用到，执行环境不存在，this也就不存在了
+- **每一个函数被调用**时，都会创建一个**执行环境**(上下文环境)，执行环境中的**活动对象**, 含有函数在哪里调用(调用栈)，函数的调用方式，传入的参数等信息，this是这个活动对象的一个属性，会在函数的执行过程中用到，执行环境不存在，this也就不存在了，如果没有特殊指定，活动对象的this是window
 
 ## 1. this的绑定规则
 
@@ -175,10 +175,9 @@ console.dir(descendant)
 ## 2.ES6箭头函数中this的词法特征
 
 - ES6新增一种特殊函数类型：箭头函数，箭头函数无法使用上述四条this绑定的规则
-- 箭头函数内部不存在this，但是通过作用域链，可以查找到this变量，如果外层作用域(函数)中有this，则箭头函数this与外层作用域this一致，否则会向上查找，直到全局作用域
+- 箭头函数内部不存在this，但是通过作用域链，可以查找到this变量，如果外层作用域(函数)中有this((非默认绑定的this)，则箭头函数this与外层作用域this一致，否则会向上查找，直到全局作用域
 - 箭头函数的this无法被直接修改，但是可以通过改变外层函数的this指向来间接改变箭头函数里的this  
 - 箭头函数没有构造函数constructor, 不可以使用 new 调用
-- ~~回调函数箭头函数内部的this是箭头函数父函数的父函数的this，与普通箭头函数this表现不一致~~
 
 ### 2.1 箭头函数实例
 
@@ -251,6 +250,7 @@ obj.foo() // hello, 隐式绑定, foo this是obj外面的this，即window
 ```
 
 ### 2.4 this的一个例子
+
 ```js
 var a = 20 
 // 用const a = 20 无法得到想要的输出,因为此时a没有被绑定到window对象上
@@ -274,7 +274,7 @@ bar() // 执行bar函数  60
 new bar() // 60
 ```
 
-### 2.5 回调箭头函数里面的this，与父函数的父函数this一致
+### 2.5 回调箭头函数里面的this，与普通函数或者箭头函数表现一致
 
 ```js
 function bar() {
@@ -294,11 +294,11 @@ bar.call(outObj)
 ```js
 function foo() {
   const self = this
-  window.setTimeout(function() { 
+  (window.)setTimeout(function() { 
     console.log(self) // obj
     console.log(this) // window 隐式绑定/默认绑定
   }, 1000)
-  window.setTimeout(() => { 
+  (window.)setTimeout(() => { 
     console.log(this) // obj，回调函数的this
   }, 2000)
 }
