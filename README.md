@@ -16,15 +16,17 @@
 
   - [Object构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js/object-methods.md)
 
-  - [JS细碎知识点](https://github.com/xblcity/blog/blob/master/js/knowledge-points.md)
+  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/copy.md)
 
-- JS进阶
+  - [JS细碎知识点](https://github.com/xblcity/blog/blob/master/js/knowledge-points.md)
 
   - [关于数组的各种操作](https://github.com/xblcity/blog/blob/master/js/array.md)
 
-  - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
+  - [常用工具函数](https://github.com/xblcity/blog/blob/master/js/utils.md)
 
-  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js/copy.md)
+- JS进阶
+
+  - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
 
   - [js任务队列与执行机制](https://github.com/xblcity/blog/blob/master/js/eventloop.md)
 

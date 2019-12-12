@@ -16,15 +16,17 @@
 
   - [Object构造器及原型上的方法](/js/object-methods.md)
 
-  - [JS细碎知识点](/js/knowledge-points.md)
+  - [赋值与深浅拷贝](/js/copy.md)
 
-- JS进阶
+  - [JS细碎知识点](/js/knowledge-points.md)
 
   - [关于数组的各种操作](/js/array.md)
 
-  - [call,apply,bind实现](/js/call.md)
+  - [常用工具函数](/js/utils.md)
 
-  - [赋值与深浅拷贝](/js/copy.md)
+- JS进阶
+
+  - [call,apply,bind实现](/js/call.md)
 
   - [js任务队列与执行机制](/js/eventloop.md)
 
