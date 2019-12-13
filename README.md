@@ -42,7 +42,7 @@
 
 - [super关键字](https://github.com/xblcity/blog/blob/master/es6/super.md)
 
-- [Promise与处理错误](https://github.com/xblcity/blog/blob/master/es6/promise.md)
+- [Promise与AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
 
 ### Typescript
 
@@ -68,9 +68,11 @@
 
 - [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
-### Vue
+### Node
 
-- [Vuepress使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
+- [Node知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
+
+- [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
 
 ### 工具
 
@@ -90,11 +92,9 @@
 
   - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
-### Node
+### Vue
 
-- [Node知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
-
-- [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
+- [Vuepress使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
 
 ### 网络
 

@@ -7,7 +7,7 @@ const countDown = (ms = 60, cb = f => f) => {  // 短信服务(Short Message Ser
   const timer = setInterval(() => {
     ms --
     if (ms < 1) {
-      clearInterval(timer)
+      clearInterval(timer) // 当倒计时为0时，自动清理定时器，否则需要在外面手动清理
       cb(true, ms) // 执行回调函数
       return
     }
@@ -16,3 +16,7 @@ const countDown = (ms = 60, cb = f => f) => {  // 短信服务(Short Message Ser
   return timer // 返回timerID
 }
 ```
+
+## 节流
+
+## 防抖

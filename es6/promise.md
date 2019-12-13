@@ -1,6 +1,55 @@
-# Promise与副作用处理以及XHR
+# Promise与AJAX
 
-## 1. Promise概念
+Promise可以解决异步代码的执行顺序问题，通过then实现异步函数的链式调用
+
+在控制台打印Promise函数
+
+```js
+// Promise函数对象
+{
+  all: ƒ all()
+  allSettled: ƒ allSettled()
+  arguments: (...)
+  caller: (...)
+  length: 1
+  name: "Promise"
+  prototype: Promise {Symbol(Symbol.toStringTag): "Promise", constructor: ƒ, then: ƒ, catch: ƒ, finally: ƒ} // 原型对象
+  race: ƒ race()
+  reject: ƒ reject()
+  resolve: ƒ resolve()
+  Symbol(Symbol.species): (...)
+  get Symbol(Symbol.species): ƒ [Symbol.species]()
+  __proto__: ƒ ()
+  [[Scopes]]: Scopes[0]
+}
+
+// prototype对象
+{
+  catch: ƒ catch()
+  constructor: ƒ Promise()
+  finally: ƒ finally()
+  then: ƒ then()
+  Symbol(Symbol.toStringTag): "Promise"
+  __proto__: Object
+}
+```
+
+## 1. Promise构造函数及原型
+
+### 1.1 构造函数(非实例)上的方法
+
+- Promise.resolve(reason)，返回一个状态为fulfilled的Promise对象
+- Promise.reject(value)，返回一个状态为rejected的Promise对象
+- Promise.race()
+- Promise.all(iterable), 传入一个可迭代对象，如数组
+
+### 1.2 构造函数/实例 原型上的方法
+
+- Promise.prototype.then(onFulfilled, onRejected) ，返回Promise对象，并且可以被链式调用 ，then方法可以传入两个参数，第二个参数用于处理错误
+- Promise.prototype.catch(onRejected) ， 返回Promise对象，并且可以被链式调用 
+- Promise.prototype.finally(onFinally)
+
+### 1.3 基础使用
 
 Promise是一个构造函数
 
@@ -9,7 +58,8 @@ Promise是一个构造函数
 - Promise构造函数执行时立即调用executor，当resolve函数执行时，promise的状态变为fulfilled(完成)，当reject函数执行时,promise状态变为rejected(失败)、
 - exector函数的返回值会被忽略，exector返回的是Promise对象 
 
-## 2. 基本用法
+
+#### sleep
 
 ```js
 const myPromise = new Promise(function(resolve, reject) {
@@ -22,9 +72,8 @@ myPromise.then(value => {
 })
 ```
 
-Promise原型对象上有then和catch两个方法，它们都返回Promise对象，并且可以被链式调用  
+#### 捕获错误
 
-其中then方法可以传入两个参数，第二个参数用于处理错误
 ```js
 const myPromise = new Promise(function(resolve, reject) {
   setTimeout(function() {
@@ -45,20 +94,10 @@ myPromise.then(value => {
   console.error(err) // 'error'
 })
 ```
-### 2.1 Promise提供的方法
-```js
-Promise.resolve(reason) // 返回一个状态为fulfilled的Promise对象
-Promise.reject(value) // 返回一个状态为rejected的Promise对象
-Promise.all(itrable) // 传入一个可迭代对象，如数组
-```
 
-### 2.2 Promise原型上的方法
-```js
-Promise.prototype.then(onFulfilled, onRejected)
-Promise.prototype.catch(onRejected)
-Promise.prototype.finally(onFinally)
-```
-### 2.3 Promise实现ajax get请求
+## 2. Promise与ajax
+
+### 2.1 Promise实现ajax get请求
 ```js
 function myAsyncFunction(url) {
   return new Promise((resolve, reject) => {
@@ -76,7 +115,7 @@ myAsyncFunction('a.example.com').then(response => {
 })
 ```
 
-## 2.4 处理Promise的错误
+## 2.2 处理Promise的错误
 
 获取数据的操作是会有副作用(effect)的，所以我们需要处理数据请求的报错  
 常用的数据请求库axios就是基于XMLHttpRequest与Promise的封装  

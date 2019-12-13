@@ -40,7 +40,7 @@
 
 - [super关键字](/es6/super.md)
 
-- [Promise与处理错误](/es6/promise.md)
+- [Promise与AJAX](/es6/promise.md)
 
 - [模块化应用](/es6/module.md)
 
@@ -68,9 +68,11 @@
 
 - [Jest&Enzyme测试框架的使用](/react/react-test.md)
 
-### Vue
+### Node
 
-- [Vuepress使用注意事项](/vue/vuepress.md)
+- [Node知识点](/node/little-points.md)
+
+- [blog后端思路](/node/blog.md)
 
 ### 工具
 
@@ -90,11 +92,10 @@
 
   - [第三方工具集](/tools/tool.md)
 
-### Node
+### Vue
 
-- [Node知识点](/node/little-points.md)
+- [Vuepress使用注意事项](/vue/vuepress.md)
 
-- [blog后端思路](/node/blog.md)
 
 ### 网络
 
