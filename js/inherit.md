@@ -177,7 +177,7 @@ child.getValue() // 1
 child instanceof Parent // true
 ```
 
-## 2.ES6的extends方式实现继承
+## 2.ES6的extends/super方式实现继承
 
 ```js
 class Parent {
