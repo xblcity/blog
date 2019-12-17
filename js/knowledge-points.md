@@ -51,6 +51,19 @@ b instanceof Function
 Array.isArray([1]) // true Array构造函数的实例属性
 ```
 
+## 判断数据是否为空
+
+对于后端传来的数据，经常会有null, [], {}这种情况，需要对其做非空判断
+
+```js
+// 传来的数据 {a: null}
+const receivedData = {a: null}
+const {a = {}, b = {}} = receivedData
+const {a1} = a // Uncaught TypeError: Cannot destructure property 'a1' of 'a' as it is null.
+const {a1} = a || {} // 可以正常执行
+const {b1} = b // 可以正常执行
+```
+
 ## 对象的普通属性和可计算属性
 
 普通属性可以通过`obj.propertyName`访问，也可以通过`obj[propertyName]`访问，后者propertyName必须是字符串。
