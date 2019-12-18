@@ -31,7 +31,7 @@ Object.prototype.toString.call(2) // [object Number]
 
 instanceof 运算符用于检测**构造函数**(一般首字母大写)的 prototype 属性,是否出现在某个实例对象的原型链上。
 
-比如，检测Array的prototype属性 是否出现在 实例对象 `[1,2]`的原型链上 
+比如，`[1,2] instanceof Array` 检测Array的prototype属性 是否出现在 数组 `[1,2]`的原型链上 
 
 由于引用类型的prototype尽头是Object，所以`引用类型 instanceof Object`结果永远为true
 ```js

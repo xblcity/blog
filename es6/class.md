@@ -1,5 +1,21 @@
 # ES6实现类
 
+一个比较全面的class例子、
+
+```js
+class Point {
+  constructor(name, age) { // constructor是class上面的一个特殊的属性/方法，用于生成实例对象，使用new调用传入参数
+    this.name = name
+    this.age = age
+  }
+  // 普通方法，挂载到Point.prototype上面、
+  sayName() {
+    console.log(this.name)
+  }
+  // 静态方法，不能
+}
+```
+
 ```js
 class Point6 {
   job = 'ddd'

@@ -2,7 +2,7 @@
 
 - 一维数组去重
 - 对象数组去重
-- 二维数组处理成一维数组
+- 二维数组转一维数组，从数组里取对象并合并对象成数组
 - 对路由数组进行递归处理
 - 数组循环中止
 
@@ -30,4 +30,64 @@ let arr = [
 ]
 
 ```
+
+## 二维数组转一维数组，从数组里取对象并合并对象成数组
+
+```js
+
+// 数据格式
+const arrList = [
+  [
+    type: 'home',
+    news: [
+      {
+        name: 'home1',
+        content: 'home111'
+      },
+      {
+        name: 'home2',
+        content: 'home222'
+      }
+    ]
+  ],
+  [
+    type: 'user',
+    news: [
+      {
+        name: 'user1',
+        content: 'user111'
+      },
+      {
+        name: 'user2',
+        content: 'user222'
+      }
+    ]
+  ],
+  [
+    type: 'friends',
+    news: [
+      {
+        name: 'friends1',
+        content: 'friends111'
+      }
+    ]
+  ],
+]
+```
+
+如上所示，是一个二维数据，我们想分别取出数组的第一项和剩余的项，
+
+```js
+const [arr1, ...arr2] = arrList
+```
+
+现在arr1和arr2都是一维数组了,我们想把arr数组里面每一项的news对象数据，把他们合并为一个数组
+
+```js
+const newsList = news.reduce((prev, item) => {
+  return [...prev, ...item.News]
+}, [])
+```
+
+reduce第二个参数必须要给，否则由于第一个prev不是可迭代的而报错(因为第一个是{type: ....,}这种形式的对象，不可迭代，不可使用...展开运算符)
 
