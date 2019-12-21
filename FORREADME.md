@@ -1,6 +1,6 @@
 # 小白龙的博客
 
-记录前端学习的笔记，总结记录成长的过程。本人接触code的时间不长，文章质量可能会有差异。
+记录前端学习的笔记，总结、记录成长的过程。构建自己的知识体系。
 
 ### JS原生
 
@@ -38,35 +38,31 @@
 
 - [类](/es6/class.md)
 
-- [super关键字](/es6/super.md)
-
 - [Promise与AJAX](/es6/promise.md)
 
 - [模块化应用](/es6/module.md)
+
+### React
+
+- [React生命周期总结&应用](/react/lifecycle.md)
+
+- [React-Hooks总结&实践](/react/react-hooks.md)
+
+- [Redux/React-Redux](/react/redux.md)
+
+- [Redux中间件](/react/redux-middleware.md)
+
+- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+
+- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+
+- [Jest/Enzyme测试框架初识](/react/react-test.md)
 
 ### Typescript
 
 - [Typescript基础类型与概念](/typescript/ts-basic.md)
 
 - [用TS配置axios拦截器](/typescript/ts-axios.md)
-
-### React
-
-- [react hooks理解](/react/react-hooks.md)
-
-- [redux概念与理解](/react/redux.md)
-
-- [redux中间件](/react/redux-middleware.md)
-
-- [使用react-redux分发状态](/react/react-redux.md)
-
-- [React生命周期](/react/lifecycle.md)
-
-- [umi 动态路由获取数据方案](/react/dynamic-data.md)
-
-- [react展示组件的一些理解](/react/c-interface.md)
-
-- [Jest&Enzyme测试框架的使用](/react/react-test.md)
 
 ### Node
 

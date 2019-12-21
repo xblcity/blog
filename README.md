@@ -1,6 +1,6 @@
 # blog
 
-记录前端学习的笔记，总结记录成长的过程。本人接触code的时间不长，文章质量可能会有差异。 观看线上版本 -> [点击查看](https://blog.xblcity.com)
+记录前端学习的笔记，总结、记录成长的过程。构建自己的知识体系。 观看线上版本 -> [点击查看](https://blog.xblcity.com)
 
 ### JS原生
 
@@ -38,35 +38,31 @@
 
 - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
 
+- [Promise与AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
+
 - [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
 
-- [super关键字](https://github.com/xblcity/blog/blob/master/es6/super.md)
+### React
 
-- [Promise与AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
+- [React生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+
+- [React-Hooks总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+
+- [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
+
+- [Redux中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
+
+- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+
+- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+
+- [Jest/Enzyme测试框架初识](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
 ### Typescript
 
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-basic.md)
 
 - [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/typescript/ts-axios.md)
-
-### React
-
-- [react hooks理解](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-
-- [redux概念与理解](https://github.com/xblcity/blog/blob/master/react/redux.md)
-
-- [redux中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-
-- [使用react-redux分发状态](https://github.com/xblcity/blog/blob/master/react/react-redux.md)
-
-- [React生命周期](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
-
-- [umi 动态路由获取数据方案](https://github.com/xblcity/blog/blob/master/react/dynamic-data.md)
-
-- [react展示组件的一些理解](https://github.com/xblcity/blog/blob/master/react/ui-component.md)
-
-- [Jest&Enzyme测试框架的使用](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
 ### Node
 

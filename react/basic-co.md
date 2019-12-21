@@ -1,4 +1,7 @@
-# 关于react组件
+# 基础组件
+
+## 关于react组件的一点思考
+
 WHY - HOW - WHAT
 
 ### WHY

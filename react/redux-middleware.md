@@ -1,4 +1,4 @@
-# redux中间件
+# Redux中间件
 
 在redux里面，有一个重要的问题没有处理：异步请求。  
 dispatch action 之后， reducer立即计算出state, 这是同步更新state。  

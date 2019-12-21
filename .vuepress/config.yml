@@ -50,12 +50,6 @@ themeConfig :
         - /es6/super
         - /es6/promise
         - /es6/module
-    - title: Typescript
-      collapsable: false
-      sidebarDepth: 2
-      children:
-        - /typescript/ts-basic
-        - /typescript/ts-axios
     - title: React
       collapsable: false
       sidebarDepth: 2
@@ -64,10 +58,15 @@ themeConfig :
         - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
-        - /react/react-redux
-        - /react/dynamic-data
-        - /react/ui-component
+        - /react/basic-co
+        - /react/complex-co
         - /react/react-test
+    - title: Typescript
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /typescript/ts-basic
+        - /typescript/ts-axios
     - title: Node
       collapsable: false
       sidebarDepth: 2
