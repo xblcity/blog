@@ -47,7 +47,6 @@ themeConfig :
       sidebarDepth: 2
       children:
         - /es6/class
-        - /es6/super
         - /es6/promise
         - /es6/module
     - title: React
