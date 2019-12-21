@@ -108,9 +108,11 @@
 
 ### 其他
 
-- [记录面试题](/others/job-interview.md)
+- [JS面试题](/others/js-interview.md)
 
-- [带答案面试题](/others/job-answers.md)
+- [框架面试题](/others/lib-interview.md)
+
+- [css/网络/等面试题](/others/other-interview.md)
 
 - [一些名词对应的英文](/others/words.md)
 

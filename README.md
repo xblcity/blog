@@ -107,9 +107,11 @@
 
 ### 其他
 
-- [记录面试题](https://github.com/xblcity/blog/blob/master/others/job-interview.md)
+- [JS面试题](https://github.com/xblcity/blog/blob/master/others/js-interview.md)
 
-- [带答案面试题](https://github.com/xblcity/blog/blob/master/others/job-answers.md)
+- [框架面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
+
+- [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
 
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
 
