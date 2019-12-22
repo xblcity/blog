@@ -133,3 +133,13 @@ Form.create({
 ```js
 
 ```
+
+## PC端特殊的options select
+
+在地图找房中添加表单，用于用户输入条件
+
+![表单选项卡](./images/co_options/option_pc2.jpg)
+
+## 手机端单选及复选组件封装
+
+h5端的选择组件封装比较复杂一点
