@@ -110,7 +110,7 @@
 
 - [JS面试题](/others/js-interview.md)
 
-- [框架面试题](/others/lib-interview.md)
+- [框架/库/实践面试题](/others/lib-interview.md)
 
 - [css/网络/等面试题](/others/other-interview.md)
 

@@ -109,7 +109,7 @@
 
 - [JS面试题](https://github.com/xblcity/blog/blob/master/others/js-interview.md)
 
-- [框架面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
+- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
 
 - [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
 
