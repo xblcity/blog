@@ -20,7 +20,7 @@
 - webpack load原理
 - webpack如何优化
 - webpack如何自动分离本地和线上环境
-- webpack基本配置，距离哪些loader和plugin
+- webpack基本配置，具体哪些loader和plugin
 
 ## 实践应用
 
