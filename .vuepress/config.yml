@@ -57,6 +57,7 @@ themeConfig :
         - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
+        - /react/async
         - /react/basic-co
         - /react/complex-co
         - /react/react-test

@@ -52,9 +52,11 @@
 
 - [Redux中间件](/react/redux-middleware.md)
 
-- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+- [异步的实践&注意事项](/react/async.md)
 
-- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+- [基础组件](/react/basic-co.md)
+
+- [复杂业务组件](/react/complex-co.md)
 
 - [Jest/Enzyme测试框架初识](/react/react-test.md)
 
