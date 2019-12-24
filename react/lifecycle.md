@@ -59,6 +59,8 @@ render()
 
 componentDidUpdate()
 
+如果在该生命周期中无条件的使用了setState，会造成死循环
+
 组件更新完成后调用
 
 ### 卸载阶段
