@@ -5,6 +5,7 @@
 - [对象的普通属性和可计算属性](#对象的普通属性和可计算属性)
 - [多个箭头函数在一行](#多个箭头函数在一行)
 - [JS里面属性名加双方括号[[]]是什么意思](#JS里面属性名加双方括号[[]]是什么意思)
+- [关于return关键字](#关于return关键字)
 
 ## 判断数据类型
 
@@ -129,3 +130,118 @@ fooFunc是函数柯里化的应用？
 ## JS里面属性名加双方括号[[]]是什么意思
 
 在控制台打印某一构造函数，经常会出现加双方括号的属性，双方括号代表这是JavaScript引擎内部使用的属性/方法，可以帮助debug（点一下[[FunctionLocation]]就能跳到定义，点一下[[Scopes]]就能查看闭包），但是正常JavaScript代码是取不到这些属性的。[es6中对象属性双方括号是什么意思](https://segmentfault.com/q/1010000015611521/)
+
+## 关于return关键字
+
+```js
+function abc () {
+  if (a === 1) {
+    if (b === 2) {
+      if (c === 3) {
+        return c
+      }
+    } else {
+      return b
+    }
+  }
+}
+let a = 1, b = 2, c = 3
+abc() // 3
+let a = 1, b = 3, c = 3
+abc() // 3
+let a = 3
+abc() // undefined
+
+```
+
+## switch-case
+
+```js
+const userInfo = {
+  isNew: false,
+  newID: '123',
+  oldID: '456'
+}
+
+const getValue = function (type) {
+  switch(type) {
+    case 'new':
+      return {
+        newID: userInfo.newID
+      }
+    case 'old':
+      return {
+        oldID: userInfo.oldID
+      }
+    default:
+      return {}
+  }
+}
+getValue('new') // {newID: "123"}
+
+const getValue = function (type) {
+  switch(type) {
+    case 'new':
+      if(userInfo.isNew) {
+        return {
+          newID: userInfo.newID
+        }
+      }
+    case 'old':
+      if(!userInfo.isNew) {
+        return {
+          oldID: userInfo.oldID
+        }
+      }
+    default:
+      return {}
+  }
+}
+getValue('new') // {oldID: "456"}
+
+// 对于在case里面嵌套的语句，需要在case一级break或者return
+const getValue = function (type) {
+  switch(type) {
+    case 'new':
+      if(userInfo.isNew) {
+        return {
+          newID: userInfo.newID
+        }
+      }
+      break
+    case 'old':
+      if(!userInfo.isNew) {
+        return {
+          oldID: userInfo.oldID
+        }
+      }
+      break
+    default:
+      return {}
+  }
+}
+getValue('new') // undefined
+
+const getValue = function (type) {
+  switch(type) {
+    case 'new':
+      if(userInfo.isNew) {
+        return {
+          newID: userInfo.newID
+        }
+      }
+      return false
+    case 'old':
+      if(!userInfo.isNew) {
+        return {
+          oldID: userInfo.oldID
+        }
+      }
+      return false
+    default:
+      return {}
+  }
+}
+getValue('new') // false
+getValue('old') // {oldID: "456"}
+```
