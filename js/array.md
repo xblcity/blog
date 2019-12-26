@@ -1,11 +1,125 @@
 # 关于数组的各种数据操作
 
+- Array对象的遍历方法
 - 一维数组去重
-- 数组每一项为引用类型的去重
+- 数组每一项为对象(引用类型)的去重
 - 二维数组转一维数组，从数组里取对象并合并对象成数组
 - 对路由数组进行递归处理
 - 对后端传回树结构数据进行递归处理
 - 数组循环中止
+
+## Array对象的遍历方法
+
+- for-in, 可以跳出循环
+- for-of, 可以跳出循环，使用自带的迭代器
+
+打断循环的例子(如果是数组的话，建议用find,filter等实现)
+
+```js
+let info = {
+  xblcity: {
+    age: 17,
+    message: '年龄过小'
+  },
+  xbl: {
+    age: 37,
+    message: '年龄过大'
+  }
+}
+
+// 现在我们想获取info的第一个对象的message
+let message
+for (let i = 0; i < Object.keys(info).length; i ++) {
+  let findObj = info[Object.keys(info)[i]]
+  message = findObj.message
+  break
+}
+console.log(message) // 年龄过小
+```
+
+接着上述的例子，由于对象没有自带的迭代器，我们无法通过`for(item of info) {console.log(item)}`对其进行遍历，可以给该对象定义`Symbol.iterator`属性，使用`for-of`的时候会调用该方法
+
+```js
+let info = {
+  xblcity: {
+    age: 17,
+    message: '年龄过小'
+  },
+  xbl: {
+    age: 37,
+    message: '年龄过大'
+  }
+}
+info[Symbol.iterator]
+```
+
+
+- forEach  arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
+
+不支持链式操作(因为没有返回值), 不能跳出循环，可以在迭代中使用`arr[index] = xxx`进行改变数组的操作
+
+### 参数均为函数，且函数都有三个可选参数，第一个是项，第二个是下标，第三个是数组本身。
+
+- every 数组的每一次循环都返回true，则返回true
+- some 有一项循环返回true，则返回true，对性能比较友好
+- find 返回符合的 **第一个项**， 否则返回undefined
+- findIndex 返回符合的项的**下标**
+- indexOf 返回符合项的下标，与findIndex类似，用于一元简单数组
+- filter 返回符合条件的数组
+- map  "map"即"映射"，也就是原数组被"映射"成对应新数组。 返回 数组每一项 的 全新值，**每一次遍历都要有return值，否则返回值是undefined**
+
+```js
+let arr = [1,2,3];
+arr = arr.map(item => { return item * 2 })
+```
+
+### sort() 对数组进行排序 会改变原数组
+
+```js
+const arr = [
+  {
+    name: 'xbl',
+    age: 17
+  },
+  {
+    name: 'city',
+    age: 20
+  },
+  {
+    name: 'xblcity',
+    age: 18
+  }
+]
+// 从大到小进行排序
+let newArr = arr.sort((current, next) => { 
+  if(current.age < next.age) { // 前面的值 小于 后面的值, 交换顺序
+    return 1  //  返回true, next在前，current在后
+  } else if (current.age > next.age) {
+    return -1 // 返回false, current在前，next在后
+  } else {
+    return 0 // 保持原来的顺序
+  }
+})
+// 简洁写法
+let anotherNewArr = arr.sort((current, next) => { 
+  return next.age - current.age  // 小的在前，交换顺序
+})
+console.log(newArr)
+console.log(anotherNewArr)
+console.log(arr)
+```
+
+### reduce() 对数组进行计算
+
+参数有两个，第一个是函数，函数有四个可选参数，上一次返回值，项，下标，原数组。 第二个参数用于第一次计算的返回值
+
+```js
+const arr = [1,2,3,4,5]
+arr.forEach(item => {
+  console.log(item)
+  if (item > 3) return
+})
+```
 
 ## 一维数组去重
 ```js
@@ -13,7 +127,8 @@ let arr = [1,2,2,3,3,5]
 let newArr = new Set(arr) // [1,2,3,5]
 ```
 
-## 对象数组去重
+## 数组每一项为对象(引用类型)的去重
+
 ```js
 let arr = [
   {
@@ -29,7 +144,8 @@ let arr = [
     age: 20
   }
 ]
-
+const map = new Map()
+const newArr = arr.filter(item => !map.has(item['ya']) && map.set(item['ya'])) 
 ```
 
 ## 二维数组转一维数组，从数组里取对象并合并对象成数组
