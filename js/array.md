@@ -13,7 +13,7 @@
 - for-in, 可以跳出循环
 - for-of, 可以跳出循环，使用自带的迭代器
 
-打断循环的例子(如果是数组的话，建议用find,filter等实现)
+打断循环的例子(如果是数组的话，建议用find,filter等实现)，在使用rc-form获取错误信息的时候用到了
 
 ```js
 let info = {
@@ -122,6 +122,7 @@ arr.forEach(item => {
 ```
 
 ## 一维数组去重
+  
 ```js
 let arr = [1,2,2,3,3,5]
 let newArr = new Set(arr) // [1,2,3,5]
