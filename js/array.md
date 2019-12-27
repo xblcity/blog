@@ -4,11 +4,9 @@
 - 一维数组去重
 - 数组每一项为对象(引用类型)的去重
 - 二维数组转一维数组，从数组里取对象并合并对象成数组
-- 对路由数组进行递归处理
 - 对后端传回树结构数据进行递归处理
-- 数组循环中止
 
-## Array对象的遍历方法
+## 1. Array对象的遍历方法
 
 - for-in, 可以跳出循环
 - for-of, 可以跳出循环，使用自带的迭代器
@@ -121,14 +119,14 @@ arr.forEach(item => {
 })
 ```
 
-## 一维数组去重
+## 2. 一维数组去重
   
 ```js
 let arr = [1,2,2,3,3,5]
 let newArr = new Set(arr) // [1,2,3,5]
 ```
 
-## 数组每一项为对象(引用类型)的去重
+## 3. 数组每一项为对象(引用类型)的去重
 
 ```js
 let arr = [
@@ -149,7 +147,7 @@ const map = new Map()
 const newArr = arr.filter(item => !map.has(item['ya']) && map.set(item['ya'])) 
 ```
 
-## 二维数组转一维数组，从数组里取对象并合并对象成数组
+## 4. 二维数组转一维数组，从数组里取对象并合并对象成数组
 
 ```js
 
@@ -209,7 +207,7 @@ const newsList = news.reduce((prev, item) => {
 
 reduce第二个参数必须要给，否则由于第一个prev不是可迭代的而报错(因为第一个是{type: ....,}这种形式的对象，不可迭代，不可使用...展开运算符)
 
-## 对后端传回字段进行递归处理
+## 5. 对后端传回字段进行递归处理
 
 ```js
 // 如下字段
@@ -245,8 +243,17 @@ const data = [
 ]
 ```
 
-现在的需求是把字段ID变为value, Name改为value, Items改成children 
+为了使数据能够适配，ant-mobile的多级选择，现在的需求是把字段ID变为value, Name改为value, Items改成children 
 
 ```js
-
+const filterData = (data) => {
+  return data.map(item => {
+    const { Name, ID, Items = [] } = item
+    return {
+      label: Name,
+      value: ID,
+      children: (Items && Items.length > 0) ? filterData(Items) : Items
+    }
+  })
+}
 ```

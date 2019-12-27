@@ -6,10 +6,11 @@
 - [多个箭头函数在一行](#多个箭头函数在一行)
 - [JS里面属性名加双方括号[[]]是什么意思](#JS里面属性名加双方括号[[]]是什么意思)
 - [关于return关键字](#关于return关键字)
+- [switch-case](#switch-case)
 
 ## 判断数据类型
 
-### 6种基本数据类型(基本值类型)
+### 7种基本数据类型(基本值类型)
 
 ```js
 typeof 12 === "number" // number类型没有length属性
@@ -18,6 +19,9 @@ typeof true === "boolean"
 typeof undefined === "undefined"
 typeof null === "object" // 比较特殊
 typeof Symbol('a') === "symbol"
+bigint // ES10 暂时没用过 在number类型后面加 n 
+const b = 10n
+typeof b // "bigint"
 ```
 
 其他比较方法
@@ -111,21 +115,27 @@ Object.defineProperty(obj, 'activity', {
 const fooFunc = (firstNum) => (secondNum) => (thirdNum) => {
   console.log(firstNum, secondNum, thirdNum)
 }
+
 const fooFunc1 = fooFunc(1)
 console.log(fooFunc1)
   // (secondNum) => (thirdNum) => {
   //   console.log(firstNum, secondNum, thirdNum)
   // }
+
 const fooFunc2 = fooFunc1(2)
 console.log(fooFunc2)
   // (thirdNum) => {
   //   console.log(firstNum, secondNum, thirdNum)
   // }
-fooFunc2(3)
+fooFunc2(3) 
+  // 123
 ```
 
-变量firstNum, secondNum为什么会缓存呢？？  
-fooFunc是函数柯里化的应用？
+上述函数fooFunc是高阶函数的一种，即柯里化函数，每次只接受一个参数，并返回一个函数
+
+需要三次调用才能返回最终的结果
+
+变量firstNum, secondNum为什么会缓存呢？这里用到了闭包的知识，因为`console.log(firstNum, secondNum, thirdNum)`持续引用了这几个变量，导致fooFunc1, fooFunc2执行环境被没有被及时销毁。
 
 ## JS里面属性名加双方括号[[]]是什么意思
 
