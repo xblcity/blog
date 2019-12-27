@@ -11,7 +11,7 @@ git命令行操作
 ```js
 git clone 仓库地址
 
-git branch  // 查看本地所有分支
+git branch  // 查看本地所有分支，当前分支用绿色表示
 
 git branch -a // 查看所有分支，远程仓库会用红色表示出来，一般是 remote/origin/master
 
