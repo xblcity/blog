@@ -6,6 +6,8 @@
 
 React组件是一个class类(也可以理解为函数)
 
+`constructor()`
+
 class在被调用执行的时候，首先会调用constructor()方法，该方法在class中的作用是
 
 1. 继承 
@@ -29,21 +31,23 @@ class Child extends React.Component {
 如果props是确定的值，而不是动态获取的，那么Child的props在constructor里面就可以拿到(也可以使用defaultProps设置默认的props)
 
 
-componentWillMount()
+`componentWillMount()(即将被废弃)`
 
-render()
+`render()`
 
 react一个重要方法，用于把JSX语法转换成虚拟DOM，只要组件有更新，都有可能触发该方法
 
-componentDidMount()
+`componentDidMount()`
 
-组件渲染完成
+组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。
 
-### 更新阶段
+也可以在此处添加订阅，并在`componentWillUnmount()`取消订阅
 
-componentWillReceiveProps(nextProps)
+### 更新阶段(当props或者state发生变化会触发组件更新)
 
-组件加载时不调用，组件接受新的props时调用
+`componentWillReceiveProps(nextProps)`
+
+组件加载时不调用，组件接受新的props时调用，也是即将更新的时候，所一参数是`nextProps`
 
 shouldComponentUpdate(nextProps, nextState)
 
@@ -57,32 +61,26 @@ render()
 
 把JSX语法转换成虚拟DOM
 
-componentDidUpdate()
+`componentDidUpdate(prevProps, prevState, snapshot)`
 
-如果在该生命周期中无条件的使用了setState，会造成死循环
+组件更新完毕后，触犯该生命周期，因为已经更新完毕，所以有`prevProps`获取之前的状态
 
-组件更新完成后调用
+如果在该生命周期中无条件的使用了setState，会造成死循环,所以应该使用条件语句
+
+当组件更新后，可以在此处对 DOM 进行操作。如果你对更新前后的 props 进行了比较，也可以选择在此处进行网络请求。
+
+```js
+componentDidUpdate(prevProps) {
+  // 典型用法（不要忘记比较 props）：
+  if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+  }
+}
+```
 
 ### 卸载阶段
 
 componentWillUnmount()
-
-
-
-
-- componentWillReceivedProps
-
-- shouldComponentUpdate
-
-- componentWillUpdate
-
-  - render
-
-- componentDidUpdate
-
-- componentWillUnmount
-
-- componentDidUnmount
 
 ## React16.3及之后的生命周期
 
@@ -102,6 +100,8 @@ React构建的App是单页面应用，所以一旦刷新浏览器，React该页�
 
 
 ## 参考
+
+- [React.Component](https://zh-hans.reactjs.org/docs/react-component.html)
 
 - [React-新的生命周期（React16版本）](https://segmentfault.com/a/1190000016617400)
 
