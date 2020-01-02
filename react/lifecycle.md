@@ -1,5 +1,7 @@
 # React生命周期总结&应用
 
+[react文档](https://zh-hans.reactjs.org/docs/react-component.html)里面已经说的很清楚了，这里在总结一下
+
 ## React16.3之前的生命周期
 
 ### 加载阶段
@@ -45,25 +47,25 @@ react一个重要方法，用于把JSX语法转换成虚拟DOM，只要组件有
 
 ### 更新阶段(当props或者state发生变化会触发组件更新)
 
-`componentWillReceiveProps(nextProps)`
+`componentWillReceiveProps(nextProps)(即将被废弃)`
 
-组件加载时不调用，组件接受新的props时调用，也是即将更新的时候，所一参数是`nextProps`
+组件加载时不调用，组件接受新的props时调用，也是即将更新的时候，所以参数是`nextProps`
 
-shouldComponentUpdate(nextProps, nextState)
+`shouldComponentUpdate(nextProps, nextState)`
 
 组件接收到新的props或者state时调用，return true就会更新dom（使用diff算法更新），return false能阻止更新（不调用render）
 
-componentWillUpdate(nextProps, nextState)
+`componentWillUpdate(nextProps, nextState)(即将被废弃)`
 
 组件加载时不调用，只有在组件将要更新时才调用，此时可以修改state
 
-render()
+`render()`
 
 把JSX语法转换成虚拟DOM
 
 `componentDidUpdate(prevProps, prevState, snapshot)`
 
-组件更新完毕后，触犯该生命周期，因为已经更新完毕，所以有`prevProps`获取之前的状态
+组件更新完毕后，触发该生命周期，因为已经更新完毕，所以有`prevProps`获取之前的状态
 
 如果在该生命周期中无条件的使用了setState，会造成死循环,所以应该使用条件语句
 
@@ -78,11 +80,19 @@ componentDidUpdate(prevProps) {
 }
 ```
 
+如果`render()`之后没有触发`componentDidUpdate()`，请检查该组件声明的位置
+
 ### 卸载阶段
 
 componentWillUnmount()
 
 ## React16.3及之后的生命周期
+
+静态方法`static getDerivedStateFromProps(props, state)`
+
+静态方法`static getDerivedStateFromProps(props, state)`
+
+`getSnapshotBeforeUpdate()`
 
 
 ## 使用生命周期的注意事项
