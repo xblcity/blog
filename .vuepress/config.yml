@@ -104,9 +104,10 @@ themeConfig :
       collapsable: false
       sidebarDepth: 2
       children:
-        - /others/job-interview
-        - /others/job-answers  
-        - /others/words  
+        - /others/js-interview
+        - /others/lib-interview 
+        - /others/other-interview
+        - /others/words
         - /others/questions
 
     
