@@ -2,77 +2,85 @@
 
 Promise可以解决异步代码的执行顺序问题，通过then实现异步函数的链式调用
 
-在控制台打印Promise函数
+MDN中这样解释：
+
+> Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象
+
+一个Promise有下面几种状态
+
+- pending: 初始状态，既不是成功，也不是失败状态。
+- fulfilled: 意味着操作成功完成。
+- rejected: 意味着操作失败。
 
 ```js
-// Promise函数对象
+// 在控制台打印Promise函数
+// Promise构造函数对象
 {
-  all: ƒ all()
-  allSettled: ƒ allSettled()
-  arguments: (...)
-  caller: (...)
-  length: 1
-  name: "Promise"
+  all: ƒ all(iterable)
+  race: ƒ race(iterable)
+  reject: ƒ reject(reason) 返回一个状态为rejected的Promise对象
+  resolve: ƒ resolve(value) 返回一个状态为fulfilled的Promise对象
   prototype: Promise {Symbol(Symbol.toStringTag): "Promise", constructor: ƒ, then: ƒ, catch: ƒ, finally: ƒ} // 原型对象
-  race: ƒ race()
-  reject: ƒ reject()
-  resolve: ƒ resolve()
-  Symbol(Symbol.species): (...)
-  get Symbol(Symbol.species): ƒ [Symbol.species]()
-  __proto__: ƒ ()
-  [[Scopes]]: Scopes[0]
 }
 
-// prototype对象
+// Promise prototype对象
 {
-  catch: ƒ catch()
+  catch: ƒ catch(onRejected) 返回Promise对象，并且可以被链式调用
+  then: ƒ then(onFulfilled, onRejected) 返回Promise对象，并且可以被链式调用
+  finally: ƒ finally(onFinally)
   constructor: ƒ Promise()
-  finally: ƒ finally()
-  then: ƒ then()
-  Symbol(Symbol.toStringTag): "Promise"
-  __proto__: Object
 }
 ```
 
-## 1. Promise构造函数及原型
+因为 Promise.prototype.then 和  Promise.prototype.catch 方法返回promise 对象， 所以它们可以被链式调用。
 
-### 1.1 构造函数(非实例)上的方法
+## 1. 使用
 
-- Promise.resolve(reason)，返回一个状态为fulfilled的Promise对象
-- Promise.reject(value)，返回一个状态为rejected的Promise对象
-- Promise.race()
-- Promise.all(iterable), 传入一个可迭代对象，如数组
-
-### 1.2 构造函数/实例 原型上的方法
-
-- Promise.prototype.then(onFulfilled, onRejected) ，返回Promise对象，并且可以被链式调用 ，then方法可以传入两个参数，第二个参数用于处理错误
-- Promise.prototype.catch(onRejected) ， 返回Promise对象，并且可以被链式调用 
-- Promise.prototype.finally(onFinally)
-
-### 1.3 基础使用
-
-Promise是一个构造函数
-
-语法：new Promise( function(resolve, reject) {...} /* executor */  );
-- executor(执行者)是一个带有resolve和reject两个参数的函数
-- Promise构造函数执行时立即调用executor，当resolve函数执行时，promise的状态变为fulfilled(完成)，当reject函数执行时,promise状态变为rejected(失败)、
-- exector函数的返回值会被忽略，exector返回的是Promise对象 
-
-
-#### sleep
+### 1.1 创建Promise
 
 ```js
-const myPromise = new Promise(function(resolve, reject) {
-  setTimeout(function() {
-    resolve('foo')
-  },1000)
-})
-myPromise.then(value => {
-  console.log(value) // 'foo'
-})
+const myFirstPromise = new Promise((resolve, reject) => {
+  // ?做一些异步操作，最终会调用下面两者之一:
+  //
+  //   resolve(someValue); // fulfilled
+  // ?或
+  //   reject("failure reason"); // rejected
+});
 ```
 
-#### 捕获错误
+想要某个函数拥有promise功能，只需让其返回一个promise即可。
+
+```js
+function myAsyncFunction(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = () => resolve(xhr.responseText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+};
+```
+
+模拟异步
+
+```js
+let myFirstPromise = new Promise(function(resolve, reject){
+    //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+    //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+    setTimeout(function(){
+        resolve("成功!"); //代码正常执行！
+    }, 250);
+});
+
+myFirstPromise.then(function(successMessage){
+    //successMessage的值是上面调用resolve(...)方法传入的值.
+    //successMessage参数不一定非要是字符串类型，这里只是举个例子
+    console.log("Yay! " + successMessage);
+});
+```
+
+捕获错误
 
 ```js
 const myPromise = new Promise(function(resolve, reject) {

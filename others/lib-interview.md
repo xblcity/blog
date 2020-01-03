@@ -4,7 +4,7 @@
 
 - axios如何去统一封装处理
 
-## react/vue/小程序
+## vue
 - vue/react传值，父传子，子传父，没有父子关系（代码）
 - vue v-if v-show区别
 - v-for vue生命周期 create和mounted请求页面数据的区别
@@ -12,6 +12,8 @@
 
 ## 小程序/公众号
 
+- 小程序登录
+- 小程序支付
 - 小程序的声明周期和路由以及setData原理
 - 公众号openid和unionid区别
 

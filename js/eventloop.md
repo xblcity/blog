@@ -42,6 +42,53 @@ console.log('script同步队列执行完毕')
 // 分别输出：async2 执行完毕， Promise开始执行，script同步队列执行完毕，Promise.then执行，async1执行完毕，定时器执行完毕
 ```
 
+## 实际中的一个例子
+
+```js
+fetchData()
+async function fetchData() {
+  await getFilterData()  // 获取查询条件
+  await getWant() // 根据查询条件进行匹配与设置参数
+  await getData() // 根据参数进行数据请求
+}
+
+const sleep = (ms = 2000) => new Promise(resolve => {
+  setTimeout(resolve, ms)
+})
+
+*function getFilterData () {
+  const res = sleep()
+  yield 1
+}
+
+*function getWantType1 () {
+  const res = sleep()
+  yield 2
+}
+
+*function getWantType2 () {
+  const res = sleep()
+  yield 3
+}
+
+*function getList () {
+  const res = sleep()
+  yield 4
+}
+
+async function getWant() {
+  if(type === 1) {
+    await getWantType1()
+  } else {
+    await getWantType2()
+  }
+}
+
+async function getData() {
+  await getList()
+}
+```
+
 ## 2. Node事件循环
 
 ## 参考
