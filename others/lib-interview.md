@@ -14,7 +14,7 @@
 
 - 小程序登录
 - 小程序支付
-- 小程序的声明周期和路由以及setData原理
+- 小程序的生命周期和路由以及setData原理
 - 公众号openid和unionid区别
 
 ## webpack
