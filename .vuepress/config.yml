@@ -33,7 +33,6 @@ themeConfig :
         - /js/copy
         - /js/knowledge-points
         - /js/array
-        - /js/utils
     - title: JS进阶 
       collapsable: false
       sidebarDepth: 2
