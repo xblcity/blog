@@ -1,5 +1,13 @@
 # webpack配置
 
+webpack，即web的pack，网页应用的打包
+
+- webpack出现的背景
+- 其他打包工具对比
+- webpack解决的问题
+
+[webpack-forward](https://survivejs.com/webpack/foreword/)
+
 本篇仅仅是对官网配置的总结，用于查阅，webpack版本@4.39.3(第四版最后一版)
 
 - [1.mode](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#1mode)
@@ -49,6 +57,7 @@ module.exports = {
 > 因为loader与plugin的内容比较多，所以放在了最后面的位置
 
 ## 1.mode
+
 配置mode的目的在于webpack会根据模式不同进行对应的优化，没有此项，webpack打包会报警告，默认是`production`  
 
 优化：如`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错，并且在`production`模式下会默认开启uglifyPlugin
@@ -59,7 +68,8 @@ module.exports = {
 ```
 
 ## 2.dev-tools
-配置此项，可以更准确的定位错误，在development不加影响也不大，development环境本身也可以定位错误，在production模式可以使用这项来调试错误
+
+配置此项，可以更准确的定位错误，在development添加可以在source中检查源码，而非编译后的代码，development环境本身也可以定位错误，在production模式可以使用这项来调试错误
 ```js
 module.exports = {
   devtool: 'inline-source-map' // source map
@@ -67,6 +77,7 @@ module.exports = {
 ```
 
 ## 3.entry
+
 ```js
 module.exports = {
   // 单个入口，但是入口没有名字
@@ -81,6 +92,7 @@ module.exports = {
 ```
 
 ## 4.output
+
 ```js
 const path = require('path') // 对文件目录的解析需要用到node内置模块‘path’
 module.exports = {
@@ -98,7 +110,10 @@ module.exports = {
 ```js
 module.exports = {
   resolve: {
-    extensions: ['.js', 'jsx']  // 省略文件类型，webpack自动查找，在node中，省略文件类型只会自动查找js与json
+    extensions: ['.js', 'jsx'],  // 省略文件类型，webpack自动查找，在node中，省略文件类型只会自动查找js与json
+    alias: {
+      @: './src' // 通过别名来把原导入路径映射成一个新的导入路径
+    }，
   }
 }
 ```
@@ -127,7 +142,10 @@ module.exports = {
 
 ## 7.devServer
 
+内容比较多...
+
 ## 8.plugins
+
 插件需要先引入，然后调用插件的构造函数 
 插件可以是第三方插件，或者是webpack的内置插件,插件会参与webpack打包的整个过程    
 常用的两个插件如`html-webpack-plugin``clean-webpack-plugin`,前者用于每次打包都会生成新的html文件，后者每次打包都会先清理dist文件夹
@@ -142,7 +160,9 @@ module.exports = {
   ]
 }
 ```
+
 ## 9.loaders
+
 loaders用于处理各种格式的文件
 常见的loader有babel-loader, css-loader, style-loader, file-loader 等等
 ```js
@@ -192,6 +212,8 @@ module.exports = {
   }
 }
 ```
+
+## 优化
 
 ### 开启缓存
 对于缓存像react, lodash这种不变的包，我们不希望每次都重新打包，那么我们可以使用缓存

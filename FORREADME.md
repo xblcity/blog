@@ -76,8 +76,6 @@
 
 - Webpack
 
-  - [webpack的理解](/tools/webpack/webpack.md)
-
   - [webpack 配置](/tools/webpack/webpack-config.md)
 
   - [用webpack配置react开发环境](/tools/webpack/webpack-react.md)

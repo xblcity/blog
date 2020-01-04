@@ -2,17 +2,18 @@
 
 使用的webpack版本是@4.39.3，不过@5 beta版已经发布了，emmmm...
 
-## 1.先从最基础的构建开始
-小目标，将一个react-ts SPA首页打包，并可以在浏览器中访问  
+## 1.react开发环境配置
 
-实现它，我们需要把src文件夹的所有ts文件打包出一个js文件，并在index.html中引入打包好的js文件
+将一个react SPA首页打包，并可以在浏览器中访问  
+
+实现它，我们需要把src文件夹的所有jsx文件打包出一个js文件，并在index.html中引入打包好的js文件
 
 ### 新建文件夹，并在文件夹内使用`npm init -y`初始化package.json文件
 
 ### 安装依赖项
-需要保证全局安装了webpack以及webpack-cli
 
 使用`npm`或者`yarn`安装下面依赖
+
 ```js
 // webpack@4.39.3，webpack-cli@3.3.7，webpack-cli是webpack的命令行工具
 // -D 是 --save--dev的缩写， -S是 --save的缩写
@@ -20,15 +21,12 @@ npm i webpack webpack-cli -D
 
 // react@16.9.0
 npm i react react-dom -S
-// typescript@3.6.2
-npm i typescript -D
 
 // babel，将es6转换为es5，@babel/core是babel-core的第七版，@babel/preset-env是babel-preset-env升级版，不需要安装babel-preset-stage-0
 npm install babel-loader @babel/core @babel/preset-env -D
+
 // @babel/preset-reacts是babel-preset-react升级版, 用于将jsx转换成js
 npm install @babel/preset-react -D
-// 安装ts-loader
-npm install ts-loader -D
 ```
 
 ### 项目目录结构(没有则新建)
@@ -37,8 +35,8 @@ npm install ts-loader -D
   -- index.html
 -- node_modules // 依赖包，自动生成
 -- src // 开发时的source
-  -- index.tsx
-  -- App.tsx
+  -- index.jsx
+  -- App.jsx
 -- webpack.config.js // webpack配置
 -- .babelrc // babel配置
 -- tsconfig.json // ts配置，不可缺少，否则报错
@@ -48,7 +46,9 @@ npm install ts-loader -D
 源码请看这里[]()
 
 ### 配置webpack.config.js
+
 配置中最重要的几个部分是`entry` `output` `loaders` `plugins`
+
 用的是common.js的语法
 ```js
 const path = require('path')
@@ -103,9 +103,9 @@ module.exports = {
 }
 ```
 
-### 修改src下ts文件
-```ts
-// index.tsx
+### 修改src下jsx文件
+```js
+// index.jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.jsx'
@@ -115,8 +115,8 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
-```ts
-// App.tsx
+```js
+// App.jsx
 import React from 'react'
 
 const App = () => {
@@ -133,10 +133,22 @@ export default App
 
 然后我们既可以在浏览器中看到打包出的react应用啦~
 
-## 2.在开发环境中使用
+## 2. 在开发环境中使用dev-server
+
 如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于express的webpack提供webpack-dev-server，帮助我们更好的在开发环境中开发
 
+## 3.ts-react开发环境
+
+```js
+// typescript@3.6.2
+npm i typescript -D
+
+// 安装ts-loader
+npm install ts-loader -D
+```
+
 ## 3.使用loader与plugins
+
 loader用于帮我们处理不同类型的文件，plugins用于在打包过程中做优化  
 
 在使用它们的时候，我们可以思考一下为什么出现了这些loader以及plugin，它们解决了前端的哪些问题
@@ -144,7 +156,7 @@ loader用于帮我们处理不同类型的文件，plugins用于在打包过程�
 
 ## 4.优化
 ### 对后缀名做处理
-### 对CSS样式兼容posttcss
+### 对CSS样式兼容postcss
 
 ### 更多部分见 [使用webpack定制开发环境](https://github.com/xblcity/web-learning/tree/master/webpack-learn)
 

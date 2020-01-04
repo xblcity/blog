@@ -76,8 +76,6 @@
 
 - Webpack
 
-  - [webpack的理解](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack.md)
-
   - [webpack 配置](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack-config.md)
 
   - [用webpack配置react开发环境](https://github.com/xblcity/blog/blob/master/tools/webpack/webpack-react.md)

@@ -77,7 +77,6 @@ themeConfig :
       collapsable: false
       sidebarDepth: 2
       children:
-        - /tools/webpack/webpack
         - /tools/webpack/webpack-config
         - /tools/webpack/webpack-react
         - /tools/webpack/babel

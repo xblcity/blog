@@ -122,29 +122,38 @@ arr.forEach(item => {
 ## 2. 一维数组去重
   
 ```js
-let arr = [1,2,2,3,3,5]
-let newArr = new Set(arr) // [1,2,3,5]
+const arr = [1,3,5,5,5,5]
+
+const distinct = (arr) => {
+  return [...new Set(arr)]  // new Set() 返回一个可迭代对象，将其转换成数组
+}
+
+distinct(arr) // [1,3,5]
 ```
 
 ## 3. 数组每一项为对象(引用类型)的去重
 
 ```js
-let arr = [
+
+function distinct(arr, key) {
+  const map = new Map()
+  return arr.filter(item => !map.has(item[key]) && map.set(item[key], null)) // 检测map中没有[key]，有则返回false，无则向Map中设置值
+}
+const list = [
   {
-    name: 'ya',
-    age: 17
+    name: 'xbl',
+    age: 15
+  },
+  {
+    name: 'xbl',
+    age: 25
   },
   {
     name: 'cc',
-    age: 19
-  },
-  {
-    name: 'ya',
-    age: 20
+    age: 13
   }
 ]
-const map = new Map()
-const newArr = arr.filter(item => !map.has(item['ya']) && map.set(item['ya'])) 
+distinct(list, 'name')
 ```
 
 ## 4. 二维数组转一维数组，从数组里取对象并合并对象成数组

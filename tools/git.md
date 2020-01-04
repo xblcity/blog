@@ -37,6 +37,30 @@ git fetch
 git merge
 ```
 
+比如
+
+```js
+git checkout dev // 切换至dev分支
+git pull // 拉取remote远程代码
+git merge  // 远程 remote dev与本地dev进行合并
+git checkout master // 切换至本地master分支
+git merge dev // 本地master分支与 本地dev分支进行合并
+
+git push -u origin master // 将本地 master分支推送至 remote master  存在多个远程仓库才会用到 -u
+```
+
+关于远程仓库的知识
+
+ `git push origin` 该命令表示，将当前分支推送到origin主机的对应分支。
+
+如果当前分支只有一个追踪分支，那么主机名都可以省略。`git push`
+
+如果当前分支与多个主机存在追踪关系，那么这个时候 `-u`(`--set-upstream`)选项会指定一个默认主机，这样后面就可以不加任何参数使用`git push`。
+
+`git push -u origin master` 上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
+不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。
+```
+
 ## git 其他命令/知识
 
 remote branch 也叫远程分支，一般分支名为 origin/master 等
@@ -58,6 +82,7 @@ git remote // 列出远程分支，比如 origin
 ```
 
 ## 合并仓库
+
 - [git之两个仓库的合并操作](https://www.jianshu.com/p/42a10bbfbf97)
 
 ## git常见问题
@@ -65,6 +90,7 @@ git remote // 列出远程分支，比如 origin
 ### 回退版本，放弃修改
 
 ### 报错信息
+
 #### git push fatal: No configured push destination.
 git本地仓库没有远程分支连接  
 git remote -v #察看当前远程分支列表  
