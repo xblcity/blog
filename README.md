@@ -22,8 +22,6 @@
 
   - [关于数组的各种操作](https://github.com/xblcity/blog/blob/master/js/array.md)
 
-  - [常用工具函数](https://github.com/xblcity/blog/blob/master/js/utils.md)
-
 - JS进阶
 
   - [call,apply,bind实现](https://github.com/xblcity/blog/blob/master/js/call.md)
@@ -33,6 +31,14 @@
   - [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/js/func-program.md)
 
   - [JS设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
+
+### 基础/工具库函数
+
+- [JS](https://github.com/xblcity/blog/blob/master/utils/js.md)
+
+- [CSS](https://github.com/xblcity/blog/blob/master/utils/css.md)
+
+- [HTML](https://github.com/xblcity/blog/blob/master/utils/html.md)
 
 ### ES6
 
@@ -95,7 +101,6 @@
 ### 网络
 
 - [http请求头与响应头](https://github.com/xblcity/blog/blob/master/network/http-message.md)
-
 
 ### 服务器
 

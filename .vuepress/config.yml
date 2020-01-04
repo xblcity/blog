@@ -1,9 +1,9 @@
-title: 小白龙的博客
+title: Blog
 description: 小白龙的前端记录
 locales:
   /:
     lang: zh-CN
-    title: 小白龙的博客
+    title: Blog
     description: 小白龙的前端记录
 head: 
   -
@@ -42,6 +42,13 @@ themeConfig :
         - /js/eventloop
         - /js/func-program
         - /js/design-mode
+    - title: 基础/工具库函数
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /utils/js
+        - /utils/css
+        - /utils/html
     - title: ES6
       collapsable: false
       sidebarDepth: 2

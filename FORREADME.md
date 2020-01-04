@@ -22,8 +22,6 @@
 
   - [关于数组的各种操作](/js/array.md)
 
-  - [常用工具函数](/js/utils.md)
-
 - JS进阶
 
   - [call,apply,bind实现](/js/call.md)
@@ -33,6 +31,14 @@
   - [函数式编程(高阶函数/偏函数/柯里化)](/js/func-program.md)
 
   - [JS设计模式](/js/design-mode.md)
+
+### 基础/工具库函数
+
+- [JS](/utils/js.md)
+
+- [CSS](/utils/css.md)
+
+- [HTML](/utils/html.md)
 
 ### ES6
 
@@ -71,6 +77,7 @@
 - [Node知识点](/node/little-points.md)
 
 - [blog后端思路](/node/blog.md)
+
 
 ### 工具
 
