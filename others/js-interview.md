@@ -2,21 +2,28 @@
 
 ## js
 
+- es5实现类
 - js实现继承的几种方式（代码）
-- 判断一个变量是否为数组（代码）
-- 如何阻止冒泡和默认事件
 - call apply区别以及call bind apply 的原生实现
 - 什么试this，this的打印问题
-- 数组的toString是什么结果？对象呢？
-- js数据类型，如何能快速的去判断类型(Object.prototype.toString.call(value))
 - 原型链，function的构造函数
-- 如何判断是不是一个数组
-- object关于属性的控制有哪几个
-- js事件流
+
+## 数据类型&方法
+
+- 判断一个变量是否为数组（代码）-- `isArray() instanceof`
+- 数组的toString是什么结果？对象呢？-- `字符串 [object Object]` -- 
+- js数据类型，如何能快速的去判断类型 -- `(Object.prototype.toString.call(value))` `数字[object Number]` `数组[object Array]`
+- object关于属性的控制有哪几个-- `Object.defineProperty() OBject.defineProperties()`
+
+## DOM/事件
+
+- 如何阻止冒泡和默认事件 -- `e.stopPropagation() e.preventDefautlt()`
+- js事件流 -- 
 - js的300ms延迟
 - 事件代理的原理
-- addEventListener有哪几个参数
+- addEventListener有哪几个参数 -- 三个，最后一个是是否冒泡
 - 捕获过程中去阻止冒泡，能打断事件流吗
+
 
 ## es6
 
