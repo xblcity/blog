@@ -33,7 +33,7 @@ themeConfig :
         - /js/copy
         - /js/knowledge-points
         - /js/array
-        - /js/js
+        - /js/utils
         - /js/css
         - /js/html
     - title: JS进阶 
@@ -44,6 +44,13 @@ themeConfig :
         - /js/eventloop
         - /js/func-program
         - /js/design-mode
+        - /js/algorithm
+    - title: HTML/CSS
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /hc/html
+        - /hc/css
     - title: ES6
       collapsable: false
       sidebarDepth: 2

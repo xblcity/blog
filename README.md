@@ -22,11 +22,7 @@
 
   - [关于数组的各种操作](https://github.com/xblcity/blog/blob/master/js/array.md)
 
-  - [JS工具库函数](https://github.com/xblcity/blog/blob/master/js/js.md)
-
-  - [CSS](https://github.com/xblcity/blog/blob/master/js/css.md)
-
-  - [HTML](https://github.com/xblcity/blog/blob/master/js/html.md)
+  - [JS工具库函数](https://github.com/xblcity/blog/blob/master/js/utils.md)
 
 - JS进阶
 
@@ -38,6 +34,8 @@
 
   - [JS设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
 
+  - [JS数据结构与算法](https://github.com/xblcity/blog/blob/master/js/algorithm.md)
+
 ### ES6
 
 - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
@@ -45,6 +43,12 @@
 - [Promise与AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
 
 - [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
+
+### HTML/CSS
+
+- [HTML](https://github.com/xblcity/blog/blob/master/hc/html.md)
+
+- [CSS](https://github.com/xblcity/blog/blob/master/hc/css.md)
 
 ### React
 

@@ -15,3 +15,4 @@ React
 - Fiber 延迟
 - batchedUpdate 合并更新，指的是react中state的遵循的一个更新策略
 - transaction 事务
+- reconciliation 协调

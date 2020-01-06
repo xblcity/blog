@@ -22,11 +22,7 @@
 
   - [关于数组的各种操作](/js/array.md)
 
-  - [JS工具库函数](/js/js.md)
-
-  - [CSS](/js/css.md)
-
-  - [HTML](/js/html.md)
+  - [JS工具库函数](/js/utils.md)
 
 - JS进阶
 
@@ -38,6 +34,8 @@
 
   - [JS设计模式](/js/design-mode.md)
 
+  - [JS数据结构与算法](/js/algorithm.md)
+
 ### ES6
 
 - [类](/es6/class.md)
@@ -45,6 +43,12 @@
 - [Promise与AJAX](/es6/promise.md)
 
 - [模块化应用](/es6/module.md)
+
+### HTML/CSS
+
+- [HTML](/hc/html.md)
+
+- [CSS](/hc/css.md)
 
 ### React
 
