@@ -34,8 +34,6 @@ themeConfig :
         - /js/knowledge-points
         - /js/array
         - /js/utils
-        - /js/css
-        - /js/html
     - title: JS进阶 
       collapsable: false
       sidebarDepth: 2
@@ -50,7 +48,7 @@ themeConfig :
       sidebarDepth: 2
       children:
         - /hc/html
-        - /hc/css
+        - /hc/css-utils
     - title: ES6
       collapsable: false
       sidebarDepth: 2
@@ -108,13 +106,17 @@ themeConfig :
         - /server/ubuntu
         - /server/linux 
         - /server/nginx 
+    - title: 面试
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /interview/js-interview
+        - /interview/lib-interview 
+        - /interview/other-interview
     - title: 其他
       collapsable: false
       sidebarDepth: 2
       children:
-        - /others/js-interview
-        - /others/lib-interview 
-        - /others/other-interview
         - /others/words
         - /others/questions
 

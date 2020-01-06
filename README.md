@@ -48,7 +48,7 @@
 
 - [HTML](https://github.com/xblcity/blog/blob/master/hc/html.md)
 
-- [CSS](https://github.com/xblcity/blog/blob/master/hc/css.md)
+- [CSS常用代码片段](https://github.com/xblcity/blog/blob/master/hc/css-utils.md)
 
 ### React
 
@@ -112,13 +112,15 @@
 
 - [nginx linux安装与使用](https://github.com/xblcity/blog/blob/master/server/nginx.md)
 
+### 面试
+
+- [JS面试题](https://github.com/xblcity/blog/blob/master/interview/js-interview.md)
+
+- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
+
+- [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/interview/other-interview.md)
+
 ### 其他
-
-- [JS面试题](https://github.com/xblcity/blog/blob/master/others/js-interview.md)
-
-- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
-
-- [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
 
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
 

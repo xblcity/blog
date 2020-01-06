@@ -48,7 +48,7 @@
 
 - [HTML](/hc/html.md)
 
-- [CSS](/hc/css.md)
+- [CSS常用代码片段](/hc/css-utils.md)
 
 ### React
 
@@ -115,14 +115,17 @@
 
 - [nginx linux安装与使用](/server/nginx.md)
 
+### 面试
+
+- [JS面试题](/interview/js-interview.md)
+
+- [框架/库/实践面试题](/interview/lib-interview.md)
+
+- [css/网络/等面试题](/interview/other-interview.md)
+
 ### 其他
-
-- [JS面试题](/others/js-interview.md)
-
-- [框架/库/实践面试题](/others/lib-interview.md)
-
-- [css/网络/等面试题](/others/other-interview.md)
 
 - [一些名词对应的英文](/others/words.md)
 
 - [我的疑问/待做](/others/questions.md)
+
