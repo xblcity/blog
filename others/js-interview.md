@@ -1,5 +1,11 @@
 # JS面试题
 
+- [js](#js)
+- [数据类型与方法](#数据类型与方法)
+- [DOM与事件](#DOM与事件)
+- [es6](#es6)
+- [数据结构与算法](#数据结构与算法)
+
 ## js
 
 - es5实现类
@@ -8,16 +14,18 @@
 - 什么试this，this的打印问题
 - 原型链，function的构造函数
 
-## 数据类型&方法
+## 数据类型与方法
 
 - 判断一个变量是否为数组（代码）-- `isArray() instanceof`
 - 数组的toString是什么结果？对象呢？-- `字符串 [object Object]` -- 
 - js数据类型，如何能快速的去判断类型 -- `(Object.prototype.toString.call(value))` `数字[object Number]` `数组[object Array]`
 - object关于属性的控制有哪几个-- `Object.defineProperty() OBject.defineProperties()`
 
-## DOM/事件
+## DOM与事件
 
-- 如何阻止冒泡和默认事件 -- `e.stopPropagation() e.preventDefautlt()`
+- defer与async -- async表示异步加载，defer表示延迟加载，在页面渲染完毕，即渲染引擎渲染完毕后，在执行defer属性的script
+- 什么情况下触发回流和重绘，如何避免
+- 如何阻止冒泡和默认事件 -- `e.stopPropagation() e.preventDefault()`
 - js事件流 -- 
 - js的300ms延迟
 - 事件代理的原理
