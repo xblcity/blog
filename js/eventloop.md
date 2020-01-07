@@ -111,7 +111,7 @@ console.log('script end')
 
 // 一次打印 script start  async2 end  Promise script end  async1 end promise1  promise2 setTimeout
 ```
-对于微任务队列 打印的顺序是 ` async1 end promise1  promise2` Chrome73版本及之后，先执行async1再执行promise1和promise2。区别在于RESOLVE(thenable)和之间的区别Promise.resolve(thenable)。
+对于微任务队列 打印的顺序是 ` async1 end promise1  promise2` Chrome73版本及之后，先执行async1再执行promise1和promise2。区别在于`RESOLVE(thenable)`和`Promise.resolve(thenable)。`之间的区别
 
 ```js
 async function f() {
