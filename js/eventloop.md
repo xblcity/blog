@@ -1,20 +1,46 @@
 # JS与Node事件队列/循环(Event Loop)
 
-## js事件队列
+## JS事件循环
 
-### js两种任务
+### js两种异步任务
 
 js包含同步代码与异步代码
 
-js异步任务包含宏观任务(macrotask)和微观任务(microtask),在ES6规范中分别为tasks和jobs 
+js异步任务包含宏观任务(macrotask)和微观任务(microtask),在ES6规范中分别为tasks和jobs，宏任务里面可能包含多个微任务。
 
-宏任务里面可能包含多个微任务
+**宏任务开始执行** ——> **遇到微任务就将其push到微任务队列中** ——> **...同步代码执行完毕** ——> **微任务队列内的任务依次执行...** ——>  **执行第二个宏任务...** 
 
-宏任务开始执行...同步代码执行完毕，微任务依次执行...执行第二个宏任务...先执行其中的同步代码，在执行微任务。
+宏任务包括：`script(整体代码), setTimeout, setTimeInterval, postMessage, setImmediate, I/O, UI rendering`
 
-宏任务包括：script, setTimeout, setTimeInterval, setImmediate, I/O, UI rendering
+微任务包括: `Promise process.nextTick(Node.js环境)`
 
-微任务包括: Promise
+如果**async多层嵌套与Promise结合使用**会怎么样？这里不是很好理解。
+
+### 示例1
+
+```js
+setTimeout(function () {
+  console.log(1);
+})
+new Promise(function(resolve,reject){
+  console.log(2)
+  resolve(3)
+}).then(function(val){
+  console.log(val)
+})
+console.log(4)
+// 输出顺序 `2,4,3,1`
+```
+
+1. 开始执行整个代码块，`new Promise()`是立即执行的。所以输出2。`promise实例.then()`是Promise，微任务，被推进微任务执行队列中
+
+2. `console.log(4)`输出4
+
+3. 宏任务同步代码执行完毕，执行微任务队列的任务，`promise实例.then()`输出3
+
+4. 宏任务同步代码与微任务均执行完毕，执行下一个宏任务`setTimeout`，输出1
+
+### 示例2
 
 ```js
 async function async1() {
@@ -35,64 +61,138 @@ new Promise((resolve, reject) => {
   resolve()
 }).then(function () {
   console.log('Promise.then执行')
+}).then(function () {
+  console.log('Promise.then222执行')
 })
 
 console.log('script同步队列执行完毕')
 
-// 分别输出：async2 执行完毕， Promise开始执行，script同步队列执行完毕，Promise.then执行，async1执行完毕，定时器执行完毕
+// 分别输出：async2 执行完毕， Promise开始执行，script同步队列执行完毕，Promise.then执行，async1执行完毕，Promise.then222执行,定时器执行完毕
 ```
 
-## 实际中的一个例子
+这个例子比上面多了一个`async`异步函数，`async()`函数返回的是`Promise`实例对象，每次我们使用 await, async会停下来执行await的代码，然后把剩下的 async 函数中的操作放到 then 回调函数中。
+
+这里建议async可以看一下[阮一峰-ES6-async](http://es6.ruanyifeng.com/#docs/async)
+
+1. 宏任务，即该段JS代码，执行`async1()`函数(即new Promise())，执行`async2()`函数(即new Promise())，`async2()`执行完毕，并返回一个promise实例，async1之后的被推送至微任务执行队列
+
+2. `new Promise()`立即执行， `promise实例.then()`被推送至微任务队列
+
+3. 宏任务同步代码执行完毕，打印`script同步队列执行完毕`
+
+4. 宏任务 的微任务队列任务依次执行，分别打印 `async1 执行完毕`(这个先打印是因为有await) `Promise.then执行` `Promise.then222执行`
+
+5. 第一个宏任务执行完毕，执行第二个宏任务`setTimeout`，打印`定时器执行完毕`
+
+### 再一个例子
 
 ```js
+console.log('script start')
+async function async1() {
+  await async2()
+  console.log('async1 end')
+}
+async function async2() {
+  console.log('async2 end') 
+}
+async1()
+setTimeout(function() {
+  console.log('setTimeout')
+}, 0)
+new Promise(resolve => {
+  console.log('Promise')
+  resolve()
+}).then(function() {
+  console.log('promise1')
+}).then(function() {
+  console.log('promise2')
+})
+console.log('script end')
+
+// 一次打印 script start  async2 end  Promise script end  async1 end promise1  promise2 setTimeout
+```
+对于微任务队列 打印的顺序是 ` async1 end promise1  promise2` Chrome73版本及之后，先执行async1再执行promise1和promise2。区别在于RESOLVE(thenable)和之间的区别Promise.resolve(thenable)。
+
+```js
+async function f() {
+  await p
+  console.log('ok')
+}
+// 简化理解为
+function f() {
+  return RESOLVE(p).then(() => {
+    console.log('ok')
+  })
+}
+```
+
+### 实际中的一个例子
+
+```js
+// ajax发送
+function myAsyncFunction(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = () => resolve(xhr.responseText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+};
+
+// 统一获取数据
 fetchData()
 async function fetchData() {
-  await getFilterData()  // 获取查询条件
-  await getWant() // 根据查询条件进行匹配与设置参数
-  await getData() // 根据参数进行数据请求
+  // 获取查询条件
+  const res1 = await getFilterData().next().value  // 返回的是个promise
+  console.log('res1', res1)
+  // 根据查询条件进行匹配与设置参数
+  const res2 = await getWant()  //
+  console.log('res2', res2)
+  // 根据参数进行数据请求
+  const res3 = await getData()  //
+  console.log('res3', res3)
 }
 
-const sleep = (ms = 2000) => new Promise(resolve => {
-  setTimeout(resolve, ms)
-})
-
-*function getFilterData () {
-  const res = sleep()
-  yield 1
+// 获取数据1
+function * getFilterData () {
+  yield myAsyncFunction('https://douban.uieee.com/v2/movie/top250?start=1&count=1')
 }
 
-*function getWantType1 () {
-  const res = sleep()
-  yield 2
-}
-
-*function getWantType2 () {
-  const res = sleep()
-  yield 3
-}
-
-*function getList () {
-  const res = sleep()
-  yield 4
-}
-
+// 获取数据2
 async function getWant() {
+  const type = 1
   if(type === 1) {
-    await getWantType1()
+    await getWantType1().next().value
   } else {
-    await getWantType2()
+    await getWantType2().next().value
   }
 }
 
-async function getData() {
-  await getList()
+// 获取数据3
+async function getData() { 
+  return await getList().next().value  // 使用return 拿到返回值
 }
+
+function * getWantType1 () {
+  yield myAsyncFunction('https://douban.uieee.com/v2/movie/top250?start=1&count=2')
+}
+
+function * getWantType2 () {
+  yield myAsyncFunction('https://douban.uieee.com/v2/movie/top250?start=1&count=3')
+}
+
+function * getList () {
+  yield myAsyncFunction('https://douban.uieee.com/v2/movie/top250?start=1&count=10')
+}
+// 分别打印res1 Promise res2空 res3 Promise
 ```
+async async 嵌套使用 return 拿到返回的Promise
 
 ## 2. Node事件循环
 
 ## 参考
 
-- [Event Loop详解](https://github.com/xiaomuzhu/front-end-interview/blob/master/docs/guide/eventLoop.md)
+- 较基础[Js 的事件循环(Event Loop)机制以及实例讲解](https://juejin.im/post/5b24b116e51d4558a65fdb70)
 
-- [彻底掌握JS事件循环原理](https://juejin.im/post/5e01aa0ae51d45583947de9a)
+- 较详细[Event Loop详解](https://github.com/xiaomuzhu/front-end-interview/blob/master/docs/guide/eventLoop.md)
