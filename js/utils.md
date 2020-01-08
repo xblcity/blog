@@ -7,6 +7,7 @@
 - [url参数取值](#url参数取值)
 - [配置axios拦截器](#配置axios拦截器)
 - [jquery的ajax配置](#jquery的ajax配置)
+- [css样式转换为js驼峰写法](#css属性转换为驼峰写法)
 
 ## 发送验证码倒计时
 
@@ -49,7 +50,7 @@ document.addEventListener('scroll', better_scroll)
 
 ## 防抖
 
-防抖 (debounce): 将多次高频操作优化为只在最后一次执行，通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。
+防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。
 
 ```js
 function debounce(fn, delay) {
@@ -62,7 +63,7 @@ function debounce(fn, delay) {
     let args = arguments
     // 每次事件被触发时，都去清除之前的旧定时器
     if(timer) {
-        clearTimeout(timer)
+      clearTimeout(timer)
     }
     timer = setTimeout(function () {
       fn.apply(context, args)
@@ -144,6 +145,16 @@ function getQueryStringArgs(search = '') {
   return args
 }
 getQueryStringArgs(window.location.search)
+
+
+// 正则表达式
+function getQueryString (name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null)
+    return decodeURI(r[2]);
+  return null;
+},
 ```
 
 ## 配置axios拦截器
@@ -303,3 +314,62 @@ request.interceptors.response.use(
 ```
 
 ## jquery的ajax配置
+
+// 业务中用到的ajax，需要根据自己的实际项目进行修改
+```js
+const config = {baseURL: 'api.xxx.com'}
+// params: url(请求路径), type(请求类型), data(post参数), isNeedToken(是否需要token), success(成功回调), error(失败回调), finally(不论成功失败都执行的回调)
+const request = function (params) {
+  $.ajax({
+    url: config.baseURL + params.url,
+    type: params.type || 'get',
+    data: params.data,
+    // 添加请求头
+    beforeSend: function (request) {
+      var isNeedToken = params.isNeedToken === undefined  //isNeedToken 默认值为 true
+      if (!isNeedToken) {
+        return
+      }
+      var access_token = localStorage.getItem('access_token');
+      if (access_token) {
+        request.setRequestHeader("Authorization", 'Bearer ' + access_token)
+      }
+    },
+    // 成功回调
+    success: function (res) {
+      if (res.State && parseInt(res.RespCode) === 200) {
+        params.success && params.success(res)
+      } else {
+        const errMsg = res.Message ? res.Message : '请求失败'
+        console.error(res.Message)
+        params.error && params.error(new Error(errMsg))
+      }
+      params.finally && params.finally()
+    },
+    // 失败回调
+    error: function (err) {
+      if (err.status === 401) {  //重新登录
+        window.location.replace('/login')
+        return
+      }
+      const errMsg = err.responseJSON ? err.responseJSON.Message : '请求失败'
+      console.error(errMsg)
+      params.error && params.error(new Error(errMsg))
+      params.finally && params.finally()
+    }
+  })
+};
+```
+
+## css样式转换为js驼峰写法
+
+```js
+function transformToCamel(s) {
+  return s.replace(/-\w/g,function(x){  // \w 匹配字母或数字或下划线或汉字
+    return x.slice(1).toUpperCase(); 
+  })
+}
+transformToCamel('font-size') // fontSize
+```
+
+## 参考
