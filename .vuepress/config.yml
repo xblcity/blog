@@ -44,20 +44,20 @@ themeConfig :
         - /js/design-mode
         - /js/algorithm
     - title: HTML/CSS
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /hc/html
         - /hc/css-utils
     - title: ES6
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /es6/class
         - /es6/promise
         - /es6/module
     - title: React
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /react/lifecycle
@@ -69,19 +69,19 @@ themeConfig :
         - /react/complex-co
         - /react/react-test
     - title: Typescript
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /typescript/ts-basic
         - /typescript/ts-axios
     - title: Node
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /node/little-points
         - /node/blog   
     - title: 工具
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /tools/webpack/webpack-config
@@ -90,31 +90,31 @@ themeConfig :
         - /tools/git
         - /tools/tool
     - title: Vue
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /vue/vuepress
     - title: 网络
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /network/http-message
     - title: 服务器
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /server/ubuntu
         - /server/linux 
         - /server/nginx 
     - title: 面试
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /interview/js-interview
         - /interview/lib-interview 
         - /interview/other-interview
     - title: 其他
-      collapsable: false
+      collapsable: true
       sidebarDepth: 2
       children:
         - /others/words
