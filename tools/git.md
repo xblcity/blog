@@ -21,7 +21,7 @@ git status // 查看当前文件状态，如果修改了文件，则会显示一
 
 git add . // 添加所有文件至暂存区
 
-git commit -m message // 提交暂存文件至分支, message为字符串，是提交的信息
+git commit -m 'message' // 提交暂存文件至分支, message为字符串，是提交的信息
 
 git push // 将分支推送至远程线上仓库
 ```
@@ -59,7 +59,7 @@ git push -u origin master // 将本地 master分支推送至 remote master  存�
 
 `git push -u origin master` 上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
 不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。
-```
+
 
 ## git 其他命令/知识
 
@@ -76,9 +76,23 @@ git push // 如果是接上一条命令，本地分支与远程已建立了联�
 
 git push origin/远程分支名  // 这种情况用于没有从远程仓库拉取到过的情况，即没有使用过 git checkout -b 本地分支名 origin/远程分支名 命令
 
-git remote // 列出远程分支，比如 origin
-
-// 更多关于remte的命令
+// 更多关于remote的命令
+// 远程remote创建了分支，本地并没有查看到？
+git remote // 列出远程所有主机，比如 origin
+git branch -r // 列出远程分支
+// 如果没有更新到最新的分支
+git remote update origin --prune // 重新获取origin上面的分支
+git branch -vv // 查看本地分支和远程分支对应关系
+git checkout -b front-end origin/front-end // 新建本地分支front-end与远程front-end分支相关联
+// 删除本地分支
+git branch -D develop // 删除develop分支
+git push origin --delete develop // 删除远程分支
+git checkout --orphan develop  // 创建新的分支
+git rm -rf . // 删除，不留git记录
+git commit -am "new branch for documentation" // 提交分支,提交一个无版本记录分支
+// 新建文件，这样才会有版本记录
+git push -u origin develop // 本地推送到远程
+git merge back-end --allow-unrelated-histories // 允许合并两个无相关记录的两个分支
 ```
 
 ## 合并仓库
@@ -100,3 +114,8 @@ git remote -v #察看当前远程分支列表
 #### git push fatal: The current branch master has no upstream branch.
 本地分支没有与远程仓库的分支进行关联
 To push the current branch and set the remote as upstream, use git push --set-upstream origin master
+
+
+## 参考
+
+- [在GIT中创建一个空分支](https://segmentfault.com/a/1190000004931751)
