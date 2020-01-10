@@ -7,77 +7,53 @@
 - JS基础
 
   - [闭包与作用域](/js/scope-closures.md)
-
   - [this](/js/this.md)
-
   - [构造函数实现类](/js/object.md)
-
   - [继承与原型链](/js/inherit.md)
-
   - [Object构造器及原型上的方法](/js/object-methods.md)
-
   - [赋值与深浅拷贝](/js/copy.md)
-
   - [JS细碎知识点](/js/knowledge-points.md)
-
   - [关于数组的各种操作](/js/array.md)
-
   - [JS工具库函数](/js/utils.md)
 
 - JS进阶
 
   - [call,apply,bind实现](/js/call.md)
-
   - [js任务队列与执行机制](/js/eventloop.md)
-
   - [函数式编程(高阶函数/偏函数/柯里化)](/js/func-program.md)
-
   - [JS设计模式](/js/design-mode.md)
-
   - [JS数据结构与算法](/js/algorithm.md)
 
 ### ES6
 
 - [类](/es6/class.md)
-
 - [Promise与AJAX](/es6/promise.md)
-
 - [模块化应用](/es6/module.md)
 
 ### HTML/CSS
 
 - [HTML](/hc/html.md)
-
 - [CSS常用代码片段](/hc/css-utils.md)
 
 ### React
 
 - [React生命周期总结&应用](/react/lifecycle.md)
-
 - [React-Hooks总结&实践](/react/react-hooks.md)
-
 - [Redux/React-Redux](/react/redux.md)
-
 - [Redux中间件](/react/redux-middleware.md)
-
 - [异步的实践&注意事项](/react/async.md)
-
 - [基础组件](/react/basic-co.md)
-
 - [复杂业务组件](/react/complex-co.md)
-
 - [Jest/Enzyme测试框架初识](/react/react-test.md)
 
 ### Typescript
 
 - [Typescript基础类型与概念](/typescript/ts-basic.md)
-
 - [用TS配置axios拦截器](/typescript/ts-axios.md)
 
 ### Node
 
 - [Node知识点](/node/little-points.md)
-
 - [blog后端思路](/node/blog.md)
 
 
@@ -86,21 +62,17 @@
 - Webpack
 
   - [webpack 配置](/tools/webpack/webpack-config.md)
-
   - [用webpack配置react开发环境](/tools/webpack/webpack-react.md)
-
   - [babel](/tools/webpack/babel.md)
 
 - 工具
 
   - [git的使用](/tools/git.md)
-
   - [第三方工具集](/tools/tool.md)
 
 ### Vue
 
 - [Vuepress使用注意事项](/vue/vuepress.md)
-
 
 ### 网络
 
@@ -110,22 +82,17 @@
 ### 服务器
 
 - [ubuntu服务器终端及图形界面连接](/server/ubuntu.md)
-
 - [linux发行版介绍](/server/linux.md)
-
 - [nginx linux安装与使用](/server/nginx.md)
 
 ### 面试
 
 - [JS面试题](/interview/js-interview.md)
-
 - [框架/库/实践面试题](/interview/lib-interview.md)
-
 - [css/网络/等面试题](/interview/other-interview.md)
 
 ### 其他
 
 - [一些名词对应的英文](/others/words.md)
-
 - [我的疑问/待做](/others/questions.md)
 

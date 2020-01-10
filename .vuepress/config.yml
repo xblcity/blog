@@ -15,7 +15,7 @@ themeConfig :
   logo: /avatar.png
   nav:
     - text: 读书笔记
-      link: https://blog.xblcity.com
+      link: https://reading.xblcity.com
     - text: Github
       link: https://github.com/xblcity
   sidebar: 
