@@ -44,7 +44,6 @@
 - [异步的实践&注意事项](/react/async.md)
 - [基础组件](/react/basic-co.md)
 - [复杂业务组件](/react/complex-co.md)
-- [Jest/Enzyme测试框架初识](/react/react-test.md)
 
 ### Typescript
 

@@ -46,7 +46,6 @@
 - [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
 - [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
 - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
-- [Jest/Enzyme测试框架初识](https://github.com/xblcity/blog/blob/master/react/react-test.md)
 
 ### Typescript
 

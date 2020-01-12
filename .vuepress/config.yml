@@ -67,7 +67,6 @@ themeConfig :
         - /react/async
         - /react/basic-co
         - /react/complex-co
-        - /react/react-test
     - title: Typescript
       collapsable: true
       sidebarDepth: 2
