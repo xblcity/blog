@@ -55,7 +55,7 @@
 
 - [Node知识点](/node/little-points.md)
 - [blog后端思路](/node/blog.md)
-
+- [mysql](/node/mysql.md)
 
 ### 工具
 

@@ -80,6 +80,7 @@ themeConfig :
       children:
         - /node/little-points
         - /node/blog   
+        - /node/mysql
     - title: 工具
       collapsable: true
       sidebarDepth: 2

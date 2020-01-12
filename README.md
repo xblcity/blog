@@ -57,6 +57,7 @@
 
 - [Node知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
 - [blog后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
+- [mysql](https://github.com/xblcity/blog/blob/master/node/mysql.md)
 
 ### 工具
 
