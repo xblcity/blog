@@ -4,9 +4,11 @@
 - [接口类型](#接口类型)
 - [函数](#函数)
 - [高级类型](#高级类型)
+- [类](#类)
 - [模块](#模块)
 - [命名空间](#命名空间)
 - [声明合并](#声明合并)
+- [声明文件](#声明文件)
 
 ## 常见类型
 
@@ -46,8 +48,9 @@ arr1 = ['1', '2']
 
 ### 对象
 
+object，暂时不知道在什么地方用，在 Object.create() API 中？
+
 ```js
-// object，暂时不知道在什么地方用，在 Object.create() API 中？
 declare function create(o: object | null) : void
 create({ prop: 0 }); // OK
 create(null); // OK
@@ -185,7 +188,7 @@ class Clock implements ClockInterface {
 }
 ```
 
-接口的继承
+`接口的继承`
 
 ```ts
 interface Shape {
@@ -388,6 +391,12 @@ typeof Container<T> = {
 
 类型别名和接口很像，但是类型别名不能被 extends和 implements。不过类型别名可以很好的表示交叉类型和联合类型。不过两者还有其他细小的差别...
 
+## 类
+
+类中的关键字 `extends`  `public`  `private`  `protected`  `readonly`  `get set` `static` `abstract`
+
+抽象类(abstract关键字)做为其它派生类的基类使用。 它们一般不会直接被实例化。
+
 ## 模块
 
 ts1.5之后，**外部模块**被称作**模块**，**内部模块**被称作**命名空间**
@@ -452,6 +461,33 @@ namespace Animals {
   export class Dog { }
 }
 ```
+
+## 声明文件
+
+示例
+
+mylib.d.ts
+```ts
+export as namespace myLib
+
+// 为模块定义函数类型
+export function myMethod(a:string) : string
+export function myOtherMethod(a:number) : number
+// 为模块定义接口类型
+export interface someType {
+  name: string
+  length: number
+  extras?: string[]
+}
+// 为模块定义属性
+export const myField: number
+
+// ... ?
+export namespace subProp {
+  export function foo(): void;
+}
+```
+
 
 ====================================
 
