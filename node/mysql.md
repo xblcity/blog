@@ -32,8 +32,8 @@
 ### 卸载 
 
 - `sc delete MySQL` 卸载服务
-
-- `net start MySQl` 启动服务
+- `net start MySQL` 启动服务(需要有管理员权限,在任意位置执行命令行)
+- `net stop MySQL` 关闭服务(需要有管理员权限,在任意位置执行命令行)
 
 ## window下命令行操作
 
