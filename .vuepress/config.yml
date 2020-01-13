@@ -72,7 +72,7 @@ themeConfig :
       sidebarDepth: 2
       children:
         - /typescript/ts-basic
-        - /typescript/ts-axios
+        - /typescript/ts-react
     - title: Node
       collapsable: true
       sidebarDepth: 2

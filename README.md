@@ -26,16 +26,16 @@
   - [JS设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
   - [JS数据结构与算法](https://github.com/xblcity/blog/blob/master/js/algorithm.md)
 
+### HTML/CSS
+
+- [HTML](https://github.com/xblcity/blog/blob/master/hc/html.md)
+- [CSS常用代码片段](https://github.com/xblcity/blog/blob/master/hc/css-utils.md)
+
 ### ES6
 
 - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
 - [Promise与AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
 - [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
-
-### HTML/CSS
-
-- [HTML](https://github.com/xblcity/blog/blob/master/hc/html.md)
-- [CSS常用代码片段](https://github.com/xblcity/blog/blob/master/hc/css-utils.md)
 
 ### React
 
@@ -50,7 +50,7 @@
 ### Typescript
 
 - [Typescript基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-basic.md)
-- [用TS配置axios拦截器](https://github.com/xblcity/blog/blob/master/typescript/ts-axios.md)
+- [TS在React中的应用](https://github.com/xblcity/blog/blob/master/typescript/ts-react.md)
 
 ### Node
 

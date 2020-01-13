@@ -24,16 +24,16 @@
   - [JS设计模式](/js/design-mode.md)
   - [JS数据结构与算法](/js/algorithm.md)
 
+### HTML/CSS
+
+- [HTML](/hc/html.md)
+- [CSS常用代码片段](/hc/css-utils.md)
+
 ### ES6
 
 - [类](/es6/class.md)
 - [Promise与AJAX](/es6/promise.md)
 - [模块化应用](/es6/module.md)
-
-### HTML/CSS
-
-- [HTML](/hc/html.md)
-- [CSS常用代码片段](/hc/css-utils.md)
 
 ### React
 
@@ -48,7 +48,7 @@
 ### Typescript
 
 - [Typescript基础类型与概念](/typescript/ts-basic.md)
-- [用TS配置axios拦截器](/typescript/ts-axios.md)
+- [TS在React中的应用](/typescript/ts-react.md)
 
 ### Node
 
