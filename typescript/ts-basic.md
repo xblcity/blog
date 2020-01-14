@@ -128,6 +128,8 @@ const getMyLength = (target: string | number): number => {
 
 ### 泛型
 
+更广泛的约束类型
+
 不知道返回的类型，但是用不想用any，而是根据输入值决定返回值
 
 ```js
@@ -396,6 +398,27 @@ typeof Container<T> = {
 类中的关键字 `extends`  `public`  `private`  `protected`  `readonly`  `get set` `static` `abstract`
 
 抽象类(abstract关键字)做为其它派生类的基类使用。 它们一般不会直接被实例化。
+
+ts中与js有不同的是静态属性的表示，比如
+
+```js
+// js
+class Print {
+  count = 1
+}
+
+// ts
+class Print {
+  count: 1
+}
+// 或
+interface MyPoint {
+  count: number
+}
+class Print implements MyPoint {
+  count: string  // Print类上面的count属性值是string类型
+}
+```
 
 ## 模块
 

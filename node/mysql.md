@@ -1,4 +1,8 @@
-# mysql数据库
+# mysql使用
+
+- [mySQL的安装](#mySQL的安装)
+- [window下命令行操作](#window下命令行操作)
+- [使用ORM](#使用ORM)
 
 ## mySQL的安装
 
@@ -62,3 +66,11 @@ drop table users; // 删除users这个表格集合
 show tables; // 查看当前数据库所有表
 drop database demo; // 删除demo数据库
 ```
+
+## 使用ORM
+
+`ORM`全称 `Object Relational Mapping` 即对象关系映射。作用是在关系型数据库和对象之间做一个映射。这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。
+
+这里使用的是`typeorm`，可以在node中**使用操作对象的语法来实现mysql创建表与查询的操作**
+
+[typeorm官方文档](https://typeorm.io/#/)

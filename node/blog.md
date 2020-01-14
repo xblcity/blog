@@ -1,4 +1,79 @@
-# blog网站实现思路
+# 博客的后端实现
+
+- [使用Koa2与TypeORM](#使用Koa2与TypeORM)
+
+## 使用Koa2与TypeORM
+
+使用`Node.js`框架`Koa2`与`TypeORM`操作数据库，更为简单的实现博客后端功能
+
+项目使用了`TypeScript`
+
+### mysql数据库需要的表
+
+- user 用户
+- article 文章
+- comment 评论
+- reply 回复
+- tag 标签，每个标签对应不同的文章列表
+
+具体的表见[这里]()
+
+### 路由
+
+#### 登录/注册
+
+- /api/register
+- /api/login
+
+#### 用户
+
+- /api/user/list 用户列表
+- /api/user/delete 删除某一用户
+
+#### 文章
+
+- /api/article/create  创建文章
+- /api/article/list 文章列表
+- /api/article/detail 文章详情
+- /api/article/delete 删除文章
+- /api/article/update 更新文章
+
+#### 标签
+
+- /api/tag/list 标签对应文章列表
+
+#### 评论与回复
+
+- /api/discuss/publish 发布评论
+- /api/discuss/delete 删除评论
+- /api/discuss/reply 回复评论
+- /api/discuss/reply/delete 删除回复评论
+
+具体的路由见[这里]()
+
+### controller处理
+
+根据路由进行控制层的书写
+
+controller层，处理逻辑相关
+
+#### user
+
+user部分有更详细的注释，[点击这里进行查看]()
+
+#### article
+
+#### tag
+
+#### comment
+
+#### reply
+
+
+
+
+===========================
+
 
 ## 原生node.js
 
