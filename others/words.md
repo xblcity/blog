@@ -18,3 +18,8 @@ React
 - batchedUpdate 合并更新，指的是 react 中 state 的遵循的一个更新策略
 - transaction 事务
 - reconciliation 协调
+
+后端
+
+- entity /ˈentəti/ n.  独立存在物;实体
+- encrypt /ɪnˈkrɪpt/ v. 把...加密

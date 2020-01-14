@@ -18,6 +18,45 @@
 
 具体的表见[这里]()
 
+表的关联处理比较麻烦，这里以user为例
+
+```ts
+// user.d.ts
+export interface Item extends IBase.Item {
+  id: number
+  username: string
+  password:string
+  auth: 1 | 2
+  comments: IComment.Item[] // comment要符合IComment命名空间Item的类型
+}
+
+// user.ts entity
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm'
+import {Comment} from './Comment'
+
+@Entity()
+class User implements IUser.Item {
+  @PrimaryGeneratedColumn()
+  id: number
+
+  @Column({ type: 'varchar', length: 50 })
+  username: string
+
+  @Column({ type: 'varchar', length: 255 })
+  password: string
+
+  @Column({ type: 'tinyint', length: 4 })
+  auth: 1 | 2
+
+  @OneToMany(
+    () => Comment, // 一个user对应多个Comment
+    comment => comment.user // 一个comment对应一个user
+  )
+  comments: Comment[] // comments类型要符合Comment entity
+}
+export default User
+```
+
 ### 路由
 
 #### 登录/注册
@@ -57,9 +96,11 @@
 
 controller层，处理逻辑相关
 
+一般先处理错误情况并抛出
+
 #### user
 
-user部分有更详细的注释，[点击这里进行查看]()
+在user把通用的引入包的作用以及通用api都进行了注释，[点击这里进行查看]()
 
 #### article
 
