@@ -6,15 +6,15 @@
 
 ```js
 function createAnimal(name, age) {
-  var o = new Object();
-  o.name = name;
-  o.age = age;
+  var o = new Object()
+  o.name = name
+  o.age = age
   o.sayName = function() {
-    console.log(`my name is ${this.name}`);
-  };
-  return o;
+    console.log(`my name is ${this.name}`)
+  }
+  return o
 }
-var aDog = createAnimal("dog", 6);
+var aDog = createAnimal("dog", 6)
 // 执行aDog，返回一个对象
 ```
 
@@ -28,13 +28,13 @@ var aDog = createAnimal("dog", 6);
 
 ```js
 function Animal(name, age) {
-  this.name = name;
-  this.age = age;
+  this.name = name
+  this.age = age
   this.sayName = function() {
-    console.log(`my name is ${this.name}`);
-  };
+    console.log(`my name is ${this.name}`)
+  }
 }
-var aDog = new Animal("dog", 6);
+var aDog = new Animal("dog", 6)
 ```
 
 与工厂模式不同的是，我们没有显式的创建对象并返回对象，并且我们把属性和方法都绑定到了`this`上面
@@ -59,14 +59,14 @@ var aDog = new Animal("dog", 6);
 function Animal() {}
 
 // 为prototype对象添加更多的属性和方法
-Animal.prototype.name = "dog";
-Animal.prototype.age = 7;
+Animal.prototype.name = "dog"
+Animal.prototype.age = 7
 Animal.prototype.sayName = function() {
-  console.log("my name is" + this.name);
-};
-var aDog = new Animal();
-var bDog = new Animal();
-console.log(aDog.sayName === bDog.sayName); // true
+  console.log("my name is" + this.name)
+}
+var aDog = new Animal()
+var bDog = new Animal()
+console.log(aDog.sayName === bDog.sayName) // true
 ```
 
 可以看出，由 Animal 构造函数构造出的实例都具有相同的属性和方法，方法指向同一个引用
@@ -79,12 +79,12 @@ console.log(aDog.sayName === bDog.sayName); // true
 
 ```js
 function Animal(name) {
-  this.name = name;
+  this.name = name
 }
 Animal.prototype.say = function() {
-  console.log(`my name is ${this.name}`);
-};
-const anAnimal = new Animal("animal gaga");
+  console.log(`my name is ${this.name}`)
+}
+const anAnimal = new Animal("animal gaga")
 ```
 
 ```js
@@ -109,9 +109,9 @@ console.log(Animal.prototype) // {say: function() {}, constructor: function Anim
 
 **优点**: 充分利用了构造函数和原型的优点，使得实例可以拥有自己的属性和共有的方法
 
-**缺点**:
+**缺点**: 暂无
 
-## 关于构造函数静态方法与原型方法的区别
+## 5. 关于构造函数静态方法与原型方法的区别
 
 构造函数的方法的调用，以 Date 这个构造函数为例
 
