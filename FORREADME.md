@@ -86,7 +86,7 @@
 
 ### 面试
 
-- [JS面试题](/interview/js-interview.md)
+- [前端基础知识](/interview/js-interview.md)
 - [框架/库/实践面试题](/interview/lib-interview.md)
 - [css/网络/等面试题](/interview/other-interview.md)
 

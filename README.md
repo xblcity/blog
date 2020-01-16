@@ -87,7 +87,7 @@
 
 ### 面试
 
-- [JS面试题](https://github.com/xblcity/blog/blob/master/interview/js-interview.md)
+- [前端基础知识](https://github.com/xblcity/blog/blob/master/interview/js-interview.md)
 - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
 - [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/interview/other-interview.md)
 
