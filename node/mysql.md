@@ -1,47 +1,47 @@
-# mysql使用
+# mysql 使用
 
-- [mySQL的安装](#mySQL的安装)
-- [window下命令行操作](#window下命令行操作)
-- [使用ORM](#使用ORM)
+- [mySQL 的安装](#mySQL的安装)
+- [window 下命令行操作](#window下命令行操作)
+- [使用 ORM](#使用ORM)
 
-## mySQL的安装
+## mySQL 的安装
 
 ### mySQL@5 @8 版本的安装
 
-操作系统：*window8.1 64位* *mySQL@5.7.19zip压缩版* 
+操作系统：_window8.1 64 位_ _mySQL@5.7.19zip 压缩版_
 
-操作系统：*window10 64位* *mySQL@8.0.18zip压缩版* 
+操作系统：_window10 64 位_ _mySQL@8.0.18zip 压缩版_
 
 1. 下载[地址](https://dev.mysql.com/downloads/mysql/)，解压至纯英文目录
 2. 初始化并获取临时访问密码
 
-在安装目录bin文件夹下调用命令行工具`powershell/cmd`(快捷键是shift+右键->在此处打开命令行窗口)。 输入`mysqld --initialize --user=mysql --console`。 如果提示`mysqld`不是命令，请按照提示信息替换成`.\mysqld`。保存得到的临时密码`password`。
+在安装目录 bin 文件夹下调用命令行工具`powershell/cmd`(快捷键是 shift+右键->在此处打开命令行窗口)。 输入`mysqld --initialize --user=mysql --console`。 如果提示`mysqld`不是命令，请按照提示信息替换成`.\mysqld`。保存得到的临时密码`password`。
 
-3. 将mySQL安装为服务。
+3. 将 mySQL 安装为服务。
 
-管理员运行`powershell`，并进入`bin`文件夹。(以笔者安装在D盘为例，管理员运行powershell/cmd，依次输入命令，`cd d:` `cd "D:\Program Files\mysql-8.0.18-winx64\bin"`，记得路径加引号)
+管理员运行`powershell`，并进入`bin`文件夹。(以笔者安装在 D 盘为例，管理员运行 powershell/cmd，依次输入命令，`cd d:` `cd "D:\Program Files\mysql-8.0.18-winx64\bin"`，记得路径加引号)
 
-输入命令 `mysqld --install MySQL`(window10可能要把`mysqld`替换成`.\mysqld`)。回车即可提示服务安装成功。
+输入命令 `mysqld --install MySQL`(window10 可能要把`mysqld`替换成`.\mysqld`)。回车即可提示服务安装成功。
 
-4. 安装服务成功后启动服务并连接数据库修改密码(在bin目录下操作)
+4. 安装服务成功后启动服务并连接数据库修改密码(在 bin 目录下操作)
 
-- 启动服务，命令行输入`net start MySQL` 。连接数据库 `mysql(或.\mysql) -u root -p` u代表user p代表password
+- 启动服务，命令行输入`net start MySQL` 。连接数据库 `mysql(或.\mysql) -u root -p` u 代表 user p 代表 password
 - 提示要输入密码。Enter password: xxx(输入安装时系统给的默认密码)
 - 数据库连接成功，查看数据库 `show databases;` 注意要加分号
-- 这时系统提示**必须要重新设置密码**，设置密码： `set password for root@localhost = password('123456');`(@8版本会提示语法错误，输入`set password for root@localhost = '123456';`)
+- 这时系统提示**必须要重新设置密码**，设置密码： `set password for root@localhost = password('123456');`(@8 版本会提示语法错误，输入`set password for root@localhost = '123456';`)
 - 再次输入`show databases;` 查看数据库
 - `exit;` 退出数据库
 - 再次执行`mysql -u root -p` 验证新密码正确与否
 
-### 卸载 
+### 卸载
 
 - `sc delete MySQL` 卸载服务
 - `net start MySQL` 启动服务(需要有管理员权限,在任意位置执行命令行)
 - `net stop MySQL` 关闭服务(需要有管理员权限,在任意位置执行命令行)
 
-## window下命令行操作
+## window 下命令行操作
 
-- 进入bin目录，连接数据库(要先启动服务) `mysql -u root -p`
+- 进入 bin 目录，连接数据库(要先启动服务) `mysql -u root -p`
 - 输入`help;`查询所有命令
 
 **注意：命令都要以分号结尾，不可省略**
@@ -67,10 +67,10 @@ show tables; // 查看当前数据库所有表
 drop database demo; // 删除demo数据库
 ```
 
-## 使用ORM
+## 使用 ORM
 
-`ORM`全称 `Object Relational Mapping` 即对象关系映射。作用是在关系型数据库和对象之间做一个映射。这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。
+`ORM`全称 `Object Relational Mapping` 即对象关系映射。作用是在关系型数据库和对象之间做一个映射。这样，我们在具体的操作数据库的时候，就不需要再去和复杂的 SQL 语句打交道，只要像平时操作对象一样操作它就可以了 。
 
-这里使用的是`typeorm`，可以在node中**使用操作对象的语法来实现mysql创建表与查询的操作**
+这里使用的是`typeorm`，可以在 node 中**使用操作对象的语法来实现 mysql 创建表与查询的操作**
 
-[typeorm官方文档](https://typeorm.io/#/)
+[typeorm 官方文档](https://typeorm.io/#/)
