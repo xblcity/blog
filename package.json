@@ -25,7 +25,6 @@
   "homepage": "https://github.com/xblcity/blog#readme",
   "dependencies": {},
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.2.0",
     "vuepress": "^1.2.0",
     "vuepress-plugin-helper-live2d": "^1.0.0"
   }

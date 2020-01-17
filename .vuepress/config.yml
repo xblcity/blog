@@ -10,7 +10,6 @@ head:
     - rel: icon
       href: /avatar.png
 plugins:
-  - - "@vuepress/back-to-top"
   - - vuepress-plugin-helper-live2d
     - live2d:
         enable: true
@@ -19,8 +18,8 @@ plugins:
           position: right
           width: 135
           height: 300
-          hOffset: 15
-          vOffset: 60
+          hOffset: 30
+          vOffset: 30
         mobile:
           show: false
         react:
