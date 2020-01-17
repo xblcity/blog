@@ -5,20 +5,34 @@ locales:
     lang: zh-CN
     title: Blog
     description: 小白龙的前端记录
-head: 
-  -
-    - link
-    -
-      rel: icon
+head:
+  - - link
+    - rel: icon
       href: /avatar.png
-themeConfig :
+plugins:
+  - - "@vuepress/back-to-top"
+  - - vuepress-plugin-helper-live2d
+    - live2d:
+        enable: true
+        model: shizuku
+        display:
+          position: right
+          width: 135
+          height: 300
+          hOffset: 15
+          vOffset: 60
+        mobile:
+          show: false
+        react:
+          opacity: 0.8
+themeConfig:
   logo: /avatar.png
   nav:
     - text: 读书笔记
       link: https://reading.xblcity.com
     - text: Github
       link: https://github.com/xblcity
-  sidebar: 
+  sidebar:
     - title: 介绍
       path: /
     - title: JS基础
@@ -29,12 +43,12 @@ themeConfig :
         - /js/this
         - /js/object
         - /js/inherit
-        - /js/object-methods 
+        - /js/object-methods
         - /js/copy
         - /js/knowledge-points
         - /js/array
         - /js/utils
-    - title: JS进阶 
+    - title: JS进阶
       collapsable: false
       sidebarDepth: 2
       children:
@@ -78,7 +92,7 @@ themeConfig :
       sidebarDepth: 2
       children:
         - /node/little-points
-        - /node/blog   
+        - /node/blog
         - /node/mysql
     - title: 工具
       collapsable: true
@@ -104,14 +118,14 @@ themeConfig :
       sidebarDepth: 2
       children:
         - /server/ubuntu
-        - /server/linux 
-        - /server/nginx 
+        - /server/linux
+        - /server/nginx
     - title: 面试
       collapsable: true
       sidebarDepth: 2
       children:
         - /interview/js-interview
-        - /interview/lib-interview 
+        - /interview/lib-interview
         - /interview/other-interview
     - title: 其他
       collapsable: true
@@ -119,5 +133,3 @@ themeConfig :
       children:
         - /others/words
         - /others/questions
-
-    
