@@ -107,7 +107,7 @@ themeConfig:
       sidebarDepth: 2
       children:
         - /vue/vuepress
-    - title: 网络
+    - title: 浏览器与网络
       collapsable: true
       sidebarDepth: 2
       children:
