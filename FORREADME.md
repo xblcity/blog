@@ -73,10 +73,11 @@
 
 - [Vuepress 使用注意事项](/vue/vuepress.md)
 
-### 浏览器与网络
+### 浏览器/网络/性能优化
 
-- [从输入网址到页面渲染经历了什么](/network/render.md)
-- [http 请求头与响应头](/network/http-message.md)
+- [性能优化](/mix/performance.md)
+- [从输入网址到页面渲染经历了什么](/mix/render.md)
+- [http 请求头与响应头](/mix/http-message.md)
 
 ### 服务器
 

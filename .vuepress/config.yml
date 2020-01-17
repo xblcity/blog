@@ -107,10 +107,12 @@ themeConfig:
       sidebarDepth: 2
       children:
         - /vue/vuepress
-    - title: 浏览器与网络
+    - title: 浏览器/网络/性能优化
       collapsable: true
       sidebarDepth: 2
       children:
+        - /network/performance
+        - /network/render
         - /network/http-message
     - title: 服务器
       collapsable: true

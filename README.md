@@ -75,10 +75,11 @@
 
 - [Vuepress 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
 
-### 浏览器与网络
+### 浏览器/网络/性能优化
 
-- [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/network/render.md)
-- [http 请求头与响应头](https://github.com/xblcity/blog/blob/master/network/http-message.md)
+- [性能优化](https://github.com/xblcity/blog/blob/master/mix/performance.md)
+- [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/mix/render.md)
+- [http 请求头与响应头](https://github.com/xblcity/blog/blob/master/mix/http-message.md)
 
 ### 服务器
 
