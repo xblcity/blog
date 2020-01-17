@@ -23,8 +23,6 @@ let a = 10 //  Cannot access 'a' before initialization
 
 ## 待做
 
-- [一个不错的 Blog](https://github.com/ljianshu/Blog)
-
 ### Jest/Enzyme 测试框架初识
 
 [官网](https://jestjs.io)

@@ -69,7 +69,7 @@
 - 工具
 
   - [git 的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
-  - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
+  - [工具和整理的资源](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
 ### Vue
 

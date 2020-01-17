@@ -67,7 +67,7 @@
 - 工具
 
   - [git 的使用](/tools/git.md)
-  - [第三方工具集](/tools/tool.md)
+  - [工具和整理的资源](/tools/tool.md)
 
 ### Vue
 

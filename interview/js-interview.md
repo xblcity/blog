@@ -1,13 +1,5 @@
 # 前端理论知识
 
-关于面试题，这里推荐几个网站
-
-- [面试题-归纳](https://www.cxymsg.com/guide/#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88)
-- [面试题-代码](http://bigerfe.com/)
-- [算法](http://www.conardli.top/docs/dataStructure/)
-
-归纳：
-
 - [数据类型与方法](#数据类型与方法)
 - [js 基础](#js基础)
 - [es6](#es6)
