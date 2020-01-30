@@ -81,9 +81,9 @@
 
 ### 服务器
 
+- [使用服务器](https://github.com/xblcity/blog/blob/master/server/server.md)
+- [nginx使用配置](https://github.com/xblcity/blog/blob/master/server/nginx.md)
 - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/server/ubuntu.md)
-- [linux发行版介绍](https://github.com/xblcity/blog/blob/master/server/linux.md)
-- [nginx linux安装与使用](https://github.com/xblcity/blog/blob/master/server/nginx.md)
 
 ### 面试
 

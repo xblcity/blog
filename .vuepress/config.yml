@@ -103,9 +103,9 @@ themeConfig :
       collapsable: true
       sidebarDepth: 2
       children:
-        - /server/ubuntu
-        - /server/linux 
+        - /server/server
         - /server/nginx 
+        - /server/ubuntu
     - title: 面试
       collapsable: true
       sidebarDepth: 2

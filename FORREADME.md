@@ -80,9 +80,9 @@
 
 ### 服务器
 
+- [使用服务器](/server/server.md)
+- [nginx使用配置](/server/nginx.md)
 - [ubuntu服务器终端及图形界面连接](/server/ubuntu.md)
-- [linux发行版介绍](/server/linux.md)
-- [nginx linux安装与使用](/server/nginx.md)
 
 ### 面试
 
