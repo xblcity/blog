@@ -66,6 +66,7 @@
 
 - 工具
 
+  - [vscode插件](/tools/vs.md)
   - [git的使用](/tools/git.md)
   - [第三方工具集](/tools/tool.md)
 

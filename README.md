@@ -68,6 +68,7 @@
 
 - 工具
 
+  - [vscode插件](https://github.com/xblcity/blog/blob/master/tools/vs.md)
   - [git的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
   - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
