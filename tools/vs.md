@@ -103,7 +103,7 @@ vs code的中文简体包
 浅色主题
 
 - Atom One Light Theme 浅灰色亮色背景的主题
-- Brackets Light Pro 浅灰色背景的主题
+- Brackets Light Pro 浅灰色背景的主题，两个
 - One Light Pro 浅绿色背景主题，常用
 - Eva Theme 浅色系有两种浅灰色背景
 - Tiny Light 浅绿色亮色背景
