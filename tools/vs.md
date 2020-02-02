@@ -4,7 +4,9 @@
 
 ### emmet
 
-该插件是vs内置的，可以使用该插件快速创建HTML标签。
+该插件是vs内置的，可以使用该插件快速创建HTML标签。修改`emmet.triggerExpansionOnTab`为true即可在html中按tab快捷生成一对标签。
+
+在.vue文件中，如果想要支持tab键生成html标签，需要配置`emmet.includeLanguages`
 
 ### Chinese (Simplified) Language Pack for Visual Studio Code
 
