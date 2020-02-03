@@ -10,6 +10,12 @@
 
 ### 生命周期，用过哪些
 
+- React生命周期
+- React的请求应该放在哪个生命周期中?
+- React组件通信如何实现?
+- setState是同步还是异步 [你真的理解setState吗？](https://juejin.im/post/5b45c57c51882519790c7441)
+- React性能优化
+
 - axios如何去统一封装处理
 
 ## vue

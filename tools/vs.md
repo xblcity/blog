@@ -98,7 +98,7 @@ vs code的中文简体包
 
 ### vetur
 
-使用vue的时候用到
+使用vue的时候用到，可以对.vue文件进行代码高亮，格式化等。vscode默认格式化快捷键 alt+shift+f
 
 ### 主题相关插件
 
