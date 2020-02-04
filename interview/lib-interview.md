@@ -8,7 +8,7 @@
 
 ## react
 
-### 生命周期，用过哪些
+参考 [React面试题](https://www.cxymsg.com/guide/react.html#react最新的生命周期是怎样的)
 
 - React生命周期
 - React的请求应该放在哪个生命周期中?
