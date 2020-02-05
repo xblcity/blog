@@ -27,35 +27,9 @@ const countDown = (ms = 60, cb = f => f) => {
 }
 ```
 
-## 节流
-
-节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
-
-```js
-function throttle(fn, interval) {
-  let last = 0
-  return function() {
-    // 保留调用时传入的参数
-    let args = arguments
-    // 记录本次触发回调的时间
-    let now = Date.now() // 当前毫秒ms值
-    if (now - last >= interval) {
-      // 如果时间间隔大于设定的时间间隔
-      last = now
-      fn.apply(context, args)
-    }
-  }
-}
-
-const better_scroll = throttle(() => {
-  console.log("触发了滚动事件")
-}, 1000)
-document.addEventListener("scroll", better_scroll)
-```
-
 ## 防抖
 
-防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。
+防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。比如防止用户频繁的表单提交。
 
 ```js
 function debounce(fn, delay) {
@@ -85,6 +59,32 @@ document.addEventListener("scroll", better_scroll)
 let b = { a: 555 },
   c = 5
 better_scroll.call(b, c)
+```
+
+## 节流
+
+节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
+
+```js
+function throttle(fn, interval) {
+  let last = 0
+  return function() {
+    // 保留调用时传入的参数
+    let args = arguments
+    // 记录本次触发回调的时间
+    let now = Date.now() // 当前毫秒ms值
+    if (now - last >= interval) {
+      // 如果时间间隔大于设定的时间间隔
+      last = now
+      fn.apply(context, args)
+    }
+  }
+}
+
+const better_scroll = throttle(() => {
+  console.log("触发了滚动事件")
+}, 1000)
+document.addEventListener("scroll", better_scroll)
 ```
 
 ## 时间格式的处理
