@@ -1,8 +1,8 @@
 # JS 常用工具函数/代码片段
 
 - [发送验证码倒计时](#发送验证码倒计时)
-- [节流](#节流)
 - [防抖](#防抖)
+- [节流](#节流)
 - [时间格式的处理](#时间格式的处理)
 - [url 参数取值](#url参数取值)
 - [配置 axios 拦截器](#配置axios拦截器)
@@ -38,7 +38,7 @@ function debounce(fn, delay) {
   return function() {
     // 保留调用时的this上下文, 因为setTimeout回调函数this是window，使用箭头函数就不用保留this了
     let context = this
-    // 保留调用时传入的参数
+    // 保留调用时传入的参数，es6可以使用剩余参数接收
     let args = arguments
     // 每次事件被触发时，都去清除之前的旧定时器
     if (timer) {
@@ -66,18 +66,28 @@ better_scroll.call(b, c)
 节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
 
 ```js
-function throttle(fn, interval) {
+const throttle = (fn, interval) => {
   let last = 0
-  return function() {
-    // 保留调用时传入的参数
-    let args = arguments
-    // 记录本次触发回调的时间
+  return (...args) => {
     let now = Date.now() // 当前毫秒ms值
     if (now - last >= interval) {
       // 如果时间间隔大于设定的时间间隔
       last = now
       fn.apply(context, args)
     }
+  }
+}
+
+// 使用定时器
+const throttle = (fn, delay = 500) => {
+  let flag = true // flag为true时执行
+  return (...args) => {
+    if (!flag) return
+    flag = false
+    setTimeout(() => {
+      fn.apply(this, args)
+      flag = true
+    }, delay)
   }
 }
 
