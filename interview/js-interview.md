@@ -45,6 +45,8 @@
 
 ## 常用 utils
 
+手写部分
+
 ## DOM 与事件
 
 - defer 与 async -- async 表示异步加载，defer 表示延迟加载，在页面渲染完毕，即渲染引擎渲染完毕后，在执行 defer 属性的 script
