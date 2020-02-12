@@ -70,6 +70,8 @@ functions binarySearch(arr, target) {
 
 冒泡排序，快速排序
 
+##### 冒泡排序
+
 两层循环，时间复杂度是O(n²)
 
 下面这个冒泡排序是从前往后冒泡，两者比较，大的会向后冒泡。
@@ -89,6 +91,12 @@ function bubbleSort(arr) {
   return arr;
 }
 ```
+
+##### 快速排序
+
+![quicksort1](./images/quicksort1.jpg)
+![quicksort2](./images/quicksort2.jpg)
+![quicksort3](./images/quicksort3.jpg)
 
 #### 选择类
 
