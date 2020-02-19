@@ -73,6 +73,7 @@
 ### Vue
 
 - [Vuepress 使用注意事项](/vue/vuepress.md)
+- [VueAdmin 使用注意事项](/vue/vue-admin.md)
 
 ### 浏览器/网络/性能优化
 

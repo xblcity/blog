@@ -75,6 +75,7 @@
 ### Vue
 
 - [Vuepress 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
+- [VueAdmin 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vue-admin.md)
 
 ### 浏览器/网络/性能优化
 

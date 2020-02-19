@@ -107,6 +107,7 @@ themeConfig:
       sidebarDepth: 2
       children:
         - /vue/vuepress
+        - /vue/vue-admin
     - title: 浏览器/网络/性能优化
       collapsable: true
       sidebarDepth: 2
