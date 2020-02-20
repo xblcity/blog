@@ -4,6 +4,7 @@
 - [vue](#vue)
 - [小程序与公众号](#小程序与公众号)
 - [webpack](#webpack)
+- [babel](#babel)
 - [实践应用](#实践应用)
 
 ## react
