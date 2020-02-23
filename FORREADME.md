@@ -97,3 +97,4 @@
 
 - [一些名词对应的英文](/others/words.md)
 - [我的疑问/待做](/others/questions.md)
+- [今天学到了什么](/others/today.md)

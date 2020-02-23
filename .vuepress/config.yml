@@ -26,6 +26,7 @@ plugins:
           opacity: 0.8
 themeConfig:
   logo: /avatar.png
+  lastUpdated: 'LastEditTime'
   nav:
     - text: 读书笔记
       link: https://reading.xblcity.com
@@ -135,3 +136,4 @@ themeConfig:
       children:
         - /others/words
         - /others/questions
+        - /others/today

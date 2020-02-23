@@ -99,3 +99,4 @@
 
 - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
 - [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
+- [今天学到了什么](https://github.com/xblcity/blog/blob/master/others/today.md)
