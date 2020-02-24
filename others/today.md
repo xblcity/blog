@@ -1,12 +1,16 @@
 <!--
  * @Author: 小白龙
  * @Date: 2020-02-23 11:13:20
- * @LastEditTime: 2020-02-23 13:11:13
+ * @LastEditTime: 2020-02-24 23:07:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog\others\today-learn.md
  -->
  # What I Learn Today
+
+ ### 2020.2.24 周一 阴转雨
+
+ > 即刻时间-重学前端4.关于类型，有哪些你不知道的细节
 
  ### 2020.2.23 周日 晴
 
