@@ -1,12 +1,16 @@
 <!--
  * @Author: 小白龙
  * @Date: 2020-02-23 11:13:20
- * @LastEditTime: 2020-02-24 23:07:33
+ * @LastEditTime: 2020-02-25 22:25:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog\others\today-learn.md
  -->
  # What I Learn Today
+
+ ### 2020.2.25 周二 阴
+
+> 即刻时间-重学前端5.JS面向对象还是基于对象
 
  ### 2020.2.24 周一 阴转雨
 
