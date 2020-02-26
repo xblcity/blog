@@ -1,12 +1,16 @@
 <!--
  * @Author: 小白龙
  * @Date: 2020-02-23 11:13:20
- * @LastEditTime: 2020-02-25 22:25:46
+ * @LastEditTime: 2020-02-26 21:55:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog\others\today-learn.md
  -->
  # What I Learn Today
+
+ ### 2020.2.26 周三 多云
+
+> vue switch组件改进，级联选择器异步加载，如何进行默认数据填充？
 
  ### 2020.2.25 周二 阴
 
