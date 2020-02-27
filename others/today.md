@@ -1,12 +1,16 @@
 <!--
  * @Author: 小白龙
  * @Date: 2020-02-23 11:13:20
- * @LastEditTime: 2020-02-26 21:55:18
+ * @LastEditTime: 2020-02-27 22:08:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog\others\today-learn.md
  -->
  # What I Learn Today
+
+  ### 2020.2.27 周四 阴转雨
+
+> 沿着之前的流程继续做后台管理。elment-ui提供的组件不够用，是否要读源码进行改造？
 
  ### 2020.2.26 周三 多云
 
