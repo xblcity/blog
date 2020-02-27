@@ -2,6 +2,24 @@
 
 整理这些常用 api 是为了能够更好的理解与牢记
 
+> Object构造器
+
+当我们想获取到一个对象有几个键值对时，我们可以使用`Object.keys(object)`来返回一个包含对象属性的数组。这样就可以使用数组的方法对该对象进行处理了。与该方法相同的还有`Object.getOwnPropertyNames(object)`可以返回一个包含当前属性的数组。
+
+当我们想对一个对象上的属性进行值属性进行详细定义时，可以使用`Object.difineProperty(object, prop, descriptor)`对值属性的选项进行配置，也可以使用该方法对访问器属性进行配置。与之同理的还有`Object.defineProperties(object, {...props})`
+
+定义了值属性或者访问器属性配置后，我们还可以通过`Object.getOwnPropertyDescriptor(object, prop)`来获取单个属性的配置选项。与之同理的还有`Object.getOwnPropertyDescriptors(object)`可以获取当前对象的所有属性的配置选项。
+
+当我们想把一个对象进行复制(浅拷贝)时，我们可以使用`Objecct.assign(target, ...sources)`返回一个新的对象，target也会被合并。
+
+当我们想创建一个对象，并且指定它的原型时，可以使用`Object.create(proto, {...props})`，如果想创建一个无原型链的对象时，只需要把第一个参数设置为null即可
+
+> Object原型
+
+当我们想判断某个变量是具体哪个基本值或者复杂值时，可以使用`Object.prototype.toString.call(variable)`，当变量是字符串时，会得到`[object String]`的结果，当变量是数组时，会得到`[object Array]`，当变量是对象时，会得到`[object Object]`等等。
+
+当我们想判断某个对象是否是另一个对象的原型时...
+
 ## 1. Object 构造器上的方法(Methods of the Object constructor)
 
 ### 1.1 Object.keys()
