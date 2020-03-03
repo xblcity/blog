@@ -199,6 +199,14 @@ export default {
 </style>
 ```
 
+### element困惑的地方
+
+#### el-checkbox-group
+el-checkbox-group的el-checkbox当表单的值和页面呈现的值不一样时，:label表示的是表单代表值，页面呈现的值需要卸载el-checkbox标签里面
+
+#### el-checkbox-group
+el-radio-group的el-radio则可以使用label与value表示
+
 文件下载主要参考了[JavaScript 接收 excel 文件流并下载](https://www.jianshu.com/p/de2be37db7a7)
 
 ## 参考
