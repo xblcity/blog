@@ -26,6 +26,7 @@ plugins:
           opacity: 0.8
 themeConfig:
   logo: /avatar.png
+  lastUpdated: 'LastEditTime'
   nav:
     - text: 读书笔记
       link: https://reading.xblcity.com
@@ -107,20 +108,21 @@ themeConfig:
       sidebarDepth: 2
       children:
         - /vue/vuepress
+        - /vue/vue-admin
     - title: 浏览器/网络/性能优化
       collapsable: true
       sidebarDepth: 2
       children:
-        - /network/performance
-        - /network/render
-        - /network/http-message
+        - /mix/performance
+        - /mix/render
+        - /mix/http-message
     - title: 服务器
       collapsable: true
       sidebarDepth: 2
       children:
+        - /server/server
+        - /server/nginx 
         - /server/ubuntu
-        - /server/linux
-        - /server/nginx
     - title: 面试
       collapsable: true
       sidebarDepth: 2
@@ -134,3 +136,4 @@ themeConfig:
       children:
         - /others/words
         - /others/questions
+        - /others/today

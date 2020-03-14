@@ -1,8 +1,8 @@
 # JS 常用工具函数/代码片段
 
 - [发送验证码倒计时](#发送验证码倒计时)
-- [节流](#节流)
 - [防抖](#防抖)
+- [节流](#节流)
 - [时间格式的处理](#时间格式的处理)
 - [url 参数取值](#url参数取值)
 - [配置 axios 拦截器](#配置axios拦截器)
@@ -27,35 +27,9 @@ const countDown = (ms = 60, cb = f => f) => {
 }
 ```
 
-## 节流
-
-节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
-
-```js
-function throttle(fn, interval) {
-  let last = 0
-  return function() {
-    // 保留调用时传入的参数
-    let args = arguments
-    // 记录本次触发回调的时间
-    let now = Date.now() // 当前毫秒ms值
-    if (now - last >= interval) {
-      // 如果时间间隔大于设定的时间间隔
-      last = now
-      fn.apply(context, args)
-    }
-  }
-}
-
-const better_scroll = throttle(() => {
-  console.log("触发了滚动事件")
-}, 1000)
-document.addEventListener("scroll", better_scroll)
-```
-
 ## 防抖
 
-防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。
+防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。比如防止用户频繁的表单提交。
 
 ```js
 function debounce(fn, delay) {
@@ -64,7 +38,7 @@ function debounce(fn, delay) {
   return function() {
     // 保留调用时的this上下文, 因为setTimeout回调函数this是window，使用箭头函数就不用保留this了
     let context = this
-    // 保留调用时传入的参数
+    // 保留调用时传入的参数，es6可以使用剩余参数接收
     let args = arguments
     // 每次事件被触发时，都去清除之前的旧定时器
     if (timer) {
@@ -85,6 +59,42 @@ document.addEventListener("scroll", better_scroll)
 let b = { a: 555 },
   c = 5
 better_scroll.call(b, c)
+```
+
+## 节流
+
+节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
+
+```js
+const throttle = (fn, interval) => {
+  let last = 0
+  return (...args) => {
+    let now = Date.now() // 当前毫秒ms值
+    if (now - last >= interval) {
+      // 如果时间间隔大于设定的时间间隔
+      last = now
+      fn.apply(context, args)
+    }
+  }
+}
+
+// 使用定时器
+const throttle = (fn, delay = 500) => {
+  let flag = true // flag为true时执行
+  return (...args) => {
+    if (!flag) return
+    flag = false
+    setTimeout(() => {
+      fn.apply(this, args)
+      flag = true
+    }, delay)
+  }
+}
+
+const better_scroll = throttle(() => {
+  console.log("触发了滚动事件")
+}, 1000)
+document.addEventListener("scroll", better_scroll)
 ```
 
 ## 时间格式的处理
@@ -167,162 +177,7 @@ function getQueryString (name) {
 
 ## 配置 axios 拦截器
 
-参照 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin/blob/master/src/utils/request.js)
-
-```js
-import axios from "axios"
-import { MessageBox, Message } from "element-ui"
-import store from "@/store"
-import { getToken } from "@/utils/auth"
-
-// create an axios instance
-const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
-})
-
-// request interceptor
-service.interceptors.request.use(
-  config => {
-    // do something before request is sent
-
-    if (store.getters.token) {
-      // let each request carry token
-      // ['X-Token'] is a custom headers key
-      // please modify it according to the actual situation
-      config.headers["X-Token"] = getToken()
-    }
-    return config
-  },
-  error => {
-    // do something with request error
-    console.log(error) // for debug
-    return Promise.reject(error)
-  }
-)
-
-// response interceptor
-service.interceptors.response.use(
-  /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-   */
-
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
-  response => {
-    const res = response.data
-
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
-      Message({
-        message: res.message || "Error",
-        type: "error",
-        duration: 5 * 1000
-      })
-
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
-        // to re-login
-        MessageBox.confirm(
-          "You have been logged out, you can cancel to stay on this page, or log in again",
-          "Confirm logout",
-          {
-            confirmButtonText: "Re-Login",
-            cancelButtonText: "Cancel",
-            type: "warning"
-          }
-        ).then(() => {
-          store.dispatch("user/resetToken").then(() => {
-            location.reload()
-          })
-        })
-      }
-      return Promise.reject(new Error(res.message || "Error"))
-    } else {
-      return res
-    }
-  },
-  error => {
-    console.log("err" + error) // for debug
-    Message({
-      message: error.message,
-      type: "error",
-      duration: 5 * 1000
-    })
-    return Promise.reject(error)
-  }
-)
-```
-
-自有项目的配置
-
-```js
-import axios from "axios"
-import { Toast } from "antd-mobile"
-import config from "@/config"
-import { clearToken } from "@/utils/token"
-
-const request = axios.create()
-request.defaults.baseURL = config.baseUrl
-
-request.interceptors.request.use(
-  //拦截器,对参数进行验证
-  async config => {
-    // const token = getToken();
-    const token = localStorage.getItem("access_token")
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  err => {
-    return Promise.reject(err)
-  }
-)
-
-request.interceptors.response.use(
-  async response => {
-    // if (response.status === 200 && response.data instanceof Blob) {  //文件下载
-    //   if (response.data.type === 'application/json') {
-    //     const resData = await blobToJson(response.data);
-    //     Toast.fail(resData.Message);
-    //     return Promise.reject(resData.Message);
-    //   }
-    //   const contentDisposition = response.headers['content-disposition'];
-    //   return {
-    //     data: response.data,
-    //     filename: decodeURIComponent(contentDisposition.split(';')[1].split('=')[1]),
-    //   };
-    // }
-
-    if (response.data.RespCode === 200 && response.data.State === true) {
-      return response.data
-    } else {
-      const errMsg = response.data.Message
-      Toast.fail(errMsg)
-      console.error("请求出错：", response)
-      return Promise.reject(new Error(errMsg))
-    }
-  },
-  async error => {
-    if (error.response && error.response.status === 401) {
-      console.error(error)
-      clearToken()
-      Toast.fail("请登录!")
-      window.location.replace(`/login?redirect=${window.location.pathname}`)
-      return false
-    }
-
-    Toast.fail(error.message)
-    return Promise.reject(error.message) // 返回接口返回的错误信息
-  }
-)
-```
+可以参照 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin/blob/master/src/utils/request.js)
 
 ## jquery 的 ajax 配置
 
@@ -336,6 +191,8 @@ const request = function(params) {
     url: config.baseURL + params.url,
     type: params.type || "get",
     data: params.data,
+    // Content-Type: 'application/json',
+    // data: JSON.stringify(params.data)
     // 添加请求头
     beforeSend: function(request) {
       var isNeedToken = params.isNeedToken === undefined //isNeedToken 默认值为 true

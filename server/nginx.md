@@ -1,6 +1,6 @@
 # nginx在window下的配置与使用
 
-nginx1.16版本，使用的腾讯云window2016服务器
+nginx1.16版本，使用的腾讯云window2012服务器
 
 ## 安装与运行
 

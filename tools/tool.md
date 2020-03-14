@@ -4,6 +4,15 @@
 
 - git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
+### 常用快捷键
+
+浏览器
+
+ctrl+f5 或 ctrl+shift+R 强制刷新浏览器
+
+ctrl+l 清空console控制台
+
+### react-native参考(mark，暂时没看)
 ## 整理
 
 ### Blog 学习

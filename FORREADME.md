@@ -6,6 +6,7 @@
 
 - JS 基础
 
+  - [JS知识概览](/js/summarization.md)
   - [闭包与作用域](/js/scope-closures.md)
   - [this](/js/this.md)
   - [构造函数实现类](/js/object.md)
@@ -66,12 +67,14 @@
 
 - 工具
 
-  - [git 的使用](/tools/git.md)
-  - [工具和整理的资源](/tools/tool.md)
+  - [vscode插件](/tools/vs.md)
+  - [git的使用](/tools/git.md)
+  - [第三方工具集](/tools/tool.md)
 
 ### Vue
 
 - [Vuepress 使用注意事项](/vue/vuepress.md)
+- [VueAdmin 使用注意事项](/vue/vue-admin.md)
 
 ### 浏览器/网络/性能优化
 
@@ -81,9 +84,9 @@
 
 ### 服务器
 
-- [ubuntu 服务器终端及图形界面连接](/server/ubuntu.md)
-- [linux 发行版介绍](/server/linux.md)
-- [nginx linux 安装与使用](/server/nginx.md)
+- [使用服务器](/server/server.md)
+- [nginx使用配置](/server/nginx.md)
+- [ubuntu服务器终端及图形界面连接](/server/ubuntu.md)
 
 ### 面试
 
@@ -95,3 +98,4 @@
 
 - [一些名词对应的英文](/others/words.md)
 - [我的疑问/待做](/others/questions.md)
+- [今天学到了什么](/others/today.md)

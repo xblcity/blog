@@ -1,8 +1,24 @@
-# linux发行版介绍
+# 使用服务器
+
+开始学些前端的时候，总是希望能够吧自己写的网站放到互联网上，我刚开始使用的是免费的[neocities](https://neocities.org/browse)。用来放静态网站还是不错的。
+
+后来想着能有自己的存储空间，后来便在腾讯云买了一个属于自己的服务器。基础配置1核2G1M带宽。中间也踩了不少坑，目前用的是window server2012。linux对于新手来说还是有点麻烦，后面有时间再做打算。
+
+## 配置一个网站
+
+想要外网访问的服务器的内容，需要安装nginx作为代理。为了能够使用https协议，还需要在腾讯云申请免费SSL证书，并配置于nginx配置文件。
+
+当配置子域名后，腾讯云会自动进行DNS验证以及域名解析。并生成一条解析记录。
+
+关于nginx的配置，可以参照这里[nginx配置](../nginx)
+
+## 关于Linux的版本
+
+### linux发行版介绍
 
 linux发行版有很多，这里主要介绍以debian的代表ubuntu以及centos代表的red hat一族。
 
-## ubuntu18安装软件  
+### ubuntu18安装软件  
 
 debian系安装的软件包一般以.deb结尾，red-hat一族，软件包是以.rpm结尾(red hat package manger)，如果是使用yum安装的rpm包，是不用加后缀名的
 
@@ -19,7 +35,7 @@ sudo apt install xxx
 sudo apt autoremove xxx  
 ```
 
-## centos7
+### centos7
 > CentOS（Community Enterprise Operating System，中文意思是社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS完全开源。--- 摘自百度百科
 
 centos安装软件的命令，rpm, RPM 是Red-Hat Package Manager（RPM软件包管理器）的缩写
@@ -47,4 +63,5 @@ yum update example -y
 ```
 
 ## 参考
+
  - [Linux软件安装中RPM与YUM 区别和联系](https://www.cnblogs.com/LiuChunfu/p/8052890.html)

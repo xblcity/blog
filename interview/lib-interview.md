@@ -4,11 +4,18 @@
 - [vue](#vue)
 - [小程序与公众号](#小程序与公众号)
 - [webpack](#webpack)
+- [babel](#babel)
 - [实践应用](#实践应用)
 
 ## react
 
-### 生命周期，用过哪些
+参考 [React面试题](https://www.cxymsg.com/guide/react.html#react最新的生命周期是怎样的)
+
+- React生命周期
+- React的请求应该放在哪个生命周期中?
+- React组件通信如何实现?
+- setState是同步还是异步 [你真的理解setState吗？](https://juejin.im/post/5b45c57c51882519790c7441)
+- React性能优化
 
 - axios如何去统一封装处理
 
