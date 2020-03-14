@@ -48,3 +48,7 @@ test("object assignment", () => {
 #### 针对 react 的测试，Enzyme[ˈenzaɪm]
 
 `yarn add enzyme enzyme-adapter-react-16`
+
+### React 调试中的错误
+
+在使用 React-Hooks 的时候，出现下面错误`React Hook "useState" is called in function "present" which is neither a React function component or a custom React Hook function react-hooks/rules-of-hooks` 因为该组件名称不是大写

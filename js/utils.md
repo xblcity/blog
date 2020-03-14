@@ -71,7 +71,7 @@ function debounce(fn, delay) {
       clearTimeout(timer)
     }
     timer = setTimeout(function() {
-      fn.apply(context, args)
+      fn(args)
     }, delay)
   }
 }
