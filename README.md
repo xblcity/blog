@@ -1,10 +1,15 @@
-# blog
+# Blog
 
 :seedling: 记录前端学习的笔记，总结、记录成长的过程。:four_leaf_clover: 构建自己的知识体系。
 
 :whale: 观看线上版本 -> [点击查看](https://blog.xblcity.com)
 
-### JS 原生
+## HTML/CSS
+
+- [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
+- [CSS 常用代码片段](https://github.com/xblcity/blog/blob/master/html-css/css-utils.md)
+
+## JS
 
 - JS 基础
 
@@ -27,39 +32,41 @@
   - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js/design-mode.md)
   - [JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js/algorithm.md)
 
-### HTML/CSS
+- ES6
 
-- [HTML](https://github.com/xblcity/blog/blob/master/hc/html.md)
-- [CSS 常用代码片段](https://github.com/xblcity/blog/blob/master/hc/css-utils.md)
+  - [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
+  - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
+  - [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
 
-### ES6
+- Typescript
 
-- [类](https://github.com/xblcity/blog/blob/master/es6/class.md)
-- [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/es6/promise.md)
-- [模块化应用](https://github.com/xblcity/blog/blob/master/es6/module.md)
+  - [Typescript 基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-basic.md)
+  - [TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/typescript/ts-react.md)
 
-### React
+## 框架及实践
 
-- [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
-- [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-- [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
-- [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-- [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
-- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
-- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+- React
 
-### Typescript
+  - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+  - [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+  - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
+  - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
+  - [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
+  - [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+  - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
 
-- [Typescript 基础类型与概念](https://github.com/xblcity/blog/blob/master/typescript/ts-basic.md)
-- [TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/typescript/ts-react.md)
+- Vue
 
-### Node
+  - [Vuepress 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
+  - [VueAdmin 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vue-admin.md)
 
-- [Node 知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
-- [blog 后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
-- [mysql](https://github.com/xblcity/blog/blob/master/node/mysql.md)
+## 工程化
 
-### 工具
+- 浏览器/网络/性能优化
+
+  - [性能优化](https://github.com/xblcity/blog/blob/master/mix/performance.md)
+  - [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/mix/render.md)
+  - [http 请求头与响应头](https://github.com/xblcity/blog/blob/master/mix/http-message.md)
 
 - Webpack
 
@@ -73,31 +80,28 @@
   - [git的使用](https://github.com/xblcity/blog/blob/master/tools/git.md)
   - [第三方工具集](https://github.com/xblcity/blog/blob/master/tools/tool.md)
 
-### Vue
+- Node
 
-- [Vuepress 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vuepress.md)
-- [VueAdmin 使用注意事项](https://github.com/xblcity/blog/blob/master/vue/vue-admin.md)
+  - [Node 知识点](https://github.com/xblcity/blog/blob/master/node/little-points.md)
+  - [blog 后端思路](https://github.com/xblcity/blog/blob/master/node/blog.md)
+  - [mysql](https://github.com/xblcity/blog/blob/master/node/mysql.md)
 
-### 浏览器/网络/性能优化
+- 服务器
 
-- [性能优化](https://github.com/xblcity/blog/blob/master/mix/performance.md)
-- [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/mix/render.md)
-- [http 请求头与响应头](https://github.com/xblcity/blog/blob/master/mix/http-message.md)
+  - [使用服务器](https://github.com/xblcity/blog/blob/master/server/server.md)
+  - [nginx使用配置](https://github.com/xblcity/blog/blob/master/server/nginx.md)
+  - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/server/ubuntu.md)
 
-### 服务器
+## 其他
 
-- [使用服务器](https://github.com/xblcity/blog/blob/master/server/server.md)
-- [nginx使用配置](https://github.com/xblcity/blog/blob/master/server/nginx.md)
-- [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/server/ubuntu.md)
+- 面试
 
-### 面试
+  - [前端基础知识](https://github.com/xblcity/blog/blob/master/interview/js-interview.md)
+  - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
+  - [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/interview/other-interview.md)
 
-- [前端基础知识](https://github.com/xblcity/blog/blob/master/interview/js-interview.md)
-- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
-- [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/interview/other-interview.md)
+- 其他
 
-### 其他
-
-- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
-- [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
-- [今天学到了什么](https://github.com/xblcity/blog/blob/master/others/today.md)
+  - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
+  - [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
+  - [今天学到了什么](https://github.com/xblcity/blog/blob/master/others/today.md)
