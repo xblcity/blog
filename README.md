@@ -2,7 +2,7 @@
 
 :seedling: 记录前端学习的笔记，总结、记录成长的过程。:four_leaf_clover: 构建自己的知识体系。
 
-:whale: 观看线上版本 -> [点击查看](https://https://blog.xblcity.com)
+:whale: [线上版本](https://https://blog.xblcity.com)
 
 ## HTML/CSS
 
