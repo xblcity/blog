@@ -35,6 +35,12 @@ themeConfig:
   sidebar:
     - title: 介绍
       path: /
+    - title: HTML/CSS
+    collapsable: false
+    sidebarDepth: 2
+    children:
+      - /html-css/html
+      - /html-css/css-utils
     - title: JS基础
       collapsable: false
       sidebarDepth: 2
@@ -57,12 +63,6 @@ themeConfig:
         - /js/func-program
         - /js/design-mode
         - /js/algorithm
-    - title: HTML/CSS
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /hc/html
-        - /hc/css-utils
     - title: ES6
       collapsable: true
       sidebarDepth: 2
@@ -70,6 +70,12 @@ themeConfig:
         - /es6/class
         - /es6/promise
         - /es6/module
+    - title: Typescript
+      collapsable: true
+      sidebarDepth: 2
+      children:
+        - /typescript/ts-basic
+        - /typescript/ts-react
     - title: React
       collapsable: true
       sidebarDepth: 2
@@ -81,28 +87,6 @@ themeConfig:
         - /react/async
         - /react/basic-co
         - /react/complex-co
-    - title: Typescript
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /typescript/ts-basic
-        - /typescript/ts-react
-    - title: Node
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /node/little-points
-        - /node/blog
-        - /node/mysql
-    - title: 工具
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /tools/webpack/webpack-config
-        - /tools/webpack/webpack-react
-        - /tools/webpack/babel
-        - /tools/git
-        - /tools/tool
     - title: Vue
       collapsable: true
       sidebarDepth: 2
@@ -116,6 +100,22 @@ themeConfig:
         - /mix/performance
         - /mix/render
         - /mix/http-message
+    - title: 工具
+      collapsable: true
+      sidebarDepth: 2
+      children:
+        - /tools/webpack/webpack-config
+        - /tools/webpack/webpack-react
+        - /tools/webpack/babel
+        - /tools/git
+        - /tools/tool
+    - title: Node
+      collapsable: true
+      sidebarDepth: 2
+      children:
+        - /node/little-points
+        - /node/blog
+        - /node/mysql
     - title: 服务器
       collapsable: true
       sidebarDepth: 2
