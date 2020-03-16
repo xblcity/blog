@@ -45,7 +45,7 @@ function debounce(fn, delay) {
       clearTimeout(timer)
     }
     timer = setTimeout(function() {
-      fn(args)
+      fn(this, args)
     }, delay)
   }
 }
@@ -70,10 +70,10 @@ const throttle = (fn, interval) => {
   let last = 0
   return (...args) => {
     let now = Date.now() // 当前毫秒ms值
+    // 如果时间间隔大于设定的时间间隔
     if (now - last >= interval) {
-      // 如果时间间隔大于设定的时间间隔
-      last = now
       fn.apply(context, args)
+      last = now
     }
   }
 }
