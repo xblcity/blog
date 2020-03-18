@@ -211,3 +211,32 @@ const handleChange = async (files, type, index) => {
       })
   }
 }
+
+const handleChange = async (files, type, index) => {
+  console.log(files, type, index)
+  setFiles(files)
+  console.log(files)
+  const response = await aliOss(ossSetting(token))
+  // 上传至阿里云
+  if (files.length > 0) {
+    new Promise(async (resolve, reject) => {
+      let imageList = []
+      await files.forEach(async item => {
+        const { file } = item
+        const res = await response.multipartUpload(file.name, file)
+        if (res.res.status === 200) {
+          const { requestUrls } = res.res
+          imageList.push(requestUrls[0])
+          resolve(imageList) // 只能返回一个
+        }
+      })
+    })
+      .then(res => {
+        console.log(res)
+        done(res)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+}
