@@ -4,33 +4,37 @@
 
 :whale: [线上版本](https://https://blog.xblcity.com)
 
+尽量用概念-实践应用-原理这样的分类进行记录。接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
+
+*是什么(WHAT)-怎么做(HOW)-为什么(WHY)*
+
 ## HTML/CSS
 
-- [HTML](https://blog.xblcity.com/html-css/html.html)
-- [CSS 常用代码片段](https://blog.xblcity.com/html-css/css-utils.html)
+- [概念/应用篇-HTML](https://blog.xblcity.com/html-css/html.html)
+- [概念/应用篇-CSS](https://blog.xblcity.com/html-css/css-utils.html)
 
 ## JS
 
 - JS 基础
 
-  - [JS知识概览](https://blog.xblcity.com/js/summarization.html)
-  - [闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
-  - [this](https://blog.xblcity.com/js/this.html)
-  - [构造函数实现类](https://blog.xblcity.com/js/object.html)
-  - [继承与原型链](https://blog.xblcity.com/js/inherit.html)
-  - [Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
-  - [赋值与深浅拷贝](https://blog.xblcity.com/js/copy.html)
-  - [JS 细碎知识点](https://blog.xblcity.com/js/knowledge-points.html)
-  - [关于数组的各种操作](https://blog.xblcity.com/js/array.html)
-  - [JS 工具库函数](https://blog.xblcity.com/js/utils.html)
+  - [概念篇-JS知识概览](https://blog.xblcity.com/js/summarization.html)
+  - [概念/应用篇-闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
+  - [概念篇-this](https://blog.xblcity.com/js/this.html)
+  - [概念/应用篇-构造函数实现类](https://blog.xblcity.com/js/object.html)
+  - [概念篇-继承与原型链](https://blog.xblcity.com/js/inherit.html)
+  - [概念篇-Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
+  - [概念/应用篇-赋值与深浅拷贝](https://blog.xblcity.com/js/copy.html)
+  - [概念篇-JS 细碎知识点](https://blog.xblcity.com/js/knowledge-points.html)
+  - [应用篇-数组的数据处理](https://blog.xblcity.com/js/array.html)
+  - [应用篇-JS 工具库函数](https://blog.xblcity.com/js/utils.html)
 
 - JS 进阶
 
-  - [call,apply,bind 实现](https://blog.xblcity.com/js/call.html)
-  - [js 任务队列与执行机制](https://blog.xblcity.com/js/eventloop.html)
-  - [函数式编程(高阶函数/偏函数/柯里化.html)](https://blog.xblcity.com/js/func-program.html)
-  - [JS 设计模式](https://blog.xblcity.com/js/design-mode.html)
-  - [JS 数据结构与算法](https://blog.xblcity.com/js/algorithm.html)
+  - [应用篇-call,apply,bind 实现](https://blog.xblcity.com/js/call.html)
+  - [概念/应用篇-js 任务队列与执行机制](https://blog.xblcity.com/js/eventloop.html)
+  - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.html)](https://blog.xblcity.com/js/func-program.html)
+  - [概念/应用篇-JS 设计模式](https://blog.xblcity.com/js/design-mode.html)
+  - [概念/应用篇JS 数据结构与算法](https://blog.xblcity.com/js/algorithm.html)
 
 - ES6
 
@@ -40,17 +44,17 @@
 
 - Typescript
 
-  - [Typescript 基础类型与概念](https://blog.xblcity.com/typescript/ts-basic.html)
-  - [TS 在 React 中的应用](https://blog.xblcity.com/typescript/ts-react.html)
+  - [概念篇-Typescript 基础类型与概念](https://blog.xblcity.com/typescript/ts-basic.html)
+  - [应用篇-TS 在 React 中的应用](https://blog.xblcity.com/typescript/ts-react.html)
 
 ## 框架及实践
 
 - React
 
-  - [React 生命周期总结&应用](https://blog.xblcity.com/react/lifecycle.html)
-  - [React-Hooks 总结&实践](https://blog.xblcity.com/react/react-hooks.html)
-  - [Redux/React-Redux](https://blog.xblcity.com/react/redux.html)
-  - [Redux 中间件](https://blog.xblcity.com/react/redux-middleware.html)
+  - [概念篇-React 生命周期总结&应用](https://blog.xblcity.com/react/lifecycle.html)
+  - [概念/应用篇-React-Hooks 总结&实践](https://blog.xblcity.com/react/react-hooks.html)
+  - [概念/应用篇-Redux/React-Redux](https://blog.xblcity.com/react/redux.html)
+  - [概念/应用篇-Redux 中间件](https://blog.xblcity.com/react/redux-middleware.html)
   - [异步的实践&注意事项](https://blog.xblcity.com/react/async.html)
   - [基础组件](https://blog.xblcity.com/react/basic-co.html)
   - [复杂业务组件](https://blog.xblcity.com/react/complex-co.html)
