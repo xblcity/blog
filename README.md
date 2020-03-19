@@ -13,9 +13,9 @@
 - [概念/应用篇-HTML](https://blog.xblcity.com/html-css/html.html)
 - [概念/应用篇-CSS](https://blog.xblcity.com/html-css/css-utils.html)
 
-## JS
+## JS/ES6/TS
 
-- JS 基础
+- 概念/原理
 
   - [概念篇-JS知识概览](https://blog.xblcity.com/js/summarization.html)
   - [概念/应用篇-闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
@@ -25,22 +25,19 @@
   - [概念篇-Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
   - [概念/应用篇-赋值与深浅拷贝](https://blog.xblcity.com/js/copy.html)
   - [概念篇-JS 细碎知识点](https://blog.xblcity.com/js/knowledge-points.html)
-  - [应用篇-数组的数据处理](https://blog.xblcity.com/js/array.html)
-  - [应用篇-JS 工具库函数](https://blog.xblcity.com/js/utils.html)
+  - [类](https://blog.xblcity.com/es6/class.html)
+  - [Promise 与 AJAX](https://blog.xblcity.com/es6/promise.html)
+  - [模块化应用](https://blog.xblcity.com/es6/module.html)
 
-- JS 进阶
+- JS应用
 
   - [应用篇-call,apply,bind 实现](https://blog.xblcity.com/js/call.html)
+  - [应用篇-数组的数据处理](https://blog.xblcity.com/js/array.html)
+  - [应用篇-JS 工具库函数](https://blog.xblcity.com/js/utils.html)
   - [概念/应用篇-js 任务队列与执行机制](https://blog.xblcity.com/js/eventloop.html)
   - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.html)](https://blog.xblcity.com/js/func-program.html)
   - [概念/应用篇-JS 设计模式](https://blog.xblcity.com/js/design-mode.html)
   - [概念/应用篇JS 数据结构与算法](https://blog.xblcity.com/js/algorithm.html)
-
-- ES6
-
-  - [类](https://blog.xblcity.com/es6/class.html)
-  - [Promise 与 AJAX](https://blog.xblcity.com/es6/promise.html)
-  - [模块化应用](https://blog.xblcity.com/es6/module.html)
 
 - Typescript
 
