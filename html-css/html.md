@@ -4,6 +4,17 @@ HTML使用需要注意的部分`head`部分的标签以及html5新增的标签�
 
 ## Head中需要关注的标签
 
+title：文档的标题
+
+meta标签，`charset 属性`可以用来说明文档编码格式
+
+meta标签`name`为`viewport`,content中可以定义多个属性值
+
+## 标签
+
+html5新增的一些标签：`header, article, footer, aside, section`
+
+常用标签：`strong, `
 
 ## 在 JS 高级程序中阅读的关于 HTML 的知识
 
