@@ -11,7 +11,8 @@
 ## HTML/CSS
 
 - [概念/应用篇-HTML](https://blog.xblcity.com/html-css/html.html)
-- [概念/应用篇-CSS](https://blog.xblcity.com/html-css/css-utils.html)
+- [概念/应用篇-CSS](https://blog.xblcity.com/html-css/css.html)
+- [应用篇-适配移动端](https://blog.xblcity.com/html-css/mobile.html)
 
 ## JS/ES6/TS
 
@@ -31,10 +32,10 @@
 
 - JS应用
 
-  - [应用篇-call,apply,bind 实现](https://blog.xblcity.com/js/call.html)
   - [应用篇-数组的数据处理](https://blog.xblcity.com/js/array.html)
   - [应用篇-JS 工具库函数](https://blog.xblcity.com/js/utils.html)
-  - [概念/应用篇-js 任务队列与执行机制](https://blog.xblcity.com/js/eventloop.html)
+  - [应用篇-Call, Apply, Bind 实现](https://blog.xblcity.com/js/call.html)
+  - [应用/原理篇-js 理解嵌套异步的执行](https://blog.xblcity.com/js/eventloop.html)
   - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.html)](https://blog.xblcity.com/js/func-program.html)
   - [概念/应用篇-JS 设计模式](https://blog.xblcity.com/js/design-mode.html)
   - [概念/应用篇JS 数据结构与算法](https://blog.xblcity.com/js/algorithm.html)
