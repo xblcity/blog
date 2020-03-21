@@ -14,8 +14,6 @@ meta标签`name`为`viewport`,content中可以定义多个属性值
 
 html5新增的一些标签：`header, article, footer, aside, section`
 
-常用标签：`strong, `
-
 ## 在 JS 高级程序中阅读的关于 HTML 的知识
 
 - [dom](https://reading.xblcity.com/books/professional-javascript.html#%E7%AC%AC10%E7%AB%A0-dom)

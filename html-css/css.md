@@ -2,7 +2,9 @@
 
 在CSS中需要注意一些效果的实现与控制，同时注意一些“意外”的情况是如何产生的。以及兼容移动端H5的一些举措。
 
-- 选择器
+- 高级选择器
+- 伪类，伪元素
+- CSS中的函数值
 - 如何实现单行文本溢出？
 - 如何实现多行文本溢出？
 - 移动端1px如何实现？
@@ -41,16 +43,6 @@ overflow: hidden;
 text-overflow: ellipsis;
 
 -webkit-box-orient: vertical;
-display: -webkit-box;
--webkit-line-clamp: 2;
-
-// umi中
-overflow: hidden;
-text-overflow: ellipsis;
-
-/* autoprefixer: off */
--webkit-box-orient: vertical;
-/* autoprefixer: on */
 display: -webkit-box;
 -webkit-line-clamp: 2;
 ```
