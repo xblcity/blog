@@ -18,12 +18,15 @@
 
 - 概念/原理
 
-  - [概念篇-JS知识概览](https://blog.xblcity.com/js/summarization.html)
-  - [概念/应用篇-闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
-  - [概念篇-this](https://blog.xblcity.com/js/this.html)
+  - [概念篇-JS知识概览](https://blog.xblcity.com/js/summary.html)
+
+  - [原理篇-闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
+  - [概念/原理篇-this](https://blog.xblcity.com/js/this.html)
+
   - [概念/应用篇-构造函数实现类](https://blog.xblcity.com/js/object.html)
   - [概念篇-继承与原型链](https://blog.xblcity.com/js/inherit.html)
   - [概念篇-Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
+  
   - [概念/应用篇-赋值与深浅拷贝](https://blog.xblcity.com/js/copy.html)
   - [概念篇-JS 细碎知识点](https://blog.xblcity.com/js/knowledge-points.html)
   - [类](https://blog.xblcity.com/es6/class.html)
