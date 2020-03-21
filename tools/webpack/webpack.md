@@ -6,6 +6,8 @@ webpack，即web的pack，网页应用的打包，webpack是实现前端工程�
 
 webpack可以对依赖进行处理，对代码进行分割与整合。开发人员可以更关注开发本身。
 
+**本文不会进行渐进性配置，而是罗列用到的配置及依赖并进行说明。**[点击查看源码]()
+
 ## 概览
 
 如何去使用？可以参照官方的[guide](https://webpack.js.org/guides/)进行一步步的配置，以下是一些配置的使用及总结。
@@ -31,16 +33,16 @@ module.exports = {
 
   devServer: {}, // 开发环境中必备的配置
 
-  resolve: {}  // 解析模块可选项
+  resolve: {},  // 解析模块可选项
 
-  optimization: {} // webpack打包的相关优化
+  optimization: {}, // webpack打包的相关优化
 
   devtool: '', // 定位错误
   
 } 
 ```
 
-内容最多且最重要当属loaders以及plugin部分，loaders负责参与制定文件的编译，比如.js, .less, .png文件的解析编译等。plugins一般会全程参与打包，比如``
+内容最多且最重要当属loaders以及plugin部分，loaders负责参与制定文件的编译，比如.js, .less, .png文件的解析编译等。plugins一般会全程参与打包，比如`html-webpack-plugin, clean-webpack-plugin`等
 
 ## 开发环境中配置
 
@@ -52,7 +54,9 @@ module.exports = {
 4. 浏览器实时更新改变后的代码
 5. 错误信息可以直接定位到原代码的文件
 
-我们将从核心配置的`mode, dev-tools, entry, output, resolve, loaders, plugins`等几个方面进行讲解配置
+我们将从核心配置的`mode, dev-tools, entry, output, resolve, loaders, plugins`等几个方面进行讲解配置。
+
+当然，再次之前，我们需要在工作区初始化package.json文件，并安装`webpack webpack-cli`必须依赖
 
 ### mode
 
@@ -100,70 +104,36 @@ module.exports = {
 }
 ```
 
-### resolve
+### loader
 
-开发环境中还是比较重要的
+最出名的当属`babel-loader`了，它可以将ES6+的语法转换为低版本浏览器支持的语法。需要安装一下插件`babel-loader @babel/core`(必须)，非必须的依赖比如`@babel/preset-env` `@babel/plugin-transform-runtime` `@babel/runtime`
+
+loader的配置在**modules.rules**中，rule是一个数组
+
+比如babel-loader的配置。其中test是要用Loader进行处理的文件，是**正则表达式**
 
 ```js
-module.exports = {
-  resolve: {
-    extensions: ['.js', 'jsx'],  // 省略文件类型，webpack自动查找，在node中，省略文件类型只会自动查找js与json
-    alias: {
-      @: './src' // 通过别名来把原导入路径映射成一个新的导入路径
-    }，
+rules: [
+  {
+    test:  /\.jsx?$/,
+    exclude: /node_modules/，
+    use: {
+      loader: 'babel-loader',
+      options: {
+        // ...等同于.babelrc中的内容
+      }
+    }
   }
-}
+]
 ```
 
-在vs-code中，如果想要编辑器识别这种别名路径，需要在项目根目录配置.jsconfig文件
+关于babel的配置推荐在根目录新建.babelrc进行配置, .babelrc配置
 
-## 6.optimization
-
-### 代码分割(code splitting)
-
-代码分割，可以简单的理解为将app打包为多个文件，可以方便管理，异步加载也得益于此，代码分割由三种方式  
-
-1. 配置多个entry  
-2. 使用SplitChunkPlugin(旧版本@3用的是CommonChunkPlugin),常用~  
 ```js
-module.exports = {
-  optimization: {
-    splitChunks: 'all'
-  }
-}
+
 ```
-3. 动态引入，使用es6 Promise语法或者使用webpack提供的require.ensure()，个人觉得使用起来比较麻烦~
+less-loader, css-loader, style-loader, 用于处理css样式问题
 
-### tree-shaking
-把不用的代码剔除，在项目中使用es6模块语法动态引入的部分会被打包，而未被引入的部分会被剔除
-```js
-```
-
-## 7.devServer
-
-内容比较多...
-
-## 8.plugins
-
-插件需要先引入，然后调用插件的构造函数 
-插件可以是第三方插件，或者是webpack的内置插件,插件会参与webpack打包的整个过程    
-常用的两个插件如`html-webpack-plugin``clean-webpack-plugin`,前者用于每次打包都会生成新的html文件，后者每次打包都会先清理dist文件夹
-```js
-const HtmlWebpackPlugin = require('html-webpack-plugin') 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') 
-
-module.exports = {
-  plugins: [
-    new HtmlWebpackPlugin() // 可选传参数，如 {title: 'Output Management'} 指定文档document的title
-    new CleanWebpackPlugin()
-  ]
-}
-```
-
-## 9.loaders
-
-loaders用于处理各种格式的文件
-常见的loader有babel-loader, css-loader, style-loader, file-loader 等等
 ```js
 module.exports = {
   module: {
@@ -178,13 +148,12 @@ module.exports = {
       
       // 单个loader也可以使用下面这种方式
       {
-        test: /\.m?js$/,
+        test: /\.js(x?)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread']
+            // ...
           }
         }
       }
@@ -211,6 +180,68 @@ module.exports = {
   }
 }
 ```
+
+## plugins
+
+插件需要先引入，然后调用插件的构造函数 
+
+插件可以是第三方插件，或者是webpack的内置插件,插件会参与webpack打包的整个过程    
+
+常用的两个插件如`html-webpack-plugin``clean-webpack-plugin`,前者用于每次打包都会生成新的html文件，后者每次打包都会先清理dist文件夹
+
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin') 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') 
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin() // 可选传参数，如 {title: 'Output Management'} 指定文档document的title
+    new CleanWebpackPlugin()
+  ]
+}
+```
+
+### resolve
+
+开发环境中还是比较重要的
+
+```js
+module.exports = {
+  resolve: {
+    extensions: ['.js', 'jsx'],  // 省略文件类型，webpack自动查找，在node中，省略文件类型只会自动查找js与json
+    alias: {
+      @: './src' // 通过别名来把原导入路径映射成一个新的导入路径
+    }，
+  }
+}
+```
+
+在vs-code中，如果想要编辑器识别这种别名路径，需要在项目根目录配置.jsconfig文件
+
+
+
+## 6.optimization
+
+### 代码分割(code splitting)
+
+代码分割，可以简单的理解为将app打包为多个文件，可以方便管理，异步加载也得益于此，代码分割由三种方式  
+
+1. 配置多个entry  
+2. 使用SplitChunkPlugin(旧版本@3用的是CommonChunkPlugin),常用~  
+```js
+module.exports = {
+  optimization: {
+    splitChunks: 'all'
+  }
+}
+```
+3. 动态引入，使用es6 Promise语法或者使用webpack提供的require.ensure()，个人觉得使用起来比较麻烦~
+
+### tree-shaking
+把不用的代码剔除，在项目中使用es6模块语法动态引入的部分会被打包，而未被引入的部分会被剔除
+```js
+```
+
 
 ## 优化
 
@@ -284,6 +315,7 @@ module.exports = {
 
 ## 参考
 
+- [带你深度解锁Webpack系列](https://juejin.im/post/5e5c65fc6fb9a07cd00d8838)
 - [中文文档](https://www.webpackjs.com/guides/)
 - [English Doc](https://webpack.js.org/guides/)
 - 学习webpack的英文文章[webpack-forward](https://survivejs.com/webpack/foreword/)
@@ -291,4 +323,5 @@ module.exports = {
 - [Webpack优化——将你的构建效率提速翻倍](https://juejin.im/post/5d614dc96fb9a06ae3726b3e)
 - [ts官网 React & Webpack](http://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
+- 
 
