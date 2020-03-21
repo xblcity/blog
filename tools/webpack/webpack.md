@@ -1,36 +1,20 @@
-# webpack配置
+# 应用篇-webpack配置及优化
 
-webpack，即web的pack，网页应用的打包
+## webpack做了什么
 
-- webpack出现的背景
-- 其他打包工具对比
-- webpack解决的问题
+webpack，即web的pack，网页应用的打包，webpack是实现前端工程化的一个重要工具。
 
-[webpack-forward](https://survivejs.com/webpack/foreword/)
+webpack可以对依赖进行处理，对代码进行分割与整合。开发人员可以更关注开发本身。
 
-本篇仅仅是对官网配置的总结，用于查阅，webpack版本@4.39.3(第四版最后一版)
+## 概览
 
-- [1.mode](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#1mode)
+如何去使用？可以参照官方的[guide](https://webpack.js.org/guides/)进行一步步的配置，以下是一些配置的使用及总结。
 
-- [2.dev-tools](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#2dev-tools)
+webpack主要分两种环境，一是**开发环境**(development)，第二种是**生产环境**(production)。开发环境中，我们会**不断的新增更改**文件的内容，我们会更关注调试，热更新等提升开发效率方面的东西。在生产环境中，我们应用的是已经成熟经过测试的代码，文件内容不会动态变化，更注重代码的精简等等。
 
-- [3.entry](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#3entry)
+webpack的开发环境和生产环境大部分配置可以通用，只有少部分需要单独配置。
 
-- [4.output](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#4output)
-
-- [5.resolve](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#5resolve)
-
-- [6.optimization](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#6optimization)
-
-- [7.devServer](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7devServer)
-
-- [8.plugins](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#7plugins)
-
-- [9.loaders](https://github.com/xblcity/blog/blob/master/webpack/webpack-config.md#8loaders)
-
-## webpack核心配置项
-
-核心配置包括以下几个选项
+webpack核心的几个配置
 
 ```js
 module.exports = {
@@ -45,6 +29,8 @@ module.exports = {
 
   loaders: {}, // loader配置
 
+  devServer: {}, // 开发环境中必备的配置
+
   resolve: {}  // 解析模块可选项
 
   optimization: {} // webpack打包的相关优化
@@ -54,29 +40,39 @@ module.exports = {
 } 
 ```
 
-> 因为loader与plugin的内容比较多，所以放在了最后面的位置
+内容最多且最重要当属loaders以及plugin部分，loaders负责参与制定文件的编译，比如.js, .less, .png文件的解析编译等。plugins一般会全程参与打包，比如``
 
-## 1.mode
+## 开发环境中配置
 
-配置mode的目的在于webpack会根据模式不同进行对应的优化，没有此项，webpack打包会报警告，默认是`production`  
+比如，我们想要搭建一个react的开发环境，我们需要考虑哪些事情？
 
-优化：如`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错，并且在`production`模式下会默认开启uglifyPlugin
+1. 如何把JSX语法转换成JS语法，把ES6语法转换为ES5语法
+2. 如何把less文件转换为css文件，并把样式插入到html中
+3. 如何解决png等图片的解析问题，如何把小图片转换为base64编码
+4. 浏览器实时更新改变后的代码
+5. 错误信息可以直接定位到原代码的文件
+
+我们将从核心配置的`mode, dev-tools, entry, output, resolve, loaders, plugins`等几个方面进行讲解配置
+
+### mode
+
 ```js
-module.exports = {
-  mode: 'development' | 'production' | none
-}
+mode: 'development'
 ```
 
-## 2.dev-tools
+mode配置为`development`有什么作用呢？webpack会根据`mode`为`development`进行哪些优化呢？
 
-配置此项，可以更准确的定位错误，在development添加可以在source中检查源码，而非编译后的代码，development环境本身也可以定位错误，在production模式可以使用这项来调试错误
+如`development`模式下报错的时候会显示是哪个原始文件报的错，而`production`只会显示打包的文件报的错，并且在`production`模式下会默认开启uglifyPlugin等等
+
+### devtool
+
 ```js
-module.exports = {
-  devtool: 'inline-source-map' // source map
-}
+devtool: 'inline-source-map'
 ```
 
-## 3.entry
+有多个值可供选择，`inline-source-map`可以使得开发者在调试工具直接看到source源代码。在`prodcution`模式中也可以配置此项
+
+### entry
 
 ```js
 module.exports = {
@@ -90,8 +86,7 @@ module.exports = {
   }
 }
 ```
-
-## 4.output
+### output
 
 ```js
 const path = require('path') // 对文件目录的解析需要用到node内置模块‘path’
@@ -105,7 +100,9 @@ module.exports = {
 }
 ```
 
-## 5.resolve
+### resolve
+
+开发环境中还是比较重要的
 
 ```js
 module.exports = {
@@ -117,6 +114,8 @@ module.exports = {
   }
 }
 ```
+
+在vs-code中，如果想要编辑器识别这种别名路径，需要在项目根目录配置.jsconfig文件
 
 ## 6.optimization
 
@@ -283,8 +282,13 @@ module.exports = {
 }
 ```
 
-### 参考
-- [webpack中文文档](https://www.webpackjs.com/guides/)
-- [webpack英文文档](https://webpack.js.org/guides/)
+## 参考
+
+- [中文文档](https://www.webpackjs.com/guides/)
+- [English Doc](https://webpack.js.org/guides/)
+- 学习webpack的英文文章[webpack-forward](https://survivejs.com/webpack/foreword/)
+- [使用webpack搭建自己的react开发环境](https://github.com/tobeapro/react-webpack-conf)
+- [Webpack优化——将你的构建效率提速翻倍](https://juejin.im/post/5d614dc96fb9a06ae3726b3e)
+- [ts官网 React & Webpack](http://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
 

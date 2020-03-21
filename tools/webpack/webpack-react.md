@@ -161,8 +161,4 @@ loader用于帮我们处理不同类型的文件，plugins用于在打包过程�
 ### 更多部分见 [使用webpack定制开发环境](https://github.com/xblcity/web-learning/tree/master/webpack-learn)
 
 ### 参考
-- [中文文档](https://www.webpackjs.com)
-- [English Doc](https://webpack.js.org)
-- [使用webpack搭建自己的react开发环境](https://github.com/tobeapro/react-webpack-conf)
-- [Webpack优化——将你的构建效率提速翻倍](https://juejin.im/post/5d614dc96fb9a06ae3726b3e)
-- [ts官网 React & Webpack](http://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+
