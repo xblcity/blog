@@ -2,7 +2,7 @@
 
 一款好的编辑器可以更好的提升开发效率，VS Code 可以通过配置插件达到很好的可用性
 
-一些常见的插件可能需要一定配置才能达到很好的使用效果，比如 emmet, prettier, eslint 等等。当然，现在vscode的插件可以直接进行设置配置，而不用打开setting.json文件进行编辑配置，在设置中改变的配置会自动保存到setting.json文件中
+一些常见的插件可能需要一定配置才能达到很好的使用效果，比如 emmet, prettier, eslint 等等。当然，现在vscode的插件可以直接在设置里进行配置，而不用打开setting.json文件进行编辑配置，在设置中改变的配置会自动保存到setting.json文件中
 
 ## 常用插件
 
@@ -14,7 +14,7 @@
 "emmet.triggerExpansionOnTab": true,
 ```
 
-在.vue 文件中，如果想要支持 tab 键生成 html 标签，需要配置`emmet.includeLanguages`，在 js 中书写 react JSX 标签同理，如下
+在.vue 文件中，如果想要支持 tab 键生成 html 标签，需要配置`emmet.includeLanguages`，在 js 中书写 react JSX 快捷生成标签也需要配置，如下
 
 ```js
 "emmet.includeLanguages": {
@@ -36,6 +36,7 @@ prettier 是一款格式化插件，仅仅有几个选项可以配置，比如`p
 vsCode 默认的格式化快捷方式是 shift+alt+f，如果想要编辑器保存的时候自动格式化，需要配置
 
 ```js
+// 自动保存
 "editor.codeActionsOnSave": {
   "source.fixAll": true
 },
@@ -58,7 +59,7 @@ vsCode 默认的格式化快捷方式是 shift+alt+f，如果想要编辑器保�
 
 ### eslint/tslint
 
-作用：编辑器不符合 eslint 规范会有提示。需要项目安装 eslint 的依赖才能有对应提示
+eslint插件有两种作用, 1.警告提示 2.代码修复警告
 
 ### 还有一些不需要配置或者简单配置的插件，这里列举一下
 
