@@ -1,22 +1,18 @@
-# JS 与 Node 事件队列/循环(Event Loop)
-
-## JS 事件循环
-
-### js 两种异步任务
+# 应用/原理篇-JS 与 Node 事件队列/循环(Event Loop)
 
 js 包含同步代码与异步代码
 
-js 异步任务包含宏观任务(macrotask)和微观任务(microtask),在 ES6 规范中分别为 tasks 和 jobs，宏任务里面可能包含多个微任务。
+js 异步任务包含宏观任务(macrotask)和微观任务(microtask),在 ES6 规范中分别为 tasks 和 jobs，一个宏任务里面可能包含多个微任务。
 
-**宏任务开始执行** ——> **遇到微任务就将其 push 到微任务队列中** ——> **...同步代码执行完毕** ——> **微任务队列内的任务依次执行...** ——> **执行第二个宏任务...**
+**宏任务(script)开始执行** ——> **遇到微任务就将其 push 到微任务队列中** ——> **...同步代码执行完毕** ——> **微任务队列内的任务依次执行...** ——> **执行第二个宏任务...** ——> **遇到第二个宏任务中的微任务就将其 push 到微任务队列中** ——> ...
 
 宏任务包括：`script(整体代码), setTimeout, setTimeInterval, postMessage, setImmediate, I/O, UI rendering`
 
-微任务包括: `Promise process.nextTick(Node.js环境)`
+微任务包括: `Promise.then() Promise.catch() process.nextTick(Node.js环境)`
 
-如果**async 多层嵌套与 Promise 结合使用**会怎么样？这里不是很好理解。
+道理很简单，但是有时候实际代码是比较复杂的，比如说：当多层 Promise嵌套，微任务之间的关系就比较难处理了。具体就是网络请求的时候。并且当**async 多层嵌套与 Promise 结合使用**会怎么样？这里也不是很好理解。
 
-### 示例 1
+如果仅仅是只使用同步代码，Promise，setTimeout，我想这应该没什么难度，比如说
 
 ```js
 setTimeout(function() {
@@ -31,90 +27,150 @@ new Promise(function(resolve, reject) {
 console.log(4)
 // 输出顺序 `2,4,3,1`
 ```
+1.执行到setTimeout，将其添加至宏任务队列
+2.执行new Promise()函数，打印2，执行reolve(3)，并将Promise状态进行保存, Promise.then()被添加至微任务队列
+3.打印4
+4.同步代码执行完毕，执行Promise.then()这个微任务，打印3
+5.第一个宏任务执行完毕，执行setTimeout这个宏任务，打印1
 
-1. 开始执行整个代码块，`new Promise()`是立即执行的。所以输出 2。`promise实例.then()`是 Promise，微任务，被推进微任务执行队列中
+如果是使用async-await呢？
 
-2. `console.log(4)`输出 4
+async-await可以看做是generator与Promise的语法糖
 
-3. 宏任务同步代码执行完毕，执行微任务队列的任务，`promise实例.then()`输出 3
+一个普通的async-await
 
-4. 宏任务同步代码与微任务均执行完毕，执行下一个宏任务`setTimeout`，输出 1
+```js
+async function async1() {
+  console.log("async1 start");
+  await async2();
+  console.log("async1 end");
+}
+async function async2() {
+  console.log("async2");
+}
+async1();
+console.log('start')
+'async1 start' 'async2' 'start' 'async1 end'
+```
+1.async1函数执行，打印`async1 start`
+2.await async2()，会阻塞async1之后的代码，转去执行async2()的同步代码，打印async2
+3.跳出async1函数，打印start
+4.同步代码执行完毕，执行微任务，打印async1 end
+
+用伪代码来理解await的行为
+```js
+async function async1() {
+  console.log("async1 start");
+  // 原来代码
+  // await async2();
+  // console.log("async1 end");
+  
+  // 转换后代码
+  new Promise(resolve => {
+    console.log("async2")
+    resolve()
+  }).then(res => console.log("async1 end"))
+}
+async function async2() {
+  console.log("async2");
+}
+async1();
+console.log("start")
+```
+
+`await func(); console.log(555)`await 后面紧跟着的可以看做是new Promise(() => {...func()...})。那么下一行代码console.log(555)可以看做是Promise.then()里面的代码，是个微任务
+
+```js
+async function async1() {
+  console.log("async1 start"); // 第一个宏任务打印的第一个代码
+  await async2();  // 执行完async2的同步代码，由于await产生第一个宏任务的第一个微任务，接着跳出async1函数，继续执行第一个宏任务的同步代码
+  console.log("async1 end"); // 执行第一个宏任务的第一个微任务的代码，
+  setTimeout(() => {  // 执行第一个宏任务的第一个微任务代码，产生第四个宏任务
+    console.log('timer1')
+  }, 0)
+}
+async function async2() { //
+  setTimeout(() => {  // async2函数执行，产生第二个宏任务
+    console.log('timer2')
+  }, 0)
+  console.log("async2"); // async2的同步代码被执行完毕
+}
+async1();
+setTimeout(() => { // 第一个宏任务同步代码执行到这里产生了第三个宏任务
+  console.log('timer3')
+}, 0)
+console.log("start") // 第一个宏任务的同步代码执行，
+```
+依次打印`async1 start， async2， start，async1 end ` 宏任务依次执行 `timer2 timer3 timer1`
+
+### 实例一
+
+
+```js
+console.log("script start") // 第一个宏任务的第一个同步打印代码
+async function async1() {
+  await async2() // 执行async2, await产生第一个宏任务的第一个微任务
+  console.log("async1 end")
+}
+async function async2() {
+  console.log("async2 end") // 第一个宏任务的第二个同步打印代码
+}
+async1()
+setTimeout(function() { // 第一个宏任务的第二个宏任务
+  console.log("setTimeout")
+}, 0)
+new Promise(resolve => { 
+  console.log("Promise") // 第一个宏任务的第三个同步打印代码
+  resolve()
+})
+  .then(function() {  // 第一个宏任务的第二个微任务
+    console.log("promise1")
+  })
+  .then(function() { // 第一个宏任务的第三个微任务
+    console.log("promise2")
+  })
+console.log("script end") // 第一个宏任务的第四个同步打印代码
+```
+第一个宏任务中同步代码: `script start，async2 end，Promise，script end`
+第一个宏任务中微任务：`async1 end，promise1，promise2`
+第二个宏任务`setTimeout`
 
 ### 示例 2
 
 ```js
 async function async1() {
-  await async2()
+  await async2() // 执行async2，async2执行完毕，紧接着产生第一个宏任务的第一个微任务
   console.log("async1 执行完毕")
 }
-async function async2() {
-  await console.log("async2 执行完毕")
+async function async2() { 
+  await console.log("async2 执行完毕") // async2同步代码执行完毕
 }
 async1()
 
-setTimeout(function() {
+setTimeout(function() {  // 在第一个宏任务中产生第二个宏任务
   console.log("定时器执行完毕")
 }, 0)
 
-new Promise((resolve, reject) => {
-  console.log("Promise开始执行")
+new Promise((resolve, reject) => { 
+  console.log("Promise开始执行") // 第一个宏任务中的同步代码
   resolve()
 })
-  .then(function() {
+  .then(function() { // .then 产生第一个宏任务中的第二个微任务代码
     console.log("Promise.then执行")
   })
-  .then(function() {
+  .then(function() { // .then 产生第一个宏任务中的第三个微任务代码
     console.log("Promise.then222执行")
   })
 
-console.log("script同步队列执行完毕")
-
-// 分别输出：async2 执行完毕， Promise开始执行，script同步队列执行完毕，Promise.then执行，async1执行完毕，Promise.then222执行,定时器执行完毕
+console.log("script同步队列执行完毕") // 第一个宏任务同步代码执行完毕
 ```
+这个例子与上面一个例子的唯一区别就是aysnc2的内部又包含了await
 
-这个例子比上面多了一个`async`异步函数，`async()`函数返回的是`Promise`实例对象，每次我们使用 await, async 会停下来执行 await 的代码，然后把剩下的 async 函数中的操作放到 then 回调函数中。
-
-这里建议 async 可以看一下[阮一峰-ES6-async](http://es6.ruanyifeng.com/#docs/async)
-
-1. 宏任务，即该段 JS 代码，执行`async1()`函数(即 new Promise())，执行`async2()`函数(即 new Promise())，`async2()`执行完毕，并返回一个 promise 实例，async1 之后的被推送至微任务执行队列
-
-2. `new Promise()`立即执行， `promise实例.then()`被推送至微任务队列
-
-3. 宏任务同步代码执行完毕，打印`script同步队列执行完毕`
-
-4. 宏任务 的微任务队列任务依次执行，分别打印 `async1 执行完毕`(这个先打印是因为有 await) `Promise.then执行` `Promise.then222执行`
-
-5. 第一个宏任务执行完毕，执行第二个宏任务`setTimeout`，打印`定时器执行完毕`
+第一个宏任务中同步代码: `async2 执行完毕，Promise开始执行，script同步队列执行完毕`
+第一个宏任务中微任务：`async1 执行完毕，Promise.then执行，Promise.then222执行` == 有误 Promise.then比async1先执行
+第二个宏任务`定时器执行完毕`
 
 ### 再一个例子
-
-```js
-console.log("script start")
-async function async1() {
-  await async2()
-  console.log("async1 end")
-}
-async function async2() {
-  console.log("async2 end")
-}
-async1()
-setTimeout(function() {
-  console.log("setTimeout")
-}, 0)
-new Promise(resolve => {
-  console.log("Promise")
-  resolve()
-})
-  .then(function() {
-    console.log("promise1")
-  })
-  .then(function() {
-    console.log("promise2")
-  })
-console.log("script end")
-
-// 一次打印 script start  async2 end  Promise script end  async1 end promise1  promise2 setTimeout
-```
 
 对于微任务队列 打印的顺序是 `async1 end promise1 promise2` Chrome73 版本及之后，先执行 async1 再执行 promise1 和 promise2。区别在于`RESOLVE(thenable)`和`Promise.resolve(thenable)。`之间的区别
 
@@ -207,6 +263,6 @@ async async 嵌套使用 return 拿到返回的 Promise
 
 ## 参考
 
+- [要就来45道Promise面试题一次爽到底](https://juejin.im/post/5e58c618e51d4526ed66b5cf)
 - 较基础[Js 的事件循环(Event Loop)机制以及实例讲解](https://juejin.im/post/5b24b116e51d4558a65fdb70)
-
 - 较详细[Event Loop 详解](https://github.com/xiaomuzhu/front-end-interview/blob/master/docs/guide/eventLoop.md)
