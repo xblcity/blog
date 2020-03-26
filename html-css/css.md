@@ -82,3 +82,7 @@ text-overflow: ellipsis;
 display: -webkit-box;
 -webkit-line-clamp: 2;
 ```
+
+### 更多效果实现
+
+- [滚动视差？CSS 不在话下](https://juejin.im/post/5b6d0756e51d4562b31ad23c)
