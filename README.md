@@ -12,7 +12,6 @@
 
 - [概念/应用篇-HTML](https://blog.xblcity.com/html-css/html.html)
 - [概念/应用篇-CSS](https://blog.xblcity.com/html-css/css.html)
-- [应用篇-适配移动端](https://blog.xblcity.com/html-css/mobile.html)
 
 ## JS/ES6/TS
 
