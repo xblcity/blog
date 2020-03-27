@@ -16,18 +16,20 @@
 
 ## JS/ES6/TS
 
-- 概念/原理
+- JS基础概念/原理
 
   - [概念篇-JS知识概览](https://blog.xblcity.com/js/summary.html)
 
   - [原理篇-闭包与作用域](https://blog.xblcity.com/js/scope-closures.html)
-  - [概念/原理篇-this](https://blog.xblcity.com/js/this.html)
+  - [原理篇-this](https://blog.xblcity.com/js/this.html)
+  - [应用篇-构造函数实现类](https://blog.xblcity.com/js/object.html)
+  - [应用篇-继承与原型链](https://blog.xblcity.com/js/inherit.html)
+  - [概念应用篇-Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
 
-  - [概念/应用篇-构造函数实现类](https://blog.xblcity.com/js/object.html)
-  - [概念篇-继承与原型链](https://blog.xblcity.com/js/inherit.html)
-  - [概念篇-Object 构造器及原型上的方法](https://blog.xblcity.com/js/object-methods.html)
-  
+  - [原理篇-事件循环](https://blog.xblcity.com/js/eventloop.html)
+  - [应用篇-Call, Apply, Bind 实现](https://blog.xblcity.com/js/call.html)
   - [概念/应用篇-赋值与深浅拷贝](https://blog.xblcity.com/js/copy.html)
+
   - [概念篇-JS 细碎知识点](https://blog.xblcity.com/js/knowledge-points.html)
   - [类](https://blog.xblcity.com/es6/class.html)
   - [Promise 与 AJAX](https://blog.xblcity.com/es6/promise.html)
@@ -37,8 +39,6 @@
 
   - [应用篇-数组的数据处理](https://blog.xblcity.com/js/array.html)
   - [应用篇-JS 工具库函数](https://blog.xblcity.com/js/utils.html)
-  - [应用篇-Call, Apply, Bind 实现](https://blog.xblcity.com/js/call.html)
-  - [应用/原理篇-js 理解嵌套异步的执行](https://blog.xblcity.com/js/eventloop.html)
   - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.html)](https://blog.xblcity.com/js/func-program.html)
   - [概念/应用篇-JS 设计模式](https://blog.xblcity.com/js/design-mode.html)
   - [概念/应用篇JS 数据结构与算法](https://blog.xblcity.com/js/algorithm.html)
@@ -60,18 +60,17 @@
   - [基础组件](https://blog.xblcity.com/react/basic-co.html)
   - [复杂业务组件](https://blog.xblcity.com/react/complex-co.html)
 
-- Vue
+- 其他
 
-  - [Vuepress 使用注意事项](https://blog.xblcity.com/vue/vuepress.html)
-  - [VueAdmin 使用注意事项](https://blog.xblcity.com/vue/vue-admin.html)
+  - [应用微信公众号网页登录及支付]()
+
+## 大前端
+
+- [性能优化](https://blog.xblcity.com/mix/performance.html)
+- [从输入网址到页面渲染经历了什么](https://blog.xblcity.com/mix/render.html)
+- [http 请求头与响应头](https://blog.xblcity.com/mix/http-message.html)
 
 ## 工程化
-
-- 浏览器/网络/性能优化
-
-  - [性能优化](https://blog.xblcity.com/mix/performance.html)
-  - [从输入网址到页面渲染经历了什么](https://blog.xblcity.com/mix/render.html)
-  - [http 请求头与响应头](https://blog.xblcity.com/mix/http-message.html)
 
 - Webpack
 
