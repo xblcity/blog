@@ -8,7 +8,17 @@ title：文档的标题
 
 meta标签，`charset 属性`可以用来说明文档编码格式
 
-meta标签`name`为`viewport`,content中可以定义多个属性值
+meta标签`name`为`viewport`,content中可以定义多个属性值，比如在HTML5手机网页，我们需要设定显示宽度，以及禁用用户缩放
+
+```html
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HTML 5 标签参考手册</title>
+<meta name="keywords" content="网络营销,网站设计,网站优化,网站推广,SEO 优化" />
+<meta name="description" content="你的页面描述内容">
+```
 
 ## 标签
 
