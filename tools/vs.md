@@ -79,7 +79,32 @@ eslint插件有两种作用, 1.警告提示 2.代码修复警告
 
 ### path intellisence
 
-作用：路径提示。也可以设置路径别名的提示，比如@标识 src 目录，需要配合 jsconfig 文件进行配置使用
+作用：路径提示。
+
+也可以设置路径别名的提示，比如@标识 src 目录
+
+```js
+"path-intellisense.mappings": {
+  "@": "${workspaceRoot}/src"
+}
+```
+
+根目录新建jsconfig.json，配置别名，使得vs code进行解析跳转
+
+```js
+{
+  "compilerOptions": {
+    // 下面两个要一起配置
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "experimentalDecorators": true // 修饰器
+  }
+}
+```
 
 ### beautify
 
