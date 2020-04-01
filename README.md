@@ -4,30 +4,29 @@
 
 :whale: [线上版本](https:xblcity.com)
 
-尽量用概念-实践应用-原理这样的分类进行记录。接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
+接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
 
 *是什么(WHAT)-怎么做(HOW)-为什么(WHY)*
 
 ## HTML/CSS
 
-- [概念/应用篇-HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
-- [概念/应用篇-CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
+- [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
+- [CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
 
 ## JS/ES6/TS
 
-- JS偏基础概念/原理
+- JS偏概念/原理
 
   - [概念篇-JS知识概览](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
 
-  - [原理篇-闭包与作用域](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
   - [原理篇-this](https://github.com/xblcity/blog/blob/master/js-base/this.md)
+  - [原理篇-闭包与作用域](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
   - [应用篇-构造函数实现类](https://github.com/xblcity/blog/blob/master/js-base/object.md)
   - [应用篇-继承与原型链](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
   - [概念应用篇-Object 构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
-
   - [原理篇-事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
+  - [原理应用篇-赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
   - [应用篇-Call, Apply, Bind 实现](https://github.com/xblcity/blog/blob/master/js-base/call.md)
-  - [概念/应用篇-赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
 
   - [概念篇-JS 细碎知识点](https://github.com/xblcity/blog/blob/master/js-base/knowledge-points.md)
   - [类](https://github.com/xblcity/blog/blob/master/js-base/class.md)
