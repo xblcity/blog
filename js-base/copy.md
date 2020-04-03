@@ -51,7 +51,28 @@ let c = {...b}
 ```
 上述代码实现了一个简单的浅拷贝，...是展开运算符，应用的是for-of语法，本质上还是对b对象进行遍历。
 
-当然，还有其他几种浅拷贝，比如
+> 浅拷贝的使用场景，比如react-redux，当我们在对redux state进行更改时，不应该直接改变state状态，而是返回一个新的状态，通常我们会用展开运算符...或者Object.assign对原数据进行浅拷贝
+
+浅拷贝的缺点也很明显，如下图
+
+![浅拷贝](./images/copy/copy3.png)
+
+当浅拷贝的对象的key对应的value也是个引用类型的值时，无法进行正确的拷贝，拷贝的还是value对应的地址。
+
+```js
+let a = {
+  name: 'jack',
+  info: {
+    gender: 'male',
+    age: 19
+  }
+}
+let b = {...a}
+b.info.gender = 'female'
+console.log(a.info.gender) // 输入 female，说明a info属性值也被修改了
+```
+
+这个时候可能就需要用到深拷贝了，深拷贝之前，我们再说一下其他的几种浅拷贝，比如
 
 ```js
 Object.assign()
