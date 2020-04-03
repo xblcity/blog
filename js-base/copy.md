@@ -41,6 +41,8 @@ console.log(b.name) // 'lily'
 
 显然，需要把b的堆对象在重新复制一遍产生新的堆对象地址，并且使c指向这个新的堆对象地址。
 
+> 在使用React的过程中，由于组件的重新渲染，组件内部的函数在经过另一次渲染过后和之前的函数已经不是同一个引用了，即引用地址发生了变化，Component解决方法是将该函数声明在constructor中，Hooks解决办法是使用useMemo或者useCallback
+
 ## 实现浅拷贝
 
 ```js
