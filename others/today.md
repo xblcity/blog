@@ -1,12 +1,5 @@
-<!--
- * @Author: 小白龙
- * @Date: 2020-02-23 11:13:20
- * @LastEditTime: 2020-02-29 22:43:17
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blog\others\today-learn.md
- -->
- # What I Learn Today
+
+# What I Learn Today
 
 ### 2020.4.6 阴
 
