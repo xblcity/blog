@@ -57,11 +57,11 @@
   - [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
   - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
 
-- 其他
+- 其他框架
 
   - [应用微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 
-## 前端综合
+## 前端综合知识
 
 - [性能优化](https://github.com/xblcity/blog/blob/master/fe-system/performance.md)
 - [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/fe-system/render.md)
@@ -81,7 +81,7 @@
   - [git的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
   - [第三方工具集](https://github.com/xblcity/blog/blob/master/fe-engineering/tool.md)
 
-- 偏后端
+## 后端
 
   - [Node 知识点](https://github.com/xblcity/blog/blob/master/backend/little-points.md)
   - [blog 后端思路](https://github.com/xblcity/blog/blob/master/backend/blog.md)
