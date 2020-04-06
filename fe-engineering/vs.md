@@ -4,6 +4,10 @@
 
 一些常见的插件可能需要一定配置才能达到很好的使用效果，比如 emmet, prettier, eslint 等等。当然，现在vscode的插件可以直接在设置里进行配置，而不用打开setting.json文件进行编辑配置，在设置中改变的配置会自动保存到setting.json文件中
 
+想要VS有webstorm大而全的功能还是比较难，目前存在以下问题：markdown文件路径引入不提示，当路径为别名比如`@`时，`@/`不提示下一级路径，必须要把`/`删掉才提示，且别名提示非常慢(在ts项目中比较正常)
+
+建议每个项目都配一个[jsconfig.json](https://code.visualstudio.com/docs/languages/jsconfig)，比如可以配置路径别名提示等等
+
 ## 常用插件
 
 ### emmet
@@ -25,7 +29,9 @@
 
 ### prettier
 
-prettier 是一款格式化插件，仅仅有几个选项可以配置，比如`printWidth`行的长度限制, `semi`是否在行尾加分号，`singleQuote`使用单引号等等。以下是个人配置
+prettier 是一款格式化插件，规则只有几个，可以自行配置。结合 eslint 使用是较为广泛的应用
+
+配置，比如`printWidth`行的长度限制, `semi`是否在行尾加分号，`singleQuote`使用单引号等等。以下是个人配置
 
 ```js
 "prettier.semi": false,
@@ -64,75 +70,29 @@ eslint插件有两种作用, 1.警告提示 2.代码修复警告
 ### 还有一些不需要配置或者简单配置的插件，这里列举一下
 
 - ES7 React/Redux/GraphQL/React-Native snippets, 作用：快捷生成 react 引入等等。具体要参考文档
+
+- umi pro，使用 Umi 的时候，reducer 以及 effect 的提示，并且可以点击进入对应文件。
+
 - vetur, 使用 vue 的时候用到，可以对.vue 文件进行代码高亮，格式化等。
+
 - Chinese (Simplified) Language Pack for Visual Studio Code, vs code 的中文简体包
+
+- EditorConfig for VS Code，使用 .editorconfig 文件 覆盖编辑器本身设置
 - bracket pair colorizer, 效果：一组括号具有相同色彩标识
 - guides, 作用：代码块左对齐会有竖线标识
 - code spell checker, 作用：对单词拼写进行检查，错误的会进行波浪线标识
 - open in browser, 作用：右键菜单文件在浏览器打开
 - Markdown Preview Enhanced, 作用：markdown 文件可以进行效果预览
 - better comments, 作用：对注释进行不同颜色的标识，可以参照文档进行使用哦
-- koroFileHeader, 作用：使用快捷键在文件头部生成注释，也可以生成函数注释
-- Doxygen Document Generator, 作用：使用快捷键可以生成函数参数的详细注释
 - CSS Modules, 作用：使用 css 模块化时，可以提示样式名
-- auto rename tag, 作用：修改一对标签中的一个时，另一个自动修改。个人觉得不太好用，经常出问题
-
-### path intellisence
-
-作用：路径提示。
-
-也可以设置路径别名的提示，比如@标识 src 目录
-
-```js
-"path-intellisense.mappings": {
-  "@": "${workspaceRoot}/src"
-}
-```
-
-根目录新建jsconfig.json，配置别名，使得vs code进行解析跳转
-
-```js
-{
-  "compilerOptions": {
-    // 下面两个要一起配置
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
-    "experimentalDecorators": true // 修饰器
-  }
-}
-```
-
-### beautify
-
-作用：可以对代码进行格式化，规则只有几个，可以自行配置。结合 eslint 使用是较为广泛的应用
-
-### stylelint
-
-效果：与 eslint 类似，不过是针对 css 样式方面的。本人暂时没有使用。
-
-### vscode-stylesheet-beautify
-
-作用：对 less 等 css 样式进行格式化
-
-### Material Icon Theme
-
-文件图表展示
-
-### umi pro
-
-作用：使用 Umi 的时候，reducer 以及 effect 的提示，并且可以点击进入对应文件。
-
-### auto close tag
-
-作用：自动闭合标签，已经使用了 emmet 插件的 vs，是否还在需要？
-
-### EditorConfig for VS Code
-
-使用 .editorconfig 文件 覆盖编辑器本身设置
+- auto rename tag, 作用：修改一对标签中的一个时，另一个自动修改。个人觉得不太好用，经常出问题，f2快捷键修改有点问题
+- koroFileHeader, 作用：使用快捷键在文件头部生成注释，也可以生成函数注释，不经常用
+- Doxygen Document Generator, 作用：使用快捷键可以生成函数参数的详细注释，不用安装，vs自带了这个功能
+- stylelint，与 eslint 类似，不过是针对 css 样式方面的。本人暂时没有使用。
+- vscode-stylesheet-beautify，对 less 等 css 样式进行格式化，因为有prettier了，这个可以不使用
+- Material Icon Theme， 文件图标展示，vs其实已经自带了，可以不用
+- auto close tag，emmet已经有这种功能了，弃用
+- path intellisence，可以弃用,vs针对Import和require有路径提示，配置别名[参考](https://code.visualstudio.com/docs/languages/jsconfig)
 
 ### 主题相关插件
 
