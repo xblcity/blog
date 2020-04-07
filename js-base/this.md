@@ -115,29 +115,35 @@ foo.call(obj, 1, 2, { name: "xbl" });
 function foo(a, b) {
   console.log("a:", a, "b:", b); // a: 2 b: 3
 }
+
 // bind是高阶函数，细分的话是柯里化函数
 // 函数柯里化是指 函数对传入的参数做处理，每处理一个参数，返回一个函数，是函数式编程的重要组成部分
 const bar = foo.bind({}, 2, 3);
 bar();
 ```
 
-ES6 实现实现一个简单的 bind
+ES6 使用 apply 实现实现一个简单的 bind
 
 ```js
 Function.prototype.bind1 = function(...rest1) {
-  const self = this; // bind1的调用者，在本例中是foo，这里也是使用了闭包进行保存。
-  const context = rest1.shift(); // context即接收的this
+  const self = this; // 这里的this是bind1的this  在本例中是foo，这里也是使用了闭包进行保存。
+  const context = rest1.shift(); // 第一个传入参数作为this, shift可以直接改变原数组
   return function(...rest2) {
     // rest1即bind1接收的参数，本例中对应 2, 3。rest2即返回函数接收的参数。本例中对应 4
+    // apply需要一个调用者，也就上面保存的self
     return self.apply(context, [...rest1, ...rest2]);
   };
 };
+
 function foo(a, b, c) {
   console.log("a:", a, "b:", b, "c:", c);
 }
+
 const bar = foo.bind1({}, 2, 3);
 bar(4);
 ```
+
+#### 注意事项
 
 把 `null` 或者 `undefined` 作为 this 绑定的对象传入 `call, apply, bind`, 这些值 在调用时会被忽略，实际应用的仍然是**默认规则**
 
@@ -162,15 +168,18 @@ foo.apply(empty, [2, 3]);
 
 > 使用 new 调用函数时，会自动执行以下操作
 
+- 执行构造函数
 - 创建一个新对象
 - 新对象的原型(**proto**/prototype)指向构造函数的 prototype
 - 新对象赋给当前 this
-- 执行构造函数
 - 如果函数没有返回其他对象，new 表达式中的函数会自动返回这个新对象
 
 ```js
 function Animal(name) {
   this.name = name
+}
+Animal.prototype.say = function() {
+  console.log('haha')
 }
 
 // 后代实例
@@ -181,6 +190,7 @@ console.dir(dog)
 {
   name: 'jack',
   __proto__: {
+    say: f(),;
     constructor: f Animal(name) {
       arguments: null,
       length: 1,
@@ -192,6 +202,17 @@ console.dir(dog)
 
 如何判断一个函数是被 new 操作符调用了？可以使用 es6 新增的 `new.target` 进行判断
 
+```js
+const Person = function(name) {
+  if (typeof new.target === 'undefined') {
+    throw new Error('必须要通过关键字new调用构造函数')
+  }
+  this.name = name
+}
+new Person('xbl')
+Person('xbl') // 报错
+```
+
 **this 绑定的优先级**：new > apply/call/bind > 隐式绑定 > 默认绑定
 
 ## 2.ES6 箭头函数中 this 的词法特征
@@ -201,31 +222,31 @@ console.dir(dog)
 3. 箭头函数的 this 无法被直接修改，但是可以通过改变外层函数的 this 指向来间接改变箭头函数里的 this
 4. 箭头函数没有构造函数 constructor, 不可以使用 new 调用
 
-### 2.1 箭头函数实例
+### 2.1 箭头函数示例
 
 ```js
 // 箭头函数中this的默认行为
 function b1() {
   function b2() {
-    console.log(`b2函数this`, this);
+    console.log(`b2函数this`, this); // window
     const b3 = () => {
-      console.log(`b3箭头函数this`, this);
+      console.log(`b3箭头函数this`, this); // 与b3函数父函数(外层函数b2)this一致  window
     };
-    b3(); // 与b3函数父函数(外层函数b2)this一致  window
+    b3(); 
   }
-  b2(); // window
+  b2(); 
   return () => {
-    console.log(`return箭头函数a`, this.a);
+    console.log(`return箭头函数a`, this.a); // 与b1this一致
   };
 }
 
-// 箭头函数中this可以改变吗？
 const o1 = { a: 1 };
-const o2 = { a: 2 };
-const o3 = { a: 3 };
-
 const bar = b1.call(o1); // b1 this指向 o1, 执行b1(),返回一个箭头函数
 bar(); // 箭头函数执行，与b1 this 一致,为 o1
+
+// 测试箭头函数是否可以改变this
+const o2 = { a: 2 };
+const o3 = { a: 3 };
 
 bar.call(o2); // 箭头函数无法直接使用显示绑定，输出 this 仍为 o1
 
@@ -279,7 +300,7 @@ const obj = {
 };
 
 // window，对象是没有上下文环境，因此也就没有this这个属性，之所以可以获取到this是因为全局作用域存在this变量
-console.log(obj.b);
+console.log(obj.b);  // windnow
 
 obj.f1(); // hello
 obj.f2(); // world
@@ -287,24 +308,39 @@ obj.f2(); // world
 
 ### 2.4 回调函数里面的 this
 
-回调函数，即函数的参数是一个函数。
+当函数的接收参数是函数时，这个函数参数的this指向是什么呢？比如
+
+```js
+function cb() {}
+function foo(cb) {
+  cb()
+}
+```
 
 如果回调函数是一个普通函数，并且没用 this 绑定规则，那么 this 将会是**window**
 
 ```js
 function bar() {
+
   const cb = function(callback) {
     callback();
   };
-  const innerObj = { cb: cb };
+  cb(() => {
+    console.log(`回调箭头函数`, this); // {a: 1}，与bar一致
+  }); 
+  cb(function() {
+    console.log(`回调普通函数`, this); // window
+  });
 
+  const innerObj = { cb: cb };
   innerObj.cb(() => {
     console.log(`回调箭头函数`, this);
-  }); // 注意！定义的位置，也就是cb的位置，this是cb外面函数的this, 与bar一致，即outObj
+  }); 
+  // 注意！定义的位置，也就是cb的位置，this是cb外面函数的this, 与bar一致，即outObj
 
   innerObj.cb(function() {
-    console.log(`回调普通函数`, this);
-  }); // 默认规则 window
+    console.log(`回调普通函数`, this); // window
+  }); 
 }
 
 const outObj = { a: 1 };
@@ -345,7 +381,8 @@ const obj = {
     console.log(this.a); // 词法作用域，obj外面的this, this是window对象，输出20
 
     function func() {
-      this.a = 60; // 语法作用域，this现在不确定
+      console.log(this) // this在下例中是window
+      this.a = 60; // 语法作用域
       console.log(this.a); // this不确定，但是this.a确定，是60
     }
 
@@ -363,16 +400,19 @@ new bar(); // 60
 ```js
 const Message = text => {
   this.text = text;
+  return this
 };
-const myMessage = new Message("hello");
-// Uncaught TypeError: Message is not a constructor
 const myMessageInfo = Message("hi");
-console.log(myMessageInfo); // undefined
+console.log(myMessageInfo.text); // hi
+
+const Message2 = text => {
+  this.text = text;
+};
+const myMessage = new Message2("hello");
+// Uncaught TypeError: Message is not a constructor
 ```
 
 因为 this 的问题，箭头函数要慎用，构造函数不能使用箭头函数，因为 prototype 无法指定
-
-使用箭头函数要注意的地方，可以参考：[什么时候不使用箭头函数](https://juejin.im/post/5d4770ecf265da03dd3d5642#comment)
 
 ## 参考
 
