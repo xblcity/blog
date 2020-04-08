@@ -28,10 +28,8 @@
   - [Object 构造函数及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
   - [原理篇-事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   
-  - [概念篇-JS 细碎知识点](https://github.com/xblcity/blog/blob/master/js-base/knowledge-points.md)
-  - [类](https://github.com/xblcity/blog/blob/master/js-base/class.md)
+  - [ES6知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
-  - [模块化应用](https://github.com/xblcity/blog/blob/master/js-base/module.md)
 
   - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.md)](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
   - [概念/应用篇-JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
