@@ -40,14 +40,14 @@
 
 ## 框架及实践
 
-  - [概念篇-React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
-  - [概念/应用篇-React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-  - [概念/应用篇-Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
-  - [概念/应用篇-Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-  - [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
-  - [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
-  - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
-  - [应用微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
+- [概念篇-React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+- [概念/应用篇-React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+- [概念/应用篇-Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
+- [概念/应用篇-Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
+- [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
+- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+- [微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 
 ## 前端综合知识
 
@@ -57,31 +57,23 @@
 
 ## 工程化
 
-- 工程化工具
-
-  - [webpack 配置](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
-  - [用 webpack 配置 react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
-  - [babel](https://github.com/xblcity/blog/blob/master/fe-engineering/babel.md)
-
-- 工具
-
-  - [vscode使用](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
-  - [git的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
-  - [第三方工具集](https://github.com/xblcity/blog/blob/master/fe-engineering/tool.md)
+- [webpack 配置](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
+- [用 webpack 配置 react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
+- [vscode使用](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
+- [git的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
 
 ## 后端
 
-  - [Node 知识点](https://github.com/xblcity/blog/blob/master/backend/little-points.md)
-  - [blog 后端思路](https://github.com/xblcity/blog/blob/master/backend/blog.md)
-  - [mysql](https://github.com/xblcity/blog/blob/master/backend/mysql.md)
-  - [使用服务器](https://github.com/xblcity/blog/blob/master/backend/server.md)
-  - [nginx使用配置](https://github.com/xblcity/blog/blob/master/backend/nginx.md)
-  - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/backend/ubuntu.md)
+- [Node 知识点](https://github.com/xblcity/blog/blob/master/backend/little-points.md)
+- [blog 后端思路](https://github.com/xblcity/blog/blob/master/backend/blog.md)
+- [mysql](https://github.com/xblcity/blog/blob/master/backend/mysql.md)
+- [使用服务器](https://github.com/xblcity/blog/blob/master/backend/server.md)
+- [nginx使用配置](https://github.com/xblcity/blog/blob/master/backend/nginx.md)
+- [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/backend/ubuntu.md)
 
 ## 其他
 
-  - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
-  - [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
-  - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
-  - [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
-  - [今天学到了什么](https://github.com/xblcity/blog/blob/master/others/today.md)
+- [框架面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
+- [非JS综合面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
+- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
+- [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
