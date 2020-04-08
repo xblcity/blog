@@ -1,8 +1,34 @@
 # Object 构造器及原型上的方法
 
-整理这些常用 api 是为了能够更好的理解与牢记
+整理这些常用 api 是为了能够更好的理解与记忆
 
-> Object构造器
+在此之前，我们需要知道构造函数的静态方法和原型方法的区别
+
+静态方法，只能有构造函数`Object`自己进行调用。而构造函数实例无法使用该方法，同时，在`Object.prototype`上面定义的方法也必须通过`Object.prototype.方法`进行调用。
+
+原型方法，构造函数和构造函数实例共享的方法。实例可以直接调用`实例.方法`，js会沿着原型链查找到该方法。如下例
+
+```js
+class MyObject {
+  static getName
+}
+MyObject.getName = function() {
+  console.log('我是静态方法')
+}
+MyObject.prototype.sayName = function() {
+  console.log('我是原型上面的方法')
+}
+
+const myInstance = new MyObject()
+myInstance.getName() // 报错：Uncaught TypeError: myInstance.getName is not a function
+myInstance.sayName() // 打印成功
+
+MyObject.getName() // 打印成功
+MyObject.sayName() // 报错 Uncaught TypeError: MyObject.sayName is not a function
+MyObject.prototype.sayName() // 打印成功
+```
+
+> Object构造函数静态方法
 
 当我们想获取到一个对象有几个键值对时，我们可以使用`Object.keys(object)`来返回一个包含对象属性的数组。这样就可以使用数组的方法对该对象进行处理了。与该方法相同的还有`Object.getOwnPropertyNames(object)`可以返回一个包含当前属性的数组。
 
@@ -18,7 +44,9 @@
 
 当我们想判断某个变量是具体哪个基本值或者复杂值时，可以使用`Object.prototype.toString.call(variable)`，当变量是字符串时，会得到`[object String]`的结果，当变量是数组时，会得到`[object Array]`，当变量是对象时，会得到`[object Object]`等等。
 
-当我们想判断某个对象是否是另一个对象的原型时...
+当我们想判断某个对象是否是另一个对象的原型时,`Object.prototype.isPrototypeOf()`，判断某个属性是该实例自身属性而不是`prototype`属性时，`Object.prototype.hasOwnProperty()`
+
+把对象转换为基本值类型时会调用`Object.prototype.valueOf()`方法
 
 ## 1. Object 构造器上的方法(Methods of the Object constructor)
 
@@ -57,14 +85,20 @@ const person = {
     console.log(`my name is ${this.name}, am i human ${this.isHuman}`)
   }
 }
+
+// 为me指定原型，即me.prototype = person
 const me = Object.create(person, {
   age: {
     value: 17,
     writeable: true
   }
 })
+
+// 为me添加属性的最常见形式
 me.name = 'jack'
 me.isHuman = true
+
+// 调用me原型链上面方法
 me.printIntroduction() // my name is jack, am i human true
 console.dir(me)
 // 打印出一个对象
@@ -84,9 +118,16 @@ console.dir(me)
 #### Object.create 声明无原型的空对象
 
 ```js
-const methodCreateObj = Object.create({})
 const methodCreateNull = Object.create(null) // 创建了一个非常干净的Object对象，没有原型proto，非常纯净
+const methodCreateObj = Object.create({})
 const literalCreateObj = {}
+
+console.dir(methodCreateNull)
+{
+  // No properties
+}
+
+
 console.dir(methodCreateObj)
 {
   // methodCreateObj 的原型是一个空对象，空对象的原型是Object
@@ -94,18 +135,16 @@ console.dir(methodCreateObj)
     __proto__: constructor: Object()
   }
 }
-console.dir(methodCreateNull)
-{
-  // No properties
-}
+
 console.dir(literalCreateObj)
 {
   __proto__: constructor: Object()
 }
+
 // 可以看出Object.create({})创建的对象多了一层__proto__
 ```
 
-所以我们可以使用 Object.create()方法指定自己的原型 prototype，可以用于构造函数继承，更多请看[继承与原型链](/js/inherit.md)
+所以我们可以使用 Object.create()方法指定自己的原型 prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
 
 ### 1.3 Object.defineProperty()
 
@@ -113,13 +152,16 @@ console.dir(literalCreateObj)
 
 该方法可以直接向 object 对象上定义属性，并且对属性进行一些选项设置
 
-descriptor 可以定义以下几种属性
+**数据属性** 可以定义以下几种属性
 
 - configurable 是否可删除？，默认 false
 - enumerable 是否可枚举，默认 false
 - value 值
 - writable 是否可写，默认 false  
-  一个存取器属性描述符还包括下面两个重要方法，但不包含 value 属性
+
+
+**存取器属性**描述符还包括下面两个重要方法，但不包含 value 属性
+
 - get 如果没有 getter，默认是 undefined
 - set 如果没有 setter，默认是 undefined
 
@@ -143,6 +185,7 @@ console.dir(object1)
 ```
 
 使用 get 和 set 方法，存取器属性描述独有，存取器的好处是可以对传进来的值做一定处理  
+
 下为数据属性描述与存取器描述示例
 
 ```js
@@ -172,6 +215,7 @@ Object.defineProperty(o, "b", {
   enumerable: true,
   configurable: true
 })
+
 o.b // 38 b值被定义与bValue相等
 // o.b和bValue是相等的，除非被重新修改
 
@@ -193,6 +237,7 @@ function Archiver() {
   var temperature = null
   var archive = []
 
+  // 通过new 调用 this是其本身
   Object.defineProperty(this, "temperature", {
     get() {
       console.log("get!")
@@ -214,6 +259,7 @@ var arc = new Archiver()
 arc.temperature // 'get!' 执行了存取器的get方法
 arc.temperature = 11 // 执行了存取器的set方法
 arc.temperature = 13
+arc.temperature // 13  执行了存取器的get方法
 arc.getArchive() // [{ val: 11 }, { val: 13 }]
 ```
 
@@ -299,7 +345,7 @@ console.log(source) // {a:11, b: {bb:33}}
 ```
 
 使用 JSON.parse(JSON.stringify({...}))可以实现不完整的深拷贝  
-更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/article/equalwith-copy.md)
+更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
 
 ### 1.6 Object.getOwnPropertyDescriptor()
 

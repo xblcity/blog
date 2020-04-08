@@ -15,7 +15,7 @@
 
 ## JS/ES6/TS
 
-- JS偏概念/原理
+- JS基础
 
   - [JS知识树](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
 
@@ -24,13 +24,10 @@
   - [作用域与闭包](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
   - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
   
-  - [应用篇-构造函数实现类](https://github.com/xblcity/blog/blob/master/js-base/object.md)
-  - [应用篇-继承与原型链](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
-
-  - [概念应用篇-Object 构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
+  - [类与继承](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
+  - [Object 构造函数及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
   - [原理篇-事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   
-
   - [概念篇-JS 细碎知识点](https://github.com/xblcity/blog/blob/master/js-base/knowledge-points.md)
   - [类](https://github.com/xblcity/blog/blob/master/js-base/class.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
@@ -43,7 +40,7 @@
   - [概念篇-Typescript 基础类型与概念](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
   - [应用篇-TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
 
-- JS偏应用
+- JS应用
 
   - [应用篇-数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
   - [应用篇-JS 工具库函数](https://github.com/xblcity/blog/blob/master/js-practice/utils.md)
