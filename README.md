@@ -22,7 +22,7 @@
   - [理解this](https://github.com/xblcity/blog/blob/master/js-base/this.md)
   - [Call, Apply, Bind 实现](https://github.com/xblcity/blog/blob/master/js-base/call.md)
   - [作用域与闭包](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
-  - [原理应用篇-赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
+  - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
   
   - [应用篇-构造函数实现类](https://github.com/xblcity/blog/blob/master/js-base/object.md)
   - [应用篇-继承与原型链](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
