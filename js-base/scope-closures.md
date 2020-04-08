@@ -12,16 +12,18 @@
 
 ```js
 let value = 1
+
 function foo() {
   console.log(value)
 }
+
 function bar() {
   let value = 2
   foo()
 }
 ```
 
-如果按照 js 的词法作用域，输出的是 1，即 foo 函数的作用域链是在定义的时候已经被确定了，foo 内部没有 value 变量，则向上寻找全局的 value 变量。
+如果按照 js 的词法作用域，输出的是 1，即 foo 函数的作用域链是在定义的时候已经被确定了，foo 内部没有 value 变量，则向上寻找全局作用域下的 value 变量。
 
 如果是语法作用域，输出的是 2，foo 内部没有 value 变量，向上寻找 bar 函数内部有没有 value 变量，找到了所以输出 2。
 
@@ -53,7 +55,7 @@ foo 函数作用域内部：变量 b, bar, a, c
 
 ```js
 try {
-  new Error("发生错误")
+  new Error('发生错误')
 } catch (err) {
   console.log(err) // Error: 发生错误
 }
@@ -90,13 +92,13 @@ for (let i = 1; i < 10; i++) {
 console.log(i) // Reference Error
 ```
 
-const 与 let 表现行为一致，唯一不同的是 const 声明的变量无法被重新赋值，const 声明的引用类型不可以重新赋值(即改变指针)，但是可以可以增删改属性(如对象), 也可以增删改项(如数组)
+const 与 let 表现行为一致，唯一不同的是 const 声明的变量无法被重新赋值，const 声明的引用类型不可以重新赋值(即改变指针)，但是可以对该类型增删改属性(如对象), 也可以增删改项(如数组)
 
 #### 1.2.3 全局作用域
 
 在浏览器中全局作用域是 window，在全局作用域声明的变量可以在任何地方访问到
 
-##### 变量提升与函数提升
+#### 1.2.4 变量提升与函数提升
 
 var 声明的变量存在变量提升，函数声明存在提升，并优先于变量提升，但是函数表达式并不会提升，比如：
 
@@ -108,11 +110,11 @@ c() // Uncaught ReferenceError: Cannot access 'c' before initialization
 var a = 1
 function b() {
   // 函数声明
-  console.log("b函数执行了")
+  console.log('b函数执行了')
 }
 const c = function() {
   // 函数表达式
-  console.log("c函数执行了")
+  console.log('c函数执行了')
 }
 ```
 
@@ -130,24 +132,26 @@ const c = function() {
 
 每个**函数**都有自己的**执行环境**，当执行流进入一个函数是，函数的环境就会被推入一个**环境栈**中，而在**函数执行之后**，**栈将其环境弹出**，把控制权返回给之前的**执行环境**。
 
-当代码在一个**执行环境**中执行时，会创建变量对象的一个**作用域链**。作用域链的用途，就是可以保证变量和函数可以被**执行环境**有效访问。作用域的前端，始终是当前执行的代码所在环境的变量对象，如果这个是函数，则将其**活动对象(activation object)**作为**变量对象(variable object)**。活动对象在最开始时值包含一个变量。即 arguments 对象(这个对象在全局环境中是不存在的)。**作用域链**的下一个变量对象来自**外部环境**，再下一个变量对象则来自下一个外部环境。这样，一直延续到全局执行环境。全局执行环境放入变量对象始终都是作用域链的最后一个对象。
+当代码在一个**执行环境**中执行时，会创建变量对象的一个**作用域链**。作用域链的用途，就是可以保证变量和函数可以被**执行环境**有效访问。作用域的前端，始终是当前执行的代码所在环境的变量对象，如果这个是函数，则将其**活动对象(activation object)**作为**变量对象(variable object)**。活动对象在最开始时值包含一个变量。即 arguments 对象(这个对象在全局环境中是不存在的)。**作用域链**的下一个变量对象来自**外部环境**，再下一个变量对象则来自下一个外部环境。这样，一直延续到全局执行环境`window`。全局执行环境放入变量对象始终都是作用域链的最后一个对象。
 
 标识符解析是沿着作用域链一级一级的搜索标识符的过程。搜索过程始终从作用域链的前端开始，然后逐级的向后回溯，直到找到标识符为止(如果找不到标识符，会报错)。
 
 ```js
-var color = "blue"
+var color = 'blue'
 
 function changeColor() {
-  if (color === "blue") {
-    color = "red"
+  if (color === 'blue') {
+    color = 'red'
   } else {
-    color = "blue"
+    color = 'blue'
   }
 }
 changeColor()
 ```
 
-在上面这个简单的例子中，**函数**changeColor 的作用域链包含两个对象：它自己的变量对象(其中定义这个 arguments 对象),和全局环境的变量对象。可以在函数内部访问到变量 color，就是因为可以在这个作用域俩中找到它。
+作用域链分析：
+
+在上面这个简单的例子中，**函数**changeColor 的**作用域链**包含两个对象：它自己的变量对象(其中定义这个 arguments 对象),和全局环境的变量对象。可以在函数内部访问到变量 color，就是因为可以在全局环境`window`这个作用域俩找到它。
 
 ## 2. 闭包
 
@@ -161,7 +165,7 @@ changeColor()
 
 由于 js 函数执行的原理，当函数被调用时，会被推送到一个执行栈中，形成自己的执行环境(执行环境中包含定义的变量与函数)，函数执行完则出栈，因而函数的执行环境也被销毁
 
-那么如何获取执行完毕的函数内部的变量呢，即如何让函数执行的执行环境不被销毁呢，这就要通过闭包了，**闭包使得在执行的函数与应当被销毁的父函数产生了关联，使得作用域一直存在**
+那么如何获取执行完毕的函数内部的变量呢，即如何让函数执行的执行环境不被销毁呢，这就要通过闭包了，**闭包使得在执行的函数与应当被销毁的父函数产生了关联，使得作用域一直存在**，这也是**闭包最常见的一种用法**
 
 ```js
 function foo() {
@@ -177,7 +181,7 @@ addCount()
 
 上述例子，bar 引用了父级函数 foo 里面的 count 变量，所以在函数 foo 执行过后,count 变量没有被立即销毁，我们通过 addCount 函数又可以获取到 foo 内部变量 count 的值，即 bar 函数被定义的地方。
 
-闭包阻止了 foo 函数的销毁，大量的使用闭包会造成 js 内存无法及时得到释放。
+闭包阻止了 foo 函数的销毁，但要注意的是，大量的使用闭包会造成 js 内存无法及时得到释放。
 
 ### 2.2 理解闭包的例子
 
@@ -209,9 +213,10 @@ function foo() {
   }
   bar(baz)
 }
+
 function bar(fn) {
   let a = 3
-  fn()
+  fn() // 这里的fn实际是baz函数
 }
 foo()
 ```
@@ -226,7 +231,7 @@ function wait(message) {
     console.log(message)
   }, 1000)
 }
-wait("Hello, closure!")
+wait('Hello, closure!')
 ```
 
 wait 函数在执行完毕后，局部变量 message 本应被立即销毁，但是由于 timer 函数引用了 message 变量，使得 wait 函数的执行环境依然存在。使得 timer 能够访问到 message 变量，也就形成了闭包。
@@ -244,16 +249,16 @@ for (var i = 1; i <= 5; i++) {
 
 这段代码在运行时会以每秒一次的频率输出五次 6。
 
-为什么呢，又要涉及到 js 的执行机制了，由于 js 是单线程引擎，所以 js 会首先执行同步队列里的代码，然后才会执行异步任务(涉及了 js 宏任务与微任务)。也即是说延迟函数的回调会在循环结束时才执行。
+为什么呢，又要涉及到 js 的执行机制了，由于 js 是单线程引擎，所以 js 会首先执行同步代码。再执行异步代码。也即是说延迟函数的回调会在同步`for`循环结束时才执行。关于 JS 异步知识可以参考[事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
 
 上述例子中，js 会首先执行 for 循环，执行完毕后，i 已经变成了 6，这时候在执行定时器，定时器现在作用域链查找到的 i 值为 6。
 
-是尽管循环中的五个函数是在各个迭代中分别定义的，但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个 i。
+是尽管循环中的五个函数是在各个迭代中分别定义的，但是它们都被封闭在一个共享的全局作用域中，因此实际上只有一个 i。只不过 i 一直被重新复制而已
 
 为了能够打印出 1~6。我们需要更多的闭包作用域，特别是在循环的过程中每个迭代都需要一个闭包作用域。
 
 如何打印出 1~6 呢，这里我们会想到给`setTimeout`内部储存一个 i 变量，每次执行`setTimeout`都访问自己独一无二的变量。再 ES6 之前，我们这样做：  
-使用 IIFE(Immediately Invoked Function Expression),即立即调用函数表达式
+使用 IIFE(Immediately Invoked Function Expression),即立即调用函数表达式。利用**函数作用域**保存每一次循环产生的变量
 
 ```js
 for (var i = 1; i <= 5; i++) {
@@ -332,18 +337,45 @@ adder(1)
 adder(2)
 ```
 
-不使用 apply,那么需要自己处理数组[]参数
+不使用 apply,那么需要自己处理数组[]参数，但是apply的一个好处是可以自定义this，如果在fn在执行的时候使用this，是容易出问题的。
 
 ```js
 function memorize(fn) {
   const cache = {}
   return function(...args) {
     const key = JSON.stringify(args)
-    return cache[key] || (cache[key] = fn(args))
+    return cache[key] || (cache[key] = fn(args)) 
   }
 }
 
 function add(a) {
+  console.log(`add参数a`, a) // a是个数组，需要转换成数字
+  a = Number(a.join()) // 或 parseInt(a.join())
+  return a + 1
+}
+const adder = memorize(add)
+
+adder(1)
+adder(1)
+adder(2)
+```
+
+这样看似正常，但是改造一下，就会出现问题
+
+```js
+function memorize(fn) {
+  const cache = {}
+  return function(...args) {
+    const key = JSON.stringify(args)
+    return cache[key] || (cache[key] = fn(args)) // 改成fn.call(fn, args)
+  }
+}
+
+function add(a) {
+  // 加上这两行代码
+  add.c = 3
+  console.log('获取c', this.c)
+
   console.log(`add参数a`, a) // a是个数组，需要转换成数字
   a = Number(a.join()) // 或 parseInt(a.join())
   return a + 1
@@ -382,7 +414,7 @@ const MyModules = (function Manager() {
   }
   return {
     define,
-    get
+    get,
   }
 })()
 ```
@@ -391,30 +423,30 @@ const MyModules = (function Manager() {
 
 ```js
 // 定义modules对象键名是“bar”, 值是hello函数
-MyModules.define("bar", [], function() {
+MyModules.define('bar', [], function() {
   function hello(who) {
-    return "Let me introduce: " + who
+    return 'Let me introduce: ' + who
   }
   return {
-    hello
+    hello,
   }
 })
 
 // 定义modules对象键名是“foo”， 返回值是“foo”对应的值
-MyModules.define("foo", ["bar"], function(bar) {
-  var hungry = "hippo"
+MyModules.define('foo', ['bar'], function(bar) {
+  var hungry = 'hippo'
   function awesome() {
     console.log(bar.hello(hungry).toUpperCase())
   }
   return {
-    awesome
+    awesome,
   }
 })
 
-const bar = MyModules.get("bar")
-const foo = MyModules.get("foo")
+const bar = MyModules.get('bar')
+const foo = MyModules.get('foo')
 
-console.log(bar.hello("hippo")) // Let me introduce: hippo
+console.log(bar.hello('hippo')) // Let me introduce: hippo
 
 foo.awesome() // LET ME INTRODUCE: HIPPO
 ```

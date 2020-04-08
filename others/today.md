@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.7 晴
+
+1. JS-base(类型及转换，this，call等)
+2. Tomottow-do: 闭包，原型链，项目描述
+
 ### 2020.4.6 阴
 
 1. 整理前端知识树
