@@ -1,5 +1,7 @@
 # node 知识点
 
+记录一些产生困惑的Node知识点
+
 ## 原生 Node
 
 ### res.setHeader 与 res.writeHead

@@ -59,9 +59,9 @@
 
 - 工程化工具
 
-  - [webpack 配置](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack/webpack-config.md)
-  - [用 webpack 配置 react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack/webpack-react.md)
-  - [babel](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack/babel.md)
+  - [webpack 配置](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
+  - [用 webpack 配置 react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
+  - [babel](https://github.com/xblcity/blog/blob/master/fe-engineering/babel.md)
 
 - 工具
 
@@ -74,7 +74,6 @@
   - [Node 知识点](https://github.com/xblcity/blog/blob/master/backend/little-points.md)
   - [blog 后端思路](https://github.com/xblcity/blog/blob/master/backend/blog.md)
   - [mysql](https://github.com/xblcity/blog/blob/master/backend/mysql.md)
-
   - [使用服务器](https://github.com/xblcity/blog/blob/master/backend/server.md)
   - [nginx使用配置](https://github.com/xblcity/blog/blob/master/backend/nginx.md)
   - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/backend/ubuntu.md)
