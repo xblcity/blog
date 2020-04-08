@@ -26,7 +26,7 @@
   
   - [类与继承](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
   - [Object 构造函数及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
-  - [原理篇-事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
+  - [事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   
   - [ES6知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
@@ -91,14 +91,8 @@
 
 ## 其他
 
-- 面试
-
-  - [前端基础知识](https://github.com/xblcity/blog/blob/master/others/js-interview.md)
   - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
   - [css/网络/等面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
-
-- 其他
-
   - [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
   - [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
   - [今天学到了什么](https://github.com/xblcity/blog/blob/master/others/today.md)
