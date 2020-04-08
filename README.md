@@ -18,23 +18,18 @@
 - JS基础
 
   - [JS知识树](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
-
   - [理解this](https://github.com/xblcity/blog/blob/master/js-base/this.md)
   - [Call, Apply, Bind 实现](https://github.com/xblcity/blog/blob/master/js-base/call.md)
   - [作用域与闭包](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
   - [赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
-  
   - [类与继承](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
   - [Object 构造函数及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
   - [事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
-  
   - [ES6知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
-
   - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.md)](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
   - [概念/应用篇-JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
   - [概念/应用篇JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
-
   - [概念篇-Typescript 基础类型与概念](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
   - [应用篇-TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
 
@@ -45,8 +40,6 @@
 
 ## 框架及实践
 
-- React
-
   - [概念篇-React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
   - [概念/应用篇-React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
   - [概念/应用篇-Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
@@ -54,9 +47,6 @@
   - [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
   - [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
   - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
-
-- 其他框架
-
   - [应用微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 
 ## 前端综合知识
@@ -75,7 +65,7 @@
 
 - 工具
 
-  - [vscode插件](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
+  - [vscode使用](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
   - [git的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
   - [第三方工具集](https://github.com/xblcity/blog/blob/master/fe-engineering/tool.md)
 
