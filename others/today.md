@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.8 多云
+
+1. JS-base(闭包，原型链，拷贝等))
+2. Tomottow-do: 项目描述，浏览器
+
 ### 2020.4.7 晴
 
 1. JS-base(类型及转换，this，call等)

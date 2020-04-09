@@ -27,14 +27,15 @@
   - [事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   - [ES6知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
-  - [概念/应用篇-函数式编程(高阶函数/偏函数/柯里化.md)](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
-  - [概念/应用篇-JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
-  - [概念/应用篇JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
-  - [概念篇-Typescript 基础类型与概念](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
-  - [应用篇-TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
+  - [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
+  - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
+  - [JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
+  - [Typescript 基础知识](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
+  - [TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
 
 - JS应用
 
+  - [理解节流与防抖函数](https://github.com/xblcity/blog/blob/master/js-practice/throttle.md)
   - [应用篇-数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
   - [应用篇-JS 工具库函数](https://github.com/xblcity/blog/blob/master/js-practice/utils.md)
 
