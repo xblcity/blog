@@ -47,7 +47,7 @@
 
 - [性能优化](https://github.com/xblcity/blog/blob/master/fe-system/performance.md)
 - [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/fe-system/render.md)
-- [http 请求头与响应头](https://github.com/xblcity/blog/blob/master/fe-system/http-message.md)
+- [http相关知识](https://github.com/xblcity/blog/blob/master/fe-system/http.md)
 
 ## 工程化
 

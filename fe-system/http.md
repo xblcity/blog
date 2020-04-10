@@ -1,4 +1,4 @@
-# http客户端与服务端的请求头与请求体
+# http相关知识
 
 ## 通用--
 
@@ -53,6 +53,7 @@ Access-Control-Max-Age: 86400  // 每隔多久发送一次预检请求(OPTIONS)
 
 
 ## 参考
+
 - [http请求头与响应头的应用](https://juejin.im/post/5b854ddef265da43635d9302)
 - [http请求常见的请求头和相应头](https://www.jianshu.com/p/908e51e9ccd2)
 
