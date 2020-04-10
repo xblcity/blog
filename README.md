@@ -8,11 +8,6 @@
 
 *是什么(WHAT)-怎么做(HOW)-为什么(WHY)*
 
-## HTML/CSS
-
-- [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
-- [CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
-
 ## JS/ES6/TS
 
 - JS基础
@@ -27,7 +22,7 @@
   - [事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   - [ES6知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
   - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
-  - [函数式编程(高阶函数/偏函数/柯里化)](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
+  - [高阶函数](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
   - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
   - [JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
   - [Typescript 基础知识](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)

@@ -94,10 +94,10 @@ function bubbleSort(arr) {
 
 ##### 快速排序
 
-![quicksort1](./images/quicksort1.jpg)
-![quicksort2](./images/quicksort2.jpg)
-![quicksort3](./images/quicksort3.jpg)
-
+![quicksort1](./images/algorithm/quicksort1.jpg)
+![quicksort2](./images/algorithm/quicksort2.jpg)
+![quicksort3](./images/algorithm/quicksort3.jpg)
+/algorithm
 #### 选择类
 
 简单选择排序，堆排序
