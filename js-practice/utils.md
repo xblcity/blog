@@ -1,8 +1,6 @@
 # JS 常用工具函数/代码片段
 
 - [发送验证码倒计时](#发送验证码倒计时)
-- [防抖](#防抖)
-- [节流](#节流)
 - [时间格式的处理](#时间格式的处理)
 - [url 参数取值](#url参数取值)
 - [配置 axios 拦截器](#配置axios拦截器)
@@ -25,76 +23,6 @@ const countDown = (ms = 60, cb = f => f) => {
   }, 1000)
   return timer // 返回timerID
 }
-```
-
-## 防抖
-
-防抖 (debounce): 将多次高频操作优化为只在最后一次执行。通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。比如防止用户频繁的表单提交。
-
-```js
-function debounce(fn, delay) {
-  // 定时器
-  let timer = null
-  return function() {
-    // 保留调用时的this上下文, 因为setTimeout回调函数this是window，使用箭头函数就不用保留this了
-    let context = this
-    // 保留调用时传入的参数，es6可以使用剩余参数接收
-    let args = arguments
-    // 每次事件被触发时，都去清除之前的旧定时器
-    if (timer) {
-      clearTimeout(timer)
-    }
-    timer = setTimeout(function() {
-      fn(this, args)
-    }, delay)
-  }
-}
-
-// 用debounce来包装scroll的回调
-const better_scroll = debounce(() => console.log("触发了滚动事件"), 1000)
-
-document.addEventListener("scroll", better_scroll)
-
-// 改变this与arguments
-let b = { a: 555 },
-  c = 5
-better_scroll.call(b, c)
-```
-
-## 节流
-
-节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms 执行一次即可。
-
-```js
-const throttle = (fn, interval) => {
-  let last = 0
-  return (...args) => {
-    let now = Date.now() // 当前毫秒ms值
-    // 如果时间间隔大于设定的时间间隔
-    if (now - last >= interval) {
-      fn.apply(context, args)
-      last = now
-    }
-  }
-}
-
-// 使用定时器
-const throttle = (fn, delay = 500) => {
-  let flag = true // flag为true时执行
-  return (...args) => {
-    if (!flag) return
-    flag = false
-    setTimeout(() => {
-      fn.apply(this, args)
-      flag = true
-    }, delay)
-  }
-}
-
-const better_scroll = throttle(() => {
-  console.log("触发了滚动事件")
-}, 1000)
-document.addEventListener("scroll", better_scroll)
 ```
 
 ## 时间格式的处理

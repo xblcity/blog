@@ -31,17 +31,15 @@
 - JS应用
 
   - [理解节流与防抖函数](https://github.com/xblcity/blog/blob/master/js-practice/throttle.md)
-  - [应用篇-数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
-  - [应用篇-JS 工具库函数](https://github.com/xblcity/blog/blob/master/js-practice/utils.md)
+  - [数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
+  - [JS 工具库函数](https://github.com/xblcity/blog/blob/master/js-practice/utils.md)
 
 ## 框架及实践
 
-- [概念篇-React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
-- [概念/应用篇-React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-- [概念/应用篇-Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
-- [概念/应用篇-Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-- [异步的实践&注意事项](https://github.com/xblcity/blog/blob/master/react/async.md)
-- [基础组件](https://github.com/xblcity/blog/blob/master/react/basic-co.md)
+- [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+- [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+- [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
+- [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
 - [微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 
