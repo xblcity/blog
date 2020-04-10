@@ -41,9 +41,9 @@ react一个重要方法，用于把JSX语法转换成虚拟DOM，只要组件有
 
 `componentDidMount()`
 
-组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。
+组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过**网络请求获取数据**，此处是实例化请求的好地方。
 
-也可以在此处添加订阅，并在`componentWillUnmount()`取消订阅
+也可以在此处**添加订阅**，并在`componentWillUnmount()`取消订阅
 
 ### 更新阶段(当props或者state发生变化会触发组件更新)
 
@@ -54,6 +54,8 @@ react一个重要方法，用于把JSX语法转换成虚拟DOM，只要组件有
 `shouldComponentUpdate(nextProps, nextState)`
 
 组件接收到新的props或者state时调用，return true就会更新dom（使用diff算法更新），return false能阻止更新（不调用render）
+
+**此生命周期是减少组件渲染的重要手段**
 
 `componentWillUpdate(nextProps, nextState)(即将被废弃)`
 
@@ -99,7 +101,7 @@ componentWillUnmount()
 
 React构建的App是单页面应用，所以一旦刷新浏览器，React该页面内的所有组件会重新执行componentDidMount()，也就是说，该页面所需要的数据，必须重新拉取一下才能重新获得。
 
-所以为了能够获得之前的状态，我们需要把一些参数存放在**路由参数里**，比如`/news?type=1`，
+所以为了能够获得之前的状态，我们需要把一些参数存放在**路由参数里**，比如`/news?type=1`，当然当参数比较多时，可以考虑放在`sessionStorage`里面
 
 如果两个同级页面a,b，用户需要先进入a，才能进入b。假设我们在a中请求api获取了数据存在redux里面，然后在b页面就可以直接从redux中拿到数据。但是，如果我们在b页面刷新浏览器。就会拿不到想要的数据，因为请求api是在a页面发起的。解决方案 1. 在a,b的容器组件获取数据 2. 在a,b页面都进行api的请求。
 
