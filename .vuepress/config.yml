@@ -43,7 +43,6 @@ themeConfig:
         - /js-base/this
         - /js-base/call
         - /js-base/scope-closures
-        - /js-base/object-methods
         - /js-base/copy
         - /js-base/inherit
         - /js-base/object-methods
