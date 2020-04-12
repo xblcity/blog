@@ -312,6 +312,16 @@ loader 用于帮我们处理不同类型的文件，plugins 用于在打包过�
 
 在使用它们的时候，我们可以思考一下为什么出现了这些 loader 以及 plugin，它们解决了前端的哪些问题
 
+按照上面两个部分再进行操作一遍，加深记忆
+
+```js
+npm init -y
+
+tsc --init
+
+yarn add 
+```
+
 ### 对 CSS 样式兼容 postcss
 
 ## 参考

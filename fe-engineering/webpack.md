@@ -44,7 +44,7 @@ module.exports = {
 
 内容最多且最重要当属 loaders 以及 plugin 部分，loaders 负责参与制定文件的编译，比如.js, .less, .png 文件的解析编译等。plugins 一般会全程参与打包，比如`html-webpack-plugin, clean-webpack-plugin`等
 
-## 开发环境中配置
+## 配置
 
 比如，我们想要搭建一个 react 的开发环境，我们需要考虑哪些事情？
 
@@ -54,9 +54,9 @@ module.exports = {
 4. 浏览器实时更新改变后的代码
 5. 错误信息可以直接定位到原代码的文件
 
-我们将从核心配置的`mode, dev-tools, entry, output, resolve, loaders, plugins`等几个方面进行讲解配置。
+等等多方面考虑
 
-当然，再次之前，我们需要在工作区初始化 package.json 文件，并安装`webpack webpack-cli`必须依赖
+我们将从核心配置的`mode, dev-tools, entry, output, resolve, loaders, plugins`等几个方面进行讲解配置。
 
 ### mode
 
@@ -179,7 +179,7 @@ module.exports = {
 }
 ```
 
-## plugins
+### plugins
 
 插件需要先引入，然后调用插件的构造函数
 
@@ -216,9 +216,18 @@ module.exports = {
 
 在 vs-code 中，如果想要编辑器识别这种别名路径，需要在项目根目录配置 jsconfig.json 文件或者 tsconfig.json
 
-## 6.optimization
+### devServer
 
-### 代码分割(code splitting)
+热更新，HMR，即 hot module replacement, 可以使文件更新变化的部分而不是整个更新，使用devServer并添加配置可以达到这个效果
+
+需要先安装依赖包 `npm i -D webpack-dev-server`  
+webpack-dev-server 提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)
+
+webpack.config.js 配置，告诉 devServer 在哪里查找文件，不过 webpack 默认更新的就是 dist 的 index 文件，可以不配置
+
+### optimization
+
+#### 代码分割(code splitting)
 
 代码分割，可以简单的理解为将 app 打包为多个文件，可以方便管理，异步加载也得益于此，代码分割由三种方式
 
@@ -239,23 +248,13 @@ module.exports = {
 
 把不用的代码剔除，在项目中使用 es6 模块语法动态引入的部分会被打包，而未被引入的部分会被剔除
 
-## 优化
-
-### 开启缓存
-
-对于缓存像 react, lodash 这种不变的包，我们不希望每次都重新打包，那么我们可以使用缓存
-output`[hash]`更换成`[contenthash]`这样每个包都有不同的 hash 名字
-
-加入`runtimeChunk`选项，会生成一个运行时的 Bundle  
-加入`moduleIds`选项，生成 hash 标识
+## 其他方面
 
 ### 加入环境标识
 
-`webpack --env.NODE_ENV=local --env.production --progress` 指定环境变量而引用不同配置，做不同优化，这是一种指令方式，当然使用`mode`也可以
+安装`cross-env`用于加入环境标识
 
-### 修改代码后自动编译代码
-
-#### 1. webpack watch mode
+### webpack watch mode(推荐使用webpack-dev-server)
 
 开启 watch 模式，webpack 会监听文件的改动，并重新打包  
 只需要在 package.json 添加一个配置选项
@@ -270,42 +269,15 @@ output`[hash]`更换成`[contenthash]`这样每个包都有不同的 hash 名字
 
 随后使用`npm run watch`即可启动项目，监听修改，并自动进行重新打包
 
-缺点：需要手动刷新浏览器，才能看到重新打包后的效果
+缺点：需要手动刷新浏览器，才能看到重新打包后的效果。推荐使用`webpack-dev-server`
 
-#### 2. webpack-dev-server(添加 HMR,最常用)
+### 开启缓存
 
-热更新，HMR，即 hot module replacement, 可以使文件更新变化的部分而不是整个更新
+对于缓存像 react, lodash 这种不变的包，我们不希望每次都重新打包，那么我们可以使用缓存
+output`[hash]`更换成`[contenthash]`这样每个包都有不同的 hash 名字
 
-需要先安装依赖包 `npm i -D webpack-dev-server`  
-webpack-dev-server 提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)
-
-webpack.config.js 配置，告诉 devServer 在哪里查找文件，不过 webpack 默认更新的就是 dist 的 index 文件，可以不配置
-
-```js
-devServer: {
-  contentBase: './dist',
-  hot: true  // 开启热更新
-}
-```
-
-package.json
-
-```json
-{
-  "scripts": {
-    "start": "webpack-dev-server --open"
-  }
-}
-```
-
-使用`npm run start`或者`npm start`即可启动项目
-
-当然，也可以直接使用 webpack 的 cli 命令，即在 package.json 修改 start 命令：`webpack-dev-server --open --hotOnly`
-
-#### 3. webpack-dev-middleware
-
-webpack-dev-middleware 是一个容器(wrapper)，它可以把 webpack 处理后的文件传递给一个服务器(server)。 webpack-dev-server 在内部使用了它，同时，它也可以作为一个单独的包来使用，以便进行更多自定义设置来实现更多的需求。  
-缺点：需要对 node 了解，并自行配置
+加入`runtimeChunk`选项，会生成一个运行时的 Bundle  
+加入`moduleIds`选项，生成 hash 标识
 
 ## 更多 loader
 

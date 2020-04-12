@@ -51,7 +51,7 @@
 
 ## 工程化
 
-- [用 webpack 配置 ts-react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
+- [webpack 配置 ts-react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
 - [webpack 配置优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
 - [vscode使用](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
 - [git的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
