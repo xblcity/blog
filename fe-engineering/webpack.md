@@ -6,7 +6,9 @@ webpack，即web的pack，网页应用的打包，webpack是实现前端工程�
 
 webpack可以对依赖进行处理，对代码进行分割与整合。开发人员可以更关注开发本身。
 
-**本文不会进行渐进性配置，而是罗列用到的配置及依赖并进行说明。**[点击查看源码]()
+**本文不会进行渐进性配置，而是罗列用到的配置及依赖并进行说明。**
+
+渐进式配置react-ts开发环境，可以参考上一篇
 
 ## 概览
 
@@ -129,10 +131,7 @@ rules: [
 
 关于babel的配置推荐在根目录新建.babelrc进行配置, .babelrc配置
 
-```js
-
-```
-less-loader, css-loader, style-loader, 用于处理css样式问题
+`less-loader, css-loader, style-loader` 用于处理css样式问题
 
 ```js
 module.exports = {
@@ -216,9 +215,7 @@ module.exports = {
 }
 ```
 
-在vs-code中，如果想要编辑器识别这种别名路径，需要在项目根目录配置.jsconfig文件
-
-
+在vs-code中，如果想要编辑器识别这种别名路径，需要在项目根目录配置jsconfig.json文件或者tsconfig.json
 
 ## 6.optimization
 
@@ -246,6 +243,7 @@ module.exports = {
 ## 优化
 
 ### 开启缓存
+
 对于缓存像react, lodash这种不变的包，我们不希望每次都重新打包，那么我们可以使用缓存
 output`[hash]`更换成`[contenthash]`这样每个包都有不同的hash名字  
 
@@ -253,6 +251,7 @@ output`[hash]`更换成`[contenthash]`这样每个包都有不同的hash名字
 加入`moduleIds`选项，生成hash标识  
 
 ### 加入环境标识
+
 `webpack --env.NODE_ENV=local --env.production --progress` 指定环境变量而引用不同配置，做不同优化，这是一种指令方式，当然使用`mode`也可以
 
 ### 修改代码后自动编译代码
@@ -280,7 +279,7 @@ webpack-dev-server 提供了一个简单的web服务器，并且能够实时重�
 webpack.config.js配置，告诉devServer在哪里查找文件，不过webpack默认更新的就是dist的index文件，可以不配置
 ```js
 devServer: {
-  contentBase: './dist'，
+  contentBase: './dist',
   hot: true  // 开启热更新
 }
 ```

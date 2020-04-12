@@ -1,59 +1,64 @@
-# 使用webpack从零配置开发环境
+# 使用 webpack 从零配置开发环境
 
-使用的webpack版本是@4.39.3，不过@5 beta版已经发布了，emmmm...
+使用的 webpack 版本是@4.39.3，不过@5 beta 版已经发布了，emmmm...
 
-## 1.实现对JSX, JS, PNG, LESS等文件进行打包
+## 1.实现对 JSX, JS, PNG, LESS 等文件进行打包
 
-将JSX, LESS等文件进行打包成bundle.js，在HMTL中引入并可以在浏览器访问
+将 JSX, LESS 等文件进行打包成 bundle.js，在 HMTL 中引入并可以在浏览器访问
 
-[源码地址]()
+[源码地址](https://github.com/xblcity/web-learning/tree/master/webpack-learn/first)
 
 ### 1.1 初始化
 
-- 新建first文件夹
+- 新建 first 文件夹
 
 - 在文件夹中使用`npm init -y`生成`package.json`文件
 
-### 1.2 安装webpack
+### 1.2 安装 webpack
 
 使用`npm`或者`yarn`安装下面依赖，本文全部使用的`yarn`
 
 ```js
 yarn add webpack webpack-cli -D
 ```
-> 注释: webpack-cli是webpack的命令行工具  -D 是 --save--dev的缩写， -S是 --save的缩写。版本号：webpack@4.39.3，webpack-cli@3.3.7
 
-### 1.3 安装样式相关loader
+> 注释: webpack-cli 是 webpack 的命令行工具 -D 是 --save--dev 的缩写， -S 是 --save 的缩写。版本号：webpack@4.39.3，webpack-cli@3.3.7
+
+### 1.3 安装样式相关 loader
 
 ```js
 yarn add css-loader style-loader less less-loader -D
 ```
-> 注释: css-loader可以配置css-module
 
-### 1.4 安装babel,react相关loader，安装react相关依赖
+> 注释: css-loader 可以配置 css-module
 
-安装babel
+### 1.4 安装 babel,react 相关 loader，安装 react 相关依赖
+
+安装 babel
 
 ```js
 yarn add babel-loader @babel/core @babel/preset-env -D
 ```
-> 注释: babel，将es6转换为es5，@babel/core是babel-core的第七版，@babel/preset-env是babel-preset-env升级版，用于配置浏览器的兼容度以及使用最新ES6语法。不需要安装babel-preset-stage-0，因为preset-env已经集成了这几个stage的功能。但是preset-env不支持修饰器，动态引入，静态属性等等ES6最新的语法
 
-安装babel-react
+> 注释: babel，将 es6 转换为 es5，@babel/core 是 babel-core 的第七版，@babel/preset-env 是 babel-preset-env 升级版，用于配置浏览器的兼容度以及使用最新 ES6 语法。不需要安装 babel-preset-stage-0，因为 preset-env 已经集成了这几个 stage 的功能。但是 preset-env 不支持修饰器，动态引入，静态属性等等 ES6 最新的语法
+
+安装 babel-react
 
 ```js
 yarn add @babel/preset-react -D
 ```
-> 注释: @babel/preset-react是babel-preset-react升级版, 用于将jsx转换成js
 
-安装react相关依赖
+> 注释: @babel/preset-react 是 babel-preset-react 升级版, 用于将 jsx 转换成 js
+
+安装 react 相关依赖
 
 ```js
 yarn add react react-dom -S
 ```
-> 注释, babel转换主要使用到的是react.createElement()方法
 
-### 1.5 安装图片处理相关loader
+> 注释, babel 转换主要使用到的是 react.createElement()方法
+
+### 1.5 安装图片处理相关 loader
 
 ```js
 yarn add url-loader file-loader -D
@@ -79,9 +84,9 @@ yarn add url-loader file-loader -D
 -- .gitignore // 设置git忽略文件
 ```
 
-建议大家直接看源码，里面有注释[源码点击这里]()
+建议大家直接看源码，里面有注释[源码点击这里](https://github.com/xblcity/web-learning/tree/master/webpack-learn/first)
 
-可以按照这个顺序对文件进行配置与修改  `src/app.js` 以及 `src/app.less` ---> `src/index.jsx` ---> `webpack.config.js` ---> `.babelrc`
+可以按照这个顺序对文件进行配置与修改 `src/app.js` 以及 `src/app.less` ---> `src/index.jsx` ---> `webpack.config.js` ---> `.babelrc`
 
 贴一下主要文件的一些内容吧
 
@@ -91,24 +96,24 @@ yarn add url-loader file-loader -D
 ![webpack](./images/webpack-react/webpack1_4.png)
 ![webpack](./images/webpack-react/webpack1_5.png)
 
-关于webpack的一些配置，可以参考上一篇的内容
+关于 webpack 的一些配置，可以参考上一篇的内容
 
 ### 1.7 踩坑点
 
-- webpack配置文件需要使用Common.js模块规范(因为是node可执行文件)，ES6模块语法无法使用，但是其他文件如app.js可以使用ES6语法(因为有babel-loader可以进行转换)
+- webpack 配置文件需要使用 Common.js 模块规范(因为是 node 可执行文件)，ES6 模块语法无法使用，但是其他文件如 app.js 可以使用 ES6 语法(因为有 babel-loader 可以进行转换)
 - `index.tsx`，`ReactDOM.render(element, document.getElementById('app'))`要与`HTML`的节点`id`对应，其次,引入的`import ReactDOM from 'react-dom'`名字是不做严格区分的
-- 构建完成的script文件要放在id为app的div下面
+- 构建完成的 script 文件要放在 id 为 app 的 div 下面
 
-#### webpack配置文件容易出错的部分
+#### webpack 配置文件容易出错的部分
 
-- webpack容易写错的部分，output的是filename以及path，不是pathname
-- webpack module rules 里面书写的是loader的规则
-- 注意：rules之下的规则，test后面跟正则表达式，而不是加引号的字符串
-- 添加mode，让webpack打包时进行相应的优化
+- webpack 容易写错的部分，output 的是 filename 以及 path，不是 pathname
+- webpack module rules 里面书写的是 loader 的规则
+- 注意：rules 之下的规则，test 后面跟正则表达式，而不是加引号的字符串
+- 添加 mode，让 webpack 打包时进行相应的优化
 
-#### 与react配置有关的注意事项
+#### 与 react 配置有关的注意事项
 
-- 如果使用了babel-loader处理包含jsx语法的js文件，最好配置.babelrc(rc可以解为resource缩写)里面的presets配置项，preset-react，preset-env可以配置要兼容浏览器支持语法的程度。当然，.babelrc也可以配置plugins选项，这里并没有用到
+- 如果使用了 babel-loader 处理包含 jsx 语法的 js 文件，最好配置.babelrc(rc 可以解为 resource 缩写)里面的 presets 配置项，preset-react，preset-env 可以配置要兼容浏览器支持语法的程度。当然，.babelrc 也可以配置 plugins 选项，这里并没有用到
 
 ### 1.8 进行打包
 
@@ -118,13 +123,13 @@ yarn add url-loader file-loader -D
 
 ![打包成功](./images/webpack-react/webpack1_6.png)
 
-## 2. 配置ts以及dev环境
+## 2. 配置 ts 以及 dev 环境
 
-如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于express的webpack提供webpack-dev-server，帮助我们更好的在开发环境中开发。
+### 2.1 配置 ts 开发环境
 
-在此之前，我们先配置一下ts-react开发环境。
+在此之前，我们先配置一下 ts-react 开发环境。
 
-新建目录second，全局安装`typescript`，目的是为了能够使用`tsc`命令
+新建目录 second，全局安装`typescript`，目的是为了能够使用`tsc`命令
 
 分别执行以下命令
 
@@ -141,18 +146,20 @@ yarn add webpack webpack-cli css-loader style-loader less less-loader babel-load
 yarn add react react-dom -S
 ```
 
-安装项目需要的typescript相关依赖
+安装项目需要的 typescript 相关依赖
+
 ```js
 yarn add typescript -D
 yarn add @types/react-dom @types/react -D
 ```
-> 注释：types依赖包含.d.ts声明文件，在react中用TS语法时，会自动对变量进行类型检测
+
+> 注释：types 依赖包含.d.ts 声明文件，在 react 中用 TS 语法时，会自动对变量进行类型检测
 
 ```js
 yarn add @babel/preset-typescript
 ```
 
-因为要区分开发环境与正式环境的webpack配置，这里我们新建`base dev prod`对webpack进行配置
+因为要区分开发环境与正式环境的 webpack 配置，这里我们新建`base dev prod`对 webpack 进行配置
 
 文件目录
 
@@ -175,32 +182,141 @@ yarn add @babel/preset-typescript
 -- .gitignore // 设置git忽略文件
 ```
 
-## 3.ts-react开发环境
+当我们按照上一节的内容把`index.tsx app.tsx app.less`几个文件写好后，发现多处报红，我们需要把`tsconfig.json`文件的`jsx`选项的值改成`react`并取消注释。
+
+![ts](./images/webpack-react/ts2.png)
+
+关于 JSX 部分的代码不报红了，但是引入的 less 文件，png 文件报红了，为什么呢？是因为 TS 没有找到这两个文件对应的`.d.ts`声明文件，那应该如何解决？
+
+![ts](./images/webpack-react/ts1.png)
+
+可以自己写一个`.d.ts`文件对 png 以及 less 文件进行 intrface 定义，或者是安装依赖包进行自动生成，这里举例第一种方法
+
+src 目录下新建`globalType.d.ts`
 
 ```js
-// typescript@3.6.2
-npm i typescript -D
+declare module '*.less' {
+  const content: any
+  export = content
+}
 
-// 安装ts-loader
-npm install ts-loader -D
+declare module '*.png' {
+  const content: any
+  export = content
+}
 ```
 
-## 3.使用loader与plugins
+这时候就没有红色警告啦~
 
-loader用于帮我们处理不同类型的文件，plugins用于在打包过程中做优化  
+但是还有一个问题，在`index.tsx`中，引入的`app.tsx`报红，但是把`.tsx`去掉`webpack`会找不到`app`文件而打包失败，这时候我们需要配置`webpack`的`resolve`配置项
 
-在使用它们的时候，我们可以思考一下为什么出现了这些loader以及plugin，它们解决了前端的哪些问题
+![ts](./images/webpack-react/ts3.png)
+
+```js
+resolve: {
+  // 省略文件后缀，让webpack自动查找
+  extensions: ['.js', '.jsx', '.ts', '.tsx']
+},
+```
+
+好了，页面终于没警告了~
+
+紧接着配置`.babelrc`，其实主要就是多添加一个`@babel/preset-typescript` 的 `presets`
+
+配置 webpack，安装依赖
+
+```js
+yarn add webpack-merge -D // 该依赖可以合并webpack配置
+```
+
+紧接着配置`webpack.config.base.js`以及`webpack.config.dev.js`，详细见源码
+
+最后在`package.json`文件添加`build`命令`"build": "webpack --config webpack.config.prod.js"`并执行
+
+![ts](./images/webpack-react/ts4.png)
+
+显示打包文件过大，因为`less png`等文件也被打包成 js 文件了，这里暂时先放着，下一节会进行优化
+
+在`index.html`中引入`bundle.js`,在浏览器打开，发现加载成功
+
+### 2.2 配置 dev 环境
+
+如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于 express 的 webpack 提供 webpack-dev-server，帮助我们更好的在开发环境中开发。
+
+在此之前，我们需要安装两个插件，做到动态生成bundle以及index.html文件
+
+```js
+yarn add html-webpack-plugin clean-webpack-plugin -D // 每次生成新的html以及清理html
+yarn add webpack-dev-server -D
+```
+
+把`src/index.html` `<script src="../dist/bundle.js"></script>`这行代码删除掉，因为配置了`html-webpack-plugin`会自动引入打包后的包
+
+配置`webpack.config.base.js`文件，使得生成的包每次生成的名字都不一样，防止浏览器缓存
+
+```js
+// ...
+const HtmlWebpackPlugin = require('html-webpack-plugin') 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+module.exports = {
+  // 入口
+  entry: {
+    App: './src/index.tsx',
+  },
+  // 打包后的动态文件及目录
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: '[chunkhash:4][name]bundle.js',
+  },
+  // ...
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html', //打包后的文件名
+    }),
+    new CleanWebpackPlugin(),
+  ],
+}
+```
+
+```js
+//webpack.config.dev.js
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.config.base.js');
+
+module.exports = merge(baseWebpackConfig, {
+    mode: 'development',
+    devServer: {
+      contentBase: './src', // 告诉devServer监听哪些文件的变化
+      port: '3000', //默认是8080
+      quiet: false, //默认不启用
+      inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
+      stats: "errors-only", //终端仅打印 error
+      compress: true //是否启用 gzip 压缩
+  }
+});
+```
+
+在`package.json`文件添加`dev`命令`"dev": "webpack-dev-server --open --config webpack.config.dev.js"`并运行(--open的意思是自动打开浏览器)
+
+浏览器自动打开`http://localhost:3000`即项目html，当我们修改`app.tsx`文件时，浏览器会自动刷新。
+
+在dev模式下，我们在`dist`目录下是看不到任何文件的，因为dev把这些文件存放在内存中了
+
+## 3.优化
+
+loader 用于帮我们处理不同类型的文件，plugins 用于在打包过程中做优化
+
+在使用它们的时候，我们可以思考一下为什么出现了这些 loader 以及 plugin，它们解决了前端的哪些问题
 
 
-## 4.优化
-### 对后缀名做处理
-### 对CSS样式兼容postcss
 
-### 更多部分见 [使用webpack定制开发环境](https://github.com/xblcity/web-learning/tree/master/webpack-learn)
+### 对 CSS 样式兼容 postcss
 
 ## 参考
 
-- [webpack文档指南](https://www.webpackjs.com/guides/)
-- [深入浅出Webpack](https://webpack.wuhaolin.cn/)
+- [webpack 文档指南](https://www.webpackjs.com/guides/)
+- [深入浅出 Webpack](https://webpack.wuhaolin.cn/)
 - [从零搭建项目](https://www.jianshu.com/p/dd9037db20f5)
-- [深度解锁Webpack系列](https://juejin.im/post/5e5c65fc6fb9a07cd00d8838)
+- [深度解锁 Webpack 系列](https://juejin.im/post/5e5c65fc6fb9a07cd00d8838)
