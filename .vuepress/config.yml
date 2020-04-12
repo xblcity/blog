@@ -45,38 +45,31 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
-        - /js/scope-closures
-        - /js/this
-        - /js/object
-        - /js/inherit
+        - /js-base/summary
+        - /js-base/this
+        - /js-base/call
+        - /js-base/scope-closures
         - /js/object-methods
-        - /js/copy
-        - /js/knowledge-points
-        - /js/array
-        - /js/utils
-    - title: JS进阶
+        - /js-base/copy
+        - /js-base/inherit
+        - /js-base/object-methods
+        - /js-base/eventloop
+        - /js-base/es6
+        - /js-base/promise
+        - /js-base/func-program
+        - /js-base/design-mode
+        - /js-base/algorithm
+        - /js-base/algorithm
+        - /js-base/ts-basic
+        - /js-base/ts-react
+    - title: JS应用
       collapsable: false
       sidebarDepth: 2
       children:
-        - /js/call
-        - /js/eventloop
-        - /js/func-program
-        - /js/design-mode
-        - /js/algorithm
-    - title: ES6
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /es6/class
-        - /es6/promise
-        - /es6/module
-    - title: Typescript
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /typescript/ts-basic
-        - /typescript/ts-react
-    - title: React
+        - /js-practice/throttle
+        - /js-practice/array
+        - /js-practice/utils
+    - title: 框架及实践
       collapsable: true
       sidebarDepth: 2
       children:
@@ -84,56 +77,30 @@ themeConfig:
         - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
-        - /react/async
-        - /react/basic-co
         - /react/complex-co
-    - title: Vue
+        - /library/wx-web
+    - title: 前端综合知识
       collapsable: true
       sidebarDepth: 2
       children:
-        - /vue/vuepress
-        - /vue/vue-admin
-    - title: 浏览器/网络/性能优化
+        - /fe-system/performance
+        - /fe-system/render
+        - /fe-system/http
+    - title: 工程化
       collapsable: true
       sidebarDepth: 2
       children:
-        - /mix/performance
-        - /mix/render
-        - /mix/http-message
-    - title: 工具
+        - /fe-engineering/webpack-react
+        - /fe-engineering/webpack-config
+        - /fe-engineering/vs
+        - /fe-engineering/git
+    - title: 后端
       collapsable: true
       sidebarDepth: 2
       children:
-        - /tools/webpack/webpack-config
-        - /tools/webpack/webpack-react
-        - /tools/webpack/babel
-        - /tools/git
-        - /tools/tool
-    - title: Node
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /node/little-points
-        - /node/blog
-        - /node/mysql
-    - title: 服务器
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /server/server
-        - /server/nginx 
-        - /server/ubuntu
-    - title: 面试
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /interview/js-interview
-        - /interview/lib-interview
-        - /interview/other-interview
-    - title: 其他
-      collapsable: true
-      sidebarDepth: 2
-      children:
-        - /others/words
-        - /others/questions
-        - /others/today
+        - /backend/little-points
+        - /backend/blog
+        - /backend/mysql
+        - /backend/server
+        - /backend/nginx
+        - /backend/ubuntu
