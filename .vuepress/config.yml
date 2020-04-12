@@ -35,12 +35,6 @@ themeConfig:
   sidebar:
     - title: 介绍
       path: /
-    - title: HTML/CSS
-    collapsable: false
-    sidebarDepth: 2
-    children:
-      - /html-css/html
-      - /html-css/css-utils
     - title: JS基础
       collapsable: false
       sidebarDepth: 2
@@ -49,7 +43,7 @@ themeConfig:
         - /js-base/this
         - /js-base/call
         - /js-base/scope-closures
-        - /js/object-methods
+        - /js-base/object-methods
         - /js-base/copy
         - /js-base/inherit
         - /js-base/object-methods
@@ -91,7 +85,7 @@ themeConfig:
       sidebarDepth: 2
       children:
         - /fe-engineering/webpack-react
-        - /fe-engineering/webpack-config
+        - /fe-engineering/webpack
         - /fe-engineering/vs
         - /fe-engineering/git
     - title: 后端
