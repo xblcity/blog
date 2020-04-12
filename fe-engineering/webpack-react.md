@@ -4,7 +4,7 @@
 
 ## 1.实现对JSX, JS, PNG, LESS等文件进行打包
 
-将JSX, LESS等文件进行打包成Bundle.js，在HMTL中引入并可以在浏览器访问
+将JSX, LESS等文件进行打包成bundle.js，在HMTL中引入并可以在浏览器访问
 
 [源码地址]()
 
@@ -37,7 +37,7 @@ yarn add css-loader style-loader less less-loader -D
 ```js
 yarn add babel-loader @babel/core @babel/preset-env -D
 ```
-> 注释: babel，将es6转换为es5，@babel/core是babel-core的第七版，@babel/preset-env是babel-preset-env升级版，用于配置浏览器的兼容度。不需要安装babel-preset-stage-0
+> 注释: babel，将es6转换为es5，@babel/core是babel-core的第七版，@babel/preset-env是babel-preset-env升级版，用于配置浏览器的兼容度以及使用最新ES6语法。不需要安装babel-preset-stage-0，因为preset-env已经集成了这几个stage的功能。但是preset-env不支持修饰器，动态引入，静态属性等等ES6最新的语法
 
 安装babel-react
 
@@ -65,7 +65,6 @@ yarn add url-loader file-loader -D
 
 ```js
 -- dist // 用于存放打包后的文件
-  -- index.html
 -- node_modules // 依赖包，自动生成
 -- webpack.config.js // webpack配置
 -- .babelrc // babel配置
@@ -75,19 +74,21 @@ yarn add url-loader file-loader -D
   -- index.jsx
   -- App.jsx
   -- app.less
+  -- index.html
 -- package.json
+-- .gitignore // 设置git忽略文件
 ```
 
 这里不会列举每个文件中的内容，大家可以直接看源码，里面有注释[源码点击这里]()
 
 关于webpack的一些配置，可以参考上一篇的内容
 
-可以按照这个顺序对文件进行配置与修改 `webpack.config.js` ---> `.babelrc` ---> `src/app.js` 以及 `src/app.less` ---> `src/index.jsx`
+可以按照这个顺序对文件进行配置与修改  `src/app.js` 以及 `src/app.less` ---> `src/index.jsx` ---> `webpack.config.js` ---> `.babelrc`
 
 ### 1.7 踩坑点
 
-- webpack配置文件需要使用Common.js模块规范(因为是node可执行文件)，ES6模块无法使用，但是其他文件如app.js可以使用ES6语法(因为有babel-loader可以进行转换)
-- JSX根文件，`ReactDOM.render(element, document.getElementById('app'))`要与`HTML`的节点`id`对应，其次,引入的`import ReactDOM from 'react-dom'`名字是不做严格区分的
+- webpack配置文件需要使用Common.js模块规范(因为是node可执行文件)，ES6模块语法无法使用，但是其他文件如app.js可以使用ES6语法(因为有babel-loader可以进行转换)
+- `index.tsx`，`ReactDOM.render(element, document.getElementById('app'))`要与`HTML`的节点`id`对应，其次,引入的`import ReactDOM from 'react-dom'`名字是不做严格区分的
 - 构建完成的script文件要放在id为app的div下面
 
 #### webpack配置文件容易出错的部分
@@ -99,56 +100,17 @@ yarn add url-loader file-loader -D
 
 #### 与react配置有关的注意事项
 
-- 如果使用了babel-loader处理包含jsx语法的js文件，那就必须要配置.babelrc里面的preset选项，preset-react，但是preset-env可以配置，也可以配置，作用是选择要兼容浏览器支持语法的程度
+- 如果使用了babel-loader处理包含jsx语法的js文件，最好配置.babelrc(rc可以解为resource缩写)里面的presets配置项，preset-react，preset-env可以配置要兼容浏览器支持语法的程度。当然，.babelrc也可以配置plugins选项，这里并没有用到
 
 ### 1.8 进行打包
 
 在`package.json`文件的`script`中添加 `"build": "webpack --config webpack.config.js"`这行代码即可，不明白的可以直接去看源码
 
-前提是全局安装过`webpack`
+`webpack`命令能运行的前提是全局安装过`webpack`
 
-命令行输入`yarn build`，可以看到在`build`目录多出了一个`bundle.js`文件，把`build`目录下的`index.html`在浏览器中打开，就可以看到我们实现的页面了
+命令行输入`yarn build`，可以看到在`build`目录多出了一个`bundle.js`文件，把`src`目录下的`index.html`在浏览器中打开，就可以看到我们实现的页面了
 
-### 配置.babelrc(rc可以解为resource缩写)
-```js
-{
-  presets:[
-      '@babel/preset-env',
-      '@babel/preset-react'
-  ],
-  plugins:[]
-}
-```
-
-### 修改src下jsx文件
-```js
-// index.jsx
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.jsx'
-
-ReactDOM.render(
-  <APP/>,
-  document.getElementById('root')
-)
-```
-```js
-// App.jsx
-import React from 'react'
-
-const App = () => {
-  return(
-    <div>这是一个react应用</div>
-  )
-}
-
-export default App
-```
-
-### 运行
-终端输入`npm run build`打包
-
-然后我们既可以在浏览器中看到打包出的react应用啦~
+![打包成功](./iamges/webpack1.png)
 
 ## 2. 在开发环境中使用dev-server
 
@@ -177,5 +139,9 @@ loader用于帮我们处理不同类型的文件，plugins用于在打包过程�
 
 ### 更多部分见 [使用webpack定制开发环境](https://github.com/xblcity/web-learning/tree/master/webpack-learn)
 
-### 参考
+## 参考
 
+- [webpack文档指南](https://www.webpackjs.com/guides/)
+- [深入浅出Webpack](https://webpack.wuhaolin.cn/)
+- [从零搭建项目](https://www.jianshu.com/p/dd9037db20f5)
+- [深度解锁Webpack系列](https://juejin.im/post/5e5c65fc6fb9a07cd00d8838)
