@@ -72,18 +72,26 @@ yarn add url-loader file-loader -D
   -- assets
     -- avatar.png
   -- index.jsx
-  -- App.jsx
+  -- app.jsx
   -- app.less
   -- index.html
 -- package.json
 -- .gitignore // 设置git忽略文件
 ```
 
-这里不会列举每个文件中的内容，大家可以直接看源码，里面有注释[源码点击这里]()
-
-关于webpack的一些配置，可以参考上一篇的内容
+建议大家直接看源码，里面有注释[源码点击这里]()
 
 可以按照这个顺序对文件进行配置与修改  `src/app.js` 以及 `src/app.less` ---> `src/index.jsx` ---> `webpack.config.js` ---> `.babelrc`
+
+贴一下主要文件的一些内容吧
+
+![webpack](./images/webpack-react/webpack1_1.png)
+![webpack](./images/webpack-react/webpack1_2.png)
+![webpack](./images/webpack-react/webpack1_3.png)
+![webpack](./images/webpack-react/webpack1_4.png)
+![webpack](./images/webpack-react/webpack1_5.png)
+
+关于webpack的一些配置，可以参考上一篇的内容
 
 ### 1.7 踩坑点
 
@@ -106,15 +114,66 @@ yarn add url-loader file-loader -D
 
 在`package.json`文件的`script`中添加 `"build": "webpack --config webpack.config.js"`这行代码即可，不明白的可以直接去看源码
 
-`webpack`命令能运行的前提是全局安装过`webpack`
-
 命令行输入`yarn build`，可以看到在`build`目录多出了一个`bundle.js`文件，把`src`目录下的`index.html`在浏览器中打开，就可以看到我们实现的页面了
 
-![打包成功](./iamges/webpack1.png)
+![打包成功](./images/webpack-react/webpack1_6.png)
 
-## 2. 在开发环境中使用dev-server
+## 2. 配置ts以及dev环境
 
-如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于express的webpack提供webpack-dev-server，帮助我们更好的在开发环境中开发
+如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于express的webpack提供webpack-dev-server，帮助我们更好的在开发环境中开发。
+
+在此之前，我们先配置一下ts-react开发环境。
+
+新建目录second，全局安装`typescript`，目的是为了能够使用`tsc`命令
+
+分别执行以下命令
+
+```js
+npm init -y // 生成package.json
+tsc --init // 生成tsconfig.json
+```
+
+按照上一节的内容安装依赖
+
+```js
+yarn add webpack webpack-cli css-loader style-loader less less-loader babel-loader @babel/core @babel/preset-env @babel/preset-react url-loader file-loader -D
+
+yarn add react react-dom -S
+```
+
+安装项目需要的typescript相关依赖
+```js
+yarn add typescript -D
+yarn add @types/react-dom @types/react -D
+```
+> 注释：types依赖包含.d.ts声明文件，在react中用TS语法时，会自动对变量进行类型检测
+
+```js
+yarn add @babel/preset-typescript
+```
+
+因为要区分开发环境与正式环境的webpack配置，这里我们新建`base dev prod`对webpack进行配置
+
+文件目录
+
+```js
+-- dist // 用于存放打包后的文件
+-- node_modules // 依赖包，自动生成
+-- webpack.config.base.js // webpack基础配置
+-- webpack.config.dev.js // webpack开发环境配置
+-- webpack.config.prod.js // webpack正式环境配置
+-- .babelrc // babel配置
+-- src
+  -- assets
+    -- avatar.png
+  -- index.tsx
+  -- app.tsx
+  -- app.less
+  -- index.html
+-- package.json
+-- tsconfig.json
+-- .gitignore // 设置git忽略文件
+```
 
 ## 3.ts-react开发环境
 
