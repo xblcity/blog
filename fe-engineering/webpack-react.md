@@ -84,19 +84,21 @@ yarn add url-loader file-loader -D
 -- .gitignore // 设置git忽略文件
 ```
 
-建议大家直接看源码，里面有注释[源码点击这里](https://github.com/xblcity/web-learning/tree/master/webpack-learn/first)
-
 可以按照这个顺序对文件进行配置与修改 `src/app.js` 以及 `src/app.less` ---> `src/index.jsx` ---> `webpack.config.js` ---> `.babelrc`
 
-贴一下主要文件的一些内容吧
+贴一下主要文件的内容
 
 ![webpack](./images/webpack-react/webpack1_1.png)
+
 ![webpack](./images/webpack-react/webpack1_2.png)
+
 ![webpack](./images/webpack-react/webpack1_3.png)
+
 ![webpack](./images/webpack-react/webpack1_4.png)
+
 ![webpack](./images/webpack-react/webpack1_5.png)
 
-关于 webpack 的一些配置，可以参考上一篇的内容
+关于 webpack 的一些配置，可以参考[上一篇的内容](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack.md)
 
 ### 1.7 踩坑点
 
@@ -235,7 +237,7 @@ yarn add webpack-merge -D // 该依赖可以合并webpack配置
 
 ![ts](./images/webpack-react/ts4.png)
 
-显示打包文件过大，因为`less png`等文件也被打包成 js 文件了，这里暂时先放着，下一节会进行优化
+显示打包文件过大，因为`less png`等文件也被打包成 js 文件了，这里暂时先放着，后面会进行优化
 
 在`index.html`中引入`bundle.js`,在浏览器打开，发现加载成功
 
@@ -243,11 +245,11 @@ yarn add webpack-merge -D // 该依赖可以合并webpack配置
 
 如果每次改变一个文件，都要输入打包命令再去浏览器里面查看应用，开发会变得很麻烦，在开发环境下，我们可以使用基于 express 的 webpack 提供 webpack-dev-server，帮助我们更好的在开发环境中开发。
 
-在此之前，我们需要安装两个插件，做到动态生成bundle以及index.html文件
+在此之前，我们需要安装两个插件，做到动态生成 bundle 以及 index.html 文件
 
 ```js
 yarn add html-webpack-plugin clean-webpack-plugin -D // 每次生成新的html以及清理html
-yarn add webpack-dev-server -D
+yarn add webpack-dev-server -D // devServer服务
 ```
 
 把`src/index.html` `<script src="../dist/bundle.js"></script>`这行代码删除掉，因为配置了`html-webpack-plugin`会自动引入打包后的包
@@ -256,61 +258,59 @@ yarn add webpack-dev-server -D
 
 ```js
 // ...
-const HtmlWebpackPlugin = require('html-webpack-plugin') 
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   // 入口
   entry: {
-    App: './src/index.tsx',
+    App: './src/index.tsx'
   },
   // 打包后的动态文件及目录
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[chunkhash:4][name]bundle.js',
+    filename: '[chunkhash:4][name]bundle.js'
   },
   // ...
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html', //打包后的文件名
+      filename: 'index.html' //打包后的文件名
     }),
-    new CleanWebpackPlugin(),
-  ],
+    new CleanWebpackPlugin()
+  ]
 }
 ```
 
 ```js
 //webpack.config.dev.js
-const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.config.base.js');
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.config.base.js')
 
 module.exports = merge(baseWebpackConfig, {
-    mode: 'development',
-    devServer: {
-      contentBase: './src', // 告诉devServer监听哪些文件的变化
-      port: '3000', //默认是8080
-      quiet: false, //默认不启用
-      inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
-      stats: "errors-only", //终端仅打印 error
-      compress: true //是否启用 gzip 压缩
+  mode: 'development',
+  devServer: {
+    contentBase: './src', // 告诉devServer监听哪些文件的变化
+    port: '3000', //默认是8080
+    quiet: false, //默认不启用
+    inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
+    stats: 'errors-only', //终端仅打印 error
+    compress: true //是否启用 gzip 压缩
   }
-});
+})
 ```
 
-在`package.json`文件添加`dev`命令`"dev": "webpack-dev-server --open --config webpack.config.dev.js"`并运行(--open的意思是自动打开浏览器)
+在`package.json`文件添加`dev`命令`"dev": "webpack-dev-server --open --config webpack.config.dev.js"`并运行(--open 的意思是自动打开浏览器)
 
-浏览器自动打开`http://localhost:3000`即项目html，当我们修改`app.tsx`文件时，浏览器会自动刷新。
+浏览器自动打开`http://localhost:3000`即项目 html，当我们修改`app.tsx`文件时，浏览器会自动刷新。
 
-在dev模式下，我们在`dist`目录下是看不到任何文件的，因为dev把这些文件存放在内存中了
+在 dev 模式下，我们在`dist`目录下是看不到任何文件的，因为 dev 把这些文件存放在内存中了
 
 ## 3.优化
 
 loader 用于帮我们处理不同类型的文件，plugins 用于在打包过程中做优化
 
 在使用它们的时候，我们可以思考一下为什么出现了这些 loader 以及 plugin，它们解决了前端的哪些问题
-
-
 
 ### 对 CSS 样式兼容 postcss
 
