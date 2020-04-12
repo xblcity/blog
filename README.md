@@ -2,7 +2,7 @@
 
 :seedling: 记录前端学习的笔记，总结、记录成长的过程。:four_leaf_clover: 构建自己的知识体系。
 
-:whale: [线上版本](https:xblcity.com)
+:whale: [线上版本](https://xblcity.com)
 
 接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
 
@@ -64,10 +64,3 @@
 - [使用服务器](https://github.com/xblcity/blog/blob/master/backend/server.md)
 - [nginx使用配置](https://github.com/xblcity/blog/blob/master/backend/nginx.md)
 - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/backend/ubuntu.md)
-
-## 其他
-
-- [框架面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
-- [非JS综合面试题](https://github.com/xblcity/blog/blob/master/others/other-interview.md)
-- [一些名词对应的英文](https://github.com/xblcity/blog/blob/master/others/words.md)
-- [我的疑问/待做](https://github.com/xblcity/blog/blob/master/others/questions.md)
