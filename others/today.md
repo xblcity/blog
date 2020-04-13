@@ -1,6 +1,13 @@
 
 # What I Learn Today
 
+### 2020.4.12 雨
+
+Today-do: webpack配置react-ts  
+Tomorrow: blog-system以及算法  
+上一周: 整理blog以及部分实践  
+下一周: blog-system以及blog整理
+
 ### 2020.4.11 雨
 
 1. webpack
@@ -9,22 +16,22 @@
 ### 2020.4.10 多云
 
 1. 前端面试之道小册子
-2. Tomottow-do: 项目描述，React，http等
+2. Tomorrow-do: 项目描述，React，http等
 
 ### 2020.4.9 多云
 
 1. 防抖节流，项目描述
-2. Tomottow-do: 项目描述，React
+2. Tomorrow-do: 项目描述，React
 
 ### 2020.4.8 多云
 
 1. JS-base(闭包，原型链，拷贝等))
-2. Tomottow-do: 项目描述，浏览器
+2. Tomorrow-do: 项目描述，浏览器
 
 ### 2020.4.7 晴
 
 1. JS-base(类型及转换，this，call等)
-2. Tomottow-do: 闭包，原型链，项目描述
+2. Tomorrow-do: 闭包，原型链，项目描述
 
 ### 2020.4.6 阴
 

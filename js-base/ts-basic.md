@@ -1,18 +1,19 @@
 # Typescript类型
 
-- [常见类型](#常见类型)
-- [接口类型](#接口类型)
-- [函数](#函数)
-- [高级类型](#高级类型)
+- [1.常见类型](#1.常见类型)
+- [2.接口类型](#2.接口类型)
+- [3.函数](#3.函数)
+- [4.高级类型](#4.高级类型)
+- [5.基础知识补充](#5.基础知识补充)
 - [类](#类)
 - [模块](#模块)
 - [命名空间](#命名空间)
 - [声明合并](#声明合并)
 - [声明文件](#声明文件)
 
-## 常见类型
+## 1.常见类型
 
-### 六种JS中的基本类型，number, string, boolean, undefined, null, symbol
+### 1.1六种JS中的基本类型，number, string, boolean, undefined, null, symbol
 
 ```ts
 // number
@@ -37,56 +38,7 @@ const myobj = {
 }
 ```
 
-### 数组
-
-```ts
-let arr: number[] = [4, 5, 6] // 数组
-arr = [7, 7, 7]
-let arr1: Array<string> // 也可以这样声明
-arr1 = ['1', '2']
-```
-
-### 对象
-
-object，暂时不知道在什么地方用，在 Object.create() API 中？
-
-```js
-declare function create(o: object | null) : void
-create({ prop: 0 }); // OK
-create(null); // OK
-create(42); // Error
-// 使用interface限制对象属性类型，关于interface后面再说
-interface Obj {
-  name: string
-}
-let obj:Obj = {
-  name: 'luffy'
-}
-```
-
-### 函数，后面会单独说
-
-### 元组(tuple)
-
-```ts
-let tu: [string, number, number] = ['2', 1, 1] // tuple类型
-tu[0] = '铁憨憨'
-tu[0].split('')
-```
-
-### 枚举(enum关键字)
-
-```ts
-enum codeStatus { 
-  unAuth = 401,
-  redirect = 403
-}
-console.log(codeStatus.unAuth) // 401
-```
-
-枚举可以进行反向映射
-
-### any,never,unknown,void
+### 1.2 any,never,unknown,void
 
 ```ts
 // any，用户输入或者第三方库不知道的输出类型
@@ -106,48 +58,54 @@ const errFunc = (message: string): never => {
 // unknown
 ```
 
-### 类型断言
+### 1.3 数组
 
 ```ts
-// 比如any类型的但我知道它现在应该是更精确的值，比如string
-let someValue: any = "this is a string"
-let strLength: number = (<string>someValue).length
-// 另一种 as 写法 JSX只能用这种类型断言
-let someValue: any = "this is a string"
-let strLength: number = (someValue as string).length
-
-// 类型断言
-const getMyLength = (target: string | number): number => {
-  if ((target as string).length) {
-    return (target as string).length
-  } else {
-    return target.toString().length
-  }
-}
+let arr: number[] = [4, 5, 6] // 数组
+arr = [7, 7, 7]
+let arr1: Array<string> // 也可以这样声明
+arr1 = ['1', '2']
 ```
 
-### 泛型
+### 1.4 对象
 
-更广泛的约束类型
-
-不知道返回的类型，但是用不想用any，而是根据输入值决定返回值
+object，暂时不知道在什么地方用，在 Object.create() API 中？
 
 ```js
-function identity<T>(arg: T): T { // 这里T仅仅是一个表示，可以是其他字母比如 P,U等
-  return arg
+declare function create(o: object | null) : void
+create({ prop: 0 }); // OK
+create(null); // OK
+create(42); // Error
+// 使用interface限制对象属性类型，关于interface后面再说
+interface Obj {
+  name: string
 }
-// 明确指定 T 是 string类型
-let output = identity<string>("myString")  // type of output will be 'string'
-// 下面这种方法更普遍.利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型
-let output = identity("myString")
-
-// 接口使用泛型
-interface Co<T> {
-  (name: T): T
+let obj:Obj = {
+  name: 'luffy'
 }
 ```
 
-## 接口类型
+### 1.5 元组(tuple)
+
+```ts
+let tu: [string, number, number] = ['2', 1, 1] // tuple类型
+tu[0] = '铁憨憨'
+tu[0].split('')
+```
+
+### 1.6 枚举(enum关键字)
+
+```ts
+enum codeStatus { 
+  unAuth = 401,
+  redirect = 403
+}
+console.log(codeStatus.unAuth) // 401
+```
+
+枚举可以进行反向映射
+
+## 2. 接口类型
 
 关键字 `interface`，限制对象参数的属性类型
 
@@ -206,7 +164,7 @@ square.color = "blue";
 square.sideLength = 10;
 ```
 
-## 函数
+## 3.函数
 
 可以给每个参数添加类型之后再为函数本身添加返回值类型。 TypeScript能够根据返回语句自动推断出返回值类型，因此我们通常省略它。
 
@@ -327,7 +285,7 @@ alert("card: " + pickedCard2.card + " of " + pickedCard2.suit)
 // 这样改变后，重载的pickCard函数在调用的时候会进行正确的类型检查。
 ```
 
-## 高级类型
+## 4.高级类型
 
 ### 交叉类型（Intersection Types） &
 
@@ -369,7 +327,50 @@ function padLeft(value: string, padding: string | number) {
 }
 ```
 
-### 类型别名（type关键字）
+## 5.基础知识补充
+
+### 5.1 类型断言
+
+```ts
+// 比如any类型的但我知道它现在应该是更精确的值，比如string
+let someValue: any = "this is a string"
+let strLength: number = (<string>someValue).length
+// 另一种 as 写法 JSX只能用这种类型断言
+let someValue: any = "this is a string"
+let strLength: number = (someValue as string).length
+
+// 类型断言
+const getMyLength = (target: string | number): number => {
+  if ((target as string).length) {
+    return (target as string).length
+  } else {
+    return target.toString().length
+  }
+}
+```
+
+### 5.2 泛型
+
+更广泛的约束类型
+
+不知道返回的类型，但是用不想用any，而是根据输入值决定返回值
+
+```js
+function identity<T>(arg: T): T { // 这里T仅仅是一个表示，可以是其他字母比如 P,U等
+  return arg
+}
+// 明确指定 T 是 string类型
+let output = identity<string>("myString")  // type of output will be 'string'
+// 下面这种方法更普遍.利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型
+let output = identity("myString")
+
+// 接口使用泛型
+interface Co<T> {
+  (name: T): T
+}
+```
+
+### 5.3 类型别名（type关键字）
 
 类型别名有时候和接口很像，但是可以作用域原始值，联合类型，元组以及其他任何需要你手写的类型。
 
@@ -395,7 +396,9 @@ typeof Container<T> = {
 
 ## 类
 
-类中的关键字 `extends`  `public`  `private`  `protected`  `readonly`  `get set` `static` `abstract`
+类中的关键字 
+
+`extends`(继承)  `public`(完全开放)  `private`(对自己开放)  `protected`(对子类开放) `readonly`  `get set` `static`(静态属性) `abstract`
 
 抽象类(abstract关键字)做为其它派生类的基类使用。 它们一般不会直接被实例化。
 
@@ -418,7 +421,35 @@ interface MyPoint {
 class Print implements MyPoint {
   count: string  // Print类上面的count属性值是string类型
 }
-```
+
+class People {
+  name  // 默认是public
+  age
+  protected weight // 定义protected属性，自己或子类可以访问
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+    this.weight = 120
+  }
+}
+class Student extends People {
+  number
+  private girlfriend // 定义private属性
+  constructor(name, age, number) {
+    super(name, age)
+    this.number = number
+    this.girlfriend = 'li'
+  }
+  getWeight() {
+    alert(this.weight)
+  }
+}
+
+let xiaoming = new Student('xiaoming', 10, 'A1')
+xiaoming.getWeight()
+console.log(xiaoming.girlfriend) // 编译之前就报错
+console.log(xiaoming.weight) // 编译之前就报错
+``` 
 
 ## 模块
 

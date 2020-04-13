@@ -176,7 +176,7 @@ Dog.prototype.bark = function() {
 }
 ```
 
-Dog 的原型由**父类构造函数**，**constructor**,**自定义方法**三部分构成
+上例中 Dog 的原型由**父类构造函数**，**constructor**,**自定义方法**三部分构成
 
 直接改变了 Dog 的 prototype 的指针指向
 
@@ -240,7 +240,7 @@ console.log(aDog)
   cateName: 'lovely animal',
   age: 6,
   __proto__: {
-    constructor: f Dpg() {
+    constructor: f Dog() {
       name: 'Dog' // 可以看到，Dog继承了Animal的属性
     },
     __proto__: {
@@ -286,7 +286,7 @@ Dog.prototype.bark = function() {
 const aDog = new Dog('lovely animal', 'erha', 7)
 const anAnimal = new Animal('cute animal')
 aDog.bark() // i'm dog,my name is erha i'm barking
-aDog.say()  // my name is erha,,调用原型的原型上面的方法
+aDog.say()  // my name is erha,, 调用原型的原型上面的方法
 console.log(aDog)
 Dog: {
   age: 7,

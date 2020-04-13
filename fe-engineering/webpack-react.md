@@ -290,17 +290,15 @@ const baseWebpackConfig = require('./webpack.config.base.js')
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   devServer: {
-    contentBase: './src', // 告诉devServer监听哪些文件的变化
+    contentBase: './dist', // 根目录
+    open: true,
     port: '3000', //默认是8080
-    quiet: false, //默认不启用
-    inline: true, //默认开启 inline 模式，如果设置为false,开启 iframe 模式
-    stats: 'errors-only', //终端仅打印 error
-    compress: true //是否启用 gzip 压缩
+    stats: "errors-only", //终端仅打印 error
   }
 })
 ```
 
-在`package.json`文件添加`dev`命令`"dev": "webpack-dev-server --open --config webpack.config.dev.js"`并运行(--open 的意思是自动打开浏览器)
+在`package.json`文件添加`dev`命令`"dev": "webpack-dev-server --config webpack.config.dev.js"`并运行
 
 浏览器自动打开`http://localhost:3000`即项目 html，当我们修改`app.tsx`文件时，浏览器会自动刷新。
 
