@@ -1,4 +1,4 @@
-# Typescript类型
+# Typescript认知
 
 - [1.常见类型](#1.常见类型)
 - [2.接口类型](#2.接口类型)
@@ -114,6 +114,7 @@ console.log(codeStatus.unAuth) // 401
 const getFullName = ({ firstName, lastName }: { firstName: string, lastName: string }):string => {  // :string可以省略。ts函数返回值可以省略，让ts自己去推断
   return `${firstName}${lastName}`
 }
+
 // 使用interface表示对象类型
 interface Info {
   firstName: string; // 这里写 , ; 或者不写都可以
@@ -159,7 +160,8 @@ interface Square extends Shape {
   sideLength: number;
 }
 
-let square = <Square>{};  // 这种 <Type>name 的格式 意思是 name的类型是Type类型，在类型推断，泛型中都有用到
+let square = <Square>{};  
+// 这种 <Type>name 的格式 意思是 name的类型是Type类型，在类型推断，泛型中都有用到
 square.color = "blue";
 square.sideLength = 10;
 ```
@@ -202,6 +204,7 @@ function buildName(firstName: string, lastName?: string) {
   else
     return firstName;
 }
+
 // 剩余参数
 function buildName(firstName: string, ...restOfName: string[]) {
   return firstName + " " + restOfName.join(" ")
