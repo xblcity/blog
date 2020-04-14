@@ -12,7 +12,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
 - JS 基础
 
-  - [JS 知识树](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
+  - [前端知识体系](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
   - [理解 this](https://github.com/xblcity/blog/blob/master/js-base/this.md)
   - [Call, Apply, Bind 实现](https://github.com/xblcity/blog/blob/master/js-base/call.md)
   - [作用域与闭包](https://github.com/xblcity/blog/blob/master/js-base/scope-closures.md)
@@ -47,7 +47,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
 - [性能优化](https://github.com/xblcity/blog/blob/master/fe-system/performance.md)
 - [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/fe-system/render.md)
-- [http 相关知识](https://github.com/xblcity/blog/blob/master/fe-system/http.md)
+- [http 知识体系](https://github.com/xblcity/blog/blob/master/fe-system/http.md)
 
 ## 工程化
 

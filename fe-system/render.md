@@ -140,7 +140,7 @@ DNS 解析也是需要时间的，可以通过预解析的方式来预先获得�
 
 ## 参考
 
-- [应用：前端性能监控 performance](https://juejin.im/post/5d66655a5188256c3920b35d)
 - [当···时发生了什么？](https://github.com/skyline75489/what-happens-when-zh_CN)
+- [应用：前端性能监控 performance](https://juejin.im/post/5d66655a5188256c3920b35d)
 - [掘金小册-前端性能优化原理与实践](https://juejin.im/book/5b936540f265da0a9624b04b/section/5b936540f265da0aec223b5d)
 - [掘金小册-前端面试之道](https://juejin.im/book/5b936540f265da0a9624b04b/section/5b936540f265da0aec223b5d)

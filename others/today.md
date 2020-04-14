@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.14 多云
+
+Today-do: 设计模式完成，以及部分算法  
+明天：算法以及blogc
+
 ### 2020.4.13 多云
 
 Today-do: 设计模式以及TS  

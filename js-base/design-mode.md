@@ -361,5 +361,5 @@ priceCalculate('percent80', 250)
 
 ## 参考
 
-- [慕课网-JS 设计模式]()
+- [慕课网-JS 设计模式讲解与应用](https://coding.imooc.com/learn/list/255.html)
 - [慕课专栏-JavaScript 设计模式精讲](https://www.imooc.com/read/38)
