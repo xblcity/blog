@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.13 多云
+
+Today-do: 设计模式以及TS  
+明天必须要完成的: webpack优化配置以及设计模式
+
 ### 2020.4.12 雨
 
 Today-do: webpack配置react-ts  
