@@ -1,12 +1,18 @@
 # ES6一些注意点
 
 ## ES6实现类
+
 ### class类的组成
 
 ```js
 class Point {
   // 实例属性新写法，需定义在类的最顶层，优点方便查看，缺点无法通过传参进行初始化
   count = 0
+  // 上面代码等同于
+  constructor() { 
+    this.count = 0
+  }
+
   // constructor是class上面的一个特殊的属性/方法，用于生成实例对象，使用new调用传入参数
   constructor(name, age) { 
     this.name = name
@@ -88,8 +94,6 @@ class Obj {
   }
 }
 ```
-
-还有一种方法时Proxy...???
 
 ## 模块的应用
 

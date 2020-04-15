@@ -1,5 +1,6 @@
 # 关于数组的各种数据操作
 
+- [数组一些重要的方法](#数组一些重要的方法)
 - [一维数组去重](#一维数组去重)
 - [数组元素为对象的去重](#数组元素为对象的去重)
 - [二维数组转一维数组，从数组里取对象并合并对象成数组](#二维数组转一维数组，从数组里取对象并合并对象成数组)
@@ -7,6 +8,33 @@
 - [树结构数据进行遍历查找](#树结构数据进行遍历查找)
 - [Array 原型对象上的遍历方法](#array原型对象上的遍历方法)
 
+## 数组一些重要的方法
+
+```js
+// 将伪数组转换为数组，比如装换arguments
+Array.prototype.slice.call(arguments)
+// 取arguments的第2~n-1项
+Array.prototype.slice.call(arguments, 1, -1)
+
+function getParams() {
+  console.log(Array.prototype.slice.call(arguments))
+  console.log(Array.prototype.slice.call(arguments, 1, -1))
+}
+getParams(1, 3, 5) // [1,3,5]  [3]
+
+// 改变原数组，并返回被删除的值
+// 比如下面操作只剩下数组第二项，1是开始位置，2是截取长度
+Array.prototype.splice.call([12, 13, 14], 1, 2) // [13,14]
+// 1位置开始删除两个元素，并插入一个'ccc'。返回的是被删除的两个元素
+Array.prototype.splice.call([12, 13, 14], 1, 2, 'ccc')
+
+function spliceParams() {
+  // 从下表1开始删除两个元素，并插入一个元素'ccc'
+  Array.prototype.splice.call(arguments, 1, 2, 'ccc')
+  console.log(Array.prototype.slice.call(arguments))
+}
+spliceParams(1, 2, 3) // [1, 'ccc']
+```
 
 ## 一维数组去重
 

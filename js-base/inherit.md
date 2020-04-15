@@ -117,7 +117,7 @@ console.log(Animal.prototype) // {say: function() {}, constructor: function Anim
 
 构造函数的方法的调用，以 Date 这个构造函数为例
 
-Date 构造函数，属性为方法的有`now, parse`等，即`Date.now = function(){}`，可以理解为**静态方法**，只能被 Date 类直接调用。
+Date 构造函数，属性为方法的有`now, parse`等，即`Date.now = function(){}`，可以理解为**ES6的静态方法**，只能被 Date 类直接调用。
 
 Date 构造函数，prototype 上面的方法有`getDate(), getFullYear()`等，构造函数想要调用这些方法，必须使用`Date.prototype.getDate()`, 如果直接使用`Date.getDate()`，由于 Date 构造函数并没有`getDate`这个属性，所以向**proto**上面查找，未找到，报错 TypeError
 
@@ -128,12 +128,15 @@ Date 构造函数，prototype 上面的方法有`getDate(), getFullYear()`等，
 ```js
 class MyObject {
   static getName
+  static getAge() {
+    console.log('我是静态方法getAge')
+  }
 }
 MyObject.getName = function() {
-  console.log('我是静态方法')
+  console.log('我是静态方法getName')
 }
 MyObject.prototype.sayName = function() {
-  console.log('我是原型上面的方法')
+  console.log('我是原型上面的方法saynName')
 }
 
 const myInstance = new MyObject()

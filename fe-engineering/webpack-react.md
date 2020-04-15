@@ -320,6 +320,19 @@ tsc --init
 yarn add 
 ```
 
+### 对第三方库比如react, vue进行分离出来
+
+```js
+optimization: {
+  splitChunks: {
+    cacheGroup: {
+      vendor: {
+        
+      }
+    }
+  }
+}
+```
 ### 对 CSS 样式兼容 postcss
 
 ## 参考
