@@ -345,20 +345,70 @@ const getMyLength = (target: string | number): number => {
 
 不知道返回的类型，但是用不想用 any，而是根据输入值决定返回值
 
-```js
+```ts
 function identity<T>(arg: T): T {
   // 这里T仅仅是一个表示，可以是其他字母比如 P,U等
   return arg
 }
 // 明确指定 T 是 string类型
-let output = identity < string > 'myString' // type of output will be 'string'
+let output = identity<string>('myString') // type of output will be 'string'
+
 // 下面这种方法更普遍.利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型
 let output = identity('myString')
 
 // 接口使用泛型
 interface Co<T> {
-  (name: T): T;
+  (name: T): T
 }
+```
+
+更多泛型的应用
+
+```ts
+//! 使用泛型而不是any
+const getArray = <T>(value: T, times: number = 5): T[] => {
+  return new Array(times).fill(value)
+} // T代表同一种不确定的类型
+getArray([2], 3).forEach((item) => {
+  console.log(item.length)
+})
+getArray('2', 3)
+// const getLength1 = <T>(params:T):number {
+//   return params.length
+// }
+// 报错，有些类型是没有length属性的
+// 使用泛型简单定义函数，函数表达式
+const getArray2: <A>(arg: A, times: number) => A[] = (arg, times) => {
+  return new Array(times).fill(arg)
+}
+// 使用类型别名，泛型
+type GetArray3 = <T>(arg: T, times: number) => T[]
+const getArray3: GetArray3 = <T>(arg: T, times: number): T[] => {
+  return new Array(times).fill(arg)
+}
+// 使用泛型，接口形式定义函数
+interface GetArray4 {
+  <T>(arg: T, times: number): T[]
+}
+const getArray4: GetArray4 = <T>(arg: T, times: number): T[] => {
+  return new Array(times).fill(arg)
+}
+// 类型推论，类型断言，泛型
+const getMyLength1 = (name: string | number): number => {
+  if ((name as string).length) {
+    return (name as string).length
+  } else {
+    return name.toString().length
+  }
+}
+// 泛型
+const getAllArray = <T>(value: T, times: number = 5): T[] => {
+  return new Array(times).fill(value)
+}
+getMyLength1('aa')
+// 三元表达式
+type TypeName<T> = T extends any ? T : never
+type Type1 = TypeName<string | number> // Type1的类型是string|number
 ```
 
 ### 5.3 类型别名（type 关键字）
@@ -468,9 +518,10 @@ const cat = new Cat()
 cat.makeSound() // miao miao
 cat.move() // roaming the earch...
 ```
+
 ## 7.装饰器
 
-ES6+目前还是在stage2，如果需要支持修饰器，需要安装babel插件`babel-plugin-transform-decorators-legacy` tsconfig配置`"experimentalDecorators": true`
+ES6+目前还是在 stage2，如果需要支持修饰器，需要安装 babel 插件`babel-plugin-transform-decorators-legacy` tsconfig 配置`"experimentalDecorators": true`
 
 ## 8.模块
 
@@ -478,7 +529,7 @@ ts1.5 之后，**外部模块**被称作**模块**，**内部模块**被称作**
 
 ts 中的模块与 js 中类似，任何包含顶级 import 或者 export 的文件都被当成一个模块。
 
-相反地，如果一个文件不带有顶级的import或者export声明，那么它的内容被视为全局可见的。
+相反地，如果一个文件不带有顶级的 import 或者 export 声明，那么它的内容被视为全局可见的。
 
 ```js
 // 导出接口声明
@@ -573,55 +624,6 @@ export namespace subProp {
 ```
 
 ====================================
-
-## 泛型
-
-```ts
-//! 使用泛型而不是any
-const getArray = <T>(value: T, times: number = 5): T[] => {
-  return new Array(times).fill(value)
-} // T代表同一种不确定的类型
-getArray([2], 3).forEach((item) => {
-  console.log(item.length)
-})
-getArray('2', 3)
-// const getLength1 = <T>(params:T):number {
-//   return params.length
-// }
-// 报错，有些类型是没有length属性的
-// 使用泛型简单定义函数，函数表达式
-const getArray2: <A>(arg: A, times: number) => A[] = (arg, times) => {
-  return new Array(times).fill(arg)
-}
-// 使用类型别名，泛型
-type GetArray3 = <T>(arg: T, times: number) => T[]
-const getArray3: GetArray3 = <T>(arg: T, times: number): T[] => {
-  return new Array(times).fill(arg)
-}
-// 使用泛型，接口形式定义函数
-interface GetArray4 {
-  <T>(arg: T, times: number): T[]
-}
-const getArray4: GetArray4 = <T>(arg: T, times: number): T[] => {
-  return new Array(times).fill(arg)
-}
-// 类型推论，类型断言，泛型
-const getMyLength1 = (name: string | number): number => {
-  if ((name as string).length) {
-    return (name as string).length
-  } else {
-    return name.toString().length
-  }
-}
-// 泛型
-const getAllArray = <T>(value: T, times: number = 5): T[] => {
-  return new Array(times).fill(value)
-}
-getMyLength1('aa')
-// 三元表达式
-type TypeName<T> = T extends any ? T : never
-type Type1 = TypeName<string | number> // Type1的类型是string|number
-```
 
 ## 接口
 

@@ -304,6 +304,40 @@ module.exports = merge(baseWebpackConfig, {
 
 在 dev 模式下，我们在`dist`目录下是看不到任何文件的，因为 dev 把这些文件存放在内存中了
 
+### 2.3优化react-ts使用体验
+
+- 在tsx中使用class组件，使用函数组件
+- 在tsx中使用antd
+- 使用babel支持较新的语法
+
+在class组件中，我们可能会用到这些比较新的语法(以下用的js语法)
+
+[babel的插件](https://babeljs.io/docs/en/plugins)  
+[babel7的插件包](https://babeljs.io/docs/en/v7-migration)
+
+```js
+// @babel/plugin-proposal-decorators
+@connect()
+class Demo extends React.Component {
+  // @babel/plugin-proposal-class-properties
+  a = 1
+  // 此特性需要安装 babel-plugin-transform-class-properties
+  // babel7的包名是 @babel/plugin-proposal-class-properties
+  handleTest = () => {
+    console.log(12312)
+  }
+}
+```
+
+配置 `.babelrc`，需要哪些你就可以装哪些，这里我只是用`@babel/plugin-proposal-class-properties`做一下演示
+
+```json
+{
+  "presets": [...],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
+}
+```
+
 ## 3.优化
 
 loader 用于帮我们处理不同类型的文件，plugins 用于在打包过程中做优化
