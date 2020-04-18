@@ -1,6 +1,16 @@
 
 # What I Learn Today
 
+### 2020.4.17 阴
+
+Today-do: blogc布局header部分  
+明天：blogc后台管理
+
+### 2020.4.16 多云
+
+Today-do: blogc以及webpack部分  
+明天：继续上述内容
+
 ### 2020.4.15 多云
 
 Today-do: ts完成大部分  
