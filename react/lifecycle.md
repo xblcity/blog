@@ -101,20 +101,24 @@ componentWillUnmount()
 
 React构建的App是单页面应用，所以一旦刷新浏览器，React该页面内的所有组件会重新执行componentDidMount()，也就是说，该页面所需要的数据，必须重新拉取一下才能重新获得。
 
-所以为了能够获得之前的状态，我们需要把一些参数存放在**路由参数里**，比如`/news?type=1`，当然当参数比较多时，可以考虑放在`sessionStorage`里面
+所以为了能够获得之前的状态，我们可能需要把一些参数存放在**路由参数里**，比如`/news?type=1`，当然当参数比较多时，可以考虑放在`sessionStorage`里面
 
-如果两个同级页面a,b，用户需要先进入a，才能进入b。假设我们在a中请求api获取了数据存在redux里面，然后在b页面就可以直接从redux中拿到数据。但是，如果我们在b页面刷新浏览器。就会拿不到想要的数据，因为请求api是在a页面发起的。解决方案 1. 在a,b的容器组件获取数据 2. 在a,b页面都进行api的请求。
+### 状态保持
 
+如果两个同级页面a,b，用户需要先进入a，才能进入b。
 
-所以，在构建一个页面组件时，我们需要考虑，用户可以通过哪些手段来进入这个页面，比如是浏览器刷新？比如从路由连接直接进入？又或者从同级动态路由进入？(这个不会触发componentDidMount，会触发props change)。如何维持或者更新状态/数据是一个值得思考的问题
+假设我们在a中请求api获取了数据存在redux里面，然后在b页面就可以直接从redux中拿到数据。但是，如果我们在b页面刷新浏览器。就会拿不到想要的数据，因为请求api是在a页面发起的。
 
-## 一个例子
+解决方案 1. 在a,b的容器父组件获取数据 2. 在a,b页面都进行api的请求。
 
+所以，在构建一个页面组件时，我们需要考虑，用户可以通过哪些手段来进入这个页面，
+
+比如是浏览器刷新？比如从路由连接直接进入？又或者从同级动态路由进入？(这个不会触发componentDidMount，会触发props change)。如何维持或者更新状态/数据是一个值得思考的问题
+
+同级路由，一般发生在动态路由上，比如，`/:id`, 商品的动态路由，文章的动态路由等等
 
 ## 参考
 
-- [React.Component](https://zh-hans.reactjs.org/docs/react-component.html)
-
+- [React.CompAonent](https://zh-hans.reactjs.org/docs/react-component.html)
 - [React-新的生命周期（React16版本）](https://segmentfault.com/a/1190000016617400)
-
 - [React新生命周期--getDerivedStateFromProps](https://www.jianshu.com/p/50fe3fb9f7c3)

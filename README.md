@@ -26,7 +26,6 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
   - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
   - [JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
   - [Typescript 认知](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
-  - [TS 在 React 中的应用](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
 
 - JS 应用
 
@@ -38,6 +37,8 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+- [使用 React-Hooks封装全局状态管理](https://github.com/xblcity/blog/blob/master/react/store.md)
+- [在React中使用TS](https://github.com/xblcity/blog/blob/master/js-base/ts-react.md)
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
