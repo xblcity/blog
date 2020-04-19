@@ -1,14 +1,16 @@
 # Redux/React-Redux
 
 ## 概念和组成
+
 - redux包含 `store, state, reducer, action, action creator`这些概念
 
-其中store可以理解为redux整体部分，下面包含了reducer, state, action这几部分，action creator是用来创建action的
+其中`store`可以理解为`redux`整体部分，下面包含了`reducer, state, action`这几部分，`action creator`是用来创建`action`的
 
 ![redux流程](./images/redux.jpg)
 
 ### 初始化store
-redux初始化, 即创建store, 调用createStore方法创建一个store
+
+`redux`初始化, 即创建`store`, 调用`createStore`方法创建一个`store`
 ```js
 import {createStore} from 'redux'
 // createStore方法，接收的第一个参数是一个函数
@@ -21,8 +23,13 @@ store.subscribe()
 ```
 
 ### 创建reducer
-reducer是个函数,接收两个参数，一个是初始state,一个是action  
-reducer函数return出一个新的state，传递给store用于改变state
+
+`reducer`是个函数,接收两个参数，一个是初始`state`,一个是`action` 
+
+`reducer`函数`return`出一个新的`state`，传递给`store`用于改变`state`
+
+`reducer`是一个无副作用的纯函数
+
 ```js
 function reducer(state=0, action) {
   switch (action.type) {
@@ -35,13 +42,14 @@ function reducer(state=0, action) {
   }
 }
 ```
+
 为什么叫reducer，因为reducer可以作为 数组的 reduce()方法 的第一个参数 
 
 reduce接收两个参数，第一个是个回调函数，第二个是初始值  
 
-其中回调函数接收四个参数，accumulator(上次计算出的值/累加值), currentValue(当前传递的值/item),index(下标，可选)，array(原数组，可选)
+其中回调函数接收四个参数，`accumulator`(上次计算出的值/累加值), `currentValue`(当前传递的值/item),`index`(下标，可选)，`array`(原数组，可选)
 
-在下面这个例子中，accumulator是state，currentValue是action
+在下面这个例子中，`accumulator`是`state`，`currentValue`是`action`
 ```js
 function reducer(state=0, action) {
   switch (action.type) {
@@ -86,7 +94,9 @@ store.dispatch({
   }
 })
 ```
+
 store.js
+
 ```js
 import {createStore} from 'redux'
 
@@ -104,6 +114,7 @@ const store = createStore(reducer)
 这样state可以依据action的type以及payload参数，进行相应变化
 
 ### action creator
+
 如果每次用户都在view层写这些`store.dispatch({})`,一方面，我们不知道用户到底dispatch哪些action,另一方面，action写起来比较繁琐，并且还有可能在多处调用相同的dispatch行为
 所以我们可以定义action creator,即一个个函数，这些函数会返回action
 ```js
@@ -123,6 +134,7 @@ store.dispatch(increment(3))
 action creator和action都可以通过`store.dispatch()`直接调用，只不过action creator封装了一个可以返回action的函数
 
 ### store.getState()
+
 在view也就是用户页面如何获取store里面的state，需要用到上面store提供的getState方法
 ```js
 import store from './store.js' // 这里为了方便，默认redux.js有暴露出的store对象
@@ -131,6 +143,7 @@ console.log(store.getState()) // 这里打印了 redux 的 state值
 ```
 
 ### 纯函数reducer
+
 reducer函数的一个重要特征是，它是一个纯函数，也就是说，相同的输入，会得到相同的输出
 和中学学的函数，如`y=2x`很相似，相同输入必有一样输出
 在reducer里面不能直接重新给state赋值，而是返回一个新的state，由store自己对state进行改变
@@ -148,6 +161,7 @@ function reducer(state, action) {
 ```
 
 ### store.subscribe()
+
 `store.subscribe()`方法, 接收一个回调函数，在回调函数里我们做相应的处理
 当redux的state改变时，会自动触发`store.subscribe()`方法
 我们可以在subscribe方法处理我们的需求
@@ -159,6 +173,7 @@ let listenSubscribe = store.subscribe(() => {
 ```
 
 ### createStore的简单实现
+
 ```js
 const createStore = (reducer) => {
   // 对reducer进行判断处理等等。。
@@ -199,12 +214,14 @@ export default store
 ```
 
 ## 不使用react-redux缺点
+
 - 对于有状态的组件，分发state需要使用store.getState api
 - 当需要更新redux的状态时，需要使用store.subscribe监听
 - 页面需要同步更新时，redux里面的数据需要获取到并保存到组件自身state里面
 - 使用redux数据的组件必须要改成由状态组件
 
 ## 不使用中间件处理异步请求, 如redux-thunk或redux-saga
+
 在view层的某个函数内部(如在组件刚挂载时)处理异步请求，处理完异步请求并获取到结果之后再dispatch一个action  
 缺点是，
 - 请求分散在很多view组件中，维护起来很麻烦 
@@ -212,6 +229,7 @@ export default store
 - 小型项目可以像这样使用
 
 ## 使用react-redux
+
 第三方库react-redux,该库提供了Provider和connect  
 Provider是一个普通的组件，可以作为顶层app状态的分发点,它只需要store属性就可以了，它会将state分发给所有被`connect`的组件  
 connect是一个柯里化函数，先接收两个函数参数，mapStateToProps和mapDispatchToProps,再接收一个参数(将要绑定的组件本身)  
