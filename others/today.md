@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.18 雨
+
+Today-do: blogc后台部分搭建，整理笔记  
+明天：blogc后台管理以及整理react-ts,webpack笔记
+
 ### 2020.4.17 阴
 
 Today-do: blogc布局header部分  

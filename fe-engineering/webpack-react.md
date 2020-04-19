@@ -338,6 +338,12 @@ class Demo extends React.Component {
 }
 ```
 
+### 2.3 踩坑
+
+二级路由加载路径有问题，比如，页面二级路由为`admin/add-artilce`，webpack加载的时候，加载的路径是`/admin/add-artilce.js`
+
+实际上应该加载的路径是`/add-article`。在ouput设置，`publicPath: '/'`
+
 ## 3.优化
 
 loader 用于帮我们处理不同类型的文件，plugins 用于在打包过程中做优化
@@ -353,6 +359,8 @@ tsc --init
 
 yarn add 
 ```
+
+### 使用MiniCssExtractPlugin单独打包css
 
 ### 对第三方库比如react, vue进行分离出来
 
