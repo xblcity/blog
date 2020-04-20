@@ -53,7 +53,6 @@ themeConfig:
         - /js-base/design-mode
         - /js-base/algorithm
         - /js-base/ts-basic
-        - /js-base/ts-react
     - title: JS应用
       collapsable: false
       sidebarDepth: 2
@@ -67,6 +66,8 @@ themeConfig:
       children:
         - /react/lifecycle
         - /react/react-hooks
+        - /react/store
+        - /react/react-ts
         - /react/redux
         - /react/redux-middleware
         - /react/complex-co

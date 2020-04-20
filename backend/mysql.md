@@ -23,6 +23,10 @@
 
 输入`.\mysqld --initialize --user=mysql --console`。 运行之后，会看最末尾` A temporary password is generated for root@localhost: uewEtCClu8.K` 保存得到的临时密码，上例是 `uewEtCClu8.K`。
 
+> 笔者在Server2016 中出现错误 提示计算机丢失vcruntime140.dll vcruntime140_1.dll msvcp140.dll
+> 网上搜一下上面三个文件并下载，把文件分别粘贴至 C:\Windows\SysWOW64  C:\Windows\System32 两个文件夹下
+> 接着安装 Microsoft Visual C ++ 2015 Redistributable 就可以了~~~~~~~~
+
 3. 将 mySQL 安装为服务。
 
 仍然以管理员身份在bin目录下进行powershell命令操作。
