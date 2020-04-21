@@ -148,18 +148,14 @@ yarn add webpack webpack-cli css-loader style-loader less less-loader babel-load
 yarn add react react-dom -S
 ```
 
-安装项目需要的 typescript 相关依赖
+安装项目需要的 typescript 相关依赖，以及react type库
 
 ```js
-yarn add typescript -D
+yarn add typescript @babel/preset-typescript -D
 yarn add @types/react-dom @types/react -D
 ```
 
 > 注释：types 依赖包含.d.ts 声明文件，在 react 中用 TS 语法时，会自动对变量进行类型检测
-
-```js
-yarn add @babel/preset-typescript
-```
 
 因为要区分开发环境与正式环境的 webpack 配置，这里我们新建`base dev prod`对 webpack 进行配置
 
@@ -254,7 +250,7 @@ yarn add webpack-dev-server -D // devServer服务
 
 把`src/index.html` `<script src="../dist/bundle.js"></script>`这行代码删除掉，因为配置了`html-webpack-plugin`会自动引入打包后的包
 
-配置`webpack.config.base.js`文件，使得生成的包每次生成的名字都不一样，防止浏览器缓存
+配置`webpack.config.base.js`文件，配置输出文件名字，使得生成的包每次生成的名字都不一样，防止浏览器缓存
 
 ```js
 // ...
@@ -306,9 +302,11 @@ module.exports = merge(baseWebpackConfig, {
 
 ### 2.3优化react-ts使用体验
 
+- 使用babel支持较新的语法
 - 在tsx中使用class组件，使用函数组件
 - 在tsx中使用antd
-- 使用babel支持较新的语法
+
+#### 2.3.1 使用较新的语法
 
 在class组件中，我们可能会用到这些比较新的语法(以下用的js语法)
 
@@ -338,17 +336,27 @@ class Demo extends React.Component {
 }
 ```
 
-### 2.3 踩坑
+#### 2.3.2 在React中使用TS
 
-二级路由加载路径有问题，比如，页面二级路由为`admin/add-artilce`，webpack加载的时候，加载的路径是`/admin/add-artilce.js`
+可以去看[源码](https://github.com/xblcity/web-learning/tree/master/webpack-learn/second/src)或者[前面的这篇文章](https://github.com/xblcity/blog/blob/master/react/react-ts.md)
 
-实际上应该加载的路径是`/add-article`。在ouput设置，`publicPath: '/'`
+#### 2.3.3 在React中使用ant-design
+
+
 
 ## 3.优化
 
 loader 用于帮我们处理不同类型的文件，plugins 用于在打包过程中做优化
 
 在使用它们的时候，我们可以思考一下为什么出现了这些 loader 以及 plugin，它们解决了前端的哪些问题
+
+### 3.1 通用优化
+
+- 为-webkit-等CSS属性加上前缀 [postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/)
+
+### 3.2 开发环境优化
+
+### 3.3 生产环境优化
 
 按照上面两个部分再进行操作一遍，加深记忆
 
@@ -375,7 +383,12 @@ optimization: {
   }
 }
 ```
-### 对 CSS 样式兼容 postcss
+
+### 3.33 踩坑
+
+二级路由加载路径有问题，比如，页面二级路由为`admin/add-artilce`，webpack加载的时候，加载的路径是`/admin/add-artilce.js`
+
+实际上应该加载的路径是`/add-article`。在ouput设置，`publicPath: '/'`
 
 ## 参考
 
