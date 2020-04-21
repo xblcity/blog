@@ -53,7 +53,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 ## 工程化
 
 - [webpack 配置 ts-react 开发环境](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
-- [webpack 配置优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
+- [webpack 配置](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-config.md)
 - [vscode 使用](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
 - [git 的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
 

@@ -1,16 +1,19 @@
-# TS 在 React 中的应用
+# 在 React 中使用 TS
 
-在`React`中使用和普通的ts使用基本类似，但是会使用到大量的泛型`<>`
+在`React`中使用和普通的 ts 使用基本类似，但是会使用到大量的泛型`<>`
 
 ## 声明文件
 
-除了安装 `react react-dom ` 之外，还需要安装 `@types/react @types/react-dom` 等声明库
+除了安装 `react react-dom` 之外，还需要安装 `@types/react @types/react-dom` 等声明库
 
 这些声明文件通常会包含库的`namespace`，我们可以直接使用`namespace`上的`interface`，比如我们安装的`@types/react`实际上是提供了`React`这个`namespace`，我们可以直接使用`React`这个`namespace`
 
 `.d.ts`声明文件一般会有个唯一的`namespace`。可以根据项目需要新建自己的`.d.ts`文件，使用的时候不需要引入
 
+用代码来解释命名空间的作用
+
 ```ts
+// type.d.ts
 declare namespace User {
   // 大小写均可, declare关键字，意为声明
   interface UserInfo {
@@ -30,6 +33,7 @@ export interface UserInfo {
 在其他地方直接使用
 
 ```ts
+// utils.ts
 const person: User.UserInfo = {
   name: 'xx',
   age: 18,
@@ -49,12 +53,12 @@ import React from 'react'
 
 interface IProps {
   name?: string
-  className?: string,
+  className?: string
   done?: () => void
 }
 
-const Box = (props : IProps) => {
-  const {name, className} = props
+const Box = (props: IProps) => {
+  const { name, className } = props
   return (
     <div className={className}>
       <div onClick={done}>{name}</div>
@@ -68,7 +72,7 @@ const Box = (props : IProps) => {
 ```ts
 interface IProps {
   name?: string
-  className?: string,
+  className?: string
   done?: () => void
 }
 
@@ -82,11 +86,10 @@ const Box: React.FC<IProps> = (props) => {
   )
 }
 
-
 export default Box
 ```
 
-在使用函数式组件的时候，我们可能会用到`useState, useRef`这些钩子，当然也可能会遇到event事件，这些类型如何定义呢
+在使用函数式组件的时候，我们可能会用到`useState, useRef`这些钩子，当然也可能会遇到 event 事件，这些类型如何定义呢
 
 ```ts
 const Box = () => {
@@ -110,9 +113,101 @@ const Box = () => {
 export default Box
 ```
 
-上面注释的代码要注意的是`使用useState, inputRef`可以不传递泛型，React可以识别的
+上面注释的代码要注意的是`使用useState, inputRef`可以不传递泛型，React 可以识别的
 
-## class Component组件
+<!-- 事件的类型如何定义接口呢？比如input事件的event，我们可以直接使用React内置的接口，比如
+
+```js
+const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(event.target.value)
+}
+``` -->
+
+## class Component 组件
+
+比如我们以一个 TodoList 为例
+
+```tsx
+// TodoInput.tsx
+import React from 'react'
+
+interface Props {
+  handleSubmit: (value: string) => void
+}
+interface State {
+  itemText: string
+}
+class TodoInput extends React.Component<Props, State> {
+  private inputRef = React.createRef<HTMLInputElement>()
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      itemText: '',
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.updateValue = this.updateValue.bind(this)
+  }
+  private updateValue(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({ itemText: e.target.value })
+  }
+  private handleSubmit() {
+    if (!this.state.itemText.trim()) {
+      return
+    }
+    this.props.handleSubmit(this.state.itemText)
+    this.setState({ itemText: '' })
+  }
+  public render() {
+    const { itemText } = this.state
+    const { handleSubmit, updateValue } = this
+    return (
+      <div>
+        <input ref={this.inputRef} className="edit" onChange={updateValue} value={itemText} />
+        <button onClick={handleSubmit}>确定</button>
+      </div>
+    )
+  }
+}
+
+export default TodoInput
+```
+
+```tsx
+import React, { Component } from 'react'
+import TodoInput from '../TodoInput'
+
+interface Props {
+  title?: string
+}
+interface State {
+  todoList: string[]
+}
+
+// 如果不向Component传递泛型，会拿不到值
+export default class TodoList extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      todoList: ['吃饭'],
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit(value: string) {
+    this.setState({
+      todoList: [...this.state.todoList, value],
+    })
+  }
+  render() {
+    const { todoList } = this.state
+    return (
+      <div>
+        <TodoInput handleSubmit={this.handleSubmit} />
+        {todoList && todoList.length > 0 && todoList.map((item) => <div key={item}>{item}</div>)}
+      </div>
+    )
+  }
+}
+```
 
 ## 参考
 
