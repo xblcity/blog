@@ -122,9 +122,9 @@ server {
 
 现在要配置一个子域名 `reading.xblcity.com`
 
-按照之前的配置，只改变了server_name以及证书位置
+按照之前的配置，只改变了`server_name`以及证书位置，在`html`文件夹下新建`reading.xblcity`目录下添加`index.html`
 
-很重要的一部是要给子域名配置解析，腾讯云子域名解析，[链接](https://cloud.tencent.com/document/product/302/7800),找到协作子域名添加解析并设置
+很重要的一部是要给子域名配置解析，腾讯云子域名解析，[链接](https://cloud.tencent.com/document/product/302/7800),找到协作子域名**添加解析**并手动添加一条解析记录。注意，域名解析不会立即生效，需要等几分钟~建议自己查询一下域名是否可以DNS解析到
 
 这时打开`reading.xblcity.com`就可以看到我们想要的网页效果啦~
 
@@ -143,4 +143,17 @@ gzip_buffers 4 16k; # 设置系统获取几个单位的缓存用于存储 gzip �
 gzip_http_version 1.1; # 可以使用 gzip 功能的 HTTP 最低版本
 gzip_comp_level 2; # 压缩比，范围为1 - 9。
 gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript image/jpeg image/jpg image/gif image/png; # MIME 类型进行压缩
+```
+
+## nginx代理转发
+
+```js
+server {
+    listen 80;
+    server_name blogc.xblcity.com;
+
+    location /api {
+        proxy_pass http://118.25.215.189:3001;
+    }
+}
 ```
