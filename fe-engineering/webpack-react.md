@@ -1,4 +1,4 @@
-# 使用 webpack 从零配置开发环境
+# 使用 webpack 从零配置 React 开发环境及打包优化
 
 使用的 webpack 版本是@4.39.3，不过@5 beta 版已经发布了，emmmm...
 
