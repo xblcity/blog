@@ -49,7 +49,7 @@ git merge dev // 本地master分支与 本地dev分支进行合并
 git push -u origin master // 将本地 master分支推送至 remote master  存在多个远程仓库才会用到 -u
 ```
 
-关于远程仓库的知识
+## 关于远程仓库的知识
 
  `git push origin` 该命令表示，将当前分支推送到origin主机的对应分支。
 
@@ -101,7 +101,21 @@ git merge back-end --allow-unrelated-histories // 允许合并两个无相关记
 
 ## git常见问题
 
-### 回退版本，放弃修改
+### 放弃本地修改
+
+`git reset xxx` 后面根据提示进行修改
+
+### 回退至历史分支
+
+```js
+// 使用git log命令查看所有的历史版本，获取你git的某个历史版本的id
+git log
+
+// git log 默认只显示四条，按 下 键会显示更多记录
+
+// 假设需要回滚这条commit
+git reset --hard b87d84885b5d3fd74c4e658c0ed6a6260d8d849a
+```
 
 ### 报错信息
 

@@ -389,7 +389,7 @@ antd已经支持动态引入，tree-shaking了，所以说不用再配置`babel-
 > https://ant.design/docs/react/introduce-cn
 > 注意：antd 默认支持基于 ES module 的 tree shaking，不使用以下插件也会有按需加载的效果。
 
-进行打包`yarn build`，我们发现包的大小从 `343K` 到了 `477K` 而我们仅仅引入了两个组件`Input Button`，如果再增加`Rate`组件，会变到`544K` ...
+进行打包`yarn build`，我们发现包的大小从 `343K` 到了 `477K` 而我们仅仅引入了两个组件`Input Button`，如果再增加`Rate`组件，会变到`544K` ... 不过要是把antd分离出来，就不是很大。看下面一节
 
 ## 3.优化
 
@@ -397,7 +397,7 @@ antd已经支持动态引入，tree-shaking了，所以说不用再配置`babel-
 
 开发环境和生产环境的优化可以分离开来
 
-我们先按照上一节的内容安装依赖并配置，[源码]()
+我们先按照上一节的内容安装依赖并配置，[源码](https://github.com/xblcity/web-learning/tree/master/webpack-learn/third)
 
 ```
 npm init -y
@@ -449,7 +449,18 @@ yarn add cross-env -D // 设置环境变量
 
 编辑build下文件，比如`webpack.config.json`和对应的rules，以及plugins
 
-跟上面一节的内容大致相同，我们在此基础上进行优化，首先把CSS文件分离出来
+跟上面一节的内容大致相同，我们在此基础上进行优化，
+
+#### 查看依赖
+
+```js
+yarn add webpack-bundle-analyzer -D
+```
+> 安装依赖并在plugin中配置，用于查看依赖包大小
+
+#### css文件优化
+
+首先把CSS文件分离出来
 
 ```js
 yarn add mini-css-extract-plugin -D
@@ -457,22 +468,76 @@ yarn add mini-css-extract-plugin -D
 
 > 分别配置loader以及plugin，这里不做赘述
 
-把antd抽离出来
+#### babel-loader打包速度优化
 
-optimization配置splitChunks
+bebel-loader设置缓存
+
+```js
+use: [
+  'babel-loader?cacheDirectory=true',
+],
+```
+
+
+### 针对包的大小进行优化实践
+
+未优化前，DOM加载完毕需要7.5s，这是在GZIP已经开启了的情况下，因为服务器带宽只有1M所以加载比较慢。
+
+![webpack](./images/webpack-react/webpack3_1.png)
+
+把 antd moment axios 使用 splitChunks 抽离出来(建议用了splitChunks就不要用dellPlugins了)
+
+可以看到之前的common已经被分离出antd与vender两个文件
+
+但是加载时间基本没有变化
+
+![webpack](./images/webpack-react/webpack3_2.png)
+
+我们可以看到app.js太大了，加载时间太长了，我们使用webpack-plugin-analyzer进行打包分析。
+
+![webpack](./images/webpack-react/webpack3_3.png)
+
+发现highlight.js和@ant-design的包太大了，antd 只要引用了Icon 其中引用的 @ant-design的包太大了，antd4 icon与 antd是分开的，这里使用antd4优化。
+
+并且Icon图标放到CDN上，封装ICON组件用于图标展示
+
+还有一部分rc-form的包占用也比较大，因为antd4 form没有引用rc-form，所以包的大小
+
+接着我们把react, react-dom, moment, highlightjs这些库全部使用CDN在HTML中引入，并且使用webpack, externals配置全局变量。
+
+```js
+externals: {
+  highlight: 'hljs',
+  moment: 'moment',
+  react: 'React',
+  'react-dom': 'ReactDOM'
+},
+```
+
+对首页的图片进行压缩
+
+做完这些优化之后，首页加载只需要2.3秒，效果还是很明显的
+
+![webpack](./images/webpack-react/webpack3_4.png)
 
 ### 其他优化
 
 - 为-webkit-等 CSS 属性加上前缀 [postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/)
-
-
-#### 使用 MiniCssExtractPlugin 单独打包 css
 
 ### 3.43 踩坑
 
 二级路由加载路径有问题，比如，页面二级路由为`admin/add-artilce`，webpack 加载的时候，加载的路径是`/admin/add-artilce.js`
 
 实际上应该加载的路径是`/add-article`。在 ouput 设置，`publicPath: '/'`
+
+单页面应用，部署到nginx，页面刷新404
+
+```js
+配置nginx
+location / {
+  try_files $uri /index.html;
+}
+```
 
 ## 参考
 
