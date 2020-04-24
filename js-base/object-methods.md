@@ -6,7 +6,7 @@
 
 静态方法，只能有构造函数`Object`自己进行调用。而构造函数实例无法使用该方法，同时，在`Object.prototype`上面定义的方法也必须通过`Object.prototype.方法`进行调用。
 
-原型方法，构造函数和构造函数实例共享的方法。实例可以直接调用`实例.方法`，js会沿着原型链查找到该方法。如下例
+原型方法，构造函数和构造函数实例共享的方法。实例可以直接调用`实例.方法`，js 会沿着原型链查找到该方法。如下例
 
 ```js
 class MyObject {
@@ -28,7 +28,7 @@ MyObject.sayName() // 报错 Uncaught TypeError: MyObject.sayName is not a funct
 MyObject.prototype.sayName() // 打印成功
 ```
 
-> Object构造函数静态方法
+> Object 构造函数静态方法
 
 当我们想获取到一个对象有几个键值对时，我们可以使用`Object.keys(object)`来返回一个包含对象属性的数组。这样就可以使用数组的方法对该对象进行处理了。与该方法相同的还有`Object.getOwnPropertyNames(object)`可以返回一个包含当前属性的数组。
 
@@ -36,11 +36,11 @@ MyObject.prototype.sayName() // 打印成功
 
 定义了值属性或者访问器属性配置后，我们还可以通过`Object.getOwnPropertyDescriptor(object, prop)`来获取单个属性的配置选项。与之同理的还有`Object.getOwnPropertyDescriptors(object)`可以获取当前对象的所有属性的配置选项。
 
-当我们想把一个对象进行复制(浅拷贝)时，我们可以使用`Objecct.assign(target, ...sources)`返回一个新的对象，target也会被合并。
+当我们想把一个对象进行复制(浅拷贝)时，我们可以使用`Objecct.assign(target, ...sources)`返回一个新的对象，target 也会被合并。
 
-当我们想创建一个对象，并且指定它的原型时，可以使用`Object.create(proto, {...props})`，如果想创建一个无原型链的对象时，只需要把第一个参数设置为null即可
+当我们想创建一个对象，并且指定它的原型时，可以使用`Object.create(proto, {...props})`，如果想创建一个无原型链的对象时，只需要把第一个参数设置为 `null` 即可
 
-> Object原型
+> Object 原型
 
 当我们想判断某个变量是具体哪个基本值或者复杂值时，可以使用`Object.prototype.toString.call(variable)`，当变量是字符串时，会得到`[object String]`的结果，当变量是数组时，会得到`[object Array]`，当变量是对象时，会得到`[object Object]`等等。
 
@@ -56,12 +56,12 @@ MyObject.prototype.sayName() // 打印成功
 
 ```js
 const object1 = {
-  a: "somestring",
+  a: 'somestring',
   b: 42,
-  c: false
+  c: false,
 }
 
-Object.keys(object1).forEach(item => {
+Object.keys(object1).forEach((item) => {
   console.log(object1[item])
 })
 // 输出: "somestring", 42, false
@@ -127,7 +127,6 @@ console.dir(methodCreateNull)
   // No properties
 }
 
-
 console.dir(methodCreateObj)
 {
   // methodCreateObj 的原型是一个空对象，空对象的原型是Object
@@ -144,7 +143,7 @@ console.dir(literalCreateObj)
 // 可以看出Object.create({})创建的对象多了一层__proto__
 ```
 
-所以我们可以使用 Object.create()方法指定自己的原型 prototype，可以用于构造函数继承，更多请看[继承与原型链](https://github.com/xblcity/blog/blob/master/js-base/inherit.md)
+所以我们可以使用 Object.create()方法指定自己的原型 prototype，可以用于构造函数继承，更多请看[继承与原型链](https://blog.xblcity.com/js-base/inherit.html)
 
 ### 1.3 Object.defineProperty()
 
@@ -157,8 +156,7 @@ console.dir(literalCreateObj)
 - configurable 是否可删除？，默认 false
 - enumerable 是否可枚举，默认 false
 - value 值
-- writable 是否可写，默认 false  
-
+- writable 是否可写，默认 false
 
 **存取器属性**描述符还包括下面两个重要方法，但不包含 value 属性
 
@@ -184,7 +182,7 @@ console.dir(object1)
 }
 ```
 
-使用 get 和 set 方法，存取器属性描述独有，存取器的好处是可以对传进来的值做一定处理  
+使用 get 和 set 方法，存取器属性描述独有，存取器的好处是可以对传进来的值做一定处理
 
 下为数据属性描述与存取器描述示例
 
@@ -192,16 +190,16 @@ console.dir(object1)
 var o = {}
 
 // 添加属性，并添加数据属性描述 data property descriptor
-Object.defineProperty(o, "a", {
+Object.defineProperty(o, 'a', {
   value: 37,
   writable: true,
   enumerable: true,
-  configurable: true
+  configurable: true,
 })
 
 // 添加属性，并添加存取器属性描述 accessor property descriptor
 var bValue = 38
-Object.defineProperty(o, "b", {
+Object.defineProperty(o, 'b', {
   // Using shorthand method names (ES2015 feature).
   // This is equivalent to:
   // get: function() { return bValue; },
@@ -213,18 +211,18 @@ Object.defineProperty(o, "b", {
     bValue = newValue
   }, // 设置值
   enumerable: true,
-  configurable: true
+  configurable: true,
 })
 
 o.b // 38 b值被定义与bValue相等
 // o.b和bValue是相等的，除非被重新修改
 
 // 数据属性与存取器属性不能同时使用，即value与get()不能同时使用
-Object.defineProperty(o, "conflict", {
+Object.defineProperty(o, 'conflict', {
   value: 0x9f91102,
   get() {
     return 0xdeadbeef
-  }
+  },
 })
 // 报错信息 TypeError: Invalid property descriptor. Cannot both specify accessors and a value or writable attribute
 // 类型错误：非法属性描述，不能同时指定存取器或者value
@@ -238,16 +236,16 @@ function Archiver() {
   var archive = []
 
   // 通过new 调用 this是其本身
-  Object.defineProperty(this, "temperature", {
+  Object.defineProperty(this, 'temperature', {
     get() {
-      console.log("get!")
+      console.log('get!')
       return temperature
     },
     // 为temperature设置值
     set(value) {
       temperature = value
       archive.push({ val: temperature }) // 用数组保存temperature的历史值
-    }
+    },
   })
 
   this.getArchive = function() {
@@ -273,9 +271,9 @@ const object1 = {}
 Object.defineProperties(object1, {
   property1: {
     value: 42,
-    writable: true
+    writable: true,
   },
-  property2: {}
+  property2: {},
 })
 
 console.log(object1.property1) // expected output: 42
@@ -283,7 +281,7 @@ console.log(object1.property1) // expected output: 42
 
 ### 1.5 Object.assign()
 
-Object.assign(target, ...sources) || (目标对象，源对象...)
+`Object.assign(target, ...sources) || (目标对象，源对象...)`
 
 复制一个对象的可迭代属性到目标对象上，参数为多个对象，ES6 新增
 
@@ -313,17 +311,17 @@ const source = {
   undefined,
   c: function() {},
   d: 3,
-  [Symbol("foo")]: 233
+  [Symbol('foo')]: 233,
 } // null不可以用键值省略的写法，会报syntaxError
 const returnedTarget = Object.assign(target, source)
 // const returnedTarget = Object.assign(target, {...source})
 console.log(target) // { null:null, undefined, c: function(){}, d: 3, [Symbol('foo')]: 233}
 console.log(returnedTarget) // 同上
 const target = {}
-const v1 = "a"
+const v1 = 'a'
 const v2 = null
 const v3 = undefined
-const v4 = Symbol("foo")
+const v4 = Symbol('foo')
 const v5 = function() {}
 const returnedTargetDiff = Object.assign(target, v1, v2, v3, v4, v5) // 参数为单个对象的情况，会忽略null,undefined,symbol,function
 console.log(target, returnedTargetDiff) // {0: 'a'}  输出键为下标序号
@@ -335,8 +333,8 @@ console.log(target, returnedTargetDiff) // {0: 'a'}  输出键为下标序号
 const source = {
   a: 11,
   b: {
-    bb: 22
-  }
+    bb: 22,
+  },
 }
 const returnedTarget = Object.assign({}, source)
 returnedTarget.b.bb = 33
@@ -345,7 +343,7 @@ console.log(source) // {a:11, b: {bb:33}}
 ```
 
 使用 JSON.parse(JSON.stringify({...}))可以实现不完整的深拷贝  
-更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://github.com/xblcity/blog/blob/master/js-base/copy.md)
+更多深浅拷贝，请看这里：[赋值与深浅拷贝](https://blog.xblcity.com/js-base/copy.html)
 
 ### 1.6 Object.getOwnPropertyDescriptor()
 
@@ -353,9 +351,9 @@ console.log(source) // {a:11, b: {bb:33}}
 
 ```js
 const obj = {
-  a: 1
+  a: 1,
 }
-console.log(Object.getOwnPropertyDescriptor(obj, "a"))
+console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
 // 输出： {configurable: true, enumerable: true, value: 1, writable: true}
 ```
 
@@ -471,10 +469,10 @@ console.log(Object.getOwnPropertyNames(objectInstance));  // ["a", "d"]
 这个方法也可以判断 js 的数据类型，比如`Object.prototype.toString.call(a)`
 
 ```js
-const obj = { name: "jack" }
+const obj = { name: 'jack' }
 console.log(obj.toString()) // [object Object]
 console.dir(obj.toString()) // [object Object]
-const a = "1"
+const a = '1'
 console.log(Object.prototype.toString.call(a)) // [object String]
 console.dir(JSON.parse(obj.toString())) // SyntaxError: Unexpected token o in JSON at position 1
 console.log(JSON.parse(JSON.stringify(obj))) // {name: "jack"}
@@ -500,9 +498,9 @@ console.log(new Date().toLocaleString()) // Sat Jul 27 2019 16:30:55 GMT+0800 (�
 const object1 = new Object()
 object1.property1 = 42
 
-console.log(object1.hasOwnProperty("property1")) // object1自身属性 输出: true
-console.log(object1.hasOwnProperty("toString")) // object1 prototype的属性 输出: false
-console.log(object1.hasOwnProperty("hasOwnProperty")) // object1 prototype的属性 输出: false
+console.log(object1.hasOwnProperty('property1')) // object1自身属性 输出: true
+console.log(object1.hasOwnProperty('toString')) // object1 prototype的属性 输出: false
+console.log(object1.hasOwnProperty('hasOwnProperty')) // object1 prototype的属性 输出: false
 ```
 
 ### 2.5 Object.prototype.isPrototypeOf()
