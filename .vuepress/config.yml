@@ -32,6 +32,8 @@ themeConfig:
       link: https://reading.xblcity.com
     - text: Github
       link: https://github.com/xblcity
+    - text: 博客搭建
+      link: https://blogc.xblcity.com
   sidebar:
     - title: 介绍
       path: /
@@ -73,14 +75,14 @@ themeConfig:
         - /react/complex-co
         - /library/wx-web
     - title: 前端综合知识
-      collapsable: true
+      collapsable: false
       sidebarDepth: 2
       children:
         - /fe-system/performance
         - /fe-system/render
         - /fe-system/http
     - title: 工程化
-      collapsable: true
+      collapsable: false
       sidebarDepth: 2
       children:
         - /fe-engineering/webpack-react
@@ -88,7 +90,7 @@ themeConfig:
         - /fe-engineering/vs
         - /fe-engineering/git
     - title: 后端
-      collapsable: true
+      collapsable: false
       sidebarDepth: 2
       children:
         - /backend/little-points
