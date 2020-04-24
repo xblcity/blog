@@ -1,8 +1,8 @@
-## 类与继承
+# 类与继承
 
 ## ES5 实现类
 
-实现有属性及方法的函数对象，也可以理解为使用 JS 函数实现类
+实现有属性及方法的函数对象，也可以理解为使用 `JS` 函数实现类
 
 ### 1. 工厂模式
 
@@ -26,7 +26,7 @@ var aDog = createAnimal("dog", 6)
 
 ### 2. 构造函数模式
 
-使用 new 操作符，会自动为添加 proto 属性，用于类型的识别。
+使用 `new` 操作符，会自动为添加 `proto` 属性，用于类型的识别。
 
 ```js
 function Animal(name, age) {
@@ -41,15 +41,15 @@ var aDog = new Animal("dog", 6)
 
 与工厂模式不同的是，我们没有显式的创建对象并返回对象，并且我们把属性和方法都绑定到了`this`上面
 
-执行 new Animal()的时候，做了哪些东西呢？
+执行 `new Animal()` 的时候，做了什么事情呢？
 
 - 执行构造函数
 - 创建一个新对象
-- 新对象的原型(**proto**)指向构造函数的 prototype
-- 新对象赋给当前 this(将构造函数的作用域赋给新对象)
+- 新对象的原型(**proto**)指向构造函数的 `prototype`
+- 新对象赋给当前 `this` (将构造函数的作用域赋给新对象)
 - 如果函数没有返回其他对象，会默认返回这个新对象
 
-**优点**：构造函数解决了类型判断的问题，现在我们可以使用`aDog instanceof Animal`输出 true 来正确判断 aDog 的类型
+**优点**：构造函数解决了类型判断的问题，现在我们可以使用`aDog instanceof Animal`输出 `true` 来正确判断 `aDog` 的类型
 
 **缺点**：每次构造`Animal`实例，生成不同值的属性是合理的，但是每次都生成一模一样的方法，造成内存浪费是不合理的
 
@@ -71,7 +71,7 @@ var bDog = new Animal()
 console.log(aDog.sayName === bDog.sayName) // true
 ```
 
-可以看出，由 Animal 构造函数构造出的实例都具有相同的属性和方法，方法指向同一个引用
+可以看出，由 `Animal` 构造函数构造出的实例都具有相同的属性和方法，方法指向同一个引用
 
 **优点**：解决构造函数之前存在的问题，即实例共享的方法或属性只需创建一个就可以了，节省内存空间
 
@@ -115,13 +115,13 @@ console.log(Animal.prototype) // {say: function() {}, constructor: function Anim
 
 ### 5. 关于构造函数静态方法与原型方法的区别
 
-构造函数的方法的调用，以 Date 这个构造函数为例
+构造函数的方法的调用，以 `Date` 这个构造函数为例
 
-Date 构造函数，属性为方法的有`now, parse`等，即`Date.now = function(){}`，可以理解为**ES6的静态方法**，只能被 Date 类直接调用。
+`Date` 构造函数，属性为方法的有`now, parse`等，即`Date.now = function(){}`，可以理解为**ES6的静态方法**，只能被 `Date` 类直接调用。
 
-Date 构造函数，prototype 上面的方法有`getDate(), getFullYear()`等，构造函数想要调用这些方法，必须使用`Date.prototype.getDate()`, 如果直接使用`Date.getDate()`，由于 Date 构造函数并没有`getDate`这个属性，所以向**proto**上面查找，未找到，报错 TypeError
+`Date` 构造函数，`Date.prototype` 上面的方法有`getDate(), getFullYear()`等，构造函数想要调用这些方法，必须使用`Date.prototype.getDate()`, 如果直接使用`Date.getDate()`，由于 `Date` 构造函数并没有`getDate`这个属性，所以向**proto**上面查找，未找到，报错 `TypeError`
 
-但是对于构造函数的实例来说，由于`new`操作运算符的的作用，实例的`__proto__`已经指向了 Date 构造函数的`prototype`，所以调用`实例.getDate()`，实例无 getDate 属性，向**proto**上查找，找到了，执行。
+但是对于构造函数的实例来说，由于`new`操作运算符的的作用，实例的`__proto__`已经指向了 Date 构造函数的`prototype`，所以调用`实例.getDate()`，实例无 `getDate` 属性，向**proto**上查找，找到了，执行。
 
 比如下例
 
@@ -150,7 +150,7 @@ MyObject.prototype.sayName() // 打印成功
 
 ## 继承
 
-上面说明了函数模拟创建类的几种方式，这篇说一说关于继承的一些知识。
+上面说明了函数模拟创建类的几种方式，下面说一说关于继承的一些知识与实现。
 
 ### 1. ES5 继承的几种方式
 
@@ -179,11 +179,11 @@ Dog.prototype.bark = function() {
 }
 ```
 
-上例中 Dog 的原型由**父类构造函数**，**constructor**,**自定义方法**三部分构成
+上例中 `Dog` 的原型由**父类构造函数**，**constructor**,**自定义方法**三部分构成
 
-直接改变了 Dog 的 prototype 的指针指向
+直接改变了 `Dog` 的 `prototype` 的指针指向
 
-下面是打印 Dog 构造函数的结果
+下面是打印 `Dog` 构造函数的结果
 
 ```js
 const aDog = new Dog('pity', 6)
@@ -210,7 +210,7 @@ Dog:
 
 **缺陷**：1.无法继承父类实例上的属性。2.父类构造函数的实例属性并没有用到。(原型链直接赋值的通病)
 
-PS: 为什么不用 Dog.prototype = Animal.prototype 呢？ 如果用了，那么两者共享一个 prototype, 改变 Dog 的 prototype 也会改变 Animal 的 prototype
+PS: 为什么不用 `Dog.prototype = Animal.prototype` 呢？ 如果用了，那么两者共享一个 `prototype`, 改变 `Dog` 的 `prototype` 也会改变 `Animal` 的 `prototype`
 
 #### 1.2 构造函数窃取
 
@@ -255,7 +255,7 @@ console.log(aDog)
 
 **优点**：完善了没有继承父类实例的缺陷
 
-**缺点**：1.没有继承 Animal 原型上面的方法。2.并且每次创建 Dog 的实例，都会执行 Animal 构造函数(构造函数窃取的通病)
+**缺点**：1. `Dog` 没有继承 `Animal` 原型上面的方法。2.并且每次创建 `Dog` 的实例，都会执行 `Animal` 构造函数(构造函数窃取的通病)
 
 #### 1.3 组合继承(构造函数与原型链组合)
 
@@ -283,7 +283,7 @@ Dog.prototype.bark = function() {
 }
 ```
 
-下面是打印 Dog 实例的结果
+下面是打印 `Dog` 实例的结果
 
 ```js
 const aDog = new Dog('lovely animal', 'erha', 7)
@@ -357,7 +357,7 @@ child instanceof Parent // true
 
 **优点**(相对于组合继承)：1.父类构造函数只执行了一次 2.原型链继承减少了不必要的实例属性的继承
 
-#### 2.ES6 的 extends/super 方式实现继承
+### 2.ES6 的 extends/super 方式实现继承
 
 ```js
 class Parent {
