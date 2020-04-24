@@ -4,18 +4,18 @@
 
 在 JS 中，数据类型分为值类型和引用类型。其中值类型包括：`'string', 'number', 'bool', 'undefined', 'null', 'symbol', 'bigint'`这 7 个。要注意的是，这几个单词需要加上引号才是关键字，所以使用`typeof`返回的是字符串关键字，比如`typeof 2` 返回的是`'number'`
 
-引用类型包括`Object`类型，`Object`和字符串`'object'`都是关键字，`Object`类型引申出来的常用的还有 `Array`, `Function`等。比如，当我们使用`function foo() {}; foo instanceof Object`返回为`true`。`instanceof`实现的原理是构造函数的原型链
+引用类型包括`Object`类型，`Object`和字符串`'object'`都是关键字，`Object`类型引申出来的常用的还有 `Array`, `Function`等。比如，当我们使用`function foo() {}; foo instanceof Object`返回为`true`。`instanceof`实现的原理是构造函数的原型链，即对`prototype`的查找
 
 通常，当我们对值类型进行赋值时，内存会给该值分配一个地址空间，以下图为例
 
 ![值类型赋值](./images/copy/copy1.png)
 
 ```js
-let a = 1 // 计算机内栈结构开辟出一个新的地址#001，改地址存储的值为1
+let a = 1 // 计算机内栈结构开辟出一个新的地址#001，该地址存储的值为1
 
-let b = 2 // 计算机内栈结构开辟出一个新的地址#002，改地址存储的值为2
+let b = 2 // 计算机内栈结构开辟出一个新的地址#002，该地址存储的值为2
 
-let c = b // 计算机内栈结构开辟出一个新的地址#003，改地址存储的值与地址#002存的值一样，都是2
+let c = b // 计算机内栈结构开辟出一个新的地址#003，该地址存储的值与地址#002存的值一样，都是2
 
 c = 3 // 对地址#003存储的值进行更改，改为3，这并不会影响#002地址所存储的值，即c与b值得变化互相不会影响
 ```
@@ -41,7 +41,8 @@ console.log(b.name) // 'lily'
 
 显然，需要把 b 的堆对象在重新复制一遍产生新的堆对象地址，并且使 c 指向这个新的堆对象地址。
 
-> 在使用 React 的过程中，由于组件的重新渲染，组件内部的函数在经过另一次渲染过后和之前的函数已经不是同一个引用了，即引用地址发生了变化，Component 解决方法是将该函数声明在 constructor 中，Hooks 解决办法是使用 useMemo 或者 useCallback
+> 最常见的情况，比如，事件绑定的回调函数，我们使用addEventListener和removeEventListener传递的必须是同一个引用才能移除事件。
+> 在使用 React 的过程中，由于组件的重新渲染，组件内部的事件回调函数在经过另一次渲染过后和之前的函数已经不是同一个引用了，即引用地址发生了变化，Component 解决方法是将该函数声明在 constructor 中，Hooks 解决办法是使用 const定义事件回调或者用 useMemo/useCallback
 
 ## 实现浅拷贝
 
@@ -50,7 +51,7 @@ let b = { name: 'lucy', age: 19 }
 let c = { ...b }
 ```
 
-上述代码实现了一个简单的浅拷贝，...是展开运算符，应用的是 for-of 语法，本质上还是对 b 对象进行遍历。
+上述代码实现了一个简单的浅拷贝，`...`是展开运算符，应用的是 `for-of` 语法，`for-of`调用的是内置的`Symbol['iterator']`本质上还是对 `b` 对象进行遍历。
 
 实现一个浅拷贝函数
 
@@ -69,7 +70,7 @@ function mixin(receiver, supplier) {
 
 ![浅拷贝](./images/copy/copy3.png)
 
-当浅拷贝的对象的 key 对应的 value 也是个引用类型的值时，无法进行正确的拷贝，拷贝的还是 value 对应的地址。
+当浅拷贝的对象的 `key` 对应的 `value` 也是个引用类型的值时，无法进行正确的拷贝，拷贝的还是 `value` 对应的地址。
 
 ```js
 let a = {
