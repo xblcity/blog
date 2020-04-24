@@ -1,4 +1,4 @@
-# call,apply,bind手动实现
+# call, apply, bind手动实现
 
 ## 1. call的实现需要运用隐式绑定this的原理，即call的调用者当做this传递进去
 
@@ -157,7 +157,7 @@ var result3 = leadingAdd(3, 10) // 1+3=4，第二个参数会被忽略，因为a
 var result4 = leadingAdd(7, 9) // 1+7=8，第二个参数会被忽略，因为addArguments只设置了两个参数
 ```
 
-bind可以配合setTimeout的第一个参数使用，实现自定义this的绑定，摘自`mozilla`
+bind可以配合setTimeout的第一个参数使用，实现自定义this的绑定，摘自`MDN`
 
 ```js
 function LateBloomer() {
