@@ -126,12 +126,13 @@ ES6 使用 apply 实现实现一个简单的 bind
 
 ```js
 Function.prototype.bind1 = function(...rest1) {
-  const self = this; // 这里的this是bind1的this  在本例中是foo，这里也是使用了闭包进行保存。
+  const self = this; // 这里的this是bind1的调用者(隐式绑定)  在本例中是foo。
   const context = rest1.shift(); // 第一个传入参数作为this, shift可以直接改变原数组
   return function(...rest2) {
     // rest1即bind1接收的参数，本例中对应 2, 3。rest2即返回函数接收的参数。本例中对应 4
-    // apply需要一个调用者，也就上面保存的self
-    return self.apply(context, [...rest1, ...rest2]);
+    // 最终执行的还是原本传过来的函数，本例中是foo
+    // return self.apply(context, [...rest1, ...rest2]);
+    return self(...rest1, ...rest2)  // 和上面效果一样
   };
 };
 
@@ -299,7 +300,7 @@ const obj = {
   }
 };
 
-// window，对象是没有上下文环境，因此也就没有this这个属性，之所以可以获取到this是因为全局作用域存在this变量
+// 对象是没有上下文环境，因此也就没有this这个属性，之所以可以获取到this是因为全局作用域存在this变量
 console.log(obj.b);  // windnow
 
 obj.f1(); // hello
@@ -325,22 +326,25 @@ function bar() {
   const cb = function(callback) {
     callback();
   };
-  cb(() => {
-    console.log(`回调箭头函数`, this); // {a: 1}，与bar一致
-  }); 
+  // 普通函数
   cb(function() {
     console.log(`回调普通函数`, this); // window
   });
+  // 箭头函数
+  cb(() => {
+    console.log(`回调箭头函数`, this); // {a: 1}，与bar一致
+  }); 
 
   const innerObj = { cb: cb };
-  innerObj.cb(() => {
-    console.log(`回调箭头函数`, this);
-  }); 
-  // 注意！定义的位置，也就是cb的位置，this是cb外面函数的this, 与bar一致，即outObj
 
   innerObj.cb(function() {
     console.log(`回调普通函数`, this); // window
+  });
+
+  innerObj.cb(() => {
+    console.log(`回调箭头函数`, this);
   }); 
+  // 注意！定义的位置，也就是cb的位置，this是cb外面函数的this, 与bar一致，即outObj { a: 1 };
 }
 
 const outObj = { a: 1 };

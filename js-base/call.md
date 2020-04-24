@@ -1,17 +1,18 @@
 # call,apply,bind手动实现
 
-## 1. call的实现需要运用隐式绑定this的原理，即`obj.bar()`
+## 1. call的实现需要运用隐式绑定this的原理，即call的调用者当做this传递进去
 
 先实现传入上下文环境
 
 ```js
 Function.prototype._call = function(context) {
+  // this是调用者，非函数调用抛出错误
+  // 隐式绑定原理 foo.call()
   if (typeof this !== 'function') {
     throw new TypeError('Error')
   }
+
   context = context || window
-  // 因为bar._call调用的_call函数，所以_call函数的this就是bar函数
-  console.log(this) // bar函数
   // 为context这个对象增加一个_fn临时属性，用于存放bar函数
   // 如果context已经有_fn这个属性，会出问题，应该用symbol
   context._fn = this
@@ -30,8 +31,11 @@ function bar() {
 // 测试
 bar._call(foo)
 ```
+上面的实现有两个问题
+- 无法传递参数
+- 函数本身含有_fn属性
 
-实现传入上下文环境并且传入参数
+改进
 
 ```js
 Function.prototype._call = function(context = window) {
@@ -41,7 +45,7 @@ Function.prototype._call = function(context = window) {
   // 生成一个唯一值
   const mySymbol = Symbol();
   context[mySymbol] = this
-  var args = [...arguments].slice(1) // 去除_call的第一个参数即上下文环境对象，剩下的即参数
+  const args = [...arguments].slice(1) // 去除_call的第一个参数即上下文环境对象，剩下的即参数
   const result = context[mySymbol](...args) // 参数传递给_fn，使用扩展运算符把数组转换成逗号分隔的参数序列
   delete context[mySymbol]
   return result
@@ -93,40 +97,6 @@ bar._apply(foo, [1,2,3])
 ## 3. 实现bind  
 
 bind用于创建一个新的函数，参数和call传参方式相同  
-bind可以理解为函数式编程的一个例子，bind属于高阶函数(因为返回了一个函数)，也属于偏函数(不同的参数值，可以返回不同的函数)
-
-### 补充一下关于偏函数
-
-作为偏函数使用的例子
-```js
-// 返回参数
-function list() {
-  return [...arguments]
-}
-
-// 对参数求和
-function addArguments(arg1, arg2) {
-  return arg1 + arg2
-}
-
-// 创建一个函数，它拥有预设参数列表
-var leadingList = list.bind(null, 1)
-
-// 创建一个函数，它拥有预设的第一个参数
-var leadingAdd = addArguments.bind(null, 1)
-
-var list2 = leadingList() // [1]
-var list3 = leadingList(2,3,4) // [1,2,3,4]
-var list4 = leadingList(5,6) // [1,5,6]
-
-var result2 = leadingAdd(5) // 1+5=6
-var result3 = leadingAdd(3, 10) // 1+3=4，第二个参数会被忽略，因为addArguments只设置了两个参数
-var result4 = leadingAdd(7, 9) // 1+7=8，第二个参数会被忽略，因为addArguments只设置了两个参数
-```
-
-bind可以配合setTimeout的第一个参数使用，实现自定义this的绑定
-
-### 实现bind
 
 ```js
 // bind函数需要返回一个新的函数，用于自行调用
@@ -154,6 +124,58 @@ function bar(...args) {
 var baz = bar._bind(foo, 4,5,6)
 baz()
 baz(7,8,9)
+```
+
+### 补充一下关于偏函数
+
+bind可以理解为函数式编程的一个例子，bind属于高阶函数(因为返回了一个函数)，也属于偏函数(不同的参数值，可以返回不同的函数)
+
+偏函数使用的例子
+```js
+// 返回参数
+function list() {
+  return [...arguments]
+}
+
+// 对参数求和
+function addArguments(arg1, arg2) {
+  return arg1 + arg2
+}
+
+// 创建一个函数，它拥有预设参数列表
+var leadingList = list.bind(null, 1)
+
+// 创建一个函数，它拥有预设的第一个参数
+var leadingAdd = addArguments.bind(null, 1)
+
+var list2 = leadingList() // [1]
+var list3 = leadingList(2,3,4) // [1,2,3,4]
+var list4 = leadingList(5,6) // [1,5,6]
+
+var result2 = leadingAdd(5) // 1+5=6
+var result3 = leadingAdd(3, 10) // 1+3=4，第二个参数会被忽略，因为addArguments只设置了两个参数
+var result4 = leadingAdd(7, 9) // 1+7=8，第二个参数会被忽略，因为addArguments只设置了两个参数
+```
+
+bind可以配合setTimeout的第一个参数使用，实现自定义this的绑定，摘自`mozilla`
+
+```js
+function LateBloomer() {
+  this.petalCount = Math.ceil(Math.random() * 12) + 1;
+}
+
+// 在 1 秒钟后声明 bloom
+LateBloomer.prototype.bloom = function() {
+  window.setTimeout(this.declare.bind(this), 1000);
+};
+
+LateBloomer.prototype.declare = function() {
+  console.log('I am a beautiful flower with ' +
+    this.petalCount + ' petals!');
+};
+
+var flower = new LateBloomer();
+flower.bloom();  // 一秒钟后, 调用 'declare' 方法
 ```
 
 ## 参考
