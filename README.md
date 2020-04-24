@@ -21,7 +21,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
   - [Object 构造函数及原型上的方法](https://github.com/xblcity/blog/blob/master/js-base/object-methods.md)
   - [事件循环](https://github.com/xblcity/blog/blob/master/js-base/eventloop.md)
   - [ES6 知识点](https://github.com/xblcity/blog/blob/master/js-base/es6.md)
-  - [Promise 与 AJAX](https://github.com/xblcity/blog/blob/master/js-base/promise.md)
+  - [AJAX](https://github.com/xblcity/blog/blob/master/js-base/ajax.md)
   - [高阶函数](https://github.com/xblcity/blog/blob/master/js-base/func-program.md)
   - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
   - [JS 数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)

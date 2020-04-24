@@ -50,7 +50,7 @@ themeConfig:
         - /js-base/object-methods
         - /js-base/eventloop
         - /js-base/es6
-        - /js-base/promise
+        - /js-base/ajax
         - /js-base/func-program
         - /js-base/design-mode
         - /js-base/algorithm

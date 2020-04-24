@@ -280,7 +280,7 @@ assigned(1, 2, 3, 4)
 
 把多种类型叠加为一种类型
 
-```js
+```ts
 function extend<T, U>(first: T, second: U): T & U {
   let result = <T & U>{}
   for (let id in first) {
@@ -413,7 +413,7 @@ type Type1 = TypeName<string | number> // Type1的类型是string|number
 
 ### 5.3 类型别名（type 关键字）
 
-类型别名有时候和接口很像，但是可以作用域原始值，联合类型，元组以及其他任何需要你手写的类型。
+类型别名有时候和接口很像，但是可以作用于原始值，联合类型，元组以及其他任何需要你手写的类型。
 
 ```js
 type Name = string
@@ -623,7 +623,7 @@ export namespace subProp {
 }
 ```
 
-====================================
+<!-- ====================================
 
 ## 接口
 
@@ -673,7 +673,7 @@ function addName(constructor: { new (): any }) {
 class A {} // A.prototype.name = 'li'
 const a1 = new A()
 // console.log(a1.name); // error 类型“A”上不存在属性“name”
-```
+``` -->
 
 ## 参考
 
