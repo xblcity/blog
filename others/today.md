@@ -1,6 +1,11 @@
 
 # What I Learn Today
 
+### 2020.4.24 多云
+
+Today-do: JS-BASE  
+明天：整理简历
+
 ### 2020.4.23 多云
 
 Today-do: blogc优化完毕，整理笔记，整理简历  
