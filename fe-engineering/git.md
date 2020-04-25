@@ -120,12 +120,14 @@ git reset --hard b87d84885b5d3fd74c4e658c0ed6a6260d8d849a
 ### 报错信息
 
 #### git push fatal: No configured push destination.
+
 git本地仓库没有远程分支连接  
 git remote -v #察看当前远程分支列表  
 如果不显示,git remote add origin url  
 再次推送  
 
 #### git push fatal: The current branch master has no upstream branch.
+
 本地分支没有与远程仓库的分支进行关联
 To push the current branch and set the remote as upstream, use git push --set-upstream origin master
 
