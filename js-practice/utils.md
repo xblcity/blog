@@ -1,11 +1,11 @@
 # JS 常用工具函数/代码片段
 
 - [发送验证码倒计时](#发送验证码倒计时)
-- [时间格式的处理](#时间格式的处理)
 - [url 参数取值](#url参数取值)
+- [css 样式转换为 js 驼峰写法](#css属性转换为驼峰写法)
+- [时间格式的处理](#时间格式的处理)
 - [配置 axios 拦截器](#配置axios拦截器)
 - [jquery 的 ajax 配置](#jquery的ajax配置)
-- [css 样式转换为 js 驼峰写法](#css属性转换为驼峰写法)
 
 ## 发送验证码倒计时
 
@@ -99,6 +99,18 @@ function getQueryString (name) {
     return decodeURI(r[2]);
   return null;
 },
+```
+
+## css 样式转换为 js 驼峰写法
+
+```js
+function transformToCamel(s) {
+  return s.replace(/-\w/g, function(x) {
+    // \w 匹配字母或数字或下划线或汉字
+    return x.slice(1).toUpperCase()
+  })
+}
+transformToCamel('font-size') // fontSize
 ```
 
 ## 时间格式的处理
@@ -202,16 +214,6 @@ const request = function(params) {
 }
 ```
 
-## css 样式转换为 js 驼峰写法
-
-```js
-function transformToCamel(s) {
-  return s.replace(/-\w/g, function(x) {
-    // \w 匹配字母或数字或下划线或汉字
-    return x.slice(1).toUpperCase()
-  })
-}
-transformToCamel('font-size') // fontSize
-```
-
 ## 参考
+
+- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
