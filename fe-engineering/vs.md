@@ -118,3 +118,5 @@ eslint插件有两种作用, 1.警告提示 2.代码修复警告
 替换: Ctrl+H
 
 ## 如何制作自己的主题
+
+[VSCode自定义配色方案](https://www.cnblogs.com/garvenc/p/vscode_customize_color_theme.html) 可以参考下
