@@ -26,6 +26,16 @@
 
 ## 微信登录
 
+网页按钮 ---> 点击 ---> 调用后端接口并传递redirectUrl  --> 后端接口把redirectUrl和比较隐私的appid等信息进行拼接返回给前端一个路径地址
+
+--> 前端接收到请求并跳转到这个路径 --> 页面出现是否授权的弹窗 --> 点击授权之后微信会自动跳转到到一个链接(该链接包含redirectUrl和query参数code&state)
+
+--> 前端取出code --> 调用后端接口  --> 后端接口请求微信的接口并获取到token, refresh_token, openid, token过期时间等 
+
+--> 后端将access_token等信息保存 --> 后端生成自己的token给前端
+
+前端发送请求用户信息接口 --> 后端在第一次拿到access_token的时候就已经从微信开发者链接发送请求获取到用户的信息了 --> 结果发送给前端
+
 ## 参考
 
 - [微信公众平台开发者文档-网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)
