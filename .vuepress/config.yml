@@ -68,7 +68,6 @@ themeConfig:
       children:
         - /react/lifecycle
         - /react/react-hooks
-        - /react/store
         - /react/react-ts
         - /react/redux
         - /react/redux-middleware
