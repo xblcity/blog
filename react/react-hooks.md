@@ -6,6 +6,8 @@
 
 当父组件更新时，使用 `React.memo()` 包裹的组件会对 `props` 进行浅比较，而不是一刀切将子组件全部更新
 
+> 浅比较的策略
+
 ## useState()
 
 `useState()`，该函数接收一个值，返回一个数组，第一个是变量标识符，第二个是改变值的方法。
@@ -18,16 +20,44 @@
 
 useEffect()，该函数接收两个参数，第一个是函数，第二个是数组依赖项(可以传递多个依赖)，
 
-可以实现 class 组件的 componentDidMount, componentWillUpdate, componentWillUnmount 三个生命周期
+可以实现 class 组件的 `componentDidMount, componentWillUpdate, componentWillUnmount` 三个生命周期
 
 ## useCallback()
 
 接收两个参数，第一个是函数，第二个是依赖项，**该函数返回一个函数**，
 
-因为 useMemo 只能进行浅比较，当传递的 props 是函数时，子组件还是会重新渲染，useCallback 可以弥补这个缺陷
+因为 `React.memo` 只能进行浅比较，当传递的 props 是函数时，子组件还是会重新渲染，`useCallback` 可以弥补这个缺陷
 
 ```js
-const App = () => {}
+const App = () => {
+  const [value, setValue] = useState(0)
+  const [p, setP] = useState(0)
+
+  // 如果是组件本身的函数，可以不用使用useCallback包裹
+  const changeValue = () => {
+    setValue(value + 1)
+  }
+  const test = () => {
+    console.log(p)
+  }
+  // 不使用useCallback，每次组件更新，传递给子组件的函数引用不同
+  const test2 = useCallback(test, [p])
+  // 使用useMemo也可以
+  // const test2 = useMemo(() => test, [p])
+
+  return (
+    <div>
+      <button onClick={changeValue}>{value}</button> 
+      <Child2 p={p} test={test2}>
+    </div> 
+  )
+}
+
+const Child = () => {
+  console.log('child执行了')
+  return <div>{props.p}</div>
+}
+const Child2 = React.memo(Child)
 ```
 
 ## useMemo()
