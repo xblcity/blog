@@ -63,7 +63,7 @@ themeConfig:
         - /js-practice/array
         - /js-practice/utils
     - title: 框架及实践
-      collapsable: true
+      collapsable: false
       sidebarDepth: 2
       children:
         - /react/lifecycle

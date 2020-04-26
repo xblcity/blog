@@ -103,9 +103,9 @@ git merge back-end --allow-unrelated-histories // 允许合并两个无相关记
 
 ### 放弃本地修改
 
-`git reset xxx` 后面根据提示进行修改  
+`git checkout 文件名`
 
-或者 `git checkout 文件名`
+或者 `git reset xxx` 后面根据提示进行修改  
 
 ### 回退至历史分支
 
