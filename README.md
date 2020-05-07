@@ -40,7 +40,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [在React中使用TS](https://github.com/xblcity/blog/blob/master/js-base/react-ts.md)
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-- [复杂业务组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
+- [复杂表单组件](https://github.com/xblcity/blog/blob/master/react/complex-co.md)
 - [微信公众号网页登录及支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 
 ## 前端综合知识
