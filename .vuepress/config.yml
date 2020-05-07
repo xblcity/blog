@@ -71,7 +71,7 @@ themeConfig:
         - /react/react-ts
         - /react/redux
         - /react/redux-middleware
-        - /react/complex-co
+        - /react/find-house
         - /library/wx-web
     - title: 前端综合知识
       collapsable: false
