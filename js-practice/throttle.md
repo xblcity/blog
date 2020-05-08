@@ -73,7 +73,7 @@ const throttle = (fn, interval) => {
 }
 ```
 
-个人觉得并不要给返回的函数重新绑定 this.
+可以去绑定 `this` ，因为返回的函数有可能会使用 `bind` 改变 `this` ，执行的函数可以实现透传 `this`
 
 疑问三：args 参数有必要吗？
 
@@ -85,8 +85,10 @@ const scrollMethod = (...args) => {
   console.log('参数是：', ...args)
 }
 const better_scroll = throttle(scrollMethod, 1000)
+// document.addEventListener('scroll', better_scroll(5, 6, 7)) // 这样传的是函数的执行，只会执行一次
+// 传递的是已经执行的函数
 const better_scroll_params = better_scroll(5, 6, 7)
-document.addEventListener('scroll', better_scroll_params)
+document.addEventListener('scroll', better_scroll) 
 ```
 
 结果只在页面第一次加载的时候执行了该函数，多次滚动并没有触发`better_scroll_params`该函数，为什么呢？因为`better_scroll_params`函数是已经执行好了的函数，并不是函数的定义，所以也就只在第一次执行了一次。
@@ -140,28 +142,13 @@ const throttle = (func, wait) => {
     }
   }
 }
-```
 
-2. 有必要使用 apply 吗？
-3. 有必要使用 args 吗？
-
-个人觉得都没必要，理由也是和不使用定时器版本的理由一样，
-
-```js
-const throttle = (func, wait) => {
-  let timerId
-  return function foo(...args) {
-    if (!timerId) {
-      timerId = setTimeout(() => {
-        timerId = null
-        func()
-      }, wait)
-    }
-  }
-}
 const better_scroll = throttle(() => console.log('触发了滚动事件'), 1000)
 document.addEventListener('scroll', better_scroll)
 ```
+
+2. 有必要使用 apply 吗？主要是为了传递，this，应该使用
+3. 有必要使用 args 吗？可以不需要
 
 ### 补充在 react 中遇到的问题
 
@@ -181,7 +168,7 @@ export const debounce = (func, delay) => {
   return function foo(...args) {
     // debugger;
     // console.log(this, 98989898);
-    let context = this
+    // let context = this
     if (timer) {
       clearTimeout(timer)
     }
@@ -189,7 +176,8 @@ export const debounce = (func, delay) => {
       // 普通函数需要执行this func()直接执行this 是window
       // 箭头函数 this是静态语法 即与setTimeout所处环境的this一致，即与函数debounceReturnCb环境一致
       // apply第二个是数组
-      func.apply(context, args)
+      // func.apply(context, args)
+      func.apply(this, args)
       clearTimeout(timer)
     }, delay)
   }

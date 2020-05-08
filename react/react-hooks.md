@@ -20,7 +20,7 @@
 
 useEffect()，该函数接收两个参数，第一个是函数，第二个是数组依赖项(可以传递多个依赖)，
 
-可以实现 class 组件的 `componentDidMount, componentWillUpdate, componentWillUnmount` 三个生命周期
+可以实现 class 组件的 `componentDidMount, componentDidUpdate, componentWillUnmount` 三个生命周期
 
 ## useCallback()
 
