@@ -628,6 +628,8 @@ tagClose = (tag) => {
 
 封装也是参照了`antd-mobile`
 
+![表单选项卡](./images/co_options/select15.png)
+
 ```js
 const prefixCls = 'inputSearch';
 
