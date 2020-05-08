@@ -626,7 +626,143 @@ tagClose = (tag) => {
 
 `InputSearch` 组件需要实现的功能，接收`value`和`onchange`回调。当input聚集焦点的时候，palceholder移动到左边，并且右边出现`叉号`，点击叉号可以使`input`的失去焦点且重置当前参数
 
+封装也是参照了`antd-mobile`
+
 ```js
+const prefixCls = 'inputSearch';
+
+const InputSearch = props => {
+  const { style, disabled, placeholder, maxLength } = props;
+  const [value, setValue] = useState(''); // input值
+  const [focus, setFocus] = useState(false); // 当前是否是聚焦状态
+  const inputRef = useRef(null); // input实例
+  const inputContainerRef = useRef(null); // input Container实例
+  const syntheticPhRef = useRef(null); // 合成
+
+  // 表单提交事件
+  const onSubmit = e => {
+    e.preventDefault();
+    props.onSubmit(value || '');
+  };
+
+  // input change事件
+  const onChange = e => {
+    if (!focus) {
+      setFocus(true);
+    }
+    const value = e.target.value;
+    setValue(value);
+    if (props.onChange) {
+      props.onChange(value);
+    }
+  };
+
+  // 聚集焦点
+  const onFocus = () => {
+    setFocus(true);
+    if (inputRef) {
+      inputRef.current.focus();
+    }
+    if (props.onFocus) {
+      props.onFocus();
+    }
+  };
+
+  // 失去焦点
+  const onBlur = () => {
+    setFocus(false);
+    if (props.onBlur) {
+      // fix autoFocus item blur with flash
+      setTimeout(() => {
+        // fix ios12 wechat browser click failure after input
+        if (document.body) {
+          document.body.scrollTop = document.body.scrollTop;
+        }
+      }, 100);
+      props.onBlur();
+    }
+  };
+
+  // 清除
+  const onClear = () => {
+    doClear();
+  };
+
+  // 清除
+  const doClear = () => {
+    setFocus(false);
+    setValue('');
+    if (props.onClear) {
+      props.onClear('');
+    }
+    if (props.onChange) {
+      props.onChange('');
+    }
+  };
+
+  // 盒子样式
+  const wrapCls = useMemo(() => {
+    return classnames(styles[prefixCls], {
+      [styles[`${prefixCls}-start`]]: !!(focus || (value && value.length > 0)),
+    });
+  }, [focus, value]);
+
+  const clearCls = useMemo(() => {
+    return classnames(styles[`${prefixCls}-clear`], {
+      [styles[`${prefixCls}-clear-show`]]: !!(focus || (value && value.length > 0)),
+    });
+  }, [focus, value]);
+
+  return (
+    <form onSubmit={onSubmit} className={wrapCls} style={style} ref={inputContainerRef} action="#">
+      <div className={styles[`${prefixCls}-input`]}>
+        <div className={styles[`${prefixCls}-synthetic-ph`]} ref={syntheticPhRef}>
+          <span className={styles[`${prefixCls}-synthetic-ph-container`]}>
+            <i className={styles[`${prefixCls}-synthetic-ph-icon`]} />
+            <span
+              className={styles[`${prefixCls}-synthetic-ph-placeholder`]}
+              // tslint:disable-next-line:jsx-no-multiline-js
+              style={{
+                visibility: placeholder && !value ? 'visible' : 'hidden',
+              }}
+            >
+              {placeholder}
+            </span>
+          </span>
+        </div>
+        <input
+          type="search"
+          className={styles[`${prefixCls}-value`]}
+          value={value}
+          disabled={disabled}
+          placeholder={placeholder}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          ref={inputRef}
+          maxLength={maxLength}
+        />
+        <a onClick={onClear} className={clearCls} />
+      </div>
+    </form>
+  );
+};
+
+function noop() {}
+InputSearch.defaultProps = {
+  prefixCls: 'inputSearch', // 前缀样式名
+  placeholder: '请输入...', // 占位文字
+  onSubmit: noop, // 表单提交回调
+  onChange: noop, // input change事件回调
+  onFocus: noop, // 聚焦事件
+  onBlur: noop, // 失去焦点事件
+  value: '',
+  autoFocus: false,
+  onClear: noop,
+  maxLength: 20,
+};
+
+export default InputSearch;
 ```
 
 <!-- # 复杂业务组件
