@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/xblcity/blog#readme",
   "dependencies": {
-    "minimist": "1.2.2"
+    "minimist": "1.2.3"
   },
   "devDependencies": {
     "vuepress": "^1.3.0",
