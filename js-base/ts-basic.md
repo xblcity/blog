@@ -18,43 +18,43 @@
 
 ```ts
 // number
-let num: number = 123
-num = 456
+let num: number = 123;
+num = 456;
 // boolean
-let bool: boolean = true
-bool = false
+let bool: boolean = true;
+bool = false;
 // string
-let str: string = '345'
-str = '789'
+let str: string = "345";
+str = "789";
 // undefined
-let u: undefined = undefined
-u = undefined
+let u: undefined = undefined;
+u = undefined;
 // null
-let n: null = null
-n = null
+let n: null = null;
+n = null;
 // symbol
-const sym: symbol = Symbol() // Symbol
+const sym: symbol = Symbol(); // Symbol
 const myobj = {
-  [sym]: 'value',
-}
+  [sym]: "value",
+};
 ```
 
 ### 1.2 any,never,unknown,void
 
 ```ts
 // any，用户输入或者第三方库不知道的输出类型
-let value: any = 45
-value = '456'
+let value: any = 45;
+value = "456";
 
 // void,一般用于函数返回值为空
 const consoleText = (text: string): void => {
-  console.log(text)
-}
+  console.log(text);
+};
 
 // never，永不为true
 const errFunc = (message: string): never => {
-  throw new Error(message)
-}
+  throw new Error(message);
+};
 
 // unknown
 // 大多数情况下可以使用unknown来代替any
@@ -63,10 +63,10 @@ const errFunc = (message: string): never => {
 ### 1.3 数组
 
 ```ts
-let arr: number[] = [4, 5, 6] // 数组
-arr = [7, 7, 7]
-let arr1: Array<string> // 也可以这样声明
-arr1 = ['1', '2']
+let arr: number[] = [4, 5, 6]; // 数组
+arr = [7, 7, 7];
+let arr1: Array<string>; // 也可以这样声明
+arr1 = ["1", "2"];
 ```
 
 ### 1.4 对象
@@ -74,25 +74,25 @@ arr1 = ['1', '2']
 `object`，建议都用`interface`来替代
 
 ```js
-declare function create(o: object | null): void
-create({ prop: 0 }) // OK
-create(null) // OK
-create(42) // Error
+declare function create(o: object | null): void;
+create({ prop: 0 }); // OK
+create(null); // OK
+create(42); // Error
 // 使用interface限制对象属性类型，关于interface后面再说
 interface Obj {
   name: string;
 }
 let obj: Obj = {
-  name: 'luffy',
-}
+  name: "luffy",
+};
 ```
 
 ### 1.5 元组(tuple)
 
 ```ts
-let tu: [string, number, number] = ['2', 1, 1] // tuple类型
-tu[0] = '铁憨憨'
-tu[0].split('')
+let tu: [string, number, number] = ["2", 1, 1]; // tuple类型
+tu[0] = "铁憨憨";
+tu[0].split("");
 ```
 
 ### 1.6 枚举(enum 关键字)
@@ -102,7 +102,7 @@ enum codeStatus {
   unAuth = 401,
   redirect = 403,
 }
-console.log(codeStatus.unAuth) // 401
+console.log(codeStatus.unAuth); // 401
 ```
 
 枚举可以进行反向映射
@@ -113,165 +113,188 @@ console.log(codeStatus.unAuth) // 401
 
 ```ts
 // 不使用interface
-const getFullName = ({ firstName, lastName }: { firstName: string; lastName: string }): string => {
+const getFullName = ({
+  firstName,
+  lastName,
+}: {
+  firstName: string;
+  lastName: string;
+}): string => {
   // :string可以省略。ts函数返回值可以省略，让ts自己去推断
-  return `${firstName}${lastName}`
-}
+  return `${firstName}${lastName}`;
+};
 
 // 使用interface表示对象类型
 interface Info {
-  firstName: string // 这里写 , ; 或者不写都可以
-  lastName: string
+  firstName: string; // 这里写 , ; 或者不写都可以
+  lastName: string;
 }
 const getMyFullName = ({ firstName, lastName }: Info): string => {
   // :string可以省略。ts函数返回值可以省略
-  return `${firstName}${lastName}`
-}
+  return `${firstName}${lastName}`;
+};
 // 定义函数参数类型及返回值类型
 interface AddFunc {
-  (num1: number, num2: number): number
+  (num1: number, num2: number): number;
 }
-const add: AddFunc = (n1, n2) => n1 + n2
+const add: AddFunc = (n1, n2) => n1 + n2;
 ```
 
 interface 也可以定义 **可选属性**， **只读属性**。
+
+### implements
 
 使用 interface 强制一个类(class) 符合某种约定，关键字**implements**
 
 ```ts
 interface ClockInterface {
-  currentTime: Date
-  setTime(d: Date)
+  currentTime: Date;
+  setTime(d: Date);
 }
 
 class Clock implements ClockInterface {
-  currentTime: Date
+  currentTime: Date;
   setTime(d: Date) {
-    this.currentTime = d
+    this.currentTime = d;
   }
   constructor(h: number, m: number) {}
 }
 ```
 
-`接口的继承`
+### extends
+
+接口的继承
 
 ```ts
 interface Shape {
-  color: string
+  color: string;
 }
 
 interface Square extends Shape {
-  sideLength: number
+  sideLength: number;
 }
 
-let square = <Square>{}
+let square = <Square>{};
 // 这种 <Type>name 的格式 意思是 name的类型是Type类型，在类型推断，泛型中都有用到
-square.color = 'blue'
-square.sideLength = 10
+square.color = "blue";
+square.sideLength = 10;
 ```
 
 ## 3.函数
 
 可以给每个参数添加类型之后再为函数本身添加返回值类型。 TypeScript 能够根据返回语句自动推断出返回值类型，因此我们通常省略它。
 
-为函数定义类型
+### 为函数定义类型
 
 ```ts
 // 1.普通函数声明，最便捷的一种？
 function add(arg1: number, arg2: number): number {
-  return arg1 + arg2
+  return arg1 + arg2;
 }
 
 // 2.函数表达式
-let myAdd = function(x: number, y: number): number {
-  return x + y
-}
+let myAdd = function (x: number, y: number): number {
+  return x + y;
+};
 ```
 
-书写完整函数类型
+### 书写完整函数类型
 
 函数类型包含两部分：参数类型和返回值类型。 当写出完整函数类型的时候，这两部分都是需要的。
 
 ```ts
-let myAdd: (x: number, y: number) => number = function(x: number, y: number): number {
+let myAdd: (x: number, y: number) => number = function (
+  x: number,
+  y: number
+): number {
   // 注意，返回值要用 => 符号
-  return x + y
-}
+  return x + y;
+};
 ```
 
-函数类型也有**可选参数**，**默认参数**，**剩余参数**
+### 参数类型
+
+**可选参数**，**默认参数**，**剩余参数**
 
 ```ts
 // 可选参数必须要放在必选参数后面
 function buildName(firstName: string, lastName?: string) {
-  if (lastName) return firstName + ' ' + lastName
-  else return firstName
+  if (lastName) return firstName + " " + lastName;
+  else return firstName;
 }
 
 // 剩余参数
 function buildName(firstName: string, ...restOfName: string[]) {
-  return firstName + ' ' + restOfName.join(' ')
+  return firstName + " " + restOfName.join(" ");
 }
 
-let employeeName = buildName('Joseph', 'Samuel', 'Lucas', 'MacKinzie')
+let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
 ```
 
-ts 还可以使用接口以及 type 关键字定义函数类型
+### ts 还可以使用接口以及 type 关键字定义函数类型
 
 ```ts
 // 使用接口定义函数类型
 interface Add3Func {
-  (x: number, y: number): number
+  (x: number, y: number): number;
 }
-let add3: Add3Func = (arg1: number, arg2: number) => arg1 + arg2
+let add3: Add3Func = (arg1: number, arg2: number) => arg1 + arg2;
 // 使用类型别名，即使用type关键字，推荐
-type Add4 = (x: number, y: number) => number
-let add4: Add4 = (arg1: number, arg2: number): number => arg1 + arg2
+type Add4 = (x: number, y: number) => number;
+let add4: Add4 = (arg1: number, arg2: number): number => arg1 + arg2;
 ```
 
 ts 中为 this 指定类型，这部分等用到了再做记录
 
 ```ts
 // 定义回调函数
-const getNum = (arr: number[], callback: (...args: number[]) => number): number => callback(...arr)
-getNum([1, 2], (...args: number[]) => args.length)
+const getNum = (
+  arr: number[],
+  callback: (...args: number[]) => number
+): number => callback(...arr);
+getNum([1, 2], (...args: number[]) => args.length);
 ```
 
-函数重载
+### 函数重载
 
 函数重载，根据输入的不同，返回对应的输出。可以定义多种参数类型。好处是可以让开发者不用去函数的内部去查找到底应该传几个值，以及有怎样的输出
 
 ```ts
 // 这个函数可以传 1个参数，2个参数，4个参数
 interface Direction {
-  top: number
-  bottom?: number
-  left?: number
-  right?: number
+  top: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 }
-function assigned(all: number): Direction
-function assigned(topAndBottom: number, leftAndRight: number): Direction
-function assigned(top: number, right: number, bottom: number, left: number): Direction
+function assigned(all: number): Direction;
+function assigned(topAndBottom: number, leftAndRight: number): Direction;
+function assigned(
+  top: number,
+  right: number,
+  bottom: number,
+  left: number
+): Direction;
 
 function assigned(a: number, b?: number, c?: number, d?: number) {
   if (b === undefined && c === undefined && d === undefined) {
-    b = c = d = a
+    b = c = d = a;
   } else if (c === undefined && d === undefined) {
-    c = a
-    d = b
+    c = a;
+    d = b;
   }
   return {
     top: a,
     right: b,
     bottom: c,
     left: d,
-  }
+  };
 }
 
-assigned(1)
-assigned(1, 2)
-assigned(1, 2, 3)
-assigned(1, 2, 3, 4)
+assigned(1);
+assigned(1, 2);
+assigned(1, 2, 3);
+assigned(1, 2, 3, 4);
 ```
 
 ## 4.高级类型
@@ -282,7 +305,7 @@ assigned(1, 2, 3, 4)
 
 ```ts
 function extend<T, U>(first: T, second: U): T & U {
-  let result = <T & U>{}
+  let result = <T & U>{};
   for (let id in first) {
     (<any>result)[id] = (<any>first)[id];
   }
@@ -301,13 +324,13 @@ function extend<T, U>(first: T, second: U): T & U {
 
 ```js
 function padLeft(value: string, padding: any) {
-  if (typeof padding === 'number') {
-    return Array(padding + 1).join(' ') + value // 长度是padding+1的空数组。join(" ")用于产生数组长度的空格
+  if (typeof padding === "number") {
+    return Array(padding + 1).join(" ") + value; // 长度是padding+1的空数组。join(" ")用于产生数组长度的空格
   }
-  if (typeof padding === 'string') {
-    return padding + value // 将字符串排列在value前面
+  if (typeof padding === "string") {
+    return padding + value; // 将字符串排列在value前面
   }
-  throw new Error(`Expected string or number, got '${padding}'.`)
+  throw new Error(`Expected string or number, got '${padding}'.`);
 }
 
 // 这么做ts不会报错，但存在过度设计，
@@ -316,27 +339,27 @@ function padLeft(value: string, padding: string | number) {
 }
 ```
 
-## 5.基础知识补充
+## 5.类型断言, 泛型, 类型别名
 
 ### 5.1 类型断言
 
 ```ts
 // 比如any类型的但我知道它现在应该是更精确的值，比如string
-let someValue: any = 'this is a string'
-let strLength: number = (<string>someValue).length
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
 
 // 另一种 as 写法 JSX只能用这种类型断言
-let someValue: any = 'this is a string'
-let strLength: number = (someValue as string).length
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;
 
 // 类型断言
 const getMyLength = (target: string | number): number => {
   if ((target as string).length) {
-    return (target as string).length
+    return (target as string).length;
   } else {
-    return target.toString().length
+    return target.toString().length;
   }
-}
+};
 ```
 
 ### 5.2 泛型
@@ -348,17 +371,17 @@ const getMyLength = (target: string | number): number => {
 ```ts
 function identity<T>(arg: T): T {
   // 这里T仅仅是一个表示，可以是其他字母比如 P,U等
-  return arg
+  return arg;
 }
 // 明确指定 T 是 string类型
-let output = identity<string>('myString') // type of output will be 'string'
+let output = identity<string>("myString"); // type of output will be 'string'
 
 // 下面这种方法更普遍.利用了类型推论 -- 即编译器会根据传入的参数自动地帮助我们确定T的类型
-let output = identity('myString')
+let output = identity("myString");
 
 // 接口使用泛型
 interface Co<T> {
-  (name: T): T
+  (name: T): T;
 }
 ```
 
@@ -367,48 +390,48 @@ interface Co<T> {
 ```ts
 //! 使用泛型而不是any
 const getArray = <T>(value: T, times: number = 5): T[] => {
-  return new Array(times).fill(value)
-} // T代表同一种不确定的类型
+  return new Array(times).fill(value);
+}; // T代表同一种不确定的类型
 getArray([2], 3).forEach((item) => {
-  console.log(item.length)
-})
-getArray('2', 3)
+  console.log(item.length);
+});
+getArray("2", 3);
 // const getLength1 = <T>(params:T):number {
 //   return params.length
 // }
 // 报错，有些类型是没有length属性的
 // 使用泛型简单定义函数，函数表达式
 const getArray2: <A>(arg: A, times: number) => A[] = (arg, times) => {
-  return new Array(times).fill(arg)
-}
+  return new Array(times).fill(arg);
+};
 // 使用类型别名，泛型
-type GetArray3 = <T>(arg: T, times: number) => T[]
+type GetArray3 = <T>(arg: T, times: number) => T[];
 const getArray3: GetArray3 = <T>(arg: T, times: number): T[] => {
-  return new Array(times).fill(arg)
-}
+  return new Array(times).fill(arg);
+};
 // 使用泛型，接口形式定义函数
 interface GetArray4 {
-  <T>(arg: T, times: number): T[]
+  <T>(arg: T, times: number): T[];
 }
 const getArray4: GetArray4 = <T>(arg: T, times: number): T[] => {
-  return new Array(times).fill(arg)
-}
+  return new Array(times).fill(arg);
+};
 // 类型推论，类型断言，泛型
 const getMyLength1 = (name: string | number): number => {
   if ((name as string).length) {
-    return (name as string).length
+    return (name as string).length;
   } else {
-    return name.toString().length
+    return name.toString().length;
   }
-}
+};
 // 泛型
 const getAllArray = <T>(value: T, times: number = 5): T[] => {
-  return new Array(times).fill(value)
-}
-getMyLength1('aa')
+  return new Array(times).fill(value);
+};
+getMyLength1("aa");
 // 三元表达式
-type TypeName<T> = T extends any ? T : never
-type Type1 = TypeName<string | number> // Type1的类型是string|number
+type TypeName<T> = T extends any ? T : never;
+type Type1 = TypeName<string | number>; // Type1的类型是string|number
 ```
 
 ### 5.3 类型别名（type 关键字）
@@ -433,7 +456,7 @@ typeof Container<T> = {
 }
 ```
 
-类型别名和接口很像，但是类型别名不能被 extends 和 implements。不过类型别名可以很好的表示交叉类型和联合类型。不过两者还有其他细小的差别...
+类型别名和接口很像，但是类型别名不能被 `extends` 和 `implements` 。不过类型别名可以很好的表示交叉类型和联合类型。不过两者还有其他细小的差别...
 
 ## 6.类
 
@@ -500,23 +523,23 @@ console.log(xiaoming.weight) // 编译之前就报错
 
 ```ts
 abstract class Animal {
-  abstract makeSound(): void
+  abstract makeSound(): void;
   move(): void {
-    console.log('roaming the earch...')
+    console.log("roaming the earch...");
   }
 }
-const animal = new Ainmal() // 报错
+const animal = new Ainmal(); // 报错
 
 class Cat extends Animal {
   makeSound() {
-    console.log('miao miao')
+    console.log("miao miao");
   }
 }
 
-const cat = new Cat()
+const cat = new Cat();
 
-cat.makeSound() // miao miao
-cat.move() // roaming the earch...
+cat.makeSound(); // miao miao
+cat.move(); // roaming the earch...
 ```
 
 ## 7.装饰器
@@ -561,6 +584,19 @@ namespace Validation {
     isAcceptable(s: string): boolean;
   }
 }
+
+// 使用declare
+declare namespace Validation {
+  export interface StringValidator {
+    isAcceptable(s: string): boolean;
+  }
+}
+
+// 或者使用下面写法
+export as namespace Validation
+export interface StringValidator {
+  isAcceptable(s: string): boolean;
+}
 ```
 
 外部命名空间 `declare` 关键字
@@ -603,23 +639,23 @@ namespace Animals {
 mylib.d.ts
 
 ```ts
-export as namespace myLib
+export as namespace myLib;
 
 // 为模块定义函数类型
-export function myMethod(a: string): string
-export function myOtherMethod(a: number): number
+export function myMethod(a: string): string;
+export function myOtherMethod(a: number): number;
 // 为模块定义接口类型
 export interface someType {
-  name: string
-  length: number
-  extras?: string[]
+  name: string;
+  length: number;
+  extras?: string[];
 }
 // 为模块定义属性
-export const myField: number
+export const myField: number;
 
 // ... ?
 export namespace subProp {
-  export function foo(): void
+  export function foo(): void;
 }
 ```
 
