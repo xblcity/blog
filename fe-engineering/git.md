@@ -41,6 +41,12 @@ git add .
 git commit -m 'message'
 ```
 
+如果使用了 `husky` 配置了 `git` 钩子函数，想要忽略检查可以在后面加上 `--no-verify` 参数
+
+```js
+git commit -m 'message' --no-verify
+```
+
 ## 将分支推送至远程
 
 ```js
@@ -157,7 +163,7 @@ git reset --hard 580361e  //  git reset 来返回到相应的版本即可，HEAD
 ## 查看当前分支信息/上游分支
 
 ```js
-git branch -vv 
+git branch -vv
 ```
 
 ## 查看远程分支
@@ -169,7 +175,7 @@ git remote // 列出远程所有主机，比如 origin
 git branch -r // 列出远程分支
 ```
 
-如果没有更新到某个主机最新的分支，重新获取origin上面的分支
+如果没有更新到某个主机最新的分支，重新获取 origin 上面的分支
 
 ```js
 git remote update origin --prune
