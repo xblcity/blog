@@ -8,6 +8,7 @@
 - 查看/切换/新建分支
 - 本地同步远程仓库代码
 - 删除分支
+- 修改分支名
 - 撤销本地 commit
 - 版本切换/回滚
 - 查看当前分支信息/上游分支
@@ -106,6 +107,12 @@ git push -u origin master // 将本地 master分支推送至 remote master  存�
 
 合并分支在远程仓库也包括 `PR` (pull request)
 
+## 修改分支名
+
+```js
+git branch -m oldName newName
+```
+
 ## 删除分支
 
 删除本地 develop 分支
@@ -120,20 +127,27 @@ git branch -D develop
 git push origin --delete develop
 ```
 
-## 撤销本地 commit
+## 撤销 commit(回退)
 
 ```js
+git log
 git reset --soft HEAD^
 ```
+推送至远程
 
-HEAD^: 上一个版本，也可以写成 HEAD~1, 如果你进行了 2 次 commit，想都撤回，可以使用 HEAD~2
+```js
+git push --force
+```
 
---soft: 不删除工作空间改动代码，撤销 commit，不撤销 git add .
 
---mixed: 意思是：不删除工作空间改动代码，撤销 commit，并且撤销 git add . 操作
-这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+`HEAD^`: 上一个版本，也可以写成 HEAD~1, 如果你进行了 2 次 commit，想都撤回，可以使用 HEAD~2
 
---hard: 删除工作空间改动代码，撤销 commit，撤销 git add . 注意完成这个操作后，就恢复到了上一次的 commit 状态。
+`--soft`: 不删除工作空间改动代码，撤销 commit，不撤销 git add .，然后可以git stash，再重新提交
+
+`--mixed`: 意思是：不删除工作空间改动代码，撤销 commit，并且撤销 git add . 操作
+这个为默认参数, git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+
+`--hard`: 删除工作空间改动代码，撤销 commit，撤销 git add . 注意完成这个操作后，就恢复到了上一次的 commit 状态。
 
 _如果只是 commit 注释写错了，只是想改注释_
 
@@ -181,13 +195,24 @@ git branch -r // 列出远程分支
 git remote update origin --prune
 ```
 
+## 修改远程仓库地址
+
+如果远程仓库地址进行了更换，我们需要修改 origin 的地址
+
+```js
+git remote -v  // 查看远程origin
+git remote rm origin // 删除远程origin
+git remote add origin xxx.git
+```
+ git remote add origin git@10.1.2.7:Visual-FE/BCT.git
+
 ## git 贮藏
 
 [git 工具贮藏与清理](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86#_git_stashing)
 
 有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态， 而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。 针对这个问题的答案是 git stash 命令。
 
-需要注意的是，在贮藏的时候不要忘记把非版本跟踪的文件也贮藏起来
+需要注意的是，在贮藏的时候不要忘记把非版本跟踪的文件也贮藏起来，为了以防万一，可以使用 VS Code 提供的贮藏功能。
 
 ```js
 git status
@@ -207,10 +232,6 @@ git checkout xxx
 git stash apply // 应用最近一次的贮藏
 ```
 
-## 合并仓库
-
-- [git 之两个仓库的合并操作](https://www.jianshu.com/p/42a10bbfbf97)
-
 ## 创建一个空分支
 
 - [在 GIT 中创建一个空分支](https://segmentfault.com/a/1190000004931751)
@@ -220,8 +241,8 @@ git stash apply // 应用最近一次的贮藏
 ### git push fatal: No configured push destination.
 
 git 本地仓库没有远程分支连接  
-git remote -v #察看当前远程分支列表  
-如果不显示,git remote add origin url  
+git remote -v 察看当前远程分支列表  
+如果不显示, git remote add origin url  
 再次推送
 
 ### git push fatal: The current branch master has no upstream branch.
