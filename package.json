@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build && node ./.vuepress/scripts/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/xblcity/blog#readme",
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "minimist": "1.2.3"
   },
   "devDependencies": {
