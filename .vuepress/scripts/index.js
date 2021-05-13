@@ -15,7 +15,7 @@ const preContent = `# Blog
 
 _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
-通过./vuepress/script脚本自动生成readme
+通过./vuepress/script脚本自动生成README
 `;
 
 const handleMdTitle = (mdDir) => {
