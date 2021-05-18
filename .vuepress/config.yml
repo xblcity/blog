@@ -88,6 +88,7 @@ themeConfig:
         - /fe-engineering/webpack
         - /fe-engineering/vs
         - /fe-engineering/git
+        - /fe-engineering/git-account
     - title: 后端
       collapsable: false
       sidebarDepth: 2
