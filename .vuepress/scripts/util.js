@@ -46,4 +46,18 @@ const handleContent = (docConfig, url, mdPath) => {
   fs.writeFileSync(mdPath, content);
 };
 
+const replaceRoute = (filePath, sourceRegx, targetStr) => {
+  fs.readFile(filePath, function(err, data) {
+    if (err) {
+      return err;
+    }
+    let str = data.toString();
+    str = str.replace(sourceRegx, targetStr);
+    fs.writeFile(filePath, str, function(err) {
+      if (err) return err;
+    });
+  });
+};
+
 module.exports.handleContent = handleContent;
+module.exports.replaceRoute = replaceRoute;

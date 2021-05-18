@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 const chalk = require("chalk");
-const { handleContent } = require("./util.js");
+const { handleContent, replaceRoute } = require("./util.js");
 
 const preUrl = "https://github.com/xblcity/blog/blob/master";
 const mdPath = path.resolve(__dirname, "../../README.md");
@@ -16,6 +16,12 @@ try {
     fsExtra.removeSync(docPath);
   }
   if (fs.existsSync(distPath)) {
+    const iFile = path.resolve(__dirname, "../dist/index.html");
+    const tFile = path.resolve(__dirname, "../dist/404.html");
+
+    replaceRoute(iFile, /\"\/asset/g, `"./asset`);
+    replaceRoute(tFile, /\"\/asset/g, `"./asset`);
+    replaceRoute(iFile, /\"\/avatar/g, `"./avatar`);
     fsExtra.move(distPath, docPath, (err) => {
       if (err) return console.log(chalk.red(err));
       console.log(chalk.green("文件移动成功!"));
