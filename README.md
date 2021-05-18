@@ -8,7 +8,7 @@
 
 _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
-通过./vuepress/script脚本可实现readme自动生成
+通过./vuepress/script脚本自动生成README
 
 ## JS基础
      
@@ -55,6 +55,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [webpack 配置及优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack.md)
 - [vscode 插件与配置](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
 - [git 的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
+- [Git 多账号配置](https://github.com/xblcity/blog/blob/master/fe-engineering/git-account.md)
     
 ## 后端
      

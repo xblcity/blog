@@ -100,7 +100,7 @@ git config --local user.email "your email"
 
 3. 每次push 都提示Enter passphrase for key 'xxx'
 
-解决方案：在生成key的时候不输入密码(如果已经生成key，在重新生成一次覆盖原文件)
+解决方案：在生成key的时候不输入密码(如果已经生成key，再重新生成一次覆盖原文件)
 ## 参考
 
 - [window 下 git 多账户管理](https://juejin.cn/post/6912337687366565895)
