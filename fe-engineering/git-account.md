@@ -44,7 +44,6 @@ PreferredAuthentications publickey #强制验证方式，这里使用的是publi
 Host github.com #服务器别名
 HostName github.com #主机地址
 User your_email@example.com #邮箱地址
-IdentityFile ~/.ssh/id_rsa_github #对应github 密钥路径
 IdentityFile C:/Users/AD/.ssh/id_rsa_github #对应github 密钥路径
 IdentitiesOnly yes #只接受SSH key 登录
 PreferredAuthentications publickey #强制验证方式，这里使用的是publickey
