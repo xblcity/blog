@@ -8,8 +8,6 @@
 
 _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
-通过./vuepress/script脚本自动生成README
-
 ## JS基础
      
 - [前端知识体系](https://github.com/xblcity/blog/blob/master/js-base/summary.md)
