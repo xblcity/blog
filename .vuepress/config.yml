@@ -1,3 +1,4 @@
+base: /blog/
 title: Blog
 description: 小白龙的前端记录
 locales:

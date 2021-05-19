@@ -12,7 +12,7 @@ try {
   const doc = yaml.load(fs.readFileSync(configFile, "utf8"));
   const docConfig = doc.themeConfig.sidebar;
   if (docConfig) {
-    handleContent(docConfig, preWbeSiteUrl, mdWebsitePath);
+    handleContent(docConfig, preWbeSiteUrl, mdWebsitePath, '');
     console.log(chalk.blue("WEBSITE-README创建完成!"));
   }
 } catch (e) {

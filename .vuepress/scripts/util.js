@@ -24,7 +24,7 @@ const handleMdTitle = (mdDir) => {
   return title;
 };
 
-const handleContent = (docConfig, url, mdPath) => {
+const handleContent = (docConfig, url, mdPath, suffix) => {
   let mdContent = [];
   const docConfigList = docConfig.filter((item, index) => index > 0);
   docConfigList.slice(0).forEach((item) => {
@@ -32,7 +32,7 @@ const handleContent = (docConfig, url, mdPath) => {
     let subLine = [];
     item.children.forEach((mdDir) => {
       const thirdTitle = handleMdTitle(mdDir);
-      subLine.push(`- [${thirdTitle}](${url}${mdDir}.md)`);
+      subLine.push(`- [${thirdTitle}](${url}${mdDir}${suffix})`);
     });
     const subContent = `## ${subTitle}
      \n${subLine.join(`\n`)}

@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "vuepress dev",
-    "build": "node ./.vuepress/scripts/md.js && vuepress build && node ./.vuepress/scripts/index.js"
+    "build": "node ./.vuepress/scripts/md.js && vuepress build && node ./.vuepress/scripts/index.js",
+    "deploy": "sh .vuepress/script/deploy.js"
   },
   "repository": {
     "type": "git",
