@@ -10,8 +10,6 @@ const preContent = `# Blog
 接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
 
 _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
-
-通过./vuepress/script脚本自动生成README
 `;
 
 const handleMdTitle = (mdDir) => {
