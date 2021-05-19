@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vuepress dev",
     "build": "node ./.vuepress/scripts/md.js && vuepress build && node ./.vuepress/scripts/index.js",
-    "deploy": "sh .vuepress/script/deploy.js"
+    "deploy": "sh ./.vuepress/scripts/deploy.sh"
   },
   "repository": {
     "type": "git",

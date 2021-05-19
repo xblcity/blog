@@ -2,7 +2,7 @@
 
 :seedling: 记录前端学习的笔记，总结、记录成长的过程。:four_leaf_clover: 构建自己的知识体系。
 
-:whale: [线上版本](https://blog.xblcity.com)
+:whale: [线上版本](https://xblcity.github.io/blog/)
 
 接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
 

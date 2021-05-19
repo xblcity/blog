@@ -29,12 +29,12 @@ themeConfig:
   logo: /avatar.png
   lastUpdated: 'LastEditTime'
   nav:
-    - text: 读书笔记
-      link: https://reading.xblcity.com
+    #- text: 读书笔记
+    #  link: https://reading.xblcity.com
     - text: Github
       link: https://github.com/xblcity
-    - text: 博客搭建
-      link: https://blogc.xblcity.com
+    #- text: 博客搭建
+    #  link: https://blogc.xblcity.com
   sidebar:
     - title: 介绍
       path: /
