@@ -1,38 +1,29 @@
-// 根据YML自动生成MD
-const fsExtra = require("fs-extra");
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 const chalk = require("chalk");
-const { handleContent, replaceRoute } = require("./util.js");
+const { handleContent } = require("./util.js");
 
 const preUrl = "https://github.com/xblcity/blog/blob/master";
 const mdPath = path.resolve(__dirname, "../../README.md");
 
+const preContent = `# Blog
+
+:seedling: 记录前端学习的笔记，总结、记录成长的过程。:four_leaf_clover: 构建自己的知识体系。
+
+:whale: [线上版本](https://xblcity.github.io/blog/)
+
+接触一样技术或者工具时，最先了解的是概念部分，紧接着是它的实践应用。随着实践应用的深入，我们可能需要通过了解原理来更好的解决问题，更好的优化实践应用。
+
+_是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
+`;
+
 try {
-  // const distPath = path.resolve(__dirname, "../dist/");
-  // const docPath = path.resolve(__dirname, "../../docs/");
-  // if (fs.existsSync(docPath)) {
-  //   fsExtra.removeSync(docPath);
-  // }
-  // if (fs.existsSync(distPath)) {
-  //   const iFile = path.resolve(__dirname, "../dist/index.html");
-  //   const tFile = path.resolve(__dirname, "../dist/404.html");
-
-  //   replaceRoute(iFile, /\"\/asset/g, `"./asset`);
-  //   replaceRoute(tFile, /\"\/asset/g, `"./asset`);
-  //   replaceRoute(iFile, /\"\/avatar/g, `"./avatar`);
-  //   fsExtra.move(distPath, docPath, (err) => {
-  //     if (err) return console.log(chalk.red(err));
-  //     console.log(chalk.green("文件移动成功!"));
-  //   });
-  // }
-
   const configFile = path.resolve(__dirname, "../config.yml");
   const doc = yaml.load(fs.readFileSync(configFile, "utf8"));
   const docConfig = doc.themeConfig.sidebar;
   if (docConfig) {
-    handleContent(docConfig, preUrl, mdPath, '.md');
+    handleContent(docConfig, preUrl, mdPath, preContent, ".md");
     console.log(chalk.blueBright("README创建完成!"));
   }
 } catch (e) {
