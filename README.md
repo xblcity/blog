@@ -24,6 +24,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [JS 设计模式](https://github.com/xblcity/blog/blob/master/js-base/design-mode.md)
 - [数据结构与算法](https://github.com/xblcity/blog/blob/master/js-base/algorithm.md)
 - [Typescript 认知](https://github.com/xblcity/blog/blob/master/js-base/ts-basic.md)
+- [JS 细碎知识点](https://github.com/xblcity/blog/blob/master/js-base/knowledge-points.md)
     
 ## JS应用
      
@@ -63,4 +64,21 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [使用服务器](https://github.com/xblcity/blog/blob/master/backend/server.md)
 - [nginx 在 window 下的配置与使用](https://github.com/xblcity/blog/blob/master/backend/nginx.md)
 - [ubuntu服务器终端及图形界面连接](https://github.com/xblcity/blog/blob/master/backend/ubuntu.md)
+    
+## HTML/CSS
+     
+- [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
+- [CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
+    
+## 第三方库
+     
+- [微信公众号网页登录与支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
+- [vue-element-admin 的使用](https://github.com/xblcity/blog/blob/master/library/vue-admin.md)
+    
+## 其他
+     
+- [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/others/base-interview.md)
+- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
+- [其他待整理](https://github.com/xblcity/blog/blob/master/others/others.md)
+- [工具和整理的资源](https://github.com/xblcity/blog/blob/master/others/tool.md)
     

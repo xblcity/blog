@@ -36,6 +36,11 @@
 
 前端发送请求用户信息接口 --> 后端在第一次拿到access_token的时候就已经从微信开发者链接发送请求获取到用户的信息了 --> 结果发送给前端
 
+## 微信支付
+
+微信支付需要用到 `Fidder4`或者`charles` 等代理工具。
+
+// todo
 ## 参考
 
 - [微信公众平台开发者文档-网页授权](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html)

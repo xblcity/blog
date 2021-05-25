@@ -56,6 +56,7 @@ themeConfig:
         - /js-base/design-mode
         - /js-base/algorithm
         - /js-base/ts-basic
+        - /js-base/knowledge-points
     - title: JS应用
       collapsable: false
       sidebarDepth: 2
@@ -100,3 +101,23 @@ themeConfig:
         - /backend/server
         - /backend/nginx
         - /backend/ubuntu
+    - title: HTML/CSS
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /html-css/html
+        - /html-css/css
+    - title: 第三方库
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /library/wx-web
+        - /library/vue-admin
+    - title: 其他
+      collapsable: false
+      sidebarDepth: 2
+      children:
+        - /others/base-interview
+        - /others/lib-interview
+        - /others/others
+        - /others/tool

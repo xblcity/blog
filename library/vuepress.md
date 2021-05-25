@@ -1,6 +1,15 @@
 # vuepress 一些自定义配置
 
-## 页面内的超链接
+## 配置vuepress并生成README&推送至Github
+
+使用的是`yml`配置文件方便书写
+
+`Github`和线上网站各有一套`README.md`文件，通过`node`将`config.yml`文件转换成所需的`markdown`文件
+
+通过`deploy.sh`脚本执行打包步骤和上传至`github page`分支
+
+具体的文件见本项目的`.vuepress/script`
+## 页面内的超链接(二级标题)
 
 > What:
 

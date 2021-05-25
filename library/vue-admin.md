@@ -76,7 +76,7 @@ eslint: vscode 插件开启保存时自动修复，不过代码格式化的问�
 
 根据需要封装上传文件组件为表单，比如
 
-```js
+```vue
 <el-form :model="temp">
   <el-form-item prop="TrademarkPicID" label="商标上传">
     <upload v-model="temp.TrademarkPicID" :disabled="isDisabled" />
@@ -86,7 +86,7 @@ eslint: vscode 插件开启保存时自动修复，不过代码格式化的问�
 
 `upload`即我们要封装的组件，因为`upload`组件作为表单数据，进行了双向绑定，所以会自动获得一个名为`value`的 prop 以及一个名为`input`的自定义事件。我们可以直接在`el-upload`的基础上进行改造，符合业务的需要，因为业务中返回的数据与字段都要定制。
 
-```js
+```vue
 <template>
   <div>
     <el-upload
