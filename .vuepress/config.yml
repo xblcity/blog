@@ -107,17 +107,19 @@ themeConfig:
       children:
         - /html-css/html
         - /html-css/css
+        - /html-css/event
     - title: 第三方库
       collapsable: false
       sidebarDepth: 2
       children:
         - /library/wx-web
         - /library/vue-admin
+        - /library/vuepress
     - title: 其他
       collapsable: false
       sidebarDepth: 2
       children:
         - /others/base-interview
         - /others/lib-interview
-        - /others/others
         - /others/tool
+        - /others/config-question

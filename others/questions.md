@@ -19,8 +19,6 @@ let a = 10 //  Cannot access 'a' before initialization
 
 两段代码报错信息不一样
 
-开心最重要，我现在
-
 ## 待做
 
 ### Jest/Enzyme 测试框架初识

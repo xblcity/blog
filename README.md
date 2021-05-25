@@ -69,16 +69,18 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
      
 - [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
 - [CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
+- [ Event事件](https://github.com/xblcity/blog/blob/master/html-css/event.md)
     
 ## 第三方库
      
 - [微信公众号网页登录与支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
 - [vue-element-admin 的使用](https://github.com/xblcity/blog/blob/master/library/vue-admin.md)
+- [vuepress 一些自定义配置](https://github.com/xblcity/blog/blob/master/library/vuepress.md)
     
 ## 其他
      
 - [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/others/base-interview.md)
 - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
-- [其他待整理](https://github.com/xblcity/blog/blob/master/others/others.md)
 - [工具和整理的资源](https://github.com/xblcity/blog/blob/master/others/tool.md)
+- [配置踩坑](https://github.com/xblcity/blog/blob/master/others/config-question.md)
     

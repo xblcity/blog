@@ -1,17 +1,20 @@
-# 其他待整理
+# 配置踩坑
 
 - mongoDB安装出现的问题以及解决办法
 - 记录一些在配置云服务器的事项
 
-## mongoDB安装出现的问题以及解决办法
+## windows mongoDB安装出现的问题以及解决办法
 
 #### 安装包名是86x 但是实际上是64位
+
 - 安装的MongoDB版本是4.0.4，操作系统是Windows8.1 64位
 
 ##### 安装选项
+
 - 倒数第二步，勾选Install MongoDB Compass可能会导致安装不成功
 
 ##### 错误
+
 - 在moongoDB官网下载二进制文件，选择默认安装目录后，进行安装，会提示`Service 'MongoDB Server' failed to start. Verify that you have sufficient privileges to start system services.`这个先不管
 - 安装完成，在`C:\Program Files\MongoDB\Server\4.0\bin` 文件夹下打开命令行(shift+右键)，运行mongod命令发现会有错误弹窗，提示信息 `api-ms-win-crt-runtime-l1-1-0.dll`文件缺失
 - 此时需要安装 `Visual C++ Redistributable for Visual Studio 2015` 这个软件，[下载地址](https://www.microsoft.com/zh-cn/download/details.aspx?id=48145)
@@ -23,12 +26,11 @@
 - 推测前面产生错误的原因是电脑自带的 Visual C++ Redistributable 版本是 2012，可能版本太老需要安装新版本 2015
 
 ##### 配置环境变量
+
 - 配置环境变量的作用是，执行monogo命令时，不必每次都找到安装目录执行，可以在任意文件夹执行
 - 把mongoDB安装包bin文件夹完整路径拷贝至window环境配置路径中，注意加入的是文件夹哦！
 - 计算机--右击属性--高级系统设置--环境变量--path--编辑--加入末尾即可，注意要在前面加入分号
 - mongoDB安装的时候默认已经加入windows服务
-
-
 
 ## 记录一些在配置云服务器的事项
 > SSL证书申请，在腾讯云申请的免费的，还是比较方便的
@@ -94,110 +96,3 @@ const config = require('./config.js') // 配置的端口
 ...
 https.createServer(options, app.callback()).listen(config.port);
 ```
-
-## Event事件
-
-## 常见的HTML事件种类
- 
-### window事件
-window事件常见的有  
-- onload 页面加载之后执行  
-- onresize 浏览器大小窗口被调整时触发
-
-### Form表单控件事件
-由HTML表单内的动作触发的事件，常用在form表单控件元素中  
-- onblur 元素失去焦点
-- onchange 元素值被改变时
-- onfocus 元素获得焦点
-- oninput 用户输入时
-- onsubmit 提交表单时触发  
-`onchange和input事件的区别：onchange事件需要在input输入框失去焦点才能触发，oninput事件是在表单value值发生变化后立即执行，oninput可以通过设置定时器节流控制触发的频率`
-
-### Keyboard事件(一般用于表单输入框)
-- onkeydown 用户按下按键
-- onkeypress 用户敲击按键
-- onkeyup 用户释放按键
-
-### Mouse事件
-- onclick 鼠标点击  
-
-- onmousedown 按下鼠标
-- onmousemove 鼠标指针移动到元素
-- onmouseout  鼠标指针移出元素  
-
-- onmouseover 鼠标指针移动到元素
-- onmouseup 在元素上释放鼠标  
-
-- onscroll 元素滚动条滚动时  
-`如果要捕获页面的滚动事件，对document添加scroll事件即可，即document.addEventListener(scroll, () => {})`
-
-### Media事件
-由媒介（比如视频、图像和音频）触发的事件，适用于所有HTML元素，但常见于媒介元素中，比如`<audio>、<video>、<img>`
-- oncanplay 文件就绪可以开始播放
-- onpause 媒介被用户暂停
-- onplay 媒介可以开始播放
-- onplaying 媒介开始播放时
-
-### DOM的属性
-需要注意的是，event事件是无法直接获取DOM的client/offset系列属性值的  
-client/offset系列值是 只读属性  
-假设有以下代码
-``` html
-<!DOCTYPE html>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  #container {
-    width: 50px; 
-    height: 50px; 
-    margin: 10px; 
-    border: 10px solid #ccc;
-  }
-  #box {
-    width: 20px; 
-    height: 20px;
-    margin: 5px;  
-    padding: 5px; 	
-    border: 5px solid skyblue;
-  }
-</style>
-<body>
-  <div id="container">
-    <div id="box"></div>
-  </div>
-
-  <script>
-    var box = document.getElementById('box')
-    // 没有offsetRight/offsetBottom/clientRight/clientBottom 等属性
-    console.log(box.offsetTop, box.offsetLeft)  // 25 25 margin+距离页面边距，包含滚动条 
-    console.log(box.offsetHeight, box.offsetWidth)  // 40 40 width+padding+border
-    console.log(box.clientTop, box.clientLeft) // 5 5 border宽度
-    console.log(box.clientHeight, box.clientWidth) // 30 30 width+padding
-  </script>
-</body>
-</html>
-```
-
-### 事件的属性
-Event对象，以鼠标click事件为例，一般需要关注的是触发事件的元素和触发的相对坐标
-- e.target 触发事件的当前DOM元素  
-获取当前事件点的相对坐标和获取DOM节点的相对坐标的属性不一样，是可能混淆的点
-
-接上部分代码
-```js
-box.addEventListener('click', function(e) {
-  console.log(e.target) // <div id="box"></div>
-  console.log(e.offsetX, e.offsetY) // 距离事件触发元素元素border内边框的值
-  console.log(e.clientX, e.clientY) // 距离页面边距 
-  console.log(e.x, e.y) // 同上
-  console.log(e.pageX, e.pageY) // 同上，但包含滚动条
-  console.log(e.screenX, e.screenY) // 相对于用户屏幕，用不到
-})
-```
-
-
-
-
-- [babel执行机制](https://github.com/MuYunyun/blog/blob/master/BasicSkill/%E7%95%AA%E5%A4%96%E7%AF%87/babel%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6.md)

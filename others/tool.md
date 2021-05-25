@@ -1,25 +1,26 @@
 # 工具和整理的资源
 
-## 常用工具
+## git commit message 规范
 
-- git commit message 规范 [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
+- [commitizen/cz-cli](https://github.com/commitizen/cz-cli)
 
-### 常用快捷键
+## 快捷键
 
 浏览器
 
 ctrl+f5 或 ctrl+shift+R 强制刷新浏览器
 
-ctrl+l 清空console控制台
+ctrl+l 清空 console 控制台
 
-### react-native参考(mark，暂时没看)
-## 整理
+## UI网站
 
-### Blog 学习
+- [「颜值即正义」那些管 UI 小姐姐要来的网站](https://juejin.cn/post/6844904104150433799)
+
+## Blog 学习
 
 - [一个不错的 Blog](https://github.com/ljianshu/Blog)
 
-### 面试学习
+## 面试学习
 
 关于面试题，这里推荐几个网站
 
@@ -27,7 +28,7 @@ ctrl+l 清空console控制台
 - [面试题-代码](http://bigerfe.com/)
 - [算法](http://www.conardli.top/docs/dataStructure/)
 
-### react-native 学习 参考(mark，暂时没看)
+## react-native 学习 参考(mark，暂时没看)
 
 - [React-Native 学习指南](https://github.com/reactnativecn/react-native-guide)
 - [分享 50 个完整的 React Native 项目](https://juejin.im/post/58f37cb361ff4b0058f9824a)
