@@ -29,8 +29,8 @@ themeConfig:
   logo: /avatar.png
   lastUpdated: 'LastEditTime'
   nav:
-    #- text: 读书笔记
-    #  link: https://reading.xblcity.com
+    - text: 读书笔记
+      link: https://xblcity.github.io/reading-notes/
     - text: Github
       link: https://github.com/xblcity
     #- text: 博客搭建
