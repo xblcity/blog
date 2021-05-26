@@ -64,7 +64,8 @@ themeConfig:
         - /js-practice/throttle
         - /js-practice/array
         - /js-practice/utils
-    - title: 框架及实践
+        - /js-practice/beautyjs
+    - title: React应用
       collapsable: false
       sidebarDepth: 2
       children:
@@ -74,7 +75,6 @@ themeConfig:
         - /react/redux
         - /react/redux-middleware
         - /react/find-house
-        - /library/wx-web
     - title: 前端综合知识
       collapsable: false
       sidebarDepth: 2

@@ -31,8 +31,9 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [理解节流与防抖函数](https://github.com/xblcity/blog/blob/master/js-practice/throttle.md)
 - [数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
 - [JS 常用工具函数/代码片段](https://github.com/xblcity/blog/blob/master/js-practice/utils.md)
+- [代码规范](https://github.com/xblcity/blog/blob/master/js-practice/beautyjs.md)
     
-## 框架及实践
+## React应用
      
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
@@ -40,7 +41,6 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)
-- [微信公众号网页登录与支付](https://github.com/xblcity/blog/blob/master/library/wx-web.md)
     
 ## 前端综合知识
      
@@ -69,7 +69,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
      
 - [HTML](https://github.com/xblcity/blog/blob/master/html-css/html.md)
 - [CSS](https://github.com/xblcity/blog/blob/master/html-css/css.md)
-- [ Event事件](https://github.com/xblcity/blog/blob/master/html-css/event.md)
+- [Event事件](https://github.com/xblcity/blog/blob/master/html-css/event.md)
     
 ## 第三方库
      
