@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 const chalk = require("chalk");
-const { handleContent } = require("./util.js");
+const { handleContent, endContent } = require("./util.js");
 
 const preUrl = "https://github.com/xblcity/blog/blob/master";
 const mdPath = path.resolve(__dirname, "../../README.md");
@@ -23,7 +23,7 @@ try {
   const doc = yaml.load(fs.readFileSync(configFile, "utf8"));
   const docConfig = doc.themeConfig.sidebar;
   if (docConfig) {
-    handleContent(docConfig, preUrl, mdPath, preContent, ".md");
+    handleContent(docConfig, preUrl, mdPath, preContent, endContent, ".md");
     console.log(chalk.blueBright("README创建完成!"));
   }
 } catch (e) {

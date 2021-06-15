@@ -84,3 +84,14 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [工具和整理的资源](https://github.com/xblcity/blog/blob/master/others/tool.md)
 - [配置踩坑](https://github.com/xblcity/blog/blob/master/others/config-question.md)
     
+## 关于
+
+本项目使用`vuepress`框架
+
+项目启动:
+
+`yarn dev`
+
+项目发布至`Github Page`(使用git bash客户端):
+
+`yarn deploy`

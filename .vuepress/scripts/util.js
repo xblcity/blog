@@ -11,7 +11,14 @@ const handleMdTitle = (mdDir) => {
   return title;
 };
 
-const handleContent = (docConfig, url, mdPath, preContent, suffix) => {
+const handleContent = (
+  docConfig,
+  url,
+  mdPath,
+  preContent,
+  endContent,
+  suffix
+) => {
   let mdContent = [];
   const docConfigList = docConfig.filter((item, index) => index > 0);
   docConfigList.slice(0).forEach((item) => {
@@ -26,7 +33,7 @@ const handleContent = (docConfig, url, mdPath, preContent, suffix) => {
     `;
     mdContent.push(subContent);
   });
-  const content = `${preContent}\n${mdContent.join("\n")}`;
+  const content = `${preContent}\n${mdContent.join("\n")}${endContent}`;
   if (fs.existsSync(mdPath)) {
     fs.unlinkSync(mdPath);
   }
@@ -46,5 +53,21 @@ const replaceRoute = (filePath, sourceRegx, targetStr) => {
   });
 };
 
+const endContent = `
+## 关于
+
+本项目使用\`vuepress\`框架
+
+项目启动:
+
+\`yarn dev\`
+
+项目发布至\`Github Page\`(使用git bash客户端):
+
+\`yarn deploy\`
+`;
+
 module.exports.handleContent = handleContent;
 // module.exports.replaceRoute = replaceRoute;
+
+module.exports.endContent = endContent;
