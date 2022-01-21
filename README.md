@@ -77,10 +77,13 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [vue-element-admin 的使用](https://github.com/xblcity/blog/blob/master/library/vue-admin.md)
 - [vuepress 一些自定义配置](https://github.com/xblcity/blog/blob/master/library/vuepress.md)
     
-## 其他
+## 面试题
      
-- [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/others/base-interview.md)
-- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/others/lib-interview.md)
+- [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/interview/base-interview.md)
+- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
+    
+## 未归类
+     
 - [工具和整理的资源](https://github.com/xblcity/blog/blob/master/others/tool.md)
 - [配置踩坑](https://github.com/xblcity/blog/blob/master/others/config-question.md)
     

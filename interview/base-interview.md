@@ -7,7 +7,14 @@
 
 ## html
 
-// Todo
+推荐文章 [「2021」高频前端面试题汇总之HTML篇](https://juejin.cn/post/6905294475539513352)
+
+能找到以下问题的答案：
+
+![常见HTML面试题](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a18f8caac72c44ccb29197298f65809e~tplv-k3u1fbpfcp-watermark.awebp)
+
+以及 [这可能是目前较为全面的html面试知识点了吧](https://juejin.cn/post/6844904180943945742)
+
 ## css
 
 ### 盒模型 

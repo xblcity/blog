@@ -115,11 +115,15 @@ themeConfig:
         - /library/wx-web
         - /library/vue-admin
         - /library/vuepress
-    - title: 其他
+    - title: 面试题
       collapsable: false
       sidebarDepth: 2
       children:
-        - /others/base-interview
-        - /others/lib-interview
+        - /interview/base-interview
+        - /interview/lib-interview
+    - title: 未归类
+      collapsable: false
+      sidebarDepth: 2
+      children:
         - /others/tool
         - /others/config-question
