@@ -26,17 +26,21 @@ windows用户可以接着执行以下操作：
 
 配置完之后，通过`https`连接的仓库可以成功 `push`
 
+通过`SSH`连接在`push`时也出现错误，通过重新配置`SSH`秘钥解决问题 [生成新 SSH 密钥并添加到 ssh-agent](https://docs. github.com/cn/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) 在输入密码的时候输入的是之前保存的`Token`
+
+![push](./images/git-account/git-ssh.jpg)
+
 ## Github多账号配置
 
 Git 全局只能保存一个用户和用户名，而如果同时使用`gitlab`和`github`，账号可能会混淆。需要手动更改配置让本地拥有多个账号。
 
-以`SSH`连接为例，首先要在本地生成`SSH`密钥。[生成新 SSH 密钥并添加到 ssh-agent](https://docs. github.com/cn/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+以`SSH`连接为例，首先要在本地生成`SSH`密钥。
 
-## 生成密钥
+### 生成密钥
 
 生成密钥可以参考官方文档[生成新 SSH 密钥并添加到 ssh-agent](https://docs.github.com/cn/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)，以`window`为例：
 
-### 1.配置 gitlab
+#### 1.配置 gitlab
 
 1. 打开 Git Bash
 2. 输入以下命令
@@ -51,11 +55,11 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 5. 最后登录 gitlab 网页，在 `setting > ssh keys` 增加一个 ssh key 即可，把 `.ssh` 文件下的 `id_rsa.pub` 文件内容全部复制到 Key 内容。
 
-### 2.配置 github
+#### 2.配置 github
 
 github 同理，但需要注意，在上述第三步时，需要输入要自定义保存位置防止覆盖，比如输入 `id_rsa_github`
 
-## 配置 Config
+### 配置 Config
 
 在 `.ssh`文件下新建 config 文件(没有后缀名)。文件内容如下
 
@@ -79,7 +83,7 @@ PreferredAuthentications publickey #强制验证方式，这里使用的是publi
 
 **_注意密钥的文件地址！_**
 
-## 测试连接
+### 测试连接
 
 ```shell
 ssh -T git@gitlab
@@ -100,7 +104,7 @@ ssh -T git@your_host@example.com
 
 使用 `ssh -T git@github.com -v` 命令查看具体报错
 
-## 配置 user
+### 配置 user
 
 如果之前配置过全局的 user 和 username，需要先清空
 
@@ -116,7 +120,7 @@ git config --local user.name "your name"
 git config --local user.email "your email"
 ```
 
-## 问题
+### 问题
 
 1. 在 push 出现错误 `fatal: unable to access 'https://github.com/xx/xx.git/': OpenSSL SSL_read: Connection was reset, errno 10054`
 
