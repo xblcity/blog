@@ -1,8 +1,36 @@
 # Git 多账号配置
 
+## Git新的账号配置规则
+
+`git push`出现以下错误 `remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/xblcity/blog.git/'`
+
+这是因为从 `2021 年 8 月 13 日` 开始，在 GitHub.com 上对 Git 操作进行身份验证时，不再接受帐户密码。
+
+—— [Git 操作的令牌认证要求](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
+
+需要新创建令牌用于替代之前的密码 [创建个人访问令牌](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+最后创建的token如下：
+
+![token](./images/git-account/personal-token.jpg)
+
+windows用户可以接着执行以下操作：
+
+找到windows凭据，查看是否有github账户，如果有，则需要将刚才创建的token把密码替换掉。如果没有，则新建。
+
+![凭据](./images/git-account/windows-secret.jpg)
+
+![编辑凭据](./images/git-account/edit-sercet.jpg)
+
+配置完之后，通过`https`连接的仓库可以成功 `push`
+
+## Github多账号配置
+
 Git 全局只能保存一个用户和用户名，而如果同时使用`gitlab`和`github`，账号可能会混淆。需要手动更改配置让本地拥有多个账号。
 
-以`SSH`连接为例，首先要在本地生成`SSH`密钥。
+以`SSH`连接为例，首先要在本地生成`SSH`密钥。[生成新 SSH 密钥并添加到 ssh-agent](https://docs. github.com/cn/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 ## 生成密钥
 
