@@ -79,8 +79,10 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
     
 ## 面试题
      
-- [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/interview/base-interview.md)
-- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/lib-interview.md)
+- [html/css/网络/浏览器等面试题](https://github.com/xblcity/blog/blob/master/interview/html.md)
+- [JS/TS面试题](https://github.com/xblcity/blog/blob/master/interview/js.md)
+- [浏览器网络相关](https://github.com/xblcity/blog/blob/master/interview/browser.md)
+- [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/library.md)
     
 ## 未归类
      

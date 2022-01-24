@@ -119,8 +119,10 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
-        - /interview/base-interview
-        - /interview/lib-interview
+        - /interview/html
+        - /interview/js
+        - /interview/browser
+        - /interview/library
     - title: 未归类
       collapsable: false
       sidebarDepth: 2
