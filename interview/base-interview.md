@@ -1,9 +1,6 @@
-# html/css/网络/浏览器等面试题
+# html/css面试题
 
-- [html](html)
-- [css](css)
-- [手机端适配TODO]()
-- [网络](#网络)
+[2021年我的前端面试准备](https://juejin.cn/post/6989422484722286600)
 
 ## html
 
@@ -17,33 +14,30 @@
 
 ## css
 
-### 盒模型 
+[css经典面试题](https://juejin.cn/post/6844903832552472583)
 
-`content-box`标准盒模型  `border-box` IE盒模型
+[「2021」高频前端面试题汇总之CSS篇](https://juejin.cn/post/6905539198107942919)
 
-### BFC
+![常见css面试题](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f63fdc5979647e09bbde92d964a9656~tplv-k3u1fbpfcp-watermark.awebp)
 
-block format content  块级格式化上下文 是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
-
-### 选择器优先级
-
-!important > 行内样式 > #id > .class > tag > * > 继承 > 默认，选择器从右向左解析
-
+常见考点：
+  - 盒模型
+  - BFC
+  - 选择器优先级
+  - 响应式布局和自适应布局区别
+  - flex布局
+  - css清除浮动几种方式
+  - 元素垂直居中
+  - css如何实现三列等宽的布局
+  - 三列等宽设百分比能确保宽度完全一致？
+  - css哪些样式可以继承
+  - img标签是什么元素
 ### CSS动画
 
 - css画一个扇形
 - css动画相关[30S](https://www.30secondsofcode.org/css/p/1)
 - css keyframe动画
-- flex布局
-- 元素垂直居中
-- 恒定宽高比
-- css清除浮动几种方式
-- css如何实现三列等宽的布局
-- 三列等宽设百分比能确保宽度完全一致？
-- css哪些样式可以继承
 - css3哪些东西，h5哪些东西，举一两个介绍下
-- bfc
-- img标签是什么元素
 
 ### Q.响应式网站和自适用网站有什么区别？？
 
