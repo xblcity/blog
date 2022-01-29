@@ -12,36 +12,44 @@
 
 以及 [这可能是目前较为全面的html面试知识点了吧](https://juejin.cn/post/6844904180943945742)
 
+问题概括：
+
+- src href区别
+- HTML行内元素，块级元素，img标签
+- iframe优缺点
+- HTML5新增drag事件
+- HTML5语义化标签
+- HTML5客户端存储/本地存储
+- HTML5 canvas，video，audio标签
+- HTML5离线存储
+- 常见HTML事件：form表单事件，keyboard事件，mouse事件，media事件
+
 ## css
 
 [css经典面试题](https://juejin.cn/post/6844903832552472583)
 
 [「2021」高频前端面试题汇总之CSS篇](https://juejin.cn/post/6905539198107942919)
 
-![常见css面试题](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f63fdc5979647e09bbde92d964a9656~tplv-k3u1fbpfcp-watermark.awebp)
+![常见css面试题脑图](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f63fdc5979647e09bbde92d964a9656~tplv-k3u1fbpfcp-watermark.awebp)
 
 常见考点：
-  - 盒模型
-  - BFC
-  - 选择器优先级
-  - 响应式布局和自适应布局区别
-  - flex布局
-  - css清除浮动几种方式
-  - 元素垂直居中
+  - 标准盒模型与IE盒模型区别
+  - [BFC](https://juejin.cn/post/6950082193632788493)&margin重合
+  - 选择器及其优先级
+  - CSS3新增伪类
+  - 元素垂直居中：居中浮动元素div/img
+  - [Flex布局](https://juejin.cn/post/6844903833190006791)
+  - CSS画扇形，三角形
+  - display:none，visibility: hidden区别
+  - css清除浮动的原因&方式
+  - CSS预处理器
+  - 响应式设计及原理
+  - css布局单位：px, rem, vw/vh
+  - CSS可继承样式与不可继承样式
+  - 移动端1px问题
   - css如何实现三列等宽的布局
-  - 三列等宽设百分比能确保宽度完全一致？
-  - css哪些样式可以继承
-  - img标签是什么元素
-
+  
 ### CSS动画
 
-- css画一个扇形
 - css动画相关[30S](https://www.30secondsofcode.org/css/p/1)
 - css keyframe动画
-- css3哪些东西，h5哪些东西，举一两个介绍下
-
-### Q.响应式网站和自适用网站有什么区别？？
-
-答：自适应布局，不管设备屏幕尺寸如何变化，打开同一个页面看到的内容和布局基本上是一样的，不同的只是内容的尺寸。
-这样就会引发一个问题，那就是如果设备太小，就算网页能够根据屏幕大小进行适配，但是在太小屏幕显示内容过多会看不清楚，从而极大损害用户体验。
-响应式布局正是为了解决这个问题而衍生出来的一种新的布局方式。它可以自动识别屏幕尺寸并做出相应调整的网页设计，页面布局和展示的内容可能会随着屏幕尺寸变化而有所变化。
