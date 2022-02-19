@@ -6,8 +6,7 @@
 
 ```js
 Function.prototype._call = function(context) {
-  // this是调用者，非函数调用抛出错误
-  // 隐式绑定原理 foo.call()
+  // 确保是函数调用的_call方法，比如foo._call()，否则就不存在隐式绑定的this
   if (typeof this !== 'function') {
     throw new TypeError('Error')
   }
