@@ -34,7 +34,7 @@
 
 常见考点：
   - 标准盒模型与IE盒模型区别
-  - [BFC](https://juejin.cn/post/6950082193632788493)&margin重合
+  - [BFC](https://juejin.cn/post/6844903829931032589)&margin重合
   - 选择器及其优先级
   - CSS3新增伪类
   - 元素垂直居中：居中浮动元素div/img
