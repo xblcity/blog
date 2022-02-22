@@ -35,17 +35,32 @@ ES6
 - [数组的数据处理](https://github.com/xblcity/blog/blob/master/js-practice/array.md)
 - class, let, const, 模块化，新增数组方法(map, filter, reduce等)
 
-
-性能优化
-
-- [理解节流与防抖函数](https://xblcity.github.io/blog/js-practice/throttle.html)
-
-## TS
+## TS(Step2)
 
 - [Typescript 认知](https://xblcity.github.io/blog/js-base/ts-basic.html)
 
-## JS进阶
+## JS进阶(Step2)
 
 - [高阶函数](https://xblcity.github.io/blog/js-base/func-program.html)
 - [JS 设计模式](https://xblcity.github.io/blog/js-base/design-mode.html)
 - [数据结构与算法](https://xblcity.github.io/blog/js-base/algorithm.html)
+
+## 浏览器相关
+
+- [Event事件](https://github.com/xblcity/blog/blob/master/html-css/event.md)
+- 如何处理处理，JSONP如何使用
+- 浏览器存储
+- [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/fe-system/render.md)
+- 浏览器缓存优先级，强缓存与协商缓存浏览器渲染原理
+
+## 性能优化
+
+- 较全面的[前端性能优化实践](https://juejin.cn/book/6844733750048210957?referrer=574f8d8d2e958a005fd4edac)
+- [理解节流与防抖函数](https://xblcity.github.io/blog/js-practice/throttle.html)，减少请求次数
+- 懒加载，减少回流&重绘，合理利用缓存
+
+## 手写题
+
+- 类与继承
+- 防抖节流
+- Apply, Call，Bind手写
