@@ -2,13 +2,58 @@
 
 [react 文档](https://zh-hans.reactjs.org/docs/react-component.html)里面已经说的很清楚了，这里在总结一下
 
+## React新的生命周期
+
+![新的生命周期](./images/lifecycle/new_lifecycle.png)
+
+### 组件生命周期的三个阶段：
+
+Mounting（加载阶段）
+Updating（更新阶段）
+Unmounting（卸载阶段）
+
+#### 挂载
+
+constructor
+getDerivedStateFromProps
+render
+componentDidMount
+
+
+#### 更新
+
+getDerivedStateFromProps
+shouldComponentUpdate
+render
+getSnapshotBeforeUpdate
+componentDidUpdate
+
+
+#### 卸载
+
+componentWillUnmount
+
+
 ## React16.3 之前的生命周期
 
-### 加载阶段
+旧的生命周期
+
+![旧的声明周期](./images/lifecycle/old_lifecycle.png)
+
+UNSAFE_componentWillMount()
+UNSAFE_componentWillUpdate()
+UNSAFE_componentWillReceiveProps() 三个生命周期即将废弃
+
+## 关于生命周期，下面这两篇文章写的比较详细
+
+[你真的了解 React 生命周期吗](https://juejin.cn/post/6844904021233238024)
+[深入详解React生命周期](https://juejin.cn/post/6914112105964634119)
+
+## 实践中踩坑点
 
 React 组件是一个 class 类(也可以理解为函数)
 
-`constructor()`
+### `constructor()`
 
 class 在被调用执行的时候，首先会调用 constructor()方法，该方法在 class 中的作用是
 
@@ -32,43 +77,24 @@ class Child extends React.Component {
 
 如果 props 是确定的值，而不是动态获取的，那么 Child 的 props 在 constructor 里面就可以拿到(也可以使用 defaultProps 设置默认的 props)
 
-`componentWillMount()(即将被废弃)`
 
-`render()`
-
-react 一个重要方法，用于把 JSX 语法转换成虚拟 DOM，只要组件 state/props 有更新，都有可能触发该方法
-
-`componentDidMount()`
+### `componentDidMount()`
 
 组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过**网络请求获取数据**，此处是实例化请求的好地方。
 
 也可以在此处**添加订阅**，并在`componentWillUnmount()`取消订阅
 
-### 更新阶段(当 props 或者 state 发生变化会触发组件更新)
-
-`componentWillReceiveProps(nextProps)(即将被废弃)`
-
-组件加载时不调用，组件接受新的 props 时调用，也是即将更新的时候，所以参数是`nextProps`
-
-`shouldComponentUpdate(nextProps, nextState)`
+### `shouldComponentUpdate(nextProps, nextState)`
 
 组件接收到新的 props 或者 state 时调用，return true 就会更新 dom（使用 diff 算法更新），return false 能阻止更新（不调用 render）
 
 **此生命周期是减少组件渲染的重要手段**
 
-`componentWillUpdate(nextProps, nextState)(即将被废弃)`
-
-组件加载时不调用，只有在组件将要更新时才调用，此时可以修改 state
-
-`render()`
-
-把 JSX 语法转换成虚拟 DOM
-
-`componentDidUpdate(prevProps, prevState, snapshot)`
+### `componentDidUpdate(prevProps, prevState, snapshot)`
 
 组件更新完毕后，触发该生命周期，因为已经更新完毕，所以有`prevProps`获取之前的状态
 
-如果在该生命周期中无条件的使用了 setState，会造成死循环,所以应该使用条件语句
+如果在该生命周期中无条件的使用了 setState，会造成***死循环***,所以应该使用条件语句
 
 当组件更新后，可以在此处对 DOM 进行操作。如果你对更新前后的 props 进行了比较，也可以选择在此处进行网络请求。
 
@@ -83,13 +109,7 @@ componentDidUpdate(prevProps) {
 
 如果`render()`之后没有触发`componentDidUpdate()`，请检查该组件声明的位置
 
-### 卸载阶段
-
-componentWillUnmount()
-
-## React16.3 及之后的生命周期
-
-静态方法`static getDerivedStateFromProps(props, state)`
+### 新的静态方法的生命周期
 
 静态方法`static getDerivedStateFromProps(props, state)`
 
@@ -97,7 +117,9 @@ componentWillUnmount()
 
 静态方法获取不到`this`
 
-## 使用生命周期的注意事项
+`getSnapshotBeforeUpdate`需要结合`componentDidUpdate`
+
+### 使用生命周期的注意事项
 
 React 构建的 App 是单页面应用，所以一旦刷新浏览器，React 该页面内的所有组件会重新执行 componentDidMount()，也就是说，该页面所需要的数据，必须重新拉取一下才能重新获得。
 
@@ -119,6 +141,9 @@ React 构建的 App 是单页面应用，所以一旦刷新浏览器，React 该
 
 ## 参考
 
+
+- [你真的了解 React 生命周期吗](https://juejin.cn/post/6844904021233238024)
+- [深入详解React生命周期](https://juejin.cn/post/6914112105964634119)
 - [React.CompAonent](https://zh-hans.reactjs.org/docs/react-component.html)
 - [React-新的生命周期（React16 版本）](https://segmentfault.com/a/1190000016617400)
 - [React 新生命周期--getDerivedStateFromProps](https://www.jianshu.com/p/50fe3fb9f7c3)
