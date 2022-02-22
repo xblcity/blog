@@ -16,8 +16,8 @@ Content-Type: // 要发送的数据类型，服务端会根据不同类型做不
 Accept: /  // 客户端能接收的资源类型
 Host:   // 连接的目标主机和端口号
 
-If-Modified-Since:    // 对应Last-Modified:
-If-None-Match:  //  对应Etag
+If-Modified-Since:    // 对应服务器端发送的Last-Modified属性值:
+If-None-Match:  //  对应服务器端发送的Etag属性
 Accept-Encoding: gzip  // 告诉服务端可以接受的数据格式
 Accept-Language: zh-CN,zh; q=0.9  // 告诉服务端客户端接受的语言
 
