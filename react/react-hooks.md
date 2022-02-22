@@ -8,6 +8,9 @@
 
 > 浅比较的策略
 
+如果都是基本值类型，直接进行比较，不相等则更新
+如果是引用类型，引用类型指针所指的地址不同则直接更新
+
 ## useState()
 
 `useState()`，该函数接收一个值，返回一个数组，第一个是变量标识符，第二个是改变值的方法。
@@ -21,6 +24,8 @@
 useEffect()，该函数接收两个参数，第一个是函数，第二个是数组依赖项(可以传递多个依赖)，
 
 可以实现 class 组件的 `componentDidMount, componentDidUpdate, componentWillUnmount` 三个生命周期
+
+useEffect还可以通过返回一个函数来指定如何“清除”副作用。
 
 ## useCallback()
 
@@ -77,6 +82,13 @@ useMemo 可以覆盖 useCallback 的用法
 ## useReducer()
 
 ## useContext()
+
+## 注意事项
+
+[Hook 规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)
+
+只在最顶层使用 Hook
+不要在循环，条件或嵌套函数中调用 Hook， 确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 useState 和 useEffect 调用之间保持 hook 状态的正确。
 
 ## 参考
 
