@@ -121,7 +121,6 @@ themeConfig:
       children:
         - /interview/html
         - /interview/js
-        - /interview/browser
         - /interview/library
     - title: 未归类
       collapsable: false
