@@ -80,7 +80,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 ## 面试题
      
 - [html/css面试题](https://github.com/xblcity/blog/blob/master/interview/html.md)
-- [JS/TS/网络相关面试题](https://github.com/xblcity/blog/blob/master/interview/js.md)
+- [JS/TS/网络相关](https://github.com/xblcity/blog/blob/master/interview/js.md)
 - [框架/库/实践面试题](https://github.com/xblcity/blog/blob/master/interview/library.md)
     
 ## 未归类
