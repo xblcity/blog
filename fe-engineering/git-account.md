@@ -119,6 +119,13 @@ git config --global --unset user.email
 git config --local user.name "your name"
 git config --local user.email "your email"
 ```
+### 私钥与公钥的作用
+
+在本地用github密码生成私钥和公钥。
+
+公钥拷贝至 github SSH配置中
+
+push项目至远程，公钥匹配后，输入github密码对私钥进行验证，验证通过。push成功。
 
 ### 问题
 
