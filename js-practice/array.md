@@ -335,8 +335,7 @@ console.log(arr)
 
 ```js
 const arr = [1, 2, 3, 4, 5]
-arr.forEach((item) => {
-  console.log(item)
-  if (item > 3) return
-})
+arr.reduce((prev, item) => {
+  return prev + item
+}, 0)
 ```
