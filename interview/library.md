@@ -9,17 +9,58 @@
 
 ## react
 
-参考 [React面试题](https://www.cxymsg.com/guide/react.html#react最新的生命周期是怎样的)
+基础部分
 
-- React生命周期
+- [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+- [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
+
+一些面试题例子：
+
+生命周期类
+
+- React生命周期分为哪几个阶段，分别对应的是？
 - React的请求应该放在哪个生命周期中?
-- React组件通信如何实现?
+- class组件constructor和super(props)起什么作用
 - setState是同步还是异步 [你真的理解setState吗？](https://juejin.im/post/5b45c57c51882519790c7441)
-- React性能优化
+- setState第二个参数有什么用
+- React性能优化，减少渲染次数，使用ShouldComponentUpdate,PureComponent以及React.memo的第二个参数
+- react性能优化，使用hooks的userReducer和useMemo
+- 哪些函数会触发React的重新渲染，setState方法被调用
+
+原理设计类
+
+- react怎么判断需要重新渲染组件, props改变或者setState
+- React组件通信如何实现?
+- 有状态组件和无状态组件的使用场景
+- ref作用是什么，有哪些应用场景(获取组件对应的DOM元素)，在render中无法获取ref，因为此时DOM没有渲染完毕
+- 函数组件如何使用ref, useRef, forwardRef, useImperativeHandle作用,React.forwardRef在高阶组件中转发ref
+- React.Fragment使用场景
+- React合成事件，如何阻止事件冒泡e.stopPropagation()
+- 受控组件与非受控组件
+- context如何理解与使用
+
+应用类
+
+- React高阶组件怎么使用，应用场景
 - axios如何去统一封装处理
+
+比较全的面试题目及解答，有些问题已经过时和答案错误，需选择看
+
+[「2021」高频前端面试题汇总之React篇（上）](https://juejin.cn/post/6941546135827775525#heading-11)
+[「2021」高频前端面试题汇总之React篇（下）](https://juejin.cn/post/6940942549305524238)
+
+HOOKS相关
+
+- hooks可以在条件语句中使用吗？
+- useEffect如何使用，相当于哪些生命周期事件，清除副作用(卸载时触发清除函数)，useEffect第二个参数有什么用
+- useCallBack作用，如何使用
+- useMemo有什么作用，如何使用
+- useRef如何使用
+- 使用过自定义HOOK吗
 
 ## vue
 
+- 如何理解MVVM模型
 - vue/react传值，父传子，子传父，没有父子关系（代码）
 - vue v-if v-show区别
 - v-for vue生命周期 create和mounted请求页面数据的区别
