@@ -1,5 +1,10 @@
 # JS/TS/网络相关
 
+[常规面试题上](https://juejin.cn/post/6844903815053852685)
+[常规面试题中](https://juejin.cn/post/6844903828093927431)
+[面试30sJS/React](https://github.com/Yangfan2016/learn-translate/blob/master/3-30secondsofinterviews_zh.md)
+[js常见面试题](https://juejin.cn/post/6844903776512393224)
+
 ## 一些重要的基础
 
 变量类型及基本方法
@@ -62,6 +67,8 @@ ES6
 - [从输入网址到页面渲染经历了什么](https://github.com/xblcity/blog/blob/master/fe-system/render.md)
 - 浏览器缓存优先级，强缓存与协商缓存浏览器渲染原理
 - TCP 与 HTTP区别
+- HTTP相关知识[http 知识体系](https://github.com/xblcity/blog/blob/master/fe-system/http.md)
+- Get和Post区别
 - 如何对网站的文件和资源进行优化(文件合并，文件压缩，gzip 压缩 js css， 文件使用缓存...)
 - 什么是同源策略，跨域实现的几种方式
 - 安全问题：XSS, CORS
@@ -97,6 +104,8 @@ ES6
 - 实现Promise
 - Apply, Call，Bind手写
 - 写一个闭包的例子，闭包的作用
+- [手写代码](https://juejin.cn/post/6844904052237713422)可以看举的例子
+- [看数组的面试题](https://juejin.cn/post/6844903976081555470)
 
 ## TS(Step2)
 

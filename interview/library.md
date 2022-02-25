@@ -14,6 +14,8 @@
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
 
+- [React面试题总结](https://juejin.cn/post/6844903801153945608)
+
 一些面试题例子：
 
 生命周期类
@@ -58,7 +60,29 @@ HOOKS相关
 - useRef如何使用
 - 使用过自定义HOOK吗
 
-## vue
+## webpack
+
+- webpack配置及优化入门[webpack 配置及优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack.md)
+- webpack load作用及原理：css-loader,babel-loader作用
+- webpack如何优化：babel-loader include/exclude限制处理文件夹，tree-shaking，代码分割，多线程构建打包
+- webpack如何自动分离本地和线上环境，设置mode
+- webpack基本配置，具体哪些loader和plugin
+- 如何配置文件夹别名，比如用`@`代替`src`: resolve: alias extensions(配置扩展名)
+
+
+之前配置的(略看) [使用 webpack 从零配置 React 开发环境及打包优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
+
+刘小夕：如何从零基础学习Webpack(略看):
+- [带你深度解锁Webpack系列(基础篇)](https://juejin.cn/post/6844904079219490830)
+- [带你深度解锁Webpack系列(进阶篇)](https://juejin.cn/post/6844904084927938567)
+- [带你深度解锁Webpack系列(优化篇)](https://juejin.cn/post/6844904093463347208)
+- [你可能不知道的9条Webpack优化策略](https://juejin.cn/post/6854573213171580941)
+
+## umi
+
+## dva
+
+## vue(很久没用过，只了解最基本知识)
 
 - 如何理解MVVM模型
 - vue/react传值，父传子，子传父，没有父子关系（代码）
@@ -66,28 +90,14 @@ HOOKS相关
 - v-for vue生命周期 create和mounted请求页面数据的区别
 - vuex如何保持数据刷新不丢失
 
-## 小程序与公众号
+## 小程序与公众号(很久没用了)
 
 - 小程序登录
 - 小程序支付
 - 小程序的生命周期和路由以及setData原理
 - 公众号openid和unionid区别
 
-## webpack
 
-- webpack load原理
-- webpack如何优化
-- webpack如何自动分离本地和线上环境
-- webpack基本配置，具体哪些loader和plugin
-
-配置项：
-
-loader test 配置 include exclude选项
-
-resolve 配置 alias extensions
-
-- [带你深度解锁Webpack系列](https://juejin.cn/post/6844904079219490830)
-- [你可能不知道的9条Webpack优化策略](https://juejin.cn/post/6854573213171580941)
 
 ## babel
 
