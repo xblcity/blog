@@ -75,6 +75,7 @@ themeConfig:
         - /react/redux
         - /react/redux-middleware
         - /react/find-house
+        - /react/component-design-mode
     - title: 前端综合知识
       collapsable: false
       sidebarDepth: 2
@@ -91,6 +92,8 @@ themeConfig:
         - /fe-engineering/vs
         - /fe-engineering/git
         - /fe-engineering/git-account
+        - /fe-engineering/private-npm
+        - /fe-engineering/workflow
     - title: 后端
       collapsable: false
       sidebarDepth: 2

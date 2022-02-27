@@ -90,7 +90,7 @@ const RenderAll = (props) => {
 
 存在这样的场景，如下
 
-![组件树示例图](./images/16627df7e8c08232.png)
+![组件树示例图](./images/component_design_mode/16627df7e8c08232.png)
 
 在上图中，组件 A 需要传递信息给组件 X，如果通过 props 的话，那么从顶部的组件 A 开始，要把 props 传递给组件 B，然后组件 B 传递给组件 D，最后组件 D 再传递给组件 X。
 
