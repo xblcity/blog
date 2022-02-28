@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            border: 10px solid #ccc;
+        }
+
+        #box {
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            padding: 5px;
+            border: 5px solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="./prac2022.js"></script>
+    <div id="container">
+        <div id="box"></div>
+    </div>
+
+    <script>
+        box.addEventListener('click', function (e) {
+            console.log(e.target) // <div id="box"></div>
+            console.log(e.target.offsetLeft)
+            console.log(e.offsetX, e.offsetY) // 距离事件触发元素元素border内边框的值
+            console.log(e.clientX, e.clientY) // 距离页面边距 
+            console.log(e.x, e.y) // 同上
+            console.log(e.pageX, e.pageY) // 同上，但包含滚动条
+            console.log(e.screenX, e.screenY) // 相对于用户屏幕，用不到
+        })
+    </script>
+</body>
+
+</html>
