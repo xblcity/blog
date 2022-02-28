@@ -69,7 +69,9 @@ vsCode 默认的格式化快捷方式是 shift+alt+f，如果想要编辑器保�
 
 eslint 插件有两种作用, 1.警告提示 2.代码修复警告
 
-### 还有一些不需要配置或者简单配置的插件，这里列举一下
+### 其他重要插件（不需要配置或仅需简单配置）
+
+- gitlens 用于在文件中展示git提交记录
 
 - ES7 React/Redux/GraphQL/React-Native snippets, 作用：快捷生成 react 引入等等。具体要参考文档
 
