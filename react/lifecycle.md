@@ -9,23 +9,32 @@
 ### 组件生命周期的三个阶段：
 
 Mounting（加载阶段）
+
 Updating（更新阶段）
+
 Unmounting（卸载阶段）
 
 #### 挂载
 
 constructor
+
 getDerivedStateFromProps
+
 render
+
 componentDidMount
 
 
 #### 更新
 
 getDerivedStateFromProps
+
 shouldComponentUpdate
+
 render
+
 getSnapshotBeforeUpdate
+
 componentDidUpdate
 
 
@@ -41,12 +50,15 @@ componentWillUnmount
 ![旧的声明周期](./images/lifecycle/old_lifecycle.png)
 
 UNSAFE_componentWillMount()
+
 UNSAFE_componentWillUpdate()
+
 UNSAFE_componentWillReceiveProps() 三个生命周期即将废弃
 
 ## 关于生命周期，下面这两篇文章写的比较详细
 
 [你真的了解 React 生命周期吗](https://juejin.cn/post/6844904021233238024)
+
 [深入详解React生命周期](https://juejin.cn/post/6914112105964634119)
 
 ## 实践中踩坑点
