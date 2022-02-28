@@ -41,7 +41,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)
-- [umi3升级](https://github.com/xblcity/blog/blob/master/react/umi3.md)
+- [umi3 升级](https://github.com/xblcity/blog/blob/master/react/umi3.md)
 - [组件设计模式](https://github.com/xblcity/blog/blob/master/react/component-design-mode.md)
     
 ## 前端综合知识
@@ -58,7 +58,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [git 的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
 - [Git 多账号配置](https://github.com/xblcity/blog/blob/master/fe-engineering/git-account.md)
 - [windows 系统搭建私有 npm 仓库](https://github.com/xblcity/blog/blob/master/fe-engineering/private-npm.md)
-- [从切分支到打包上线的流程整理（前端）](https://github.com/xblcity/blog/blob/master/fe-engineering/workflow.md)
+- [前端从切分支到打包上线的流程整理](https://github.com/xblcity/blog/blob/master/fe-engineering/workflow.md)
     
 ## 后端
      
