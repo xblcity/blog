@@ -1,6 +1,8 @@
 # windows 系统搭建私有 npm 仓库
 
-## 1.verdaccio(目前在使用的)
+两种方案：verdaccio以及npmjs.org
+
+## 1.verdaccio
 
 ### 1.1 Docker windows 安装及配置(v19.03.12) 如果已安装，请忽略此步骤
 
@@ -84,7 +86,7 @@ npm --registry http://npm.test.tech login
 
 后面的发布删除包与本地 host 环境操作一样
 
-## 2.使用 npmjs.org(私有 npm 仓库搭建的另一种方案，没有采用这种方案)
+## 2.使用 npmjs.org
 
 [官方文档](https://github.com/cnpm/cnpmjs.org)
 
