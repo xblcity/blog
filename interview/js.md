@@ -1,13 +1,13 @@
 # JS/TS/网络相关
 
-[常规面试题上](https://juejin.cn/post/6844903815053852685)
-[常规面试题中](https://juejin.cn/post/6844903828093927431)
-[面试30sJS/React](https://github.com/Yangfan2016/learn-translate/blob/master/3-30secondsofinterviews_zh.md)
-[js常见面试题](https://juejin.cn/post/6844903776512393224)
+- [常规面试题上](https://juejin.cn/post/6844903815053852685)
+- [常规面试题中](https://juejin.cn/post/6844903828093927431)
+- [面试30sJS/React](https://github.com/Yangfan2016/learn-translate/blob/master/3-30secondsofinterviews_zh.md)
+- [js常见面试题](https://juejin.cn/post/6844903776512393224)
 
 ## 一些重要的基础
 
-变量类型及基本方法
+### 变量类型及基本方法
 
 - 值类型6种和引用类型4种，如何判断
 - typeof可以判断基础类型，函数，和对象; 
@@ -19,16 +19,16 @@
 - - JS隐式转换：类型转换：字符串拼接，==运算符(除了null之外，其余全部用===)，用!!可以判断truly,falsely变量
 - [JS 细碎知识点](https://xblcity.github.io/blog/js-base/knowledge-points.html)
 
-原型与原型链
+### 原型与原型链
 
 - 什么是原型链
 - prototype与__proto__有什么区别
 - 每个类都有显式原型prototype, 每个实例都有隐式原型__proto__，实例的__proto__指向对应class的prototype
-- constructor有什么作用：可以用instanceof检测对象的原型链，应尽量让对象的constructor指向其构造函数
-- 原型，instanceof原理
+- constructor有什么作用：没有实际作用，但应尽量让对象的constructor指向其构造函数
+- 原型，instanceof原理和实现
 - 类与继承，有哪几种构造函数(类)的方法 [类与继承](https://xblcity.github.io/blog/js-base/inherit.html)
 
-作用域与闭包
+### 作用域与闭包
 
 - this有什么作用？获取对象。this是函数运行时的一个环境对象
 - this指向谁，this绑定的优先级，箭头函数的this [理解this](https://xblcity.github.io/blog/js-base/this.html)
@@ -38,7 +38,7 @@
 - 作用域分为哪几类，ES6新增的局部作用域如何理解
 - 作用域链如何理解
 
-JS异步知识
+### JS异步知识
 
 - 为什么定时器打印出来的都是同一个数，如何解决：立即执行函数/let
 - 宏任务微任务如何理解
@@ -48,7 +48,7 @@ JS异步知识
 - Promise有哪些优点
 - async,await如何理解与使用
 
-ES6
+### ES6
 
 - [ES6 知识点](https://xblcity.github.io/blog/js-base/es6.html)
 - let, const有变量提升吗，const定义的值可以修改吗
@@ -91,7 +91,8 @@ ES6
 - [理解节流与防抖函数](https://xblcity.github.io/blog/js-practice/throttle.html)，减少请求次数
 - 懒加载，减少回流&重绘，合理利用缓存
 - DNS预解析
-- SSR
+- 首屏SSR，减少白屏时间，有利于SEO，利于爬虫
+
 ## 手写题
 
 - 如何判断一个数组

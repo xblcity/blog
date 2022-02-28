@@ -348,6 +348,9 @@ Child.prototype = Object.create(Parent.prototype, {
     configurable: true
   }
 })
+// 上面八行代码等同于以下两行
+Child.prototype = Object.create(Parent.prototype)
+Child.prototype.constructor = Child
 
 const child = new Child(1)
 
@@ -380,6 +383,24 @@ child instanceof Parent // true
 ```
 
 class 实现继承的核心在于使用 extends 表明继承自哪个父类，并且在子类构造函数中必须调用 super，因为这段代码可以看成 Parent.call(this, value)。
+
+### instanceof的手动实现
+
+instanceof的原理：
+
+instanceof 是通过原型链判断的，A instanceof B, 在A的原型链中层层查找，是否有原型等于B.prototype，如果一直找到A的原型链的顶端(null;即Object.proptotype.__proto__),仍然不等于B.prototype，那么返回false，否则返回true。
+
+function instance_of(L,R) {
+  let prototype = R.prototype
+  while(true) {
+    if (L === null) {
+      return false
+    } else if (L.__proto__ === prototype) {
+      return true
+    }
+    L = L.__proto__
+  }
+}
 
 ## 参考
 

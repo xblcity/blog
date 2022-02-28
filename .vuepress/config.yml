@@ -75,6 +75,7 @@ themeConfig:
         - /react/redux
         - /react/redux-middleware
         - /react/find-house
+        - /react/umi3
         - /react/component-design-mode
     - title: 前端综合知识
       collapsable: false

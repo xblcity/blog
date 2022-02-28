@@ -41,6 +41,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)
+- [umi3升级](https://github.com/xblcity/blog/blob/master/react/umi3.md)
 - [组件设计模式](https://github.com/xblcity/blog/blob/master/react/component-design-mode.md)
     
 ## 前端综合知识
