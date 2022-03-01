@@ -204,7 +204,7 @@ git remote -v  // 查看远程origin
 git remote rm origin // 删除远程origin
 git remote add origin xxx.git
 ```
- git remote add origin git@10.1.2.7:Visual-FE/BCT.git
+ git remote add origin git@10.1.x.x:Visual-FE/xxx.git
 
 ## git 贮藏
 
