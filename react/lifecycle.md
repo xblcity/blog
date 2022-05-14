@@ -16,29 +16,40 @@ Unmounting（卸载阶段）
 
 #### 挂载
 
-constructor
+当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
 
-getDerivedStateFromProps
+constructor()
 
-render
+static getDerivedStateFromProps()
 
-componentDidMount
+render()
 
+componentDidMount()
+
+UNSAFE_componentWillMount()
 
 #### 更新
 
-getDerivedStateFromProps
+当组件的 props 或 state 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
 
-shouldComponentUpdate
+static getDerivedStateFromProps()
 
-render
+shouldComponentUpdate()
 
-getSnapshotBeforeUpdate
+render()
 
-componentDidUpdate
+getSnapshotBeforeUpdate()
+
+componentDidUpdate()
+
+UNSAFE_componentWillUpdate()
+
+UNSAFE_componentWillReceiveProps()
 
 
 #### 卸载
+
+当组件从 DOM 中移除时会调用如下方法：
 
 componentWillUnmount
 
@@ -106,7 +117,7 @@ class Child extends React.Component {
 
 组件更新完毕后，触发该生命周期，因为已经更新完毕，所以有`prevProps`获取之前的状态
 
-如果在该生命周期中无条件的使用了 setState，会造成***死循环***,所以应该使用条件语句
+如果在该生命周期中无条件的使用了 setState，会造成***死循环***,所以应该使用条件语句(因为this.setState必然会触发重新render,render之后必然触发componentDidUpdate，所以会造成死循环)
 
 当组件更新后，可以在此处对 DOM 进行操作。如果你对更新前后的 props 进行了比较，也可以选择在此处进行网络请求。
 
@@ -129,7 +140,7 @@ componentDidUpdate(prevProps) {
 
 静态方法获取不到`this`
 
-`getSnapshotBeforeUpdate`需要结合`componentDidUpdate`
+`getSnapshotBeforeUpdate`需要结合`componentDidUpdate`  // TODO 使用场景？
 
 ### 使用生命周期的注意事项
 

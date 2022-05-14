@@ -667,3 +667,93 @@
 //   }
 // })
 
+
+
+// const isValid = function (str) {
+//   const arr = str.split('')
+//   const stack = []
+//   for (let i = 0; i <= arr.length - 1; i++) {
+//     if (arr[i] === '(' || arr[i] === '[' || arr[i] === '{') {
+//       stack.push(arr[i])
+//     }
+//     if (arr[i] === ')' && stack[stack.length - 1] === '('
+//       || arr[i] === ']' && stack[stack.length - 1] === '['
+//       1 || arr[i] === '}' && stack[stack.length - 1] === '{') {
+//       stack.pop()
+//     }
+//   }
+//   return stack.length === 0 ? true : false
+// };
+
+// console.log(isValid('(]'))
+// console.log(isValid('([)]'))
+// console.log(isValid('{[]}'))
+
+// function findNext(n, arr) {
+//   let min = n
+//   let nextValue
+//   for (i = 0; i < arr.length - 1; i++) {
+//     let diffValue = Math.abs(arr[i] - n)
+//     if (diffValue < min) {
+//       nextValue = arr[i]
+//       min = diffValue
+//     } else if (Math.abs(arr[i]) - n === min) {
+//       nextValue = arr[i] > min ? arr[i] : min
+//     }
+//   }
+//   return nextValue
+// }
+// const findNext = (n, arr) => {
+//   let nextValue
+//   arr.reduce((prev, current) => {
+//     if (Math.abs(prev - n) < Math.abs(current - n)) {
+//       nextValue = prev
+//       return prev
+//     } else if (Math.abs(prev - n) === Math.abs(current - n)) {
+//       const bigger = prev > current ? prev : current
+//       nextValue = bigger
+//       return bigger
+//     } else {
+//       nextValue = current
+//       return current
+//     }
+//   })
+//   return nextValue
+// }
+// console.log(findNext(45, [23, 34, 40, 50, 55, 88]))
+
+// 创建一个Bind函数
+// Function.prototype.bind_ = (context, ...rest) => {
+//   if (typeof context !== 'function') {
+//     throw new TypeError('类型错误！')
+//   }
+//   const that = this
+//   return that.apply(context, rest.concat([...arguments]))
+// }
+
+// 创建一个apply函数
+// Function.prototype.apply_ = (context, rest) => {
+//   if (typeof context !== 'Function') {
+//     throw new TypeError('类型错误')
+//   }
+//   const mySymbol = Symbol()
+//   context[mySymbol] = this
+//   const result = context[mySymbol](...rest)
+//   delete context[mySymbol]
+//   return result
+// }
+
+// const foo = () => {}
+// const foo1 = (arg) => {console.log(arg[0] + arg[1])}
+// foo.apply_(foo1, [2,3])
+// Math.max.call(null, [23,45])
+
+// Function.prototype.bind_ = (context, rest) => {
+//   if (typeof context !== 'function') {
+//     throw new TypeError('类型错误')
+//   }
+//   const that = this
+//   return function () {
+//     that.apply(context, rest.concat([...arguments]))
+//   }
+// }

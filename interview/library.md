@@ -11,40 +11,39 @@
 
 基础部分
 
-- [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
-- [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-
 - [React面试题总结](https://juejin.cn/post/6844903801153945608)
 
 一些面试题例子：
 
 生命周期类
 
-- React生命周期分为哪几个阶段，分别对应的是？
+- [Fiber](https://zhuanlan.zhihu.com/p/26027085)
+- React生命周期分为哪几个阶段，分别对应的是？[深入详解React生命周期](https://juejin.cn/post/6914112105964634119)
 - React的请求应该放在哪个生命周期中?
 - class组件constructor和super(props)起什么作用
-- setState是同步还是异步 [你真的理解setState吗？](https://juejin.im/post/5b45c57c51882519790c7441)
+- setState是同步还是异步，setState合并更新 [你真的理解setState吗？](https://juejin.im/post/5b45c57c51882519790c7441)
 - setState第二个参数有什么用
 - React性能优化，减少渲染次数，使用ShouldComponentUpdate,PureComponent以及React.memo的第二个参数
 - react性能优化，使用hooks的userReducer和useMemo
 - 哪些函数会触发React的重新渲染，setState方法被调用
+- [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
+- [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
 
 原理设计类
 
+- react渲染机制，[协调](https://zh-hans.reactjs.org/docs/reconciliation.html)
 - react怎么判断需要重新渲染组件, props改变或者setState
 - React组件通信如何实现?
-- 有状态组件和无状态组件的使用场景
 - ref作用是什么，有哪些应用场景(获取组件对应的DOM元素)，在render中无法获取ref，因为此时DOM没有渲染完毕
 - 函数组件如何使用ref, useRef, forwardRef, useImperativeHandle作用,React.forwardRef在高阶组件中转发ref
-- React.Fragment使用场景
 - React合成事件，如何阻止事件冒泡e.stopPropagation()
-- 受控组件与非受控组件
+- 受控组件与非受控组件，对应分贝使用onChange与ref
 - context如何理解与使用
 
 应用类
 
+- 组件如何复用，组件复用的几种形式
 - React高阶组件怎么使用，应用场景
-- axios如何去统一封装处理
 
 比较全的面试题目及解答，有些问题已经过时和答案错误，需选择看
 
@@ -53,12 +52,20 @@
 
 HOOKS相关
 
-- hooks可以在条件语句中使用吗？
+- 为什么要用HOOKS [动机](https://zh-hans.reactjs.org/docs/hooks-intro.html#motivation)
+- hooks可以在条件语句中使用吗？[只在最顶层使用 Hook](https://zh-hans.reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level) [说明](https://zh-hans.reactjs.org/docs/hooks-rules.html#explanation)
 - useEffect如何使用，相当于哪些生命周期事件，清除副作用(卸载时触发清除函数)，useEffect第二个参数有什么用
 - useCallBack作用，如何使用
 - useMemo有什么作用，如何使用
 - useRef如何使用
 - 使用过自定义HOOK吗
+
+## redux/dva
+
+- 状态机输入/输出 [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
+- redux中异步请求 [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
+- dva是什么，解决了什么问题(文件成本，创建问题)
+- dva被淘汰？useModel, useRequest
 
 ## webpack
 
@@ -80,9 +87,9 @@ HOOKS相关
 
 ## umi
 
-## dva
+## vue
 
-## vue(很久没用过，只了解最基本知识)
+[最全的 Vue 面试题+详解答案](https://juejin.cn/post/6961222829979697165)
 
 - 如何理解MVVM模型
 - vue/react传值，父传子，子传父，没有父子关系（代码）
