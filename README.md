@@ -54,6 +54,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
      
 - [使用 webpack 从零配置 React 开发环境及打包优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack-react.md)
 - [webpack 配置及优化](https://github.com/xblcity/blog/blob/master/fe-engineering/webpack.md)
+- [Next.js 踩坑](https://github.com/xblcity/blog/blob/master/fe-engineering/next.md)
 - [vscode 插件与配置](https://github.com/xblcity/blog/blob/master/fe-engineering/vs.md)
 - [git 的使用](https://github.com/xblcity/blog/blob/master/fe-engineering/git.md)
 - [Git 多账号配置](https://github.com/xblcity/blog/blob/master/fe-engineering/git-account.md)

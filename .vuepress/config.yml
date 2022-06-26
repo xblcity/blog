@@ -90,6 +90,7 @@ themeConfig:
       children:
         - /fe-engineering/webpack-react
         - /fe-engineering/webpack
+        - /fe-engineering/next
         - /fe-engineering/vs
         - /fe-engineering/git
         - /fe-engineering/git-account
