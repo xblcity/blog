@@ -174,6 +174,8 @@ git reflog // 查看命令的记录
 git reset --hard 580361e  //  git reset 来返回到相应的版本即可，HEAD前面的一串字符为我们简写的ID
 ```
 
+`dev` 分支已经合并到了 `master` 分支，如果存在不想合并的代码，想要回退，在 `dev` 分支 `reset` 再 `push` 重新提交 `merge request` 是行不通的，提交 `merge request` 会提示没有 `commit` 可以合并，需要重新提交一个 `commit`
+
 ## 查看当前分支信息/上游分支
 
 ```js
