@@ -11,6 +11,7 @@
 - 修改分支名
 - 撤销本地 commit
 - 版本切换/回滚
+- 撤销远程已合并的 commit
 - 查看当前分支信息/上游分支
 - git 贮藏
 - 合并仓库
@@ -175,6 +176,25 @@ git reset --hard 580361e  //  git reset 来返回到相应的版本即可，HEAD
 ```
 
 `dev` 分支已经合并到了 `master` 分支，如果存在不想合并的代码，想要回退，在 `dev` 分支 `reset` 再 `push` 重新提交 `merge request` 是行不通的，提交 `merge request` 会提示没有 `commit` 可以合并，需要重新提交一个 `commit`
+
+## 撤销远程已合并的 commit
+
+工作中有种情况比较常见，比如个人开发分支是 `feat-100`。团队开发分支是 `dev`。`feat-100` 已经合并到 `dev` 分支了。但是后面发现 `feat-100`里提交了一些不想要的/想要撤回的 commit。怎么做，才能把 `dev` 分支回退到不包含不想要的 commit 的状态？
+
+如果在 `feat-100` 分支上进行 `reset` ，这种情况只能改变 `feat-100` 分支的commit，如果向 `dev` 分支发起 MR ，会发现没有更改可以合并
+
+比较合理的做法是实用 `revert` 命令。 `revert` 和 `reset` 有什么区别？
+
+1. git revert 后会多出一条commit，这里可进行回撤操作
+2. git reset 直接把之前 commit 删掉，非 git reset --hard 的操作是不会删掉修改代码，如果远程已经有之前代码，需要强推 git push -f
+
+```js
+git revert 错误的commit_id -m 1
+```
+
+-m m 表示 mainline
+
+参数1 表示当前分支作为主分支，通常用1
 
 ## 查看当前分支信息/上游分支
 
