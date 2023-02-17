@@ -8,7 +8,7 @@
 
 语法作用域 (动态作用域) 是由代码运行时的上下文决定的。
 
-闭包的实现就是基于词法作用域。但`JS`中的`this`有语法作用域的特征。
+闭包的实现就是基于词法作用域。PS: `JS`中的`this`有语法作用域的特征，`this` 在运行时才会被确认，是动态的。
 
 ```js
 let value = 1
@@ -117,6 +117,28 @@ const c = function() {
   console.log('c函数执行了')
 }
 ```
+
+以下两种写法会报错吗，为什么？
+
+```js
+const handleChange = handleTrim('top')
+const handleTrim = (val) => val && val.trim()
+```
+
+```js
+// handleChange()
+// console.log(handleTrim)
+const handleChange = () => {
+  console.log(handleTrim)
+  handleTrim('top')
+}
+const handleTrim = (val) => val && val.trim()
+handleChange();
+```
+
+第一种写法会报错，因为我们在函数声明的上面直接调用了.
+
+第二种写法不会报错
 
 ### 1.3 执行环境，作用域与作用域链
 
