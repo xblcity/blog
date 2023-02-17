@@ -386,10 +386,11 @@ class 实现继承的核心在于使用 extends 表明继承自哪个父类，�
 
 ### instanceof的手动实现
 
-instanceof的原理：
+`instanceof` 的原理：
 
-instanceof 是通过原型链判断的，A instanceof B, 在A的原型链中层层查找，是否有原型等于B.prototype，如果一直找到A的原型链的顶端(null;即Object.proptotype.__proto__),仍然不等于B.prototype，那么返回false，否则返回true。
+`instanceof` 是通过原型链判断的，A `instanceof` B, 在A的原型链中层层查找，是否有原型等于B.prototype，如果一直找到A的原型链的顶端(null;即Object.proptotype.__proto__),仍然不等于B.prototype，那么返回false，否则返回true。
 
+```js
 function instance_of(L,R) {
   let prototype = R.prototype
   while(true) {
@@ -401,6 +402,7 @@ function instance_of(L,R) {
     L = L.__proto__
   }
 }
+```
 
 ## 参考
 
