@@ -1,10 +1,12 @@
 # JS 事件队列/循环(Event Loop)
 
-浏览器的任务队列：
+由于JS是单线程，为了能够更高效的执行，所以对任务的执行做了优化处理，也就是人们常说的事件队列/循环(Event Loop)
 
-主任务队列存储的都是同步任务；等待任务队列存储的都是异步任务；
+下图是一个简略的JS任务执行机制：
 
-首先浏览器会把主任务队列中的同步任务挨个全部执行完，然后再去等待任务队列中看哪个任务可以执行了，然后把该执行的任务放到主任务队列中去执行，等这个任务执行完，再去等待任务中看谁可以执行了，再把这个任务放到主任务队列中执行... 如此循环。这种循环叫做事件循环（Event Loop）
+![eventloop](./images/eventloop/eventloop1.png)
+
+浏览器会把主任务队列中的同步任务挨个全部执行完，然后再去等待任务队列中（异步任务）看哪个任务可以执行了，然后把该执行的任务放到主任务队列中去执行，等这个任务执行完，再去等待任务中看谁可以执行了，再把这个任务放到主任务队列中执行... 如此循环。这种循环叫做事件循环（Event Loop）
 
 宏任务(macrotask)和微任务(microtask)是等待任务队列中的异步任务的处理机制。在 ES6 规范中分别为 tasks 和 jobs，一个宏任务里面可能包含多个微任务。
 
@@ -16,7 +18,7 @@
 
 那异步操作 `ajax` 是啥情况呢, `js` 执行遇到 `ajax` 也会被放进等待任务队列中去，不过不同的是 `ajax` 不算是宏任务也不算是微任务。`ajax` 执行时间(何时执行完毕)完全取决于收到请求的时间(与网速服务器等有关系)
 
-如果仅仅是只使用同步代码，`Promise`，`setTimeout`，就比较好理解，比如说
+当代码里只包含同步代码，一个宏任务，一个微任务，代码执行顺序比较容易理解，比如：
 
 ```js
 setTimeout(function() {
@@ -76,6 +78,7 @@ async function async1() {
 
   // 转换后代码
   new Promise((resolve) => {
+    // async2();
     console.log('async2')
     resolve()
   }).then((res) => console.log('async1 end'))
@@ -103,23 +106,23 @@ console.log('start')
 async function async1() {
   console.log('async1 start') // 1. 第一个宏任务打印的第一个代码
   await async2() // 2. 执行完async2的同步代码，由于await产生第一个宏任务的第一个微任务，接着跳出async1函数，继续执行第一个宏任务的同步代码
-  console.log('async1 end') // 3. 执行第一个宏任务的第一个微任务的代码，
+  console.log('async1 end') // 4. 执行第一个宏任务的第一个微任务的代码，
   setTimeout(() => {
-    // 6. 执行第一个宏任务的第一个微任务代码，产生第四个宏任务
+    // 7. 执行第一个宏任务的第一个微任务代码，产生第四个宏任务
     console.log('timer1')
   }, 0)
 }
 async function async2() {
   // 2.
   setTimeout(() => {
-    // 4. async2函数执行，产生第二个宏任务
+    // 5. async2函数执行，产生第二个宏任务
     console.log('timer2')
   }, 0)
   console.log('async2') // 2. async2的同步代码被执行完毕
 }
 async1()
 setTimeout(() => {
-  // 5. 第一个宏任务同步代码执行到这里产生了第三个宏任务
+  // 6. 第一个宏任务同步代码执行到这里产生了第三个宏任务
   console.log('timer3')
 }, 0)
 console.log('start') // 3. 第一个宏任务的同步代码执行，
