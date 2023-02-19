@@ -38,33 +38,38 @@ themeConfig:
   sidebar:
     - title: 介绍
       path: /
-    - title: JS基础
+    - title: 前端基础
       collapsable: false
       sidebarDepth: 2
       children:
-        - /js-base/summary
-        - /js-base/this
-        - /js-base/call
-        - /js-base/scope-closures
-        - /js-base/copy
-        - /js-base/inherit
-        - /js-base/object-methods
-        - /js-base/eventloop
-        - /js-base/es6
-        - /js-base/ajax
-        - /js-base/func-program
-        - /js-base/design-mode
-        - /js-base/algorithm
-        - /js-base/ts-basic
-        - /js-base/knowledge-points
-    - title: JS应用
+        # - /base/summary
+        - /base/inherit
+        - /base/copy
+        - /base/scope-closures
+        - /base/this
+        - /base/call
+        - /base/eventloop
+        - /base/ajax
+        - /base/throttle
+        - /base/object-methods
+        
+        # - /base/es6
+        # - /base/knowledge-points
+        # - /base/html
+        # - /base/css
+        # - /base/event
+    - title: 前端进阶
       collapsable: false
       sidebarDepth: 2
       children:
-        - /js-practice/throttle
-        - /js-practice/array
-        - /js-practice/utils
-        - /js-practice/beautyjs
+        - /advance/func-program
+        - /advance/design-mode
+        - /advance/algorithm
+        - /advance/ts-basic
+        - /advance/lodashSource
+        # - /advance/array
+        # - /advance/utils
+        # - /advance/beautyjs
     - title: React应用
       collapsable: false
       sidebarDepth: 2
@@ -81,21 +86,21 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
-        - /fe-system/performance
-        - /fe-system/render
-        - /fe-system/http
+        - /system/performance
+        - /system/render
+        - /system/http
     - title: 工程化
       collapsable: false
       sidebarDepth: 2
       children:
-        - /fe-engineering/webpack-react
-        - /fe-engineering/webpack
-        - /fe-engineering/next
-        - /fe-engineering/vs
-        - /fe-engineering/git
-        - /fe-engineering/git-account
-        - /fe-engineering/private-npm
-        - /fe-engineering/workflow
+        - /engineering/webpack-react
+        - /engineering/webpack
+        - /engineering/next
+        - /engineering/vs
+        - /engineering/git
+        - /engineering/git-account
+        - /engineering/private-npm
+        - /engineering/workflow
     - title: 后端
       collapsable: false
       sidebarDepth: 2
@@ -106,13 +111,6 @@ themeConfig:
         - /backend/server
         - /backend/nginx
         - /backend/ubuntu
-    - title: HTML/CSS
-      collapsable: false
-      sidebarDepth: 2
-      children:
-        - /html-css/html
-        - /html-css/css
-        - /html-css/event
     - title: 第三方库
       collapsable: false
       sidebarDepth: 2
@@ -120,16 +118,16 @@ themeConfig:
         - /library/wx-web
         - /library/vue-admin
         - /library/vuepress
-    - title: 面试题
-      collapsable: false
-      sidebarDepth: 2
-      children:
-        - /interview/html
-        - /interview/js
-        - /interview/library
-    - title: 未归类
-      collapsable: false
-      sidebarDepth: 2
-      children:
-        - /others/tool
-        - /others/config-question
+    # - title: 面试题
+    #   collapsable: false
+    #   sidebarDepth: 2
+    #   children:
+    #     - /interview/html
+    #     - /interview/js
+    #     - /interview/library
+    # - title: 未归类
+    #   collapsable: false
+    #   sidebarDepth: 2
+    #   children:
+    #     - /others/tool
+    #     - /others/config-question
