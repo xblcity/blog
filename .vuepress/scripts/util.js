@@ -62,9 +62,15 @@ const endContent = `
 
 \`yarn dev\`
 
-项目发布至\`Github Page\`(使用git bash客户端):
+项目发布至\`Github Page\`(使用git bash客户端，sh命令windows不识别):
 
 \`yarn deploy\`
+
+__其他__
+
+- \`yarn build\` 会自动把 \`README.md\` \`blob\` 地址替换为 \`github page\` 地址
+- \`.vuepress/config.yml\` 用于配置左侧菜单
+
 `;
 
 module.exports.handleContent = handleContent;
