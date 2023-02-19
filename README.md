@@ -79,7 +79,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 
 `yarn dev`
 
-项目发布至`Github Page`(使用git bash客户端):
+项目发布至`Github Page`(使用git bash客户端，sh命令windows不识别):
 
 `yarn deploy`
 
