@@ -22,6 +22,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:xblcity/xblcity.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:xblcity/blog.git master:gh-pages
+# git push -f git@github.com:xblcity/blog.git master:gh-pages
+git push -f https://github.com/xblcity/blog.git master:gh-pages
 
 cd -
