@@ -29,10 +29,9 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [lodash部分源码](https://github.com/xblcity/blog/blob/master/advance/lodashSource.md)
     
 ## React应用
-     
+
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [React-Hooks 总结&实践](https://github.com/xblcity/blog/blob/master/react/react-hooks.md)
-- [在 React 中使用 TS](https://github.com/xblcity/blog/blob/master/react/react-ts.md)
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)

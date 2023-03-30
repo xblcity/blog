@@ -1,4 +1,4 @@
-# Typescript 常用知识
+# 开发中常用的 Typescript 技巧
 
 ## type
 
@@ -141,6 +141,39 @@ let output = identity('myString');
 interface Co<T> {
   (name: T): T;
 }
+```
+
+## 在React中使用泛型
+
+useState,
+
+通常 useState 不一定要给泛型类型，因为 ts 会进行类型断言，根据你给的初始值进行判断
+
+event
+
+```ts
+interface IProps {
+  className?: string
+}
+
+const Box: React.FC<IProps> = (props) => {
+  const { className } = props
+  const [value, setValue] = useState<string>('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // 定义event的接口类型
+  const handleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value)
+  }
+  return (
+    <div  className={className}>
+      <input ref={inputRef} type="text" value={value} onChange={handleValue} />
+      <div>{value}</div>
+    </div>
+  )
+}
+
+export default Box
 ```
 
 ## 交叉类型与联合类型
