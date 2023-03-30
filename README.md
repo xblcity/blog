@@ -19,14 +19,14 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [AJAX](https://github.com/xblcity/blog/blob/master/base/ajax.md)
 - [理解节流与防抖函数](https://github.com/xblcity/blog/blob/master/base/throttle.md)
 - [Object 构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/base/object-methods.md)
- 
+    
 ## 前端进阶
-
-- [Typescript 认知](https://github.com/xblcity/blog/blob/master/advance/ts-basic.md)
+     
 - [高阶函数](https://github.com/xblcity/blog/blob/master/advance/func-program.md)
 - [JS 设计模式](https://github.com/xblcity/blog/blob/master/advance/design-mode.md)
 - [数据结构与算法](https://github.com/xblcity/blog/blob/master/advance/algorithm.md)
-- [从omit读lodash源码](https://github.com/xblcity/blog/blob/master/advance/algorithm.md)
+- [Typescript 常用知识](https://github.com/xblcity/blog/blob/master/advance/ts.md)
+- [lodash部分源码](https://github.com/xblcity/blog/blob/master/advance/lodashSource.md)
     
 ## React应用
      
@@ -87,3 +87,4 @@ __其他__
 
 - `yarn build` 会自动把 `README.md` `blob` 地址替换为 `github page` 地址
 - `.vuepress/config.yml` 用于配置左侧菜单
+

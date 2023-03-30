@@ -65,7 +65,7 @@ themeConfig:
         - /advance/func-program
         - /advance/design-mode
         - /advance/algorithm
-        - /advance/ts-basic
+        - /advance/ts
         - /advance/lodashSource
         # - /advance/array
         # - /advance/utils
