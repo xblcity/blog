@@ -42,7 +42,7 @@ console.log(b.name) // 'lily'
 显然，需要把 b 的堆对象在重新复制一遍产生新的堆对象地址，并且使 c 指向这个新的堆对象地址。
 
 > 最常见的情况，比如，事件绑定的回调函数，我们使用addEventListener和removeEventListener传递的必须是同一个引用才能移除事件。
-> 在使用 React 的过程中，由于组件的重新渲染，组件内部的事件回调函数在经过另一次渲染过后和之前的函数已经不是同一个引用了，即引用地址发生了变化，Component 解决方法是将该函数声明在 constructor 中，Hooks 解决办法是使用 const定义事件回调或者用 useMemo/useCallback
+> 在使用 React 的过程中，由于组件的重新渲染，组件内部的事件回调函数在经过另一次渲染过后和之前的函数已经不是同一个引用了，即引用地址发生了变化，Component 解决方法是将该函数声明在 constructor 中，Hooks 解决办法是使用 useMemo/useCallback 保证函数的引用地址不发生变化
 
 ## 实现浅拷贝
 
