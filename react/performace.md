@@ -131,4 +131,29 @@ const debounceWithCallback = useCallback(() => {
 <button onClick={debounceWithCallback}>Minus with callback debounce</button>;
 ```
 
-这是为什么呢？
+## 自定义hook执行多次，里面的内容会执行多次吗
+
+```ts
+import { useEffect } from "react";
+
+const useCounter = () => {
+  console.log("useCounter执行");
+  useEffect(() => {
+    console.log("useCounter挂载");
+  }, []);
+  return {};
+};
+
+export default useCounter;
+
+
+function App() {
+  // state change...
+  // useCounter 执行多次
+  useCounter()
+}
+```
+
+useCounter执行 会打印多次，但useCounter挂载只会执行一次
+
+## React18.2 useEffect多次执行的问题
