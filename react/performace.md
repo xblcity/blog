@@ -156,4 +156,25 @@ function App() {
 
 useCounter执行 会打印多次，但useCounter挂载只会执行一次
 
-## React18.2 useEffect多次执行的问题
+## React18 StrictMode useEffect 开发模式执行两次的问题
+
+```ts
+// How to support Reusable State in Effects
+// https://github.com/reactwg/react-18/discussions/18
+import { useRef, useEffect } from 'react';
+
+/**
+ * 仅在挂载时执行的effect，支持 React 18 的 Reusable State
+ */
+const useMount = (fn: () => void) => {
+  const isMounted = useRef(false);
+  useEffect(() => {
+    if (isMounted.current === false) {
+      isMounted.current = true;
+      fn?.();
+    }
+  }, [fn, isMounted]);
+};
+
+export default useMount;
+```
