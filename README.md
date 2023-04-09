@@ -21,22 +21,22 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [Object 构造器及原型上的方法](https://github.com/xblcity/blog/blob/master/base/object-methods.md)
     
 ## 前端进阶
-
-- [Typescript 常用知识](https://github.com/xblcity/blog/blob/master/advance/ts.md)  
+     
+- [开发中常用的 Typescript 技巧](https://github.com/xblcity/blog/blob/master/advance/ts.md)
 - [高阶函数](https://github.com/xblcity/blog/blob/master/advance/func-program.md)
 - [JS 设计模式](https://github.com/xblcity/blog/blob/master/advance/design-mode.md)
 - [数据结构与算法](https://github.com/xblcity/blog/blob/master/advance/algorithm.md)
-- [数组数据处理](https://github.com/xblcity/blog/blob/master/advance/array.md)
+- [数组的数据处理](https://github.com/xblcity/blog/blob/master/advance/array.md)
 - [lodash omit](https://github.com/xblcity/blog/blob/master/advance/lodashSource.md)
     
 ## React应用
-
+     
 - [React 性能优化](https://github.com/xblcity/blog/blob/master/react/performance.md)
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-- [加密图片实现](https://github.com/xblcity/blog/blob/master/react/encrypt-images.md)
-- [picker组件实现](https://github.com/xblcity/blog/blob/master/react/picker.md)
+- [加密图片](https://github.com/xblcity/blog/blob/master/react/encrypt-images.md)
+- [Picker 组件](https://github.com/xblcity/blog/blob/master/react/picker.md)
 - [swiper插件踩坑](https://github.com/xblcity/blog/blob/master/react/swiper.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)
 - [umi3 升级](https://github.com/xblcity/blog/blob/master/react/umi3.md)
@@ -49,7 +49,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [http 知识体系](https://github.com/xblcity/blog/blob/master/system/http.md)
     
 ## 工程化
-
+     
 - [Next.js 项目搭建及踩坑](https://github.com/xblcity/blog/blob/master/engineering/next.md)
 - [使用 webpack 从零配置 React 开发环境及打包优化](https://github.com/xblcity/blog/blob/master/engineering/webpack-react.md)
 - [webpack 配置及优化](https://github.com/xblcity/blog/blob/master/engineering/webpack.md)
@@ -61,7 +61,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
     
 ## 后端
      
-- [Next.js Node层上传/接收文件流](https://github.com/xblcity/blog/blob/master/backend/file.md)
+- [Next.js Node 层上传/接收文件流](https://github.com/xblcity/blog/blob/master/backend/file.md)
 - [node 知识点](https://github.com/xblcity/blog/blob/master/backend/little-points.md)
 - [博客的后端实现](https://github.com/xblcity/blog/blob/master/backend/blog.md)
 - [mysql 使用](https://github.com/xblcity/blog/blob/master/backend/mysql.md)
