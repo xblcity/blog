@@ -62,10 +62,11 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
+        - /advance/ts
         - /advance/func-program
         - /advance/design-mode
         - /advance/algorithm
-        - /advance/ts
+        - /advance/array
         - /advance/lodashSource
         # - /advance/array
         # - /advance/utils
@@ -74,10 +75,13 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
+        - /react/performance
         - /react/lifecycle
-        - /react/react-hooks
         - /react/redux
         - /react/redux-middleware
+        - /react/encrypt-images
+        - /react/picker
+        - /react/swiper
         - /react/find-house
         - /react/umi3
         - /react/component-design-mode
@@ -92,9 +96,9 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
+        - /engineering/next
         - /engineering/webpack-react
         - /engineering/webpack
-        - /engineering/next
         - /engineering/vs
         - /engineering/git
         - /engineering/git-account
@@ -104,6 +108,7 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
+        - /backend/file
         - /backend/little-points
         - /backend/blog
         - /backend/mysql

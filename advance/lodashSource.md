@@ -1,5 +1,4 @@
-# lodash部分源码
-
+# lodash omit
 ## omit
 
 omit 函数：拷贝对象并去除一些对象中不用的属性
