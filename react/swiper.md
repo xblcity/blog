@@ -1,4 +1,4 @@
-# swiper插件踩坑
+# Swiper插件踩坑
 
 [Swiper结合React使用文档](https://swiperjs.com/react#installation)
 

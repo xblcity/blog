@@ -35,9 +35,9 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
 - [React 生命周期总结&应用](https://github.com/xblcity/blog/blob/master/react/lifecycle.md)
 - [Redux/React-Redux](https://github.com/xblcity/blog/blob/master/react/redux.md)
 - [Redux 中间件](https://github.com/xblcity/blog/blob/master/react/redux-middleware.md)
-- [加密图片](https://github.com/xblcity/blog/blob/master/react/encrypt-images.md)
+- [加密图片获取](https://github.com/xblcity/blog/blob/master/react/encrypt-images.md)
 - [Picker 组件](https://github.com/xblcity/blog/blob/master/react/picker.md)
-- [swiper插件踩坑](https://github.com/xblcity/blog/blob/master/react/swiper.md)
+- [Swiper插件踩坑](https://github.com/xblcity/blog/blob/master/react/swiper.md)
 - [找房筛选条件表单封装](https://github.com/xblcity/blog/blob/master/react/find-house.md)
 - [umi3 升级](https://github.com/xblcity/blog/blob/master/react/umi3.md)
 - [组件设计模式](https://github.com/xblcity/blog/blob/master/react/component-design-mode.md)
@@ -50,7 +50,7 @@ _是什么(WHAT)-怎么做(HOW)-为什么(WHY)_
     
 ## 工程化
      
-- [Next.js 项目搭建及踩坑](https://github.com/xblcity/blog/blob/master/engineering/next.md)
+- [C端Next.js项目踩坑](https://github.com/xblcity/blog/blob/master/engineering/c-project.md)
 - [使用 webpack 从零配置 React 开发环境及打包优化](https://github.com/xblcity/blog/blob/master/engineering/webpack-react.md)
 - [webpack 配置及优化](https://github.com/xblcity/blog/blob/master/engineering/webpack.md)
 - [vscode 插件与配置](https://github.com/xblcity/blog/blob/master/engineering/vs.md)
