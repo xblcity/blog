@@ -96,7 +96,7 @@ themeConfig:
       collapsable: false
       sidebarDepth: 2
       children:
-        - /engineering/next
+        - /engineering/c-project
         - /engineering/webpack-react
         - /engineering/webpack
         - /engineering/vs

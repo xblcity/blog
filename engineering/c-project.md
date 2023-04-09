@@ -40,6 +40,9 @@ html {
 }
 ```
 
+### reset.css
+
+磨平浏览器样式差异
 ### M端需要自适应字体
 
 通过 `postcss-pxtorem` 插件，把px转换成rem，同时需要监听 ua resize 根元素 html 的 rem
