@@ -63,7 +63,51 @@ export InputProps = Pick<HTMLAttribute<HTMLInputElement>, 'placeholder' | 'value
 
 ## 使用 Partial 进行属性提示
 
+```ts
+interface State {
+  email: string;
+  password: string;
+}
+
+const Cop = () => {
+  const reducer = (state: State, { ...newState } : Partial<IParams>) => {
+    return { ...state, ...newState };
+  };
+  const [data, dispatch] = useReducer(reducer, defaultState);
+
+  // dispatch 会进行属性提示, 非 state 里面的值会抛错
+  const handleEmailChange = (v) => dispatch({})
+}
+```
+
 ## 使用枚举
+
+获取枚举属性值的联合类型
+
+```ts
+
+export enum State1 {
+  major = 1,
+  minor = 2,
+  patch = 3,
+}
+
+export enum State3 {
+  major = "Major",
+  minor = "Minor",
+  patch = "Patch",
+}
+
+type ValuesOfEnum<T> = T[keyof T];
+type MyState1 = ValuesOfEnum<typeof State1>;
+type MyState3 = `${State3}`;
+
+const test1: MyState1 = 1;
+const test2: MyState1 = 1000;
+
+const test5: MyState3 = "Major";
+const test6: MyState3 = "major";
+```
 
 ## 定义函数类型
 
@@ -124,7 +168,7 @@ let myAdd = function (x: number, y: number): number {
 
 更广泛的约束类型
 
-不知道返回的类型，但是用不想用 any，而是根据输入值决定返回值
+不知道返回的类型，但是用不想用 any，而是根据输入值决定返回值。一般在处理的时候可能会多次用到
 
 ```ts
 function identity<T>(arg: T): T {
