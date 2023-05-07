@@ -1,14 +1,40 @@
-# Next.js 项目搭建及踩坑
+# Next.js 踩坑点
 
-## 为什么要使用 Next.js 框架
+## 首页 SSR 升级改造
 
-## Next.js 和普通的 React 项目有什么区别
+### 开启 SSR
 
-- `Next.js` 是一个支持 `SSR` 的框架。和常见的打包 `React` 项目不同的是，`Next.js` 返回给客户端的 `HTML` 可能是动态渲染的，而不是直接打包出 `index.html` 和一些 `.js` 文件。`Next.js` 也支持打包出静态文件，取决于你的项目里有没有用到即时渲染的功能。 [Static HTML Export](https://nextjs.org/docs/advanced-features/static-html-export)
-- 因为支持 `SSR`，意味着
+需要用到 `getServerSideProps` API。注意，SSR 和 SSG 同时只能使用一个
 
-## 有哪些要注意的点
+### react-hydration-error
 
-### 请求转发
+`xt-dev.js:24 Warning: Expected server HTML to contain a matching <div> in <div>.`
 
-如果使用了 `Node` 中间层，那么在代码里写的以 `/api` 开头的请求会自动被转发到 `Node` 层。
+`caught Error: Hydration failed because the initial UI does not match what was rendered on the server.`
+
+首页升级 SSR 的时候有如上报错，主要是因为在 SSR 的时候使用了一些 非 Node 层的 API。
+
+如何区分是 Server 层还是 Client 层，不要用 `typeof window !== 'undefined'` 判断，而是用 `useEffect(() => {}, [])` 进行判断，因为 useEffect 空依赖在 Server 层是不执行的。
+
+可参考官方文档[react-hydration-error](https://nextjs.org/docs/messages/react-hydration-error)
+
+### 对上面错误进行排查
+
+- 非首页没有走 SSR 的不报错 
+
+进行以下几点排查
+
+- _app 的 Layout - 注释仍报错
+- _app 的 Script 及 Head - 注释仍报错
+- _document - 注释不报错
+
+```jsx
+const [showChild, setShowChild] = useState(false)
+useEffect(() => {
+  setShowChild(true)
+}, [])
+if (!showChild && router.pathname !== '/') {
+  return null
+}
+```
+在 _app 中这段代码导致报错，因为这句话会导致 server render 返回为 null
