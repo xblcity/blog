@@ -1,4 +1,43 @@
-# vscode 插件与配置
+# vscode 配置与插件
+
+## 常用配置篇
+
+### 代码片段
+
+初始化 React TS 组件
+
+```json
+{
+  "Init Tsx": {
+    "prefix": "init",
+    "body": [
+      "import React, { FC, memo } from 'react';",
+			"",
+      "interface Props {}",
+			"",
+      "const ${1:AComponent}: FC<Props> = (props) => {",
+      "  return <div></div>;",
+      "};",
+			"",
+      "export default memo(${1:AComponent});"
+    ],
+    "description": "Init Tsx File"
+  }
+}
+```
+
+### 快捷键配置
+
+切换块注释：注释一行内的部分代码，或者生成 /*  */ 这样的注释，在 TS 中非常好用
+
+重新加载窗口
+
+前进后退[mac] ctl - ctl +
+
+撤销[mac]: cmd z 
+取消撤销[mac]: shift cmd z 
+
+## 常用插件[部分可能过气]
 
 一款好的编辑器可以更好的提升开发效率，VS Code 可以通过配置插件达到很好的可用性
 
@@ -7,8 +46,6 @@
 想要 VS 有 webstorm 大而全的功能还是比较难，目前存在以下问题：markdown 文件路径引入不提示，当路径为别名比如`@`时，`@/`不提示下一级路径，必须要把`/`删掉才提示，且别名提示非常慢(在 ts 项目中比较正常)
 
 建议每个项目都配一个[jsconfig.json](https://code.visualstudio.com/docs/languages/jsconfig)，比如可以配置路径别名提示等等
-
-## 常用插件
 
 ### emmet
 
