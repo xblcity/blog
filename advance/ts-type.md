@@ -138,7 +138,7 @@ interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
 
 如果使用 | 联合类型，那么就只能使用 EventTarget 和 T 的共有属性
 
-![change-event](./images/change-event.png)
+![change-event](./images/ts-type/change-event.png)
 
 ### 组件应用
 
@@ -195,9 +195,9 @@ const Cop = () => {
 };
 ```
 
-![partial](./images/partial.png)
+![partial](./images/ts-type/partial.png)
 
-![partial-error](./images/partial-error.png)
+![partial-error](./images/ts-type/partial-error.png)
 
 问题：Partial 如何实现
 
@@ -209,7 +209,7 @@ Pick 与 Omit 都是从一个对象中选取部分属性，Pick 选取的是需�
 
 在第三方组件基础上进行修改，比如 placeholder 想要在上面拓展，让他能够支持 ReactNode 类型，如果直接声明会报错。
 
-![omit-error](./images/omit-error.png)
+![omit-error](./images/ts-type/omit-error.png)
 
 应该用如下写法
 
@@ -232,7 +232,7 @@ interface OriginalType {
 type NewType = Omit<OriginalType, 'property1' | 'property2'>;
 ```
 
-![omit-type](./images/omit-type.png)
+![omit-type](./images/ts-type/omit-type.png)
 
 ```ts
 type A = 'a' | 'b' | 'c';
@@ -286,13 +286,13 @@ export const enum AddressType {
 }
 ```
 
-![enum-comment](./images/enum-comment.png)
+![enum-comment](./images/ts-type/enum-comment.png)
 
 定义基础组件的 Props 时，可以使用 `/** */` 注释，这样在使用的时候就会有提示
 
 对于即将废弃的方法或者属性，可以通过 `@deprecated` 符号进行注释，这样在使用的时候会有中划线删除提示
 
-![deprecated](./images/deprecated.png)
+![deprecated](./images/ts-type/deprecated.png)
 
 ### 类型断言 as
 
