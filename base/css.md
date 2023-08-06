@@ -1,4 +1,33 @@
-# CSS
+# CSS 常见问题总结
+
+## sticky 生效
+
+- [sticky](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#%E5%8F%96%E5%80%BC)
+
+元素根据正常文档流进行定位，然后相对它的最近滚动祖先，基于 top、right、bottom 和 left 的值进行偏移。偏移值不会影响任何其他元素的位置。 该值总是创建一个新的层叠上下文（stacking context）。
+
+注意，一个 sticky 元素会“固定”在离它最近的一个拥有“滚动机制”的祖先上。
+
+常见的 sticky 用法
+
+当前元素的某个祖先元素（通常是 body）是滚动的，对该元素使用 sticky 属性，正常生效
+
+sticky 失效原因【想相对于 body 进行粘性定位】
+
+1.祖先元素使用了 overflow: hidden/hidden 等非 visible 属性值
+
+最近的一个 overflow 不为 visible 的祖先元素不是 body，导致滚动的 sticky 粘性粘在的不是滚动的 bdoy 上面，而是最近的滚动祖先元素上面。
+
+解决方案：将该元素提升至上层，使其最近的滚动元素是 body
+
+父元素或者祖先元素没有 over: hidden/auto 属性 sticky 则能相对于 body 正常生效
+
+## 行内元素 overflow: hidden 产生其他元素错位问题
+
+原因：overflow:hidden的这个属性影响了inline-block元素baseline的位置；
+vertical-align属性的默认值时baseline
+
+## 正则选择器
 
 在 CSS 中需要注意一些效果的实现与控制，同时注意一些“意外”的情况是如何产生的。以及兼容移动端 H5 的一些举措。
 
@@ -234,6 +263,18 @@ display: -webkit-box;
 
 - [滚动视差？CSS 不在话下](https://juejin.im/post/5b6d0756e51d4562b31ad23c)
 
+## sticky 生效
+
+sticky 失效原因
+
+祖先元素使用了 overflow: hidden
+
+解决方案：将该元素提升至上层
+
+## 行内元素 overflow: hidden 产生其他元素错位问题
+
+原因：overflow:hidden的这个属性影响了inline-block元素baseline的位置；
+vertical-align属性的默认值时baseline
 
 ## 文中未提到的值得借鉴的文章
 
