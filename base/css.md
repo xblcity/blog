@@ -27,7 +27,36 @@ sticky 失效原因【想相对于 body 进行粘性定位】
 原因：overflow:hidden的这个属性影响了inline-block元素baseline的位置；
 vertical-align属性的默认值时baseline
 
+## 获取元素属性 offsetHeight、clientHeight 无效
+
+当父元素的 css display 属性为 none 的时候，子元素获取到的 offsetHeight 是0。
+
+如何解决：
+
+1. 使用 useEffect 监听 offsetHeight 属性的改变，然后赋值
+2. 使用计时器监听 offsetHeight，有改变则重新赋值
+3. 使用 web api getBoundingClientRect
+
+![动态更新 offsetHeight](https://juejin.cn/post/7105963964051226661)
+
 ## 正则选择器
+
+```css
+// 以 an 开头的 class 属性
+[class^=an] {
+  color: red
+}
+
+// 以 an 结尾的 class 属性
+[class$=an] {
+  color: red
+}
+
+// 包含 an 的 class 属性
+[class*=an] {
+  color: red
+}
+```
 
 在 CSS 中需要注意一些效果的实现与控制，同时注意一些“意外”的情况是如何产生的。以及兼容移动端 H5 的一些举措。
 
