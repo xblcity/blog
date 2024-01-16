@@ -59,6 +59,8 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 7. 如果之前使用的是 https，现在换成了 ssh ，需要修改 `origin url`, 输入以下命令 `git remote set-url origin git@github.com:someaccount/someproject.git`
 
+8. 如果每次 push 都要输入访问 id_rsa 的权限密码，可以用如下命令 `ssh-add --apple-use-keychain ~/.ssh/id_rsa` 实现 `Add your SSH private key to the ssh-agent`
+
 #### 2.配置 github
 
 github 同理，但需要注意，在上述第三步时，需要输入要自定义保存位置防止覆盖，比如输入 `id_rsa_github`
