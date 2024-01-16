@@ -51,9 +51,13 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 3. 提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。这里输入`id_rsa_gitlab` 会生成 `id_rsa_github` 以及 `id_rsa_github.pub` 两个文件
 
-4. 在提示时输入安全密码。
+4. 在提示时输入安全密码[可输可不输，用于首次与 origin 连接时输入]。
 
-5. 最后登录 gitlab 网页，在 `setting > ssh keys` 增加一个 ssh key 即可，把 `.ssh` 文件下的 `id_rsa.pub` 文件内容全部复制到 Key 内容。
+5. copy `.ssh` 文件下的 `id_rsa.pub` 下的全部内容，即公钥，`cat id_rsa.pub`
+
+6. 最后登录 gitlab 网页，在 `setting > ssh keys` 增加一个 ssh key 即可，公钥内容全部复制到 Key 内容。
+
+7. 如果之前使用的是 https，现在换成了 ssh ，需要修改 `origin url`, 输入以下命令 `git remote set-url origin git@github.com:someaccount/someproject.git`
 
 #### 2.配置 github
 
